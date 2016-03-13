@@ -1,0 +1,12 @@
+/Users/JDMBP/.rvm/rubies/jruby-9.0.4.0/bin/jruby -r ./siteconf20160312-59826-55ehbh.rb extconf.rb
+
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+make "DESTDIR=" install
+echo "Nada."
+Nada.

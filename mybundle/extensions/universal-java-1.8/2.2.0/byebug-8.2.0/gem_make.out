@@ -1,0 +1,8 @@
+/Users/JDMBP/.rvm/rubies/jruby-9.0.4.0/bin/jruby -r ./siteconf20160312-59826-ywxr1r.rb extconf.rb
+NotImplementedError: C extensions are not supported
+    <top> at /Users/JDMBP/.rvm/rubies/jruby-9.0.4.0/lib/ruby/stdlib/mkmf.rb:1
+  require at org/jruby/RubyKernel.java:939
+   (root) at /Users/JDMBP/.rvm/rubies/jruby-9.0.4.0/lib/ruby/stdlib/rubygems/core_ext/kernel_require.rb:1
+    <top> at extconf.rb:6
+
+extconf failed, exit code 1
