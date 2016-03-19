@@ -19,8 +19,8 @@ development:
 test:
   url: 'jdbc:sqlserver://USAASC-PRD-DB;databaseName=rails_demo_test'
   adapter: 'jdbc'
-  username: <% =ENV['RAILS_DEMO_TEST_USER'] %>
-  password: <% =ENV['RAILS_DEMO_TEST_PASSWORD'] %>
+  username: <%= ENV['RAILS_DEMO_TEST_USER'] %>
+  password: <%= ENV['RAILS_DEMO_TEST_PASSWORD'] %>
   driver: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
 
 production:
