@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
+
 gem 'warbler'
 #ruby '2.2.3'
 gem 'rails', '4.2.5'
@@ -38,4 +39,5 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'activerecord-jdbcmssql-adapter'
 end
