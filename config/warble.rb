@@ -7,4 +7,6 @@ Warbler::Config.new do |config|
 
   config.bundle_without = []
 
+  config.java_libs += FileList['vendor/*.jar']
+
 end
