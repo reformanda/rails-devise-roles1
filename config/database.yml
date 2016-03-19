@@ -19,7 +19,7 @@ development:
 test:
   url: jdbc:jtds:sqlserver://<%= ENV['RAILS_DEMO_TEST_HOST'] %>:1433/rails_demo_test;instance=localhost;user=<%= ENV['RAILS_DEMO_TEST_USER'] %>;password=<%= ENV['RAILS_DEMO_TEST_PASSWORD'] %>
   adapter: jdbcmssql
-  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
 #  adapter: sqlserver
 #  mode: dblib
 #  dataserver: 
