@@ -1,5 +1,5 @@
 Warbler::Config.new do |config|
-  config.webxml.rails.env = 'development'
+  config.webxml.rails.env = ENV['RAILS_ENV'] || 'production'
 
   config.dirs = %w(app db config lib log public  vendor tmp bin)
 
