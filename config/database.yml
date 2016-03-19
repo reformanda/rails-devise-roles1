@@ -17,19 +17,17 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-#  url: jdbc:sqlserver://USAASC-PRD-DB;databaseName=rails_demo_test
-#  adapter: jdbc
+  url: jdbc:jtds:sqlserver://<% = ENV['RAILS_DEMO_TEST_HOST'] %>:1433/rails_demo_test;instance=localhost;user=<%= ENV['RAILS_DEMO_TEST_USER'] %>;password=<%= ENV['RAILS_DEMO_TEST_PASSWORD'] %>
+  adapter: jdbicmssql
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#  adapter: sqlserver
+#  mode: dblib
+#  dataserver: 
+#  host: usaasc-prd-db
+#  port: 1433
+#  database: rails_demo_test
 #  username: <%= ENV['RAILS_DEMO_TEST_USER'] %>
 #  password: <%= ENV['RAILS_DEMO_TEST_PASSWORD'] %>
-#  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
-  adapter: sqlserver
-  mode: dblib
-  dataserver: 
-  host: usaasc-prd-db
-  port: 1433
-  database: rails_demo_test
-  username: <%= ENV['RAILS_DEMO_TEST_USER'] %>
-  password: <%= ENV['RAILS_DEMO_TEST_PASSWORD'] %>
  
 production:
   <<: *default
