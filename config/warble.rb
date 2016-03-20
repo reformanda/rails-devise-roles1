@@ -3,7 +3,7 @@ Warbler::Config.new do |config|
 
   config.dirs = %w(app db config lib log public  vendor tmp bin)
 
-  config.includes = FileList["Rakefile"]
+  config.includes = FileList["Rakefile", ".env"]
 
   config.bundle_without = []
 
