@@ -15,7 +15,7 @@
 /vendor/bundle/
 /vendor/ruby/
 /mybundle/
-
+/.env
 # minimal Rails specific artifacts
 db/*.sqlite3
 /db/*.sqlite3-journal

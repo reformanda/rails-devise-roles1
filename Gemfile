@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
-
+gem 'dotenv-rails'
 gem 'warbler'
 #ruby '2.2.3'
 gem 'rails', '4.2.5'
