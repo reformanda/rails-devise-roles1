@@ -30,5 +30,5 @@ test:
 #  password: <%= ENV['RAILS_DEMO_TEST_PASSWORD'] %>
  
 production:
-  <<: *default
-  database: db/production.sqlite3
+  url: jdbc:jtds:sqlserver://<%= ENV['RAILS_DEMO_TEST_HOST'] %>:1433/rails_demo_test;instance=localhost;user=<%= ENV['RAILS_DEMO_TEST_USER'] %>;password=<%= ENV['RAILS_DEMO_TEST_PASSWORD'] %>
+  adapter: jdbcmssql
