@@ -3,7 +3,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
 gem 'dotenv-rails', '2.0.2'
 gem 'warbler'
 #ruby '2.2.3'
-gem 'rails', '< 4.2'
+gem 'rails', '~> 4.1.5'
 #gem 'sqlite3'
 #gem 'activerecord-sqlserver-adapter'
 #gem 'tiny_tds'
