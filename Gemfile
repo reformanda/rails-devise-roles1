@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
 gem 'dotenv-rails', '2.0.2'
 gem 'warbler'
-gem 'rails', '~> 4.1.5'
+gem 'rails', '~> 4.2.6'
 gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
 gem 'jdbc-mysql'
