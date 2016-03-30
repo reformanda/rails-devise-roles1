@@ -17,8 +17,13 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  url: jdbc:jtds:sqlserver://<%= ENV['DB_HOST'] %>:1433/<%= ENV['DB_NAME'] %>;instance=localhost;user=<%= ENV['DB_USER'] %>;password=<%= ENV['DB_PASSWORD'] %>
   adapter: jdbcmssql
+  encoding: utf8
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+
  
 production:
   url: jdbc:jtds:sqlserver://<%= ENV['DB_HOST'] %>:1433/<%= ENV['DB_NAME'] %>;instance=localhost;user=<%= ENV['DB_USER'] %>;password=<%= ENV['DB_PASSWORD'] %>
