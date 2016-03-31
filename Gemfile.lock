@@ -239,11 +239,10 @@ DEPENDENCIES
   faker
   high_voltage
   jbuilder (~> 2.0)
-  jdbc-mysql
   jquery-rails
   launchy
   quiet_assets
-  rails (~> 4.2.6)
+  rails (~> 4.2.5)
   rails_layout
   rspec-rails
   sass-rails (~> 5.0)
