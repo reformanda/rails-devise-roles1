@@ -4,7 +4,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
 gem 'dotenv-rails', '2.0.2'
 gem 'warbler'
 gem 'rails', '4.2.5'
-gem 'activerecord-jdbc-adapter'
+#gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
 #gem 'jdbc-mysql'
 gem 'activerecord-jdbcsqlite3-adapter'
