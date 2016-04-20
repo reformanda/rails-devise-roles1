@@ -3,6 +3,8 @@ gem 'mime-types', '2.6.2'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
 gem 'dotenv-rails', '2.0.2'
 gem 'warbler'
+gem 'font-awesome-rails', '4.3.0.0'
+
 gem 'rails', '4.2.5'
 #gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
