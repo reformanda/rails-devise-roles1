@@ -6,7 +6,22 @@
                 <h5>Note: Use upper and lowercase letters when filling out this form.</h5>
             </div>
             <div class="ibox-content">
-                <form method="get" class="form-horizontal">
+                <!--form method="get" class="form-horizontal"-->
+                <!--%= form_for(@nomination) do |f| %-->
+                <%= form_for @nomination, url: {action: "create"}, html: {class: "form-horizontal"} do |f| %>
+                  <% if @nomination.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@nomination.errors.count, "error") %> prohibited this nomination from being saved:</h2>
+
+                      <ul>
+                      <% @nomination.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                <!---%= form_for @nomination, url: {action: "create"}, html: {class: "form-horizontal"} do |f| %--->
+                    <%= hidden_field_tag(:nomination_type, @nomination_type) %>
                     <h2>Unit Commander/Head of Organization</h2>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
@@ -14,7 +29,9 @@
 
                         <div class="col-sm-10">
                           <div class="row">
-                              <div class="col-md-1"><input type="text" placeholder="" class="form-control">
+                              <div class="col-md-1">
+                                <%= f.text_field :ucho_title, class: "form-control" %>
+                                <!---input type="text" placeholder="" class="form-control"--->
                               <span class="help-block m-b-none">Rank</span></div>
                               <div class="col-md-3"><input type="text" placeholder="" class="form-control">
                               <span class="help-block m-b-none">First Name</span></div>
@@ -301,10 +318,11 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group">
                         <div class="col-sm-12">
                             <button class="btn btn-primary" type="submit">Submit Nomination</button>
-                            <button class="btn btn-white" type="submit">Cancel</button>
+                            <button class="btn btn-white" type="reset">Cancel</button>
                         </div>
                     </div>
-                </form>
+                <!--/form-->
+                <% end %>
             </div>
         </div>
     </div>
