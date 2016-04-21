@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: 6899b7916c26c101c368c10758d4fce9fa65a3f2
+  specs:
+    carrierwave (0.11.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -230,6 +239,7 @@ DEPENDENCIES
   activerecord-jdbcsqlite3-adapter
   bootstrap-sass
   capybara
+  carrierwave!
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise

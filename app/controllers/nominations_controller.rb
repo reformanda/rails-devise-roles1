@@ -18,26 +18,33 @@ class NominationsController < ApplicationController
   def packard
     @nomination = Nomination.new
     @nomination_type = "packard"
-    @award_options = ["Program Management"]
-    render :layout => "nomination_form"
+    @award_options = [["Program Management",1]]
+    render :nomination, :layout => "nomination_form"
   end
 
   def edit
   end
 
   def error
+    @nomination_type = session[:nomination_type]
+    render :layout => "nomination_form"
+  end
+
+  def submitted
+    @nomination_type = session[:nomination_type]
     render :layout => "nomination_form"
   end
 
   def create
     @nomination = Nomination.new(nomination_params)
+    session[:nomination_type]  = params[:nomination_type]
 
     respond_to do |format|
       if @nomination.save
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully created.' }
+        format.html { redirect_to '/nominations/submitted'}
         format.json { render :show, status: :created, location: @nomination }
       else
-        format.html { redirect_to "/nominations/error/", notice: "Nomination was not created.", action: "#{params[:nomination_type]}" }
+        format.html { redirect_to '/nominations/error'}
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +59,46 @@ class NominationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_params
-      params.require(:nomination).permit(:ucho_title,:ucho_first)
+      params.require(:nomination).permit(:ucho_title,
+      :ucho_first,
+      :ucho_last,
+      :ucho_suffix,
+      :ucho_phone,
+      :ucho_email,
+      :ucho_organization,
+      :nomoff_title,
+      :nomoff_first,
+      :nomoff_last,
+      :nomoff_suffix,
+      :nomoff_phone,
+      :nomoff_email,
+      :poc_title,
+      :poc_first,
+      :poc_last,
+      :poc_suffix,
+      :poc_phone,
+      :poc_email,
+      :poc_org_address_1,
+      :poc_org_address_2,
+      :poc_city,
+      :poc_state,
+      :poc_zip,
+      :poc_country,
+      :award,
+      :nominee_title,
+      :nominee_first,
+      :nominee_last,
+      :nominee_suffix,
+      :nominee_position_title,
+      :nominee_email,
+      :nominee_organization,
+      :nominee_command,
+      :endorsement_letter,
+      :submission_form,
+      :photo_a,
+      :photo_b,
+      :nomination_type,
+      :nomination_year)
     end
 
 end

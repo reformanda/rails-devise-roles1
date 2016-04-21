@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "nominations/packard"
   post "nominations/create"
   get "nominations/error"
+  get "nominations/submitted"
   #get 'sites/:name', :to => 'sites#show', :as => site
 
   # All routes
