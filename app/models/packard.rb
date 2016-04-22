@@ -1,0 +1,2 @@
+class Packard < Nomination
+end

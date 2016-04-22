@@ -3,4 +3,8 @@ class Nomination < ActiveRecord::Base
   mount_uploader :submission_form, SubmissionFormUploader
   mount_uploader :photo_a, PhotoAUploader
   mount_uploader :photo_b, PhotoBUploader
+
+  def self.nomination_types
+    %w(Packard)
+  end
 end

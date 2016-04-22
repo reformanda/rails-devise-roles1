@@ -1,67 +1,53 @@
 class NominationsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
-  # GET /boats
-  # GET /boats.json
+
+
   def index
     @nominations = Nomination.all
   end
 
-  # GET /boats/1
-  # GET /boats/1.json
   def show
   end
 
-  # GET /boats/new
-  def new
-    @nomination = Nomination.new
-    case @nomination_type
-    when "Packard"
-        @award_options = [["Program Management",1]]
-    end
+  def update
   end
 
-  # GET /boats/1/edit
+  def destroy
+  end
+
+  def packard
+    @nomination = Nomination.new
+    @nomination_type = "packard"
+    @award_options = [["Program Management",1]]
+    render :nomination, :layout => "nomination_form"
+  end
+
   def edit
   end
 
-  # POST /boats
-  # POST /boats.json
+  def error
+    @nomination_type = session[:nomination_type]
+    render :layout => "nomination_form"
+  end
+
+  def submitted
+    @nomination_type = session[:nomination_type]
+    render :layout => "nomination_form"
+  end
+
   def create
     @nomination = Nomination.new(nomination_params)
+    session[:nomination_type]  = params[:nomination_type]
 
     respond_to do |format|
       if @nomination.save
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully created.' }
+        format.html { redirect_to '/nominations/submitted'}
         format.json { render :show, status: :created, location: @nomination }
       else
-        format.html { render :new }
+        format.html { redirect_to '/nominations/error'}
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /boats/1
-  # PATCH/PUT /boats/1.json
-  def update
-    respond_to do |format|
-      if @nomination.update(boat_params)
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully updated.' }
-        format.json { render :show, status: :ok, location: @nomination }
-      else
-        format.html { render :edit }
-        format.json { render json: @nomination.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /boats/1
-  # DELETE /boats/1.json
-  def destroy
-    @nomination.destroy
-    respond_to do |format|
-      format.html { redirect_to nominations_url, notice: 'Nomination was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -69,6 +55,7 @@ class NominationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
       @nomination = Nomination.find(params[:id])
+      #@nomination = Nomination.find(0)
     end
 
     def set_nomination_type
@@ -79,7 +66,7 @@ class NominationsController < ApplicationController
         Nomination.nomination_types.include?(params[:type]) ? params[:type] : "Nomination"
     end
 
-    def nomination_type_class
+    def nomination_type_class 
         nomination_type.constantize
     end
 
