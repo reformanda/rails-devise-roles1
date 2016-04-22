@@ -165,7 +165,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group"><label class="col-sm-2 control-label">Award</label>
 
                         <div class="col-sm-6">
-                        <%= select_tag(:award, options_for_select(@award_options), class: "form-control m-b") %>
+                        <%= select_tag(:award, options_for_select(session[:award_options]), class: "form-control m-b") %>
 
 
                         </div>

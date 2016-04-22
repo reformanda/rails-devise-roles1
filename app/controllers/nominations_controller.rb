@@ -15,9 +15,9 @@ class NominationsController < ApplicationController
   # GET /boats/new
   def new
     @nomination = Nomination.new
-    case @nomination_type
+    case params[:type]
     when "Packard"
-        @award_options = [["Program Management",1]]
+        session[:award_options] = [["Program Management",1]]
     end
   end
 
