@@ -1,4 +1,4 @@
-class NominationsController < ApplicationController
+class PackardsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
   # GET /boats
@@ -14,7 +14,8 @@ class NominationsController < ApplicationController
 
   # GET /boats/new
   def new
-    @nomination = Nomination.new
+    @nomination = Packard.new
+
     case params[:type]
     when "Packard"
         session[:award_options] = [["Program Management",1]]
@@ -28,10 +29,11 @@ class NominationsController < ApplicationController
   # POST /boats
   # POST /boats.json
   def create
-    @nomination = Nomination.new(nomination_params)
+    @nomination = Packard.new(nomination_params)
 
     respond_to do |format|
       if @nomination.save
+        # send email confirmation
         format.html { redirect_to @nomination, notice: 'Nomination was successfully created.' }
         format.json { render :show, status: :created, location: @nomination }
       else
@@ -41,34 +43,10 @@ class NominationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /boats/1
-  # PATCH/PUT /boats/1.json
-  def update
-    respond_to do |format|
-      if @nomination.update(boat_params)
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully updated.' }
-        format.json { render :show, status: :ok, location: @nomination }
-      else
-        format.html { render :edit }
-        format.json { render json: @nomination.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /boats/1
-  # DELETE /boats/1.json
-  def destroy
-    @nomination.destroy
-    respond_to do |format|
-      format.html { redirect_to nominations_url, notice: 'Nomination was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
-      @nomination = Nomination.find(params[:id])
+      @packard = Packard.find(params[:id])
     end
 
     def set_nomination_type
@@ -76,7 +54,7 @@ class NominationsController < ApplicationController
     end
 
     def nomination_type
-        Nomination.nomination_types.include?(params[:type]) ? params[:type] : "Nomination"
+        Nomination.nomination_types.include?(params[:type]) ? params[:type] : "Packard"
     end
 
     def nomination_type_class
@@ -122,8 +100,7 @@ class NominationsController < ApplicationController
       :nominee_command,
       :endorsement_letter,
       :submission_form,
-      :photo_a,
-      :photo_b,
+      :nominee_organizational_logo,
       :nomination_type,
       :nomination_year)
     end

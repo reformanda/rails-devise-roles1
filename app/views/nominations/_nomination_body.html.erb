@@ -30,14 +30,14 @@
                         <div class="col-sm-10">
                           <div class="row">
                               <div class="col-md-1">
-                                <%= f.text_field :ucho_title, class: "form-control" %>
+                                <%= f.text_field :unit_commander_title, class: "form-control" %>
                                 <!---input type="text" placeholder="" class="form-control"--->
                               <span class="help-block m-b-none">Rank</span></div>
-                              <div class="col-md-3"><%= f.text_field :ucho_first, class: "form-control" %>
+                              <div class="col-md-3"><%= f.text_field :unit_commander_first_name, class: "form-control" %>
                               <span class="help-block m-b-none">First Name</span></div>
-                              <div class="col-md-4"><%= f.text_field :ucho_last, class: "form-control" %>
+                              <div class="col-md-4"><%= f.text_field :unit_commander_last_name, class: "form-control" %>
                                 <span class="help-block m-b-none">Last Name</span></div>
-                                <div class="col-md-1"><%= f.text_field :ucho_suffix, class: "form-control" %>
+                                <div class="col-md-1"><%= f.text_field :unit_commander_suffix, class: "form-control" %>
                                 <span class="help-block m-b-none">Suffix</span></div>
                           </div>
                         </div>
@@ -45,7 +45,7 @@
 
                     <div class="form-group"><label class="col-sm-2 control-label">Phone</label>
                         <div class="col-sm-3">
-                          <%= f.text_field :ucho_phone, class: "form-control" %>
+                          <%= f.text_field :unit_commander_phone, class: "form-control" %>
                           <span class="help-block m-b-none">Include dashes (e.g., 703-555-5555 or
 International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
@@ -53,13 +53,13 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><label class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-3">
-                          <%= f.text_field :ucho_email, class: "form-control" %>
+                          <%= f.text_field :unit_commander_email, class: "form-control" %>
                         </div>
                     </div>
 
                     <div class="form-group"><label class="col-sm-2 control-label">Organization</label>
                         <div class="col-sm-4">
-                          <%= f.text_field :ucho_organization, class: "form-control" %>
+                          <%= f.text_field :unit_commander_organization, class: "form-control" %>
                         </div>
                     </div>
 
@@ -72,13 +72,13 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                         <div class="col-sm-10">
                           <div class="row">
-                              <div class="col-md-1"><%= f.text_field :nomoff_title, class: "form-control" %>
+                              <div class="col-md-1"><%= f.text_field :nominating_official_title, class: "form-control" %>
                               <span class="help-block m-b-none">Rank</span></div>
-                              <div class="col-md-3"><%= f.text_field :nomoff_first, class: "form-control" %>
+                              <div class="col-md-3"><%= f.text_field :nominating_official_first_name, class: "form-control" %>
                               <span class="help-block m-b-none">First Name</span></div>
-                              <div class="col-md-4"><<%= f.text_field :nomoff_last, class: "form-control" %>
+                              <div class="col-md-4"><%= f.text_field :nominating_official_last_name, class: "form-control" %>
                                 <span class="help-block m-b-none">Last Name</span></div>
-                                <div class="col-md-1"><%= f.text_field :nomoff_suffix, class: "form-control" %>
+                                <div class="col-md-1"><%= f.text_field :nominating_official_suffix, class: "form-control" %>
                                 <span class="help-block m-b-none">Suffix</span></div>
                           </div>
                         </div>
@@ -86,7 +86,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><label class="col-sm-2 control-label">Phone</label>
                         <div class="col-sm-3">
-                          <%= f.text_field :nomoff_phone, class: "form-control" %>
+                          <%= f.text_field :nominating_official_phone, class: "form-control" %>
                           <span class="help-block m-b-none">Include dashes (e.g., 703-555-5555 or
 International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
@@ -94,7 +94,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><label class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-3">
-                          <%= f.text_field :nomoff_email, class: "form-control" %>
+                          <%= f.text_field :nominating_official_email, class: "form-control" %>
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
@@ -106,13 +106,13 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                         <div class="col-sm-10">
                           <div class="row">
-                              <div class="col-md-1"><%= f.text_field :poc_title, class: "form-control" %>
+                              <div class="col-md-1"><%= f.text_field :nominating_point_of_contact_title, class: "form-control" %>
                               <span class="help-block m-b-none">Rank</span></div>
-                              <div class="col-md-3"><%= f.text_field :poc_first, class: "form-control" %>
+                              <div class="col-md-3"><%= f.text_field :nominating_point_of_contact_first_name, class: "form-control" %>
                               <span class="help-block m-b-none">First Name</span></div>
-                              <div class="col-md-4"><%= f.text_field :poc_last, class: "form-control" %>
+                              <div class="col-md-4"><%= f.text_field :nominating_point_of_contact_last_name, class: "form-control" %>
                                 <span class="help-block m-b-none">Last Name</span></div>
-                                <div class="col-md-1"><%= f.text_field :poc_suffix, class: "form-control" %>
+                                <div class="col-md-1"><%= f.text_field :nominating_point_of_contact_suffix, class: "form-control" %>
                                 <span class="help-block m-b-none">Suffix</span></div>
                           </div>
                         </div>
@@ -120,7 +120,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><label class="col-sm-2 control-label">Phone</label>
                         <div class="col-sm-3">
-                          <%= f.text_field :poc_phone, class: "form-control" %>
+                          <%= f.text_field :nominating_point_of_contact_phone, class: "form-control" %>
                           <span class="help-block m-b-none">Include dashes (e.g., 703-555-5555 or
 International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
@@ -128,13 +128,13 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><label class="col-sm-2 control-label">Organization's Address</label>
                         <div class="col-sm-3">
-                          <%= f.text_field :poc_org_address_1, class: "form-control" %>
+                          <%= f.text_field :nominating_point_of_contact_organization_address_1, class: "form-control" %>
                         </div>
                     </div>
 
                     <div class="form-group"><label class="col-sm-2 control-label">Address Line 2</label>
                         <div class="col-sm-3">
-                          <%= f.text_field :poc_org_address_2, class: "form-control" %>
+                          <%= f.text_field :nominating_point_of_contact_organization_address_2, class: "form-control" %>
                         </div>
                     </div>
 
@@ -143,13 +143,13 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                         <div class="col-sm-10">
                           <div class="row">
-                              <div class="col-md-5"><%= f.text_field :poc_city, class: "form-control" %>
+                              <div class="col-md-5"><%= f.text_field :nominating_point_of_contact_city, class: "form-control" %>
                               <span class="help-block m-b-none">City</span></div>
-                              <div class="col-md-1"><<%= f.text_field :poc_state, class: "form-control" %>
+                              <div class="col-md-1"><<%= f.text_field :nominating_point_of_contact_state, class: "form-control" %>
                               <span class="help-block m-b-none">State</span></div>
-                              <div class="col-md-2"><%= f.text_field :poc_zip, class: "form-control" %>
+                              <div class="col-md-2"><%= f.text_field :nominating_point_of_contact_zip, class: "form-control" %>
                                 <span class="help-block m-b-none">Zip</span></div>
-                                <div class="col-md-2"><%= f.text_field :poc_country, class: "form-control" %>
+                                <div class="col-md-2"><%= f.text_field :nominating_point_of_contact_country, class: "form-control" %>
                                 <span class="help-block m-b-none">Country</span></div>
                           </div>
                           <span class="help-block m-b-none">Awards will be shipped to this address if the winner is unable to attend the official presentation)
@@ -182,9 +182,9 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                           <div class="row">
                               <div class="col-md-1"><%= f.text_field :nominee_title, class: "form-control" %>
                               <span class="help-block m-b-none">Rank</span></div>
-                              <div class="col-md-3"><%= f.text_field :nominee_first, class: "form-control" %>
+                              <div class="col-md-3"><%= f.text_field :nominee_first_name, class: "form-control" %>
                               <span class="help-block m-b-none">First Name</span></div>
-                              <div class="col-md-4"><%= f.text_field :nominee_last, class: "form-control" %>
+                              <div class="col-md-4"><%= f.text_field :nominee_last_name, class: "form-control" %>
                                 <span class="help-block m-b-none">Last Name</span></div>
                                 <div class="col-md-1"><%= f.text_field :nominee_suffix, class: "form-control" %>
                                 <span class="help-block m-b-none">Suffix</span></div>
@@ -289,7 +289,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <% if @nomination_type = "packard" %>
                     <div class="form-group"><label class="col-sm-3">Nominee Organizational Logo</label>
                         <div class="col-sm-4">
-                          <%= f.file_field :photo_a, class: "" %>
+                          <%= f.file_field :nominee_organizational_logo, class: "" %>
                           <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
                         </div>
                     </div>

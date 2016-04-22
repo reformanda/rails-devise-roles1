@@ -1,35 +1,35 @@
 class CreateNominations < ActiveRecord::Migration
   def change
     create_table :nominations do |t|
-      t.string :ucho_title
-      t.string :ucho_first
-      t.string :ucho_last
-      t.string :ucho_suffix
-      t.string :ucho_phone
-      t.string :ucho_email
-      t.string :ucho_organization
-      t.string :nomoff_title
-      t.string :nomoff_first
-      t.string :nomoff_last
-      t.string :nomoff_suffix
-      t.string :nomoff_phone
-      t.string :nomoff_email
-      t.string :poc_title
-      t.string :poc_first
-      t.string :poc_last
-      t.string :poc_suffix
-      t.string :poc_phone
-      t.string :poc_email
-      t.string :poc_org_address_1
-      t.string :poc_org_address_2
-      t.string :poc_city
-      t.string :poc_state
-      t.string :poc_zip
-      t.string :poc_country
+      t.string :unit_commander_title
+      t.string :unit_commander_first_name
+      t.string :unit_commander_last_name
+      t.string :unit_commander_suffix
+      t.string :unit_commander_phone
+      t.string :unit_commander_email
+      t.string :unit_commander_organization
+      t.string :nominating_official_title
+      t.string :nominating_official_first_name
+      t.string :nominating_official_last_name
+      t.string :nominating_official_suffix
+      t.string :nominating_official_phone
+      t.string :nominating_official_email
+      t.string :nominating_point_of_contact_title
+      t.string :nominating_point_of_contact_first_name
+      t.string :nominating_point_of_contact_last_name
+      t.string :nominating_point_of_contact_suffix
+      t.string :nominating_point_of_contact_phone
+      t.string :nominating_point_of_contact_email
+      t.string :nominating_point_of_contact_organization_address_1
+      t.string :nominating_point_of_contact_organization_address_2
+      t.string :nominating_point_of_contact_city
+      t.string :nominating_point_of_contact_state
+      t.string :nominating_point_of_contact_zip
+      t.string :nominating_point_of_contact_country
       t.string :award
       t.string :nominee_title
-      t.string :nominee_first
-      t.string :nominee_last
+      t.string :nominee_first_name
+      t.string :nominee_last_name
       t.string :nominee_suffix
       t.string :nominee_position_title
       t.string :nominee_email

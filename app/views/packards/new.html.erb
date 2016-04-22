@@ -1,0 +1,9 @@
+<h1>Nominations#new</h1>
+<p>Find me in app/views/nominations/new.html.erb</p>
+
+<% case @nomination_type %>
+<% when "packard" %>
+<%= render "nominations/packard_head" %>
+<% end %>
+
+<%= render "nominations/nomination_body" %>

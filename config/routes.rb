@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #root to: 'dashboards#dashboard_1'
 
   resources :nominations
-  resources :packards, controller: 'nominations', type: 'Packard'
+  resources :packards  #, controller: 'nominations', type: 'Packard'
   #get 'sites/:name', :to => 'sites#show', :as => site
 
   # All routes
