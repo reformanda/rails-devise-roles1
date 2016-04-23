@@ -35,6 +35,7 @@ class CreateNominations < ActiveRecord::Migration
       t.string :nominee_email
       t.string :nominee_organization
       t.string :nominee_command
+      t.string :nominee_team_name
       t.string :endorsement_letter
       t.string :submission_form
       t.string :photo_a

@@ -4,6 +4,7 @@ class Nomination < ActiveRecord::Base
   mount_uploader :photo_a, PhotoAUploader
   mount_uploader :photo_b, PhotoBUploader
 
+  belongs_to :nomination_type
 
   #validates :unit_commander_first_name, :unit_commander_last_name, :unit_commander_email, :unit_commander_phone, :unit_commander_organization, :presence => true
   #validates :nominating_point_of_contact_first_name, :nominating_point_of_contact_last_name, :nominating_point_of_contact_email,

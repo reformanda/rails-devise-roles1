@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420021725) do
+ActiveRecord::Schema.define(version: 20160423021018) do
+
+  create_table "nomination_types", force: :cascade do |t|
+    t.string   "code"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "nominations", force: :cascade do |t|
     t.string   "unit_commander_title"
@@ -48,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160420021725) do
     t.string   "nominee_email"
     t.string   "nominee_organization"
     t.string   "nominee_command"
+    t.string   "nominee_team_name"
     t.string   "endorsement_letter"
     t.string   "submission_form"
     t.string   "photo_a"
