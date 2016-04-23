@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160423021018) do
     t.string   "photo_b"
     t.string   "nomination_type"
     t.string   "nomination_year"
+    t.integer  "nomination_type_id"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end

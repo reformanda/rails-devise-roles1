@@ -42,6 +42,7 @@ class CreateNominations < ActiveRecord::Migration
       t.string :photo_b
       t.string :nomination_type
       t.string :nomination_year
+      t.integer :nomination_type_id
 
       t.timestamps null: false
     end

@@ -5,21 +5,18 @@
   </head>
   <body>
     <p>Thank you for nominating
-    <% case @nomination.nomination_team_name.nil? %>
+    <% case @nomination.nominee_team_name.nil? %>
     <% when true%>
       <%= @nomination.nominee_title %> <%= @nomination.nominee_first_name %> <%= @nomination.nominee_last_name %> <%= @nomination.nominee_suffix %>
     <% else %>
        <%= @nomination.nominee_team_name %>
-    <% end %> for the <%= @nomination.nomination_year %> <%= @nomination.nomination_type.description %>.
+    <% end %> for the <%= @nomination.nomination_year %> <%= @nomination.nomination_type %>.
     </p>
-    <br/>
+
 
     <p>
     The following information has been saved regarding your nomination:
     </p>
-    <br/>
-
-
 
      <p>
      UNIT COMMANDER/HEAD OF ORGANIZATION<br/>
@@ -31,7 +28,7 @@
      Unit Command/Head Email:  <%= @nomination.unit_commander_email %><br />
      Unit Command/Head Organization:  <%= @nomination.unit_commander_organization %> <br/>
      </p>
-     <br/>
+
      <p>
      NOMINATING OFFICIAL<br/>
      Nominating Official Rank/Title:  <%= @nomination.nominating_official_title %><br />
@@ -40,9 +37,8 @@
      Nominating Official Suffix:  <%= @nomination.nominating_official_suffix %><br />
      Phone Number:  <%= @nomination.nominating_official_phone %> <br/>
      Nominator Email:  <%= @nomination.nominating_official_email %> <br/>
-
     </p>
-    <br/>
+
     <p>
     NOMINATING POINT OF CONTACT (POC)<br/>
     Nominating POC Rank/Title:  <%= @nomination.nominating_point_of_contact_title %><br />
@@ -50,7 +46,7 @@
     Nominating POC Last Name:  <%= @nomination.nominating_point_of_contact_last_name %><br />
     Nominating POC Suffix:  <%= @nomination.nominating_point_of_contact_suffix %><br />
     Nominating POC Phone:  <%= @nomination.nominating_point_of_contact_phone %><br />
-
+    Nominating POC Email:  <%= @nomination.nominating_point_of_contact_email %><br />
     Street 1 of Address:  <%= @nomination.nominating_point_of_contact_organization_address_1 %> <br/>
     Street 2 of Address:  <%= @nomination.nominating_point_of_contact_organization_address_2 %> <br/>
     City:  <%= @nomination.nominating_point_of_contact_city %> <br/>
@@ -59,7 +55,7 @@
     Country:  <%= @nomination.nominating_point_of_contact_country %> <br/>
 
     </p>
-    <br/>
+
 
                      <p>
                      NOMINEE<br/>
@@ -78,7 +74,7 @@
                       </p>
                       <br/>
 
-                      <br/>
+
                       For questions regarding your award submission, please contact
                        Ms. Vicky Deguzman at (703) 805-1245 or email victoria.l.deguzman.civ@mail.mil.
                       <br/>

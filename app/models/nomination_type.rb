@@ -1,3 +1,3 @@
 class NominationType < ActiveRecord::Base
-  has_many :nominations
+  #has_many :nominations
 end
