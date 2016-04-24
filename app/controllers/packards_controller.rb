@@ -10,16 +10,14 @@ class PackardsController < ApplicationController
   # GET /boats/1
   # GET /boats/1.json
   def show
+    render :layout => "nomination_form"
   end
 
   # GET /boats/new
   def new
     @nomination = Packard.new
-
-    case params[:type]
-    when "Packard"
-        session[:award_options] = [["Program Management",1]]
-    end
+    session[:award_options] = [["Program Management",1]]
+    render :layout => "nomination_form"
   end
 
   # GET /boats/1/edit
@@ -34,10 +32,11 @@ class PackardsController < ApplicationController
     respond_to do |format|
       if @nomination.save
         # send email confirmation
+        NominationMailer.confirmation_email(@nomination)
         format.html { redirect_to @nomination, notice: 'Nomination was successfully created.' }
-        format.json { render :show, status: :created, location: @nomination }
+        format.json { render :confirmation, status: :created, location: @nomination }
       else
-        format.html { render :new }
+        format.html { render :new, :layout => "nomination_form" }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
     end
