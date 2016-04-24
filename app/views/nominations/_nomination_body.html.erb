@@ -8,7 +8,7 @@
             <div class="ibox-content">
                 <!--form method="get" class="form-horizontal"-->
                 <!--%= form_for(@nomination) do |f| %-->
-                <%= form_for @nomination, url: {action: "create"}, html: {class: "form-horizontal"} do |f| %>
+                <%= form_for @nomination, url: "/packards/?#no-back", method: "post", html: {class: "form-horizontal"} do |f| %>
                   <% if @nomination.errors.any? %>
                     <div id="error_explanation">
                       <h2><%= pluralize(@nomination.errors.count, "error") %> prohibited this nomination from being saved:</h2>
@@ -292,7 +292,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     </div>
 
 
-                    <% if @nomination_type = "packard" %>
+                    <% if @nomination_type == "Packard" %>
                     <div class="form-group"><label class="col-sm-3">Nominee Organizational Logo</label>
                         <div class="col-sm-4">
                           <%= f.file_field :nominee_organizational_logo, class: "" %>

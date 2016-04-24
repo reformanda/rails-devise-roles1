@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :boats
   root to: 'visitors#index'
   devise_for :users
   resources :users
@@ -7,9 +8,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   #root to: 'dashboards#dashboard_1'
 
+  get 'packards/confirmation', to: "packards#confirmation"
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
   #get 'sites/:name', :to => 'sites#show', :as => site
+
 
   # All routes
   get "dashboards/dashboard_1"

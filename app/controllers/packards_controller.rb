@@ -9,7 +9,7 @@ class PackardsController < ApplicationController
 
   # GET /boats/1
   # GET /boats/1.json
-  def show
+  def confirmation
     render :layout => "nomination_form"
   end
 
@@ -33,7 +33,7 @@ class PackardsController < ApplicationController
       if @nomination.save
         # send email confirmation
         NominationMailer.confirmation_email(@nomination)
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully created.' }
+        format.html { redirect_to '/packards/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
         format.html { render :new, :layout => "nomination_form" }
