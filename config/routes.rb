@@ -143,4 +143,7 @@ Rails.application.routes.draw do
 
   get "landing/index"
   get "landing/nomination"
+
+  get "*any", via: :all, to: "errors#not_found"
+
 end
