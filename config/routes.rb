@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :nomination_types
   resources :boats
   root to: 'visitors#index'
   devise_for :users

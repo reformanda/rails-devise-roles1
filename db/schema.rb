@@ -16,8 +16,13 @@ ActiveRecord::Schema.define(version: 20160423021018) do
   create_table "nomination_types", force: :cascade do |t|
     t.string   "code"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "awards_announcement"
+    t.string   "implementing_instructions"
+    t.string   "submission_form_and_award_narrative"
+    t.string   "award_narrative_sample"
+    t.string   "guidelines_and_tips"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "nominations", force: :cascade do |t|
