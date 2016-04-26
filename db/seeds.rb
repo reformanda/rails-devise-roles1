@@ -7,6 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
-NominationType.create(code: "Packard", description: "The Packard Award")
+#NominationType.create(code: "Packard", description: "The Packard Award")
 
 Nomination.create(nominating_point_of_contact_email: "test@test.com", nomination_type: "Packard")

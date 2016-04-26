@@ -1,4 +1,40 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Code:</strong>
+  <%= @nomination_type.code %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @nomination_type.description %>
+</p>
+
+<p>
+  <strong>Awards announcement:</strong>
+
+  <%= link_to "Download ", @nomination_type.awards_announcement_url %>
+</p>
+
+<p>
+  <strong>Implementing instructions:</strong>
+  <%= @nomination_type.implementing_instructions %>
+</p>
+
+<p>
+  <strong>Submission form:</strong>
+  <%= @nomination_type.submission_form %>
+</p>
+
+<p>
+  <strong>Award narrative:</strong>
+  <%= @nomination_type.award_narrative %>
+</p>
+
+<p>
+  <strong>Guidelines:</strong>
+  <%= @nomination_type.guidelines %>
+</p>
+
 <%= link_to 'Edit', edit_nomination_type_path(@nomination_type) %> |
 <%= link_to 'Back', nomination_types_path %>

@@ -5,6 +5,7 @@ class NominationTypesController < ApplicationController
   # GET /nomination_types.json
   def index
     @nomination_types = NominationType.all
+    render :layout => "nomination_form"
   end
 
   # GET /nomination_types/1
@@ -15,6 +16,7 @@ class NominationTypesController < ApplicationController
   # GET /nomination_types/new
   def new
     @nomination_type = NominationType.new
+    render :layout => "nomination_form"
   end
 
   # GET /nomination_types/1/edit
@@ -69,6 +71,6 @@ class NominationTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_type_params
-      params.fetch(:nomination_type, {})
+      params.require(:nomination_type).permit(:code, :description, :awards_announcement, :implementing_instructions, :submission_form, :award_narrative, :guidelines)
     end
 end

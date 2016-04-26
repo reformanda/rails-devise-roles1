@@ -4,6 +4,6 @@ class ErrorsController < ApplicationController
       format.html { render status: 404, :layout => false }
     end
   rescue ActionController::UnknownFormat
-    render status: 404, text: "nope", layout => "nomination_form"
+    render status: 404, text: "nope"
   end
 end

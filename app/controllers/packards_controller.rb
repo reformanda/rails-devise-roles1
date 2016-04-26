@@ -16,6 +16,7 @@ class PackardsController < ApplicationController
   # GET /boats/new
   def new
     @nomination = Packard.new
+    @packard_info = NominationType.where(["code = ?", "Packard"]).first
     session[:award_options] = [["Program Management",1]]
     render :layout => "nomination_form"
   end
