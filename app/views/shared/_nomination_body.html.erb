@@ -243,35 +243,45 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <a href="#">Awards Announcement</a>
+                      <% if not @packard_info.awards_announcement_url.nil? %>
+                      <%= link_to "Awards Announcement", @packard_info.awards_announcement_url %>
+                      <% end %>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <a href="#">Implementing Instructions</a>
+                      <% if not @packard_info.implementing_instructions_url.nil? %>
+                      <%= link_to "Implementing Instructions", @packard_info.implementing_instructions_url %>
+                      <% end %>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-word-o"></i>
-                      <a href="#">Submission Form and Award Narrative</a>
+                      <% if not @packard_info.submission_form_url.nil? %>
+                      <%= link_to "Submission Form and Award Narrative", @packard_info.submission_form_url %>
+                      <% end %>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <a href="#">Award Narrative Sample</a>
+                      <% if not @packard_info.award_narrative_url.nil? %>
+                      <%= link_to "Award Narrative Sample", @packard_info.award_narrative_url %>
+                      <% end %>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <a href="#">Guidelines and Tips</a>
+                      <% if not @packard_info.guidelines_url.nil? %>
+                      <%= link_to "Guidelines and Tips", @packard_info.guidelines_url %>
+                      <% end %>
                     </div>
                     </div>
 

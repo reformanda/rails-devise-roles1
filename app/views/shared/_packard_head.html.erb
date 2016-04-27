@@ -6,7 +6,8 @@
             <div class="ibox-content">
 
     <h2>2016 David Packard Excellence in Acquisition Award Nomination Form</h2>
-    <h4>Nominations are due by midnight on Friday, May 20, 2016.</h4>
+    <h4>Nominations are due by midnight on <%= Date.strptime(@packard_info.nomination_end_date , "%m/%d/%Y").strftime("%A, %m/%d/%Y")
+%>.</h4>
     <p><%= @packard_info.description %></p>
 
 </div>

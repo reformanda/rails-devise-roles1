@@ -1,6 +1,6 @@
 class NominationTypesController < ApplicationController
   before_action :set_nomination_type, only: [:show, :edit, :update, :destroy]
-
+  layout "nomination_form", only: [:new, :show, :edit]
   # GET /nomination_types
   # GET /nomination_types.json
   def index
@@ -21,6 +21,7 @@ class NominationTypesController < ApplicationController
 
   # GET /nomination_types/1/edit
   def edit
+     @packard_info = NominationType.new
   end
 
   # POST /nomination_types
@@ -43,6 +44,9 @@ class NominationTypesController < ApplicationController
   # PATCH/PUT /nomination_types/1.json
   def update
     respond_to do |format|
+      val= nomination_type_params[:nomination_end_date]
+      date = Date.strptime(val, "%m/%d/%Y") if val.present?
+      nomination_type_params[:nomination_end_date] = date
       if @nomination_type.update(nomination_type_params)
         format.html { redirect_to @nomination_type, notice: 'Nomination type was successfully updated.' }
         format.json { render :show, status: :ok, location: @nomination_type }
@@ -71,6 +75,6 @@ class NominationTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_type_params
-      params.require(:nomination_type).permit(:code, :description, :awards_announcement, :implementing_instructions, :submission_form, :award_narrative, :guidelines)
+      params.require(:nomination_type).permit(:year, :code, :nomination_end_date, :description, :awards_announcement, :implementing_instructions, :submission_form, :award_narrative, :guidelines)
     end
 end

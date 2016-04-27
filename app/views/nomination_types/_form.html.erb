@@ -1,50 +1,123 @@
-<%= form_for(@nomination_type, html: {class: "form-horizontal"} ) do |f| %>
-  <% if @nomination_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@nomination_type.errors.count, "error") %> prohibited this nomination_type from being saved:</h2>
+<div class="wrapper animated fadeInRight">
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1 ">
+        <div class="ibox float-e-margins" style="padding: 0px;">
 
-      <ul>
-      <% @nomination_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+            <div class="ibox-content">
+                <!--form method="get" class="form-horizontal"-->
+                <!--%= form_for(@nomination) do |f| %-->
+                <%= form_for @nomination_type, html: {class: "form-horizontal"} do |f| %>
+                  <% if @nomination_type.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@nomination_type.errors.count, "error") %> prohibited this nomination from being saved:</h2>
+                      <ul>
+                      <% @nomination_type.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                  <div class="form-group">
+                      <%= f.label :year, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-2">
+                          <%= f.text_field :year, class: "form-control" %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :code, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-2">
+                          <%= f.text_field :code, class: "form-control" %>
+                      </div>
+                  </div>
+                  <div class="form-group" id="data_1">
+                      <%= f.label :nomination_end_date, class: "col-sm-2 control-label" %>
+                      <div class="input-group date col-sm-2" style="padding-left: 15px;">
+                          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                          <%= f.text_field :nomination_end_date, class: "form-control" %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :description, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10">
+                          <%= f.text_area :description, rows: 6, class: "form-control" %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :awards_announcement, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10">
+                          <%= f.file_field :awards_announcement, style: "padding-top: 7px" %>
+                          <% if not @nomination_type.awards_announcement_url.nil? %>
+                          <%= link_to "View #{@nomination_type.awards_announcement_identifier} ", @nomination_type.awards_announcement_url %>
+                          <% end %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :implementing_instructions, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10">
+                          <%= f.file_field :implementing_instructions, style: "padding-top: 7px" %>
+                          <% if not @nomination_type.implementing_instructions_url.nil? %>
+                          <%= link_to "View #{@nomination_type.implementing_instructions_identifier} ", @nomination_type.implementing_instructions_url %>
+                          <% end %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :submission_form, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10">
+                          <%= f.file_field :submission_form, style: "padding-top: 7px" %>
+                          <% if not @nomination_type.submission_form_url.nil? %>
+                          <%= link_to "View #{@nomination_type.submission_form_identifier} ", @nomination_type.submission_form_url %>
+                          <% end %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :award_narrative, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10">
+                          <%= f.file_field :award_narrative, style: "padding-top: 7px" %>
+                          <% if not @nomination_type.award_narrative_url.nil? %>
+                          <%= link_to "View #{@nomination_type.award_narrative_identifier} ", @nomination_type.award_narrative_url %>
+                          <% end %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :guidelines, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-10">
+                          <%= f.file_field :guidelines, style: "padding-top: 7px" %>
+                          <% if not @nomination_type.guidelines_url.nil? %>
+                          <%= link_to "View #{@nomination_type.guidelines_identifier} ", @nomination_type.guidelines_url %>
+                          <% end %>
+                      </div>
+                  </div>
+
+                  <div class="hr-line-dashed"></div>
+                  <div class="form-group">
+                      <div class="col-sm-12">
+                          <button class="btn btn-primary" type="submit">Save Changes</button>
+                          <button class="btn btn-white" type="reset">Cancel</button>
+                      </div>
+                  </div>
+
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
 
 
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :awards_announcement %><br>
-    <%= f.file_field :awards_announcement %>
-  </div>
-  <div class="field">
-    <%= f.label :implementing_instructions %><br>
-    <%= f.file_field :implementing_instructions %>
-  </div>
-  <div class="field">
-    <%= f.label :submission_form %><br>
-    <%= f.file_field :submission_form %>
-  </div>
-  <div class="field">
-    <%= f.label :award_narrative %><br>
-    <%= f.file_field :award_narrative %>
-  </div>
-  <div class="field">
-    <%= f.label :guidelines %><br>
-    <%= f.file_field :guidelines %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+$(function() {
+$('#data_1 .input-group.date').datepicker({
+    todayBtn: "linked",
+    keyboardNavigation: true,
+    forceParse: true,
+    calendarWeeks: true,
+    autoclose: true
+});
+});
+</script>
+
 <% end %>
