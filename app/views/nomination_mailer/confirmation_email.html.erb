@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Thank you for nominating
+    <% case @nomination.nominee_team_name.nil? %>
+    <% when true%>
+      <%= @nomination.nominee_title %> <%= @nomination.nominee_first_name %> <%= @nomination.nominee_last_name %> <%= @nomination.nominee_suffix %>
+    <% else %>
+       <%= @nomination.nominee_team_name %>
+    <% end %> for the <%= @nomination.nomination_year %> <%= @nomination.nomination_type %>.
+    </p>
+
+
+    <p>
+    The following information has been saved regarding your nomination:
+    </p>
+
+     <p>
+     UNIT COMMANDER/HEAD OF ORGANIZATION<br/>
+     Unit Command/Head Rank/Title:  <%= @nomination.unit_commander_title %><br />
+     Unit Command/Head First Name:  <%= @nomination.unit_commander_first_name %><br />
+     Unit Command/Head Last Name:  <%= @nomination.unit_commander_last_name %><br />
+     Unit Command/Head Suffix:  <%= @nomination.unit_commander_suffix %><br />
+     Unit Command/Head Phone:  <%= @nomination.unit_commander_phone %><br />
+     Unit Command/Head Email:  <%= @nomination.unit_commander_email %><br />
+     Unit Command/Head Organization:  <%= @nomination.unit_commander_organization %> <br/>
+     </p>
+
+     <p>
+     NOMINATING OFFICIAL<br/>
+     Nominating Official Rank/Title:  <%= @nomination.nominating_official_title %><br />
+     Nominating Official First Name:  <%= @nomination.nominating_official_first_name %><br />
+     Nominating Official Last Name:  <%= @nomination.nominating_official_last_name %><br />
+     Nominating Official Suffix:  <%= @nomination.nominating_official_suffix %><br />
+     Phone Number:  <%= @nomination.nominating_official_phone %> <br/>
+     Nominator Email:  <%= @nomination.nominating_official_email %> <br/>
+    </p>
+
+    <p>
+    NOMINATING POINT OF CONTACT (POC)<br/>
+    Nominating POC Rank/Title:  <%= @nomination.nominating_point_of_contact_title %><br />
+    Nominating POC First Name:  <%= @nomination.nominating_point_of_contact_first_name %><br />
+    Nominating POC Last Name:  <%= @nomination.nominating_point_of_contact_last_name %><br />
+    Nominating POC Suffix:  <%= @nomination.nominating_point_of_contact_suffix %><br />
+    Nominating POC Phone:  <%= @nomination.nominating_point_of_contact_phone %><br />
+    Nominating POC Email:  <%= @nomination.nominating_point_of_contact_email %><br />
+    Street 1 of Address:  <%= @nomination.nominating_point_of_contact_organization_address_1 %> <br/>
+    Street 2 of Address:  <%= @nomination.nominating_point_of_contact_organization_address_2 %> <br/>
+    City:  <%= @nomination.nominating_point_of_contact_city %> <br/>
+    State:  <%= @nomination.nominating_point_of_contact_state %> <br/>
+    Postal Code:  <%= @nomination.nominating_point_of_contact_zip %> <br/>
+    Country:  <%= @nomination.nominating_point_of_contact_country %> <br/>
+
+    </p>
+
+
+                     <p>
+                     NOMINEE<br/>
+                     Nominee Rank/Title:  <%= @nomination.nominee_title %><br />
+                     Nominee First Name:  <%= @nomination.nominee_first_name %><br />
+                     Nominee Last Name:  <%= @nomination.nominee_last_name %><br />
+                     Nominee Suffix:  <%= @nomination.nominee_suffix %><br />
+
+                     Position Title:  <%= @nomination.nominee_position_title %><br/>
+                     Team Name:  <%= @nomination.nominee_team_name %><br/>
+
+
+                      Nominee Organization:  <%= @nomination.nominee_organization %><br/>
+                      Nominee Email:  <%= @nomination.nominee_email %><br/>
+                      Command:  <%= @nomination.nominee_command %></br>
+                      </p>
+                      <br/>
+
+
+                      For questions regarding your award submission, please contact
+                       Ms. Vicky Deguzman at (703) 805-1245 or email victoria.l.deguzman.civ@mail.mil.
+                      <br/>
+                      Thank you.
+
+                     <br/>
+  </body>
+</html>

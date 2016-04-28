@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: 6899b7916c26c101c368c10758d4fce9fa65a3f2
+  specs:
+    carrierwave (0.11.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,6 +102,8 @@ GEM
     faker (1.6.3)
       i18n (~> 0.5)
     ffi (1.9.10-java)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     high_voltage (2.4.0)
@@ -228,12 +239,14 @@ DEPENDENCIES
   activerecord-jdbcsqlite3-adapter
   bootstrap-sass
   capybara
+  carrierwave!
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
   dotenv-rails (= 2.0.2)
   factory_girl_rails
   faker
+  font-awesome-rails (= 4.3.0.0)
   high_voltage
   jbuilder (~> 2.0)
   jquery-rails
