@@ -1,5 +1,5 @@
 class VisitorsController < ApplicationController
-  #def index
-  #  render :layout => "empty"
-  #end
+  def index
+    @nomination_types = NominationType.all
+  end
 end

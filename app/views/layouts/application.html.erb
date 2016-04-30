@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>INSPINIA | Responsive admin theme</title>
+    <title>USAASC | United States Army Acquisition Support Center</title>
 
     <!-- Include style per-controller - vendor plugins -->
     <%= stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css") %>
@@ -15,41 +14,53 @@
     <!-- Main javascript files -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+<!---
+    <link rel='stylesheet' id='beta-css'  href='https://usaascvb.info/css/beta.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='beta-css'  href='https://usaascvb.info/css/typography-1.0-en_US.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='beta-css'  href='https://usaascvb.info/css/style-1.0.css' type='text/css' media='all' />
+--->
 
-
+    <style>
+      .site-header {
+        background: rgb(51, 51, 51) none repeat scroll center top;
+        position: relative;
+        z-index: 500;
+      }
+      .btn-file {
+          position: relative;
+          overflow: hidden;
+      }
+      .btn-file input[type=file] {
+          position: absolute;
+          top: 0;
+          right: 0;
+          min-width: 100%;
+          min-height: 100%;
+          font-size: 100px;
+          text-align: right;
+          filter: alpha(opacity=0);
+          opacity: 0;
+          outline: none;
+          background: white;
+          cursor: inherit;
+          display: block;
+      }
+    </style>
 
 </head>
-<body>
+<body class="gray-bg">
 
-<!-- Skin configuration box -->
-<!-- <%= render 'layouts/skinconfig' %> -->
-
-    <!-- Wrapper-->
-    <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
-
-        <!-- Navigation -->
-        <%= render 'layouts/navigation' %>
-
-        <!-- Page wraper -->
-        <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
-
-            <!-- Page wrapper -->
-            <%= render 'layouts/topnavbar' %>
-
-            <!-- Main view  -->
-            <%= yield %>
-
-            <!-- Footer -->
-            <%= render 'layouts/footer' %>
-
-        </div>
-        <!-- End page wrapper-->
-
-        <!-- Right sidebar -->
-        <%= render 'layouts/rightsidebar' %>
-
+  <div class="row border-bottom white-bg page-heading">
+    <div class="site-header col-lg-10 col-lg-offset-1 ">
+      <a rel="home" title="Click for US Army" target="_blank" href="http://www.army.mil">
+      <img alt="logo" src="http://asc.army.mil/web/wp-content/uploads/2014/05/banners-logos-text31.png">
+      </a>
     </div>
-    <!-- End wrapper-->
+  </div>
+
+<!-- Main view  -->
+<%= yield %>
+
 
     <!-- Include javascript per-controller - vendor plugins -->
     <%= javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js") %>
