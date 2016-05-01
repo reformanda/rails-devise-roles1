@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'seed_dump'
 gem 'mime-types', '2.6.2'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
 gem 'dotenv-rails', '2.0.2'

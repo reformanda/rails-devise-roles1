@@ -1,12 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
-#NominationType.create(code: "Packard", description: "The Packard Award")
-
-Nomination.create(nominating_point_of_contact_email: "test@test.com", nomination_type: "Packard")
+User.create!([
+  {email: "user@example.com", encrypted_password: "$2a$10$tMffk3HNQ8L7db0SduZKvO7e6YHTXGcBd2MqbMAecHOBPbfrANTka", reset_password_token: "1e23e4c06f13a52be466bdb6500137d2eb7af93994e682380294ce9486a9acb7", reset_password_sent_at: "2016-05-01 02:13:29", remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, name: nil, role: 2}
+])
+NominationType.create!([
+  {year: "2016", code: "Packard", description: "The David Packard Excellence in Acquisition Award, sponsored by the Under Secretary of Defense for Acquisition, Technology, and Logistics (USD(AT&L)), recognizes Department of Defense civilian and military organizations, groups, or teams who have demonstrated exemplary innovation and best practices in the acquisition of products and services. This award reflects achievements that exemplify goals and objectives established for furthering life cycle cost reduction and/or acquisition excellence in the Department. Multiple teams may receive the award based on merit. This call for nominations application is for nominations from the U.S. Army. The U.S. Army Acquisition Support Center (USAASC) is the official collection point for U.S. Army nominations. USAASC will compile the nominations and submit to senior leadership, who will then select and forward the Army submissions to USD(AT&L) for consideration. ", nomination_end_date: "04/27/2016"}
+])
+Packard.create!([
+  {unit_commander_title: "Mr.", unit_commander_first_name: "Roger", unit_commander_last_name: "Edwards", unit_commander_suffix: nil, unit_commander_phone: "202-999-3333",
+    unit_commander_email: "unit-commander@example.com", unit_commander_organization: "USAASC", nominating_official_title: "LTC", nominating_official_first_name: "Vanessa", nominating_official_last_name: "Morrows", nominating_official_suffix: nil, nominating_official_phone: "703-444-5555", nominating_official_email: "nil", nominating_point_of_contact_title: nil, nominating_point_of_contact_first_name: "Roger", nominating_point_of_contact_last_name: nil, nominating_point_of_contact_suffix: nil, nominating_point_of_contact_phone: nil, nominating_point_of_contact_email: "test@test.com",
+    nominating_point_of_contact_organization_address_1: nil, nominating_point_of_contact_organization_address_2: nil, nominating_point_of_contact_city: nil, nominating_point_of_contact_state: nil, nominating_point_of_contact_zip: nil, nominating_point_of_contact_country: nil, award: nil, nominee_title: nil, nominee_first_name: nil, nominee_last_name: nil, nominee_suffix: nil, nominee_position_title: nil, nominee_email: nil, nominee_organization: nil, nominee_command: nil, nominee_team_name: nil, endorsement_letter: nil,
+    submission_form: nil, photo_a: nil, photo_b: nil, nomination_type: "Packard", nomination_year: nil, nomination_type_id: nil}
+])

@@ -10,7 +10,7 @@ class PackardsController < ApplicationController
   # GET /boats/1
   # GET /boats/1.json
   def confirmation
-    render :layout => "nomination_form"
+  #  render :layout => "nomination_form"
   end
 
   # GET /boats/new
@@ -18,7 +18,7 @@ class PackardsController < ApplicationController
     @nomination = Packard.new
     @packard_info = NominationType.where(["code = ?", "Packard"]).first
     session[:award_options] = [["Program Management",1]]
-    render :layout => "nomination_form"
+    #render :layout => "nomination_form"
   end
 
   # GET /boats/1/edit

@@ -1,6 +1,14 @@
+<%= render "shared/usaasc_head_login" %>
+
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Sign in</h5>
+            </div>
+            <div class="ibox-content">
 <div class="authform">
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
-    <h3>Sign in</h3>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%- if devise_mapping.registerable? %>
@@ -16,7 +24,7 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
     </div>
-      <%= f.submit 'Sign in', :class => 'button right' %>
+      <%= f.submit 'Sign in', :class => 'btn btn-primary' %>
       <% if devise_mapping.rememberable? -%>
         <div class="checkbox" style="width:150px">
           <label>
@@ -25,4 +33,8 @@
         </div>
       <% end -%>
   <% end %>
+</div>
+</div>
+</div>
+</div>
 </div>
