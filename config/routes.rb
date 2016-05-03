@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
   #get 'sites/:name', :to => 'sites#show', :as => site
+  #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 
+  devise_scope :user do
+     get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   # All routes
   get "dashboards/dashboard_1"

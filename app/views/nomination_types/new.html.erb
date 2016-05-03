@@ -1,29 +1,42 @@
-<%= render "shared/awards_head" %>
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <h2>USAASC Virtual Boards</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
+            </li>
+            <li>
+                <a href="<%= url_for :controller => 'nomination_types', :action => 'index' %>">Nomination Types</a>
+            </li>
+        <li class="active">
+            <strong>New</strong>
+        </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    <div class="title-action">
+        <%= link_to '/users/sign_out', :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+    </div>
+    </div>
+</div>
 
-<div class="wrapper wrapper-content" style="padding-bottom: 0px;>
+<div class="row page-heading">
+</div>
+
+
 <div class="row">
-    <div class="col-lg-10 col-lg-offset-1 ">
-        <div class="ibox float-e-margins" style="padding: 0px;">
-
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>New Nomination Types</h5>
+            </div>
             <div class="ibox-content">
 
 
-    <h2>New Nomination Types</h2>
-    <!--ol class="breadcrumb">
-        <li>
-            <a href="<%= url_for :controller => 'dashboards', :action => 'dashboard_1' %>">Home</a>
-    </li>
-    <li>
-        <a>Forms</a>
-    </li>
-    <li class="active">
-        <strong>Basic Form</strong>
-    </li>
-    </ol-->
-</div>
-</div>
-</div>
-</div>
-</div>
 
 <%= render 'form' %>
+
+</div>
+</div>
+</div>
+</div>

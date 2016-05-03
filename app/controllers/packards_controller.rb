@@ -1,6 +1,8 @@
 class PackardsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
+
+
   # GET /boats
   # GET /boats.json
   def index

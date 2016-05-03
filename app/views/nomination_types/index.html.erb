@@ -1,3 +1,25 @@
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <h2>USAASC Virtual Boards</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
+            </li>
+            <li>
+            <a>Nomination Types</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    <div class="title-action">
+        <%= link_to '/users/sign_out', :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+    </div>
+    </div>
+</div>
+
+<div class="row page-heading">
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <div class="wrapper wrapper-content animated fadeInRight">

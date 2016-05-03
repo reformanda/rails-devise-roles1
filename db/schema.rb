@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160427025853) do
   create_table "nomination_types", force: :cascade do |t|
     t.string   "year"
     t.string   "code"
-    t.string   "description"
+    t.text     "description"
     t.string   "awards_announcement"
     t.string   "implementing_instructions"
     t.string   "submission_form"
