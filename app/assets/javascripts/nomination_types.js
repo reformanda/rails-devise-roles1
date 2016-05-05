@@ -1,1 +1,1 @@
-//= stub datapicker/bootstrap-datepicker.js
+//= require datapicker/bootstrap-datepicker.js
