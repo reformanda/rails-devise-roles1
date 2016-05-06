@@ -1,26 +1,2 @@
-
 <%= render "shared/usaasc_head" %>
-
-
-
-<div class="row">
-    <div class="col-lg-10 col-lg-offset-1">
-        <div class="ibox float-e-margins">
-          <div class="ibox-title">
-              <h4>Nominations</h4>
-          </div>
-          <div class="ibox-content">
-            <ul>
-              <% @nomination_types.find_each do |n|  %>
-              <% cont=n.code.downcase + "s"%>
-              <li>
-                <a href="<%= url_for :controller => "#{cont}", :action => 'new' %>">
-                  <%= n.code %>
-                </a>
-              </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-    </div>
-</div>
+<%= render "shared/nomination_list" %>

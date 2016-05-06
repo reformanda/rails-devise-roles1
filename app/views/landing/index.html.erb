@@ -1,5 +1,10 @@
 <%= render "shared/usaasc_head_logoff" %>
 
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <p id="notice"><%= notice %></p>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
@@ -9,7 +14,10 @@
           </div>
           <div class="ibox-content">
             <ul>
-              <li><%= link_to 'Nomination Types', nomination_types_path %></li>
+              <li><%= link_to 'View Nomination Forms', :controller => "nominations" %></li>
+            </ul>
+            <ul>
+              <li><%= link_to 'Manage Nomination Types', nomination_types_path %></li>
             </ul>
           </div>
         </div>

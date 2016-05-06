@@ -5,6 +5,7 @@ class NominationsController < ApplicationController
   # GET /boats.json
   def index
     @nominations = Nomination.all
+    @nomination_types = NominationType.all
   end
 
   # GET /boats/1

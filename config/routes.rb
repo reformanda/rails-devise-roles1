@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
+
   resources :nomination_types
-  resources :nomination_types
-  resources :boats
+
   root to: 'visitors#index'
   devise_for :users
   resources :users
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 
   devise_scope :user do
-     get '/users/sign_out' => 'devise/sessions#destroy'
+     delete '/users/sign_out' => 'devise/sessions#destroy'
   end
 
   # All routes
