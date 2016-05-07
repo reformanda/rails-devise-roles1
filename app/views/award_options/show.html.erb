@@ -1,0 +1,50 @@
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <h2>USAASC Virtual Boards</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
+            </li>
+            <li>
+                <a href="<%= url_for :controller => 'nomination_types', :action => 'index' %>">Nomination Types</a>
+            </li>
+        <li class="active">
+            <strong>Show</strong>
+        </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    <div class="title-action">
+        <%= link_to '/users/sign_out', :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+    </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <p id="notice"><%= notice %></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Show Nomination Types</h5>
+            </div>
+            <div class="ibox-content">
+
+              <p>
+                <strong>Name:</strong>
+                <%= @award_option.name %>
+              </p>
+
+              <p>
+                <strong>Nomination type:</strong>
+                <%= @award_option.nomination_type %>
+              </p>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,9 +5,12 @@
             <li>
                 <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
             </li>
-            <li class="active">
-                <strong>Nomination Forms</strong>
+            <li>
+                <a href="<%= url_for :controller => 'award_options', :action => 'index' %>">Award Options</a>
             </li>
+        <li class="active">
+            <strong>New</strong>
+        </li>
         </ol>
     </div>
     <div class="col-lg-2">
@@ -20,10 +23,18 @@
 <div class="row page-heading">
 </div>
 
+
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
-      <p id="notice"><%= notice %></p>
-    </div>
-</div>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>New Award Options</h5>
+            </div>
+            <div class="ibox-content">
 
-<%= render "shared/nomination_list" %>
+              <%= render 'form' %>
+
+            </div>
+        </div>
+      </div>
+</div>

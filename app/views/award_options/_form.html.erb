@@ -1,0 +1,55 @@
+
+                <!--form method="get" class="form-horizontal"-->
+                <!--%= form_for(@nomination) do |f| %-->
+                <%= form_for @award_option, html: {class: "form-horizontal"} do |f| %>
+                  <% if @award_option.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@award_option.errors.count, "error") %> prohibited this nomination from being saved:</h2>
+                      <ul>
+                      <% @award_option.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                  <div class="form-group">
+                      <%= f.label :name, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-4">
+                          <%= f.text_field :name, class: "form-control", required: true %>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <%= f.label :nomination_type, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-2">
+                        <%= select_tag(:nomination_type, options_for_select([['Select...', '']] + @nomination_types), class: "form-control m-b", required: true) %>
+                      </div>
+                  </div>
+
+                  <div class="hr-line-dashed"></div>
+                  <div class="form-group">
+                      <div class="col-sm-12">
+                          <button class="btn btn-primary" type="submit">Save Changes</button>
+                          <button class="btn btn-white" type="reset">Cancel</button>
+                      </div>
+                  </div>
+
+<% end %>
+
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+$(function() {
+
+});
+
+$.webshims.setOptions('basePath', '/assets/webshims/shims/')
+$.webshims.polyfill()
+
+</script>
+
+<% end %>

@@ -4,4 +4,5 @@ class NominationType < ActiveRecord::Base
   mount_uploader :submission_form, SubmissionFormUploader
   mount_uploader :award_narrative, AwardNarrativeUploader
   mount_uploader :guidelines, GuidelinesUploader
+  has_many :award_options
 end

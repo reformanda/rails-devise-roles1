@@ -19,7 +19,7 @@ class PackardsController < ApplicationController
   def new
     @nomination = Packard.new
     @info = NominationType.where(["code = ?", "Packard"]).first
-    session[:award_options] = [["Program Management",1]]
+    #session[:award_options] = [["Program Management",1]]
     @callback = "/packards/?#no-back"
     #render :layout => "nomination_form"
   end

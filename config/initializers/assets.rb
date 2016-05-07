@@ -8,4 +8,4 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( packards.css datapicker/bootstrap-datepicker.js nomination_types.js  nomination_types.css awards.js awards.css  )
+Rails.application.config.assets.precompile += %w( award_options.js award_options.css packards.css datapicker/bootstrap-datepicker.js nomination_types.js  nomination_types.css awards.js awards.css  )

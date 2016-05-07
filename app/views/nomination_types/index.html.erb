@@ -5,8 +5,8 @@
             <li>
                 <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
             </li>
-            <li>
-            <a>Nomination Types</a>
+            <li class="active">
+            <strong>Nomination Types</strong>
             </li>
         </ol>
     </div>
@@ -15,6 +15,9 @@
         <%= link_to '/users/sign_out', :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
     </div>
     </div>
+</div>
+
+<div class="row page-heading">
 </div>
 
 <div class="row">
@@ -59,11 +62,11 @@
         <td><%= nomination_type.code %></td>
         <td><%= nomination_type.title %></td>
         <td><%= nomination_type.description %></td>
-        <td><% if not nomination_type.awards_announcement.nil? %><%= link_to "View", nomination_type.awards_announcement_url %><% end %></td>
-        <td><% if not nomination_type.implementing_instructions_url.nil? %><%= link_to "View", nomination_type.implementing_instructions_url %><% end %></td>
-        <td><% if not nomination_type.submission_form_url.nil? %><%= link_to "View", nomination_type.submission_form_url %><% end %></td>
-        <td><% if not nomination_type.award_narrative_url.nil? %><%= link_to "View", nomination_type.award_narrative_url %><% end %></td>
-        <td><% if not nomination_type.guidelines_url.nil? %><%= link_to "View", nomination_type.guidelines_url %><% end %></td>
+        <td><% if not nomination_type.awards_announcement.blank? %><%= link_to "View", nomination_type.awards_announcement_url %><% end %></td>
+        <td><% if not nomination_type.implementing_instructions_url.blank? %><%= link_to "View", nomination_type.implementing_instructions_url %><% end %></td>
+        <td><% if not nomination_type.submission_form_url.blank? %><%= link_to "View", nomination_type.submission_form_url %><% end %></td>
+        <td><% if not nomination_type.award_narrative_url.blank? %><%= link_to "View", nomination_type.award_narrative_url %><% end %></td>
+        <td><% if not nomination_type.guidelines_url.blank? %><%= link_to "View", nomination_type.guidelines_url %><% end %></td>
         <td><%= link_to 'Show', nomination_type %>
         <%= link_to 'Edit', edit_nomination_type_path(nomination_type) %>
         <%= link_to 'Destroy', nomination_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
