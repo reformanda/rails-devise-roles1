@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'webshims-rails'
 gem 'seed_dump'
 gem 'mime-types', '2.6.2'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]

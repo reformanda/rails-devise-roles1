@@ -76,6 +76,6 @@ class NominationTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_type_params
-      params.require(:nomination_type).permit(:year, :code, :nomination_end_date, :description, :awards_announcement, :implementing_instructions, :submission_form, :award_narrative, :guidelines)
+      params.require(:nomination_type).permit(:year, :code, :title, :nomination_end_date, :description, :awards_announcement, :implementing_instructions, :submission_form, :award_narrative, :guidelines)
     end
 end

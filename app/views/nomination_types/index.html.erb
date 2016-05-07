@@ -41,6 +41,7 @@
     <tr>
       <th>Year</th>
       <th>Code</th>
+      <th>Title</th>
       <th>Description</th>
       <th>Awards announcement</th>
       <th>Implementing instructions</th>
@@ -56,6 +57,7 @@
       <tr>
         <td><%= nomination_type.year %></td>
         <td><%= nomination_type.code %></td>
+        <td><%= nomination_type.title %></td>
         <td><%= nomination_type.description %></td>
         <td><% if not nomination_type.awards_announcement.nil? %><%= link_to "View", nomination_type.awards_announcement_url %><% end %></td>
         <td><% if not nomination_type.implementing_instructions_url.nil? %><%= link_to "View", nomination_type.implementing_instructions_url %><% end %></td>

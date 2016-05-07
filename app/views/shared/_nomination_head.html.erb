@@ -1,0 +1,26 @@
+
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <h2>USAASC Virtual Boards</h2>
+    </div>
+    <div class="col-lg-2">
+    <!--div class="title-action">
+        <%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i> Login<% end %>
+    </div-->
+    </div>
+</div>
+
+
+<div class="row  white-bg page-heading">
+  <div class="col-lg-10 col-lg-offset-1 ">
+
+        <h2><%= "#{@info.year}  #{@info.title} Nomination Form" %></h2>
+        <h4>Nominations are due by midnight on <%= Date.strptime(@info.nomination_end_date , "%m/%d/%Y").strftime("%A, %m/%d/%Y")
+          %>.</h4>
+        <p><%= @info.description %></p>
+
+  </div>
+</div>
+
+<div class="row page-heading">
+</div>

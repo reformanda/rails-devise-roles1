@@ -1,14 +1,5 @@
+<%= form_for @nomination, url: "#{@callback}", method: "post", html: {class: "form-horizontal"} do |f| %>
 
-<div class="row">
-    <div class="col-lg-10 col-lg-offset-1">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Note: Use upper and lowercase letters when filling out this form.</h5>
-            </div>
-            <div class="ibox-content">
-                <!--form method="get" class="form-horizontal"-->
-                <!--%= form_for(@nomination) do |f| %-->
-                <%= form_for @nomination, url: "/packards/?#no-back", method: "post", html: {class: "form-horizontal"} do |f| %>
                   <% if @nomination.errors.any? %>
                     <div id="error_explanation">
                       <h2><%= pluralize(@nomination.errors.count, "error") %> prohibited this nomination from being saved:</h2>
@@ -25,41 +16,41 @@
                     <h2>Unit Commander/Head of Organization</h2>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Name</label>
+                        <p class="col-sm-2 control-label">Name</p>
 
                         <div class="col-sm-10">
                           <div class="row">
                               <div class="col-md-2">
                                 <%= f.text_field :unit_commander_title, class: "form-control" %>
                                 <!---input type="text" placeholder="" class="form-control"--->
-                              <span class="help-block m-b-none">Rank</span></div>
-                              <div class="col-md-3"><%= f.text_field :unit_commander_first_name, class: "form-control" %>
-                              <span class="help-block m-b-none">First Name</span></div>
-                              <div class="col-md-4"><%= f.text_field :unit_commander_last_name, class: "form-control" %>
-                                <span class="help-block m-b-none">Last Name</span></div>
+                              <%= f.label :unit_commander_title, "Rank", class: "help-block m-b-none" %></div>
+                              <div class="col-md-3"><%= f.text_field :unit_commander_first_name, class: "form-control", required: true %>
+                              <%= f.label :unit_commander_first_name, "* First Name", class: "help-block m-b-none" %></div>
+                              <div class="col-md-4"><%= f.text_field :unit_commander_last_name, class: "form-control", required: true %>
+                                <%= f.label :unit_commander_last_name, "* Last Name", class: "help-block m-b-none" %></div>
                                 <div class="col-md-2"><%= f.text_field :unit_commander_suffix, class: "form-control" %>
-                                <span class="help-block m-b-none">Suffix</span></div>
+                                <%= f.label :unit_commander_suffix, "Suffix", class: "help-block m-b-none" %></div>
                           </div>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Phone</label>
+                    <div class="form-group"><%= f.label :unit_commander_phone, "* Phone", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">
-                          <%= f.text_field :unit_commander_phone, class: "form-control" %>
+                          <%= f.text_field :unit_commander_phone, class: "form-control", required: true %>
                           <span class="help-block m-b-none">Include dashes (e.g., 703-555-5555 or
 International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+                    <div class="form-group"><%= f.label :unit_commander_email, "* Email", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">
-                          <%= f.text_field :unit_commander_email, class: "form-control" %>
+                          <%= f.text_field :unit_commander_email, class: "form-control", required: true %>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Organization</label>
+                    <div class="form-group"><%= f.label :unit_commander_organization, "* Organization", class: "col-sm-2 control-label" %>
                         <div class="col-sm-4">
-                          <%= f.text_field :unit_commander_organization, class: "form-control" %>
+                          <%= f.text_field :unit_commander_organization, class: "form-control", required: true %>
                         </div>
                     </div>
 
@@ -68,33 +59,33 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <span class="help-block m-b-none">If different than the Unit Commander/Head of Organization noted above.</span>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Name</label>
+                        <p class="col-sm-2 control-label">Name</p>
 
                         <div class="col-sm-10">
                           <div class="row">
                               <div class="col-md-2"><%= f.text_field :nominating_official_title, class: "form-control" %>
-                              <span class="help-block m-b-none">Rank</span></div>
+                              <%= f.label :nominating_official_title, "Rank", class: "help-block m-b-none" %></div>
                               <div class="col-md-3"><%= f.text_field :nominating_official_first_name, class: "form-control" %>
-                              <span class="help-block m-b-none">First Name</span></div>
+                              <%= f.label :nominating_official_first_name, "* First Name", class: "help-block m-b-none", required: true %></div>
                               <div class="col-md-4"><%= f.text_field :nominating_official_last_name, class: "form-control" %>
-                                <span class="help-block m-b-none">Last Name</span></div>
+                                <%= f.label :nominating_official_last_name, "* Last Name", class: "help-block m-b-none", required: true %></div>
                                 <div class="col-md-2"><%= f.text_field :nominating_official_suffix, class: "form-control" %>
-                                <span class="help-block m-b-none">Suffix</span></div>
+                                <%= f.label :nominating_official_suffix, "Suffix", class: "help-block m-b-none" %></div>
                           </div>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Phone</label>
+                    <div class="form-group"><%= f.label :nominating_official_phone, "* Phone", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">
-                          <%= f.text_field :nominating_official_phone, class: "form-control" %>
+                          <%= f.text_field :nominating_official_phone, class: "form-control", required: true %>
                           <span class="help-block m-b-none">Include dashes (e.g., 703-555-5555 or
 International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+                    <div class="form-group"><%= f.label :nominating_official_email, "* Email", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">
-                          <%= f.text_field :nominating_official_email, class: "form-control" %>
+                          <%= f.text_field :nominating_official_email, class: "form-control", required: true %>
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
@@ -102,43 +93,43 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <span class="help-block m-b-none">The POC is the person who will be contacted if there are any questions regarding the nomination.</span>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Name</label>
+                        <p class="col-sm-2 control-label">Name</p>
 
                         <div class="col-sm-10">
                           <div class="row">
                               <div class="col-md-2"><%= f.text_field :nominating_point_of_contact_title, class: "form-control" %>
-                              <span class="help-block m-b-none">Rank</span></div>
+                              <%= f.label :nominating_point_of_contact_title, "Rank", class: "help-block m-b-none" %></div>
                               <div class="col-md-3"><%= f.text_field :nominating_point_of_contact_first_name, class: "form-control" %>
-                              <span class="help-block m-b-none">First Name</span></div>
+                              <%= f.label :nominating_point_of_contact_first_name, "* First Name", class: "help-block m-b-none", required: true %></div>
                               <div class="col-md-4"><%= f.text_field :nominating_point_of_contact_last_name, class: "form-control" %>
-                                <span class="help-block m-b-none">Last Name</span></div>
+                                <%= f.label :nominating_point_of_contact_first_name, "* Last Name", class: "help-block m-b-none", required: true %></div>
                                 <div class="col-md-2"><%= f.text_field :nominating_point_of_contact_suffix, class: "form-control" %>
-                                <span class="help-block m-b-none">Suffix</span></div>
+                                <%= f.label :nominating_point_of_contact_suffix, "Suffix", class: "help-block m-b-none" %></div>
                           </div>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Phone</label>
+                    <div class="form-group"><%= f.label :nominating_point_of_contact_phone, "* Phone", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">
-                          <%= f.text_field :nominating_point_of_contact_phone, class: "form-control" %>
+                          <%= f.text_field :nominating_point_of_contact_phone, class: "form-control", required: true %>
                           <span class="help-block m-b-none">Include dashes (e.g., 703-555-5555 or
 International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+                    <div class="form-group"><%= f.label :nominating_point_of_contact_email, "* Email", class: "col-sm-2 control-label", required: true %>
                         <div class="col-sm-3">
                           <%= f.text_field :nominating_point_of_contact_email, class: "form-control" %>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Organization's Address</label>
+                    <div class="form-group"><%= f.label :nominating_point_of_contact_organization_address_1, "* Organization's Address", class: "col-sm-2 control-label"%>
                         <div class="col-sm-3">
-                          <%= f.text_field :nominating_point_of_contact_organization_address_1, class: "form-control" %>
+                          <%= f.text_field :nominating_point_of_contact_organization_address_1, class: "form-control", required: true  %>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Address Line 2</label>
+                    <div class="form-group"><%= f.label :nominating_point_of_contact_organization_address_2, "Address Line 2", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">
                           <%= f.text_field :nominating_point_of_contact_organization_address_2, class: "form-control" %>
                         </div>
@@ -150,13 +141,13 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         <div class="col-sm-10">
                           <div class="row">
                               <div class="col-md-4"><%= f.text_field :nominating_point_of_contact_city, class: "form-control" %>
-                              <span class="help-block m-b-none">City</span></div>
+                              <%= f.label :nominating_point_of_contact_city, "* City", class: "help-block m-b-none" %></div>
                               <div class="col-md-2"><%= f.text_field :nominating_point_of_contact_state, class: "form-control" %>
-                              <span class="help-block m-b-none">State</span></div>
-                              <div class="col-md-2"><%= f.text_field :nominating_point_of_contact_zip, class: "form-control" %>
-                                <span class="help-block m-b-none">Zip</span></div>
+                              <%= f.label :nominating_point_of_contact_state, "State", class: "help-block m-b-none" %></div>
+                              <div class="col-md-2"><%= f.text_field :nominating_point_of_contact_zip, class: "form-control", required: true %>
+                                <%= f.label :nominating_point_of_contact_zip, "Zip", class: "help-block m-b-none" %></div>
                                 <div class="col-md-2"><%= f.text_field :nominating_point_of_contact_country, class: "form-control" %>
-                                <span class="help-block m-b-none">Country</span></div>
+                                <%= f.label :nominating_point_of_contact_country, "Country", class: "help-block m-b-none" %></div>
                           </div>
                           <span class="help-block m-b-none">Awards will be shipped to this address if the winner is unable to attend the official presentation)
 </span>
@@ -168,10 +159,10 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <span class="help-block m-b-none">If different than the Unit Commander/Head of Organization noted above.</span>
                     <div class="hr-line-solid"></div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Award</label>
+                    <div class="form-group"><%= f.label :award, "* Award", class: "col-sm-2 control-label" %>
 
                         <div class="col-sm-6">
-                        <%= select_tag(:award, options_for_select(session[:award_options]), class: "form-control m-b") %>
+                        <%= select_tag(:award, options_for_select(session[:award_options]), class: "form-control m-b", required: true) %>
 
 
                         </div>
@@ -182,31 +173,31 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <span class="help-block m-b-none">An individual or team name is required.</span>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Name</label>
+                        <p class="col-sm-2 control-label">Name</p>
 
                         <div class="col-sm-10">
                           <div class="row">
                               <div class="col-md-2"><%= f.text_field :nominee_title, class: "form-control" %>
-                              <span class="help-block m-b-none">Rank</span></div>
-                              <div class="col-md-3"><%= f.text_field :nominee_first_name, class: "form-control" %>
-                              <span class="help-block m-b-none">First Name</span></div>
-                              <div class="col-md-4"><%= f.text_field :nominee_last_name, class: "form-control" %>
-                                <span class="help-block m-b-none">Last Name</span></div>
+                              <%= f.label :nominee_title, "Rank", class: "help-block m-b-none" %></div>
+                              <div class="col-md-3"><%= f.text_field :nominee_first_name, class: "form-control", required: true %>
+                              <%= f.label :nominee_first_name, "* First Name", class: "help-block m-b-none" %></div>
+                              <div class="col-md-4"><%= f.text_field :nominee_last_name, class: "form-control", require: true %>
+                                <%= f.label :nominee_last_name, "* Last Name", class: "help-block m-b-none" %></div>
                                 <div class="col-md-2"><%= f.text_field :nominee_suffix, class: "form-control" %>
-                                <span class="help-block m-b-none">Suffix</span></div>
+                                <%= f.label :nominee_suffix, "Suffix", class: "help-block m-b-none" %></div>
                           </div>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Position Title</label>
+                    <div class="form-group"><%= f.label :nominee_position_title, "* Position Title", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">
-                          <%= f.text_field :nominee_position_title, class: "form-control" %>
+                          <%= f.text_field :nominee_position_title, class: "form-control", required: true %>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+                    <div class="form-group"><%= f.label :nominee_email, "* Email", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">
-                          <%= f.text_field :nominee_email, class: "form-control" %>
+                          <%= f.text_field :nominee_email, class: "form-control", required: true %>
                         </div>
                     </div>
 
@@ -216,15 +207,15 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                       </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Organization</label>
+                    <div class="form-group"><%= f.label :nominee_organization, "* Organization", class: "col-sm-2 control-label" %>
                         <div class="col-sm-4">
-                          <%= f.text_field :nominee_organization, class: "form-control" %>
+                          <%= f.text_field :nominee_organization, class: "form-control", required: true %>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-2 control-label">Command</label>
+                    <div class="form-group"><%= f.label :nominee_command, "* Command", class: "col-sm-2 control-label" %>
                         <div class="col-sm-4">
-                          <%= f.text_field :nominee_command, class: "form-control" %>
+                          <%= f.text_field :nominee_command, class: "form-control", required: true %>
                         </div>
                     </div>
 
@@ -243,8 +234,10 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <% if not @packard_info.awards_announcement_url.nil? %>
-                      <%= link_to "Awards Announcement", @packard_info.awards_announcement_url %>
+                      <% if not @info.awards_announcement_url.nil? %>
+                      <%= link_to "Awards Announcement", @info.awards_announcement_url %>
+                      <% else %>
+                      <%= link_to "Awards Announcement", "#" %>
                       <% end %>
                     </div>
                     </div>
@@ -252,8 +245,10 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <% if not @packard_info.implementing_instructions_url.nil? %>
-                      <%= link_to "Implementing Instructions", @packard_info.implementing_instructions_url %>
+                      <% if not @info.implementing_instructions_url.nil? %>
+                      <%= link_to "Implementing Instructions", @info.implementing_instructions_url %>
+                      <% else %>
+                      <%= link_to "Implementing Instructions", "#" %>
                       <% end %>
                     </div>
                     </div>
@@ -261,8 +256,10 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-word-o"></i>
-                      <% if not @packard_info.submission_form_url.nil? %>
-                      <%= link_to "Submission Form and Award Narrative", @packard_info.submission_form_url %>
+                      <% if not @info.submission_form_url.nil? %>
+                      <%= link_to "Submission Form and Award Narrative", @info.submission_form_url %>
+                      <% else %>
+                      <%= link_to "Submission Form and Award Narrative", "#" %>
                       <% end %>
                     </div>
                     </div>
@@ -270,8 +267,10 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <% if not @packard_info.award_narrative_url.nil? %>
-                      <%= link_to "Award Narrative Sample", @packard_info.award_narrative_url %>
+                      <% if not @info.award_narrative_url.nil? %>
+                      <%= link_to "Award Narrative Sample", @info.award_narrative_url %>
+                      <% else %>
+                      <%= link_to "Award Narrative Sample", "#" %>
                       <% end %>
                     </div>
                     </div>
@@ -279,8 +278,10 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <% if not @packard_info.guidelines_url.nil? %>
-                      <%= link_to "Guidelines and Tips", @packard_info.guidelines_url %>
+                      <% if not @info.guidelines_url.nil? %>
+                      <%= link_to "Guidelines and Tips", @info.guidelines_url %>
+                      <% else %>
+                      <%= link_to "Guidelines and Tips", "#" %>
                       <% end %>
                     </div>
                     </div>
@@ -289,21 +290,21 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <h2>Upload Completed Documents</h2>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
-                        <label class="col-md-3">Endorsement Letter</label>
+                        <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-md-3"%>
                         <div class="col-sm-4">
-                          <%= f.file_field :endorsement_letter, class: "" %>
+                          <%= f.file_field :endorsement_letter, class: "", required: true %>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-sm-3">Submission Form and Award Narrative</label>
+                    <div class="form-group"><%= f.label :submission_form, "* Submission Form and Award Narrative", class: "col-sm-3" %>
                         <div class="col-sm-4">
-                          <%= f.file_field :submission_form, class: "" %>
+                          <%= f.file_field :submission_form, class: "", required: true %>
                         </div>
                     </div>
 
 
                     <% if @nomination_type == "Packard" %>
-                    <div class="form-group"><label class="col-sm-3">Nominee Organizational Logo</label>
+                    <div class="form-group"><%= f.label :nominee_organizational_logo, "* Nominee Organizational Logo", class: "col-sm-3"%>
                         <div class="col-sm-4">
                           <%= f.file_field :nominee_organizational_logo, class: "" %>
                           <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
@@ -336,29 +337,5 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                             <button class="btn btn-white" type="reset">Cancel</button>
                         </div>
                     </div>
-                <!--/form-->
-                <% end %>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<% content_for :javascript do %>
-
-<script type="text/javascript">
-
-
-$(function() {
-
-    //$('.i-checks').iCheck({
-     //   checkboxClass: 'icheckbox_square-green',
-     //   radioClass: 'iradio_square-green',
-    //});
-
-});
-
-</script>
-
-<% end %>
+                    <!--/form-->
+                    <% end %>

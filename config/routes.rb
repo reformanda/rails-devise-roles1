@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'packards/confirmation', to: "packards#confirmation"
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
+  resources :shoulds
   #get 'sites/:name', :to => 'sites#show', :as => site
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 

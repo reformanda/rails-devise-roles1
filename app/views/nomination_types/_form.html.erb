@@ -25,6 +25,12 @@
                           <%= f.text_field :code, class: "form-control" %>
                       </div>
                   </div>
+                  <div class="form-group">
+                      <%= f.label :title, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-6">
+                          <%= f.text_field :title, class: "form-control" %>
+                      </div>
+                  </div>
                   <div class="form-group" id="data_1">
                       <%= f.label :nomination_end_date, class: "col-sm-2 control-label" %>
                       <div class="input-group date col-sm-2" style="padding-left: 15px;">
@@ -109,6 +115,10 @@ $('#data_1 .input-group.date').datepicker({
     autoclose: true
 });
 });
+
+$.webshims.setOptions('basePath', '/assets/webshims/shims/')
+$.webshims.polyfill()
+
 </script>
 
 <% end %>
