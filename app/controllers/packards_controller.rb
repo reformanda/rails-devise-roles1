@@ -19,6 +19,7 @@ class PackardsController < ApplicationController
   def new
     @nomination = Packard.new
     @info = NominationType.where(["code = ?", "Packard"]).first
+    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Packard").pluck(:name,:id)
     #session[:award_options] = [["Program Management",1]]
     @callback = "/packards/?#no-back"
     #render :layout => "nomination_form"
@@ -41,6 +42,7 @@ class PackardsController < ApplicationController
         format.json { render :confirmation, status: :created, location: @nomination }
       else
         @info = NominationType.where(["code = ?", "Packard"]).first
+        @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Packard").pluck(:name,:id)
         @callback = "/packards/?#no-back"
         format.html { render :new }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }

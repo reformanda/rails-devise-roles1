@@ -1,8 +1,4 @@
 
-
-
-
-
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
         <div class="ibox float-e-margins">
@@ -14,11 +10,17 @@
               <% @nomination_types.find_each do |n|  %>
               <% cont=n.code.downcase + "s"%>
               <li>
-                <a href="<%= url_for :controller => "#{cont}", :action => 'new' %>">
-                  <%= n.code %>
-                </a>
+                <% begin %>
+                  <% x = url_for :controller => "#{cont}", :action => 'new' %>
+                  <a href="<%= url_for :controller => "#{cont}", :action => 'new' %>">
+                    <%= n.code %>
+                  </a>
+                <% rescue %>
+                  <a href="<%= url_for :controller => 'nominations', :action => 'index' %>"><%= n.code %></a>
+                <% end %>
               </li>
               <% end %>
+
             </ul>
           </div>
         </div>

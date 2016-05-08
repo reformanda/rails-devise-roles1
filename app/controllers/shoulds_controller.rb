@@ -19,7 +19,7 @@ class ShouldsController < ApplicationController
   def new
     @nomination = Should.new
     @info = NominationType.where(["code = ?", "Should"]).first
-    session[:award_options] = [["Program Management",1]]
+    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Should").pluck(:name,:id)
     @callback = "/shoulds/?#no-back"
     #render :layout => "nomination_form"
   end
@@ -40,7 +40,8 @@ class ShouldsController < ApplicationController
         format.html { redirect_to '/shoulds/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
-        @info = NominationType.where(["code = ?", "Packard"]).first
+        @info = NominationType.where(["code = ?", "Should"]).first
+        @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Should").pluck(:name,:id)
         @callback = "/shoulds/?#no-back"
         format.html { render :new }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
