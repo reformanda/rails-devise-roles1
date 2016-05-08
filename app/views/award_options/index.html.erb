@@ -52,7 +52,7 @@
     <% @award_options.each do |award_option| %>
       <tr>
         <td><%= award_option.name %></td>
-        <td><%= award_option.nomination_type %></td>
+        <td><%= award_option.nomination_type.code %></td>
         <td><%= link_to 'Show', award_option %>
         <%= link_to 'Edit', edit_award_option_path(award_option) %>
         <%= link_to 'Destroy', award_option, method: :delete, data: { confirm: 'Are you sure?' } %></td>
