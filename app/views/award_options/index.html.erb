@@ -17,6 +17,9 @@
     </div>
 </div>
 
+<div class="row page-heading">
+</div>
+
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
       <p id="notice"><%= notice %></p>
@@ -49,10 +52,10 @@
     <% @award_options.each do |award_option| %>
       <tr>
         <td><%= award_option.name %></td>
-        <td><%= award_optoin.nomination_type.code %></td>
-        <td><%= link_to 'Show', nomination_type %>
-        <%= link_to 'Edit', edit_nomination_type_path(nomination_type) %>
-        <%= link_to 'Destroy', nomination_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= award_option.nomination_type %></td>
+        <td><%= link_to 'Show', award_option %>
+        <%= link_to 'Edit', edit_award_option_path(award_option) %>
+        <%= link_to 'Destroy', award_option, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

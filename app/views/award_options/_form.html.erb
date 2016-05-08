@@ -23,7 +23,7 @@
                   <div class="form-group">
                       <%= f.label :nomination_type, class: "col-sm-2 control-label" %>
                       <div class="col-sm-2">
-                        <%= select_tag(:nomination_type, options_for_select([['Select...', '']] + @nomination_types), class: "form-control m-b", required: true) %>
+                        <%= collection_select(:award_options, :nomination_type_id, NominationType.all, :id, :code) %>
                       </div>
                   </div>
 

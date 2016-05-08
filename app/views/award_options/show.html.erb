@@ -6,7 +6,7 @@
                 <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
             </li>
             <li>
-                <a href="<%= url_for :controller => 'nomination_types', :action => 'index' %>">Nomination Types</a>
+                <a href="<%= url_for :controller => 'award_options', :action => 'index' %>">Award Options</a>
             </li>
         <li class="active">
             <strong>Show</strong>
@@ -30,7 +30,7 @@
     <div class="col-lg-10 col-lg-offset-1">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Show Nomination Types</h5>
+                <h5>Show Award Options</h5>
             </div>
             <div class="ibox-content">
 
@@ -41,7 +41,7 @@
 
               <p>
                 <strong>Nomination type:</strong>
-                <%= @award_option.nomination_type %>
+                <%= @award_option.nomination_type.code %>
               </p>
 
             </div>

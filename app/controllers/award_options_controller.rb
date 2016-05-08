@@ -11,13 +11,14 @@ class AwardOptionsController < ApplicationController
   # GET /award_options/1
   # GET /award_options/1.json
   def show
+    puts @award_option.inspect
   end
 
   # GET /award_options/new
   def new
     @award_option = AwardOption.new
-    @nomination_types = NominationType.pluck(:code)
-    puts @nomination_types.inspect
+    @nomination_types = NominationType.pluck(:id, :code)
+    #puts @nomination_types.inspect
   end
 
   # GET /award_options/1/edit
