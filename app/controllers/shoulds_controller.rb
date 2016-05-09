@@ -52,7 +52,7 @@ class ShouldsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
-      @packard = Should.find(params[:id])
+      @should = Should.find(params[:id])
     end
 
     def set_nomination_type

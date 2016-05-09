@@ -53,7 +53,7 @@ class DevelopmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
-      @packard = Development.find(params[:id])
+      @development = Development.find(params[:id])
     end
 
     def set_nomination_type

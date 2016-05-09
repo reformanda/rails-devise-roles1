@@ -303,7 +303,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     </div>
 
 
-                    <% if @nomination_type == "Packard" || @nomination_type == "Should" || @nomination_type == "Development" || @nomination_type == "Achievement" %>
+                    <% if @nomination_type == "Packard" || @nomination_type == "Should" || @nomination_type == "Development" || @nomination_type == "Achievement" || @nomination_type == "ProductSupport" || @nomination_type == "Logistic"%>
                     <div class="form-group"><%= f.label :nominee_organizational_logo, "* Nominee Organizational Logo", class: "col-sm-3"%>
                         <div class="col-sm-4">
                           <%= f.file_field :nominee_organizational_logo, class: "", required: true %>

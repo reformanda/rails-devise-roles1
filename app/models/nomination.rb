@@ -20,6 +20,6 @@ class Nomination < ActiveRecord::Base
   #validates :photo_a, :presence => true
 
   def self.nomination_types
-    %w(Packard Should Achievement Development)
+    %w(Packard Should Achievement Development ProductSupport Logistic)
   end
 end

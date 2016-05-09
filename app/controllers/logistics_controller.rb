@@ -1,4 +1,4 @@
-class AchievementsController < ApplicationController
+class LogisticsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
 
@@ -12,16 +12,16 @@ class AchievementsController < ApplicationController
   # GET /boats/1
   # GET /boats/1.json
   def confirmation
-    @info = NominationType.where(["code = ?", "Achievement"]).first
+    @info = NominationType.where(["code = ?", "Logistic"]).first
   end
 
   # GET /boats/new
   def new
-    @nomination = Achievement.new
-    @info = NominationType.where(["code = ?", "Achievement"]).first
-    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Achievement").order("award_options.name").pluck(:name,:id)
+    @nomination = Logistic.new
+    @info = NominationType.where(["code = ?", "Logistic"]).first
+    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Logistic").order("award_options.name").pluck(:name,:id)
     #session[:award_options] = [["Program Management",1]]
-    @callback = "/achievements/?#no-back"
+    @callback = "/logistics/?#no-back"
     #render :layout => "nomination_form"
   end
 
@@ -32,18 +32,18 @@ class AchievementsController < ApplicationController
   # POST /boats
   # POST /boats.json
   def create
-    @nomination = Achievement.new(nomination_params)
-    @info = NominationType.where(["code = ?", "Achievement"]).first
+    @nomination = Logistic.new(nomination_params)
+    @info = NominationType.where(["code = ?", "Logistic"]).first
 
     respond_to do |format|
       if @nomination.save
         # send email confirmation
         NominationMailer.confirmation_email(@nomination,@info).deliver
-        format.html { redirect_to '/achievements/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
+        format.html { redirect_to '/logistics/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
-        @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Achievement").pluck(:name,:id)
-        @callback = "/achievements/?#no-back"
+        @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Logistic").pluck(:name,:id)
+        @callback = "/logistics/?#no-back"
         format.html { render :new }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
@@ -53,7 +53,7 @@ class AchievementsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
-      @achievement = Achievement.find(params[:id])
+      @logistic = Logistic.find(params[:id])
     end
 
     def set_nomination_type
@@ -61,7 +61,7 @@ class AchievementsController < ApplicationController
     end
 
     def nomination_type
-        Nomination.nomination_types.include?(params[:type]) ? params[:type] : "Achievement"
+        Nomination.nomination_types.include?(params[:type]) ? params[:type] : "Logistic"
     end
 
     def nomination_type_class
@@ -70,7 +70,7 @@ class AchievementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_params
-      params.require(:achievement).permit(
+      params.require(:logistic).permit(
       :unit_commander_title,
       :unit_commander_first_name,
       :unit_commander_last_name,

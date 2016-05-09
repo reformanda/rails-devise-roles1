@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'shoulds/confirmation', to: "shoulds#confirmation"
   get 'developments/confirmation', to: "developments#confirmation"
   get 'achievements/confirmation', to: "achievements#confirmation"
+  get 'product_supports/confirmation', to: "product_supports#confirmation"
+  get 'logistics/confirmation', to: "logistics#confirmation"
 
   get 'nominations/manage', to: "nominations#manage"
   resources :nominations
@@ -22,6 +24,9 @@ Rails.application.routes.draw do
   resources :shoulds
   resources :developments
   resources :achievements
+  resources :product_supports
+  resources :logistics
+
   #get 'sites/:name', :to => 'sites#show', :as => site
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 

@@ -39,15 +39,15 @@
           <div class="ibox-content">
             <ul>
               <% @nomination_types.find_each do |n|  %>
-              <% cont=n.code.downcase + "s"%>
+              <% cont=n.code.underscore.downcase + "s"%>
               <li>
                 <% begin %>
                   <% x = url_for :controller => "#{cont}", :action => 'new' %>
                   <a href="<%= url_for :controller => "#{cont}", :action => 'new' %>">
-                    <%= n.code %>
+                    <%= n.title %>
                   </a>
                 <% rescue %>
-                  <a href="<%= url_for :controller => 'nominations', :action => 'index' %>"><%= n.code %></a>
+                  <a href="<%= url_for :controller => 'nominations', :action => 'index' %>"><%= n.title %></a>
                 <% end %>
               </li>
               <% end %>

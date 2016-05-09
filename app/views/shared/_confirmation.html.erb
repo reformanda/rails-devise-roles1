@@ -20,7 +20,38 @@ if ( location.hash == '#no-back' ) {
   }
 }
 </script>
-<%= render "shared/nomination_head" %>
+
+
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <h2>USAASC Virtual Boards</h2>
+        <% if not current_user.nil? %>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
+            </li>
+            <li>
+                <a href="<%= url_for :controller => 'nominations', :action => 'index' %>">Nomination Forms</a>
+            </li>
+        <li class="active">
+            <strong><%= @info.code %></strong>
+        </li>
+        </ol>
+        <% end %>
+    </div>
+    <div class="col-lg-2">
+      <div class="title-action">
+      <% if current_user.nil? %>
+        <%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i> Signin<% end %>
+      <% else %>
+        <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+      <% end %>
+      </div>
+    </div>
+</div>
+
+<div class="row page-heading">
+</div>
 
 
   <div class="row">
