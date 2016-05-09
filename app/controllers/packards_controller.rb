@@ -12,7 +12,7 @@ class PackardsController < ApplicationController
   # GET /boats/1
   # GET /boats/1.json
   def confirmation
-  #  render :layout => "nomination_form"
+    @info = NominationType.where(["code = ?", "Packard"]).first
   end
 
   # GET /boats/new

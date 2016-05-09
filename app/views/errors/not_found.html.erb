@@ -52,19 +52,34 @@
 
 
 
-  <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="site-header col-lg-10 col-lg-offset-1 ">
-      <a rel="home" title="Click for US Army" target="_blank" href="http://www.army.mil">
-      <img alt="logo" src="http://asc.army.mil/web/wp-content/uploads/2014/05/banners-logos-text31.png">
-      </a>
-    </div>
-
-      <div class="col-lg-10 col-lg-offset-1">
-        <!-- Main view  -->
-        <p>Missing something?</p>
+  <div class="row  white-bg page-heading">
+      <div class="col-lg-8 col-lg-offset-1">
+          <h2>USAASC Virtual Boards</h2>
+      </div>
+      <div class="col-lg-2">
+      <div class="title-action">
+          <% if current_user.nil? %>
+            <%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i> Signin<% end %>
+          <% else %>
+            <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+          <% end %>
+      </div>
       </div>
   </div>
 
+  <div class="row page-heading">
+  </div>
+
+  <div class="row">
+      <div class="col-lg-10 col-lg-offset-1">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h4>Oops!  Something went wrong.  Maybe try again, or contact the system administrator if you continue to have problems.</h4>
+            </div>
+
+          </div>
+      </div>
+  </div>
 
 
     <!-- Include javascript per-controller - vendor plugins -->
