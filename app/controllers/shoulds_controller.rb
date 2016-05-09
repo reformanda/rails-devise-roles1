@@ -32,15 +32,15 @@ class ShouldsController < ApplicationController
   # POST /boats.json
   def create
     @nomination = Should.new(nomination_params)
+    @info = NominationType.where(["code = ?", "Should"]).first
 
     respond_to do |format|
       if @nomination.save
         # send email confirmation
-        NominationMailer.confirmation_email(@nomination)
+        NominationMailer.confirmation_email(@nomination,@info).deliver
         format.html { redirect_to '/shoulds/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
-        @info = NominationType.where(["code = ?", "Should"]).first
         @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Should").pluck(:name,:id)
         @callback = "/shoulds/?#no-back"
         format.html { render :new }
@@ -69,7 +69,7 @@ class ShouldsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_params
-      params.require(:packard).permit(
+      params.require(:should).permit(
       :unit_commander_title,
       :unit_commander_first_name,
       :unit_commander_last_name,

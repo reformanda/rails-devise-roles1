@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   #root to: 'dashboards#dashboard_1'
 
   get 'packards/confirmation', to: "packards#confirmation"
+  get 'shoulds/confirmation', to: "shoulds#confirmation"
+  get 'developments/confirmation', to: "developments#confirmation"
+  get 'achievements/confirmation', to: "achievements#confirmation"
+
   get 'nominations/manage', to: "nominations#manage"
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
