@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'puma'
 gem 'webshims-rails'
 gem 'seed_dump'
 gem 'mime-types', '2.6.2'
