@@ -37,7 +37,7 @@ class PackardsController < ApplicationController
     respond_to do |format|
       if @nomination.save
         # send email confirmation
-        NominationMailer.confirmation_email(@nomination)
+        NominationMailer.confirmation_email(@nomination).deliver
         format.html { redirect_to '/packards/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
