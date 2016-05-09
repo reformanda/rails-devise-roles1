@@ -33,15 +33,15 @@ class PackardsController < ApplicationController
   # POST /boats.json
   def create
     @nomination = Packard.new(nomination_params)
+    @info = NominationType.where(["code = ?", "Packard"]).first
 
     respond_to do |format|
       if @nomination.save
         # send email confirmation
-        NominationMailer.confirmation_email(@nomination).deliver
+        NominationMailer.confirmation_email(@nomination,@info).deliver
         format.html { redirect_to '/packards/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
-        @info = NominationType.where(["code = ?", "Packard"]).first
         @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Packard").pluck(:name,:id)
         @callback = "/packards/?#no-back"
         format.html { render :new }

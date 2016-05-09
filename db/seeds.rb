@@ -10,7 +10,7 @@ AwardOption.create!([
   {name: "Program Management", nomination_type_id: 1},
   {name: "Auditing", nomination_type_id: 4},
   {name: "Financial Management", nomination_type_id: 4},
-  {name: "Contracting and Procurement (including Industrial/Contract Property Management)", nomination_type_id: 4},
+  {name: "Contracting and Procurement", nomination_type_id: 4},
   {name: "Facilities Engineering", nomination_type_id: 4},
   {name: "Information Technology", nomination_type_id: 4},
   {name: "Life-Cycle Logistics", nomination_type_id: 4},
@@ -23,6 +23,9 @@ AwardOption.create!([
   {name: "Services Acquisition", nomination_type_id: 4},
   {name: "Small Business", nomination_type_id: 4},
   {name: "Acquisition in an Expeditionary Environment", nomination_type_id: 4},
-  {name: "Cost", nomination_type_id: 4},
-  {name: "Development", nomination_type_id: 3}
+  {name: "Industrial/Contract Property Management", nomination_type_id: 4},
+  {name: "Cost Estimating", nomination_type_id: 4},
+  {name: "Engineering", nomination_type_id: 4},
+  {name: "Small Organization--organizations with fewer than 500 employees", nomination_type_id: 3},
+  {name: "Large Organization--organizations with 500 or more employees", nomination_type_id: 3}
 ])

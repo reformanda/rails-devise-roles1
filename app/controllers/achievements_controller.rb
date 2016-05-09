@@ -19,7 +19,7 @@ class AchievementsController < ApplicationController
   def new
     @nomination = Achievement.new
     @info = NominationType.where(["code = ?", "Achievement"]).first
-    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Achievement").pluck(:name,:id)
+    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Achievement").order("award_options.name").pluck(:name,:id)
     #session[:award_options] = [["Program Management",1]]
     @callback = "/achievements/?#no-back"
     #render :layout => "nomination_form"
@@ -33,15 +33,15 @@ class AchievementsController < ApplicationController
   # POST /boats.json
   def create
     @nomination = Achievement.new(nomination_params)
+    @info = NominationType.where(["code = ?", "Achievement"]).first
 
     respond_to do |format|
       if @nomination.save
         # send email confirmation
-        NominationMailer.confirmation_email(@nomination)
+        NominationMailer.confirmation_email(@nomination).deliver
         format.html { redirect_to '/achievements/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
-        @info = NominationType.where(["code = ?", "Achievement"]).first
         @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Achievement").pluck(:name,:id)
         @callback = "/achievements/?#no-back"
         format.html { render :new }

@@ -19,7 +19,7 @@ class DevelopmentsController < ApplicationController
   def new
     @nomination = Development.new
     @info = NominationType.where(["code = ?", "Development"]).first
-    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Development").pluck(:name,:id)
+    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Development").order("award_options.name").pluck(:name,:id)
     #session[:award_options] = [["Program Management",1]]
     @callback = "/developments/?#no-back"
     #render :layout => "nomination_form"
@@ -33,15 +33,15 @@ class DevelopmentsController < ApplicationController
   # POST /boats.json
   def create
     @nomination = Development.new(nomination_params)
+    @info = NominationType.where(["code = ?", "Development"]).first
 
     respond_to do |format|
       if @nomination.save
         # send email confirmation
-        NominationMailer.confirmation_email(@nomination)
+        NominationMailer.confirmation_email(@nomination).deliver
         format.html { redirect_to '/developments/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
-        @info = NominationType.where(["code = ?", "Packard"]).first
         @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Development").pluck(:name,:id)
         @callback = "/developments/?#no-back"
         format.html { render :new }
