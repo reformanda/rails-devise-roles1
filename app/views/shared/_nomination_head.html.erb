@@ -17,11 +17,13 @@
         <% end %>
     </div>
     <div class="col-lg-2">
-      <% if not current_user.nil? %>
       <div class="title-action">
-          <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
-      </div>
+      <% if current_user.nil? %>
+        <%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i> Signin<% end %>
+      <% else %>
+        <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
       <% end %>
+      </div>
     </div>
 </div>
 
