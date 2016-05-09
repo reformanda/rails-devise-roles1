@@ -37,7 +37,7 @@
               <h4>Nominations</h4>
           </div>
           <div class="ibox-content">
-            <ul>
+            <ul class="list-group clear-list">
               <% @nomination_types.find_each do |n|  %>
               <% cont=n.code.underscore.downcase + "s"%>
               <li>

@@ -235,7 +235,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
                       <% if not @info.awards_announcement_url.nil? %>
-                      <%= link_to "Awards Announcement", @info.awards_announcement_url %>
+                      <%= link_to "Awards Announcement", @info.awards_announcement_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Awards Announcement", "#" %>
                       <% end %>
@@ -246,7 +246,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
                       <% if not @info.implementing_instructions_url.nil? %>
-                      <%= link_to "Implementing Instructions", @info.implementing_instructions_url %>
+                      <%= link_to "Implementing Instructions", @info.implementing_instructions_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Implementing Instructions", "#" %>
                       <% end %>
@@ -257,7 +257,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-word-o"></i>
                       <% if not @info.submission_form_url.nil? %>
-                      <%= link_to "Submission Form and Award Narrative", @info.submission_form_url %>
+                      <%= link_to "Submission Form and Award Narrative", @info.submission_form_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Submission Form and Award Narrative", "#" %>
                       <% end %>
@@ -268,7 +268,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
                       <% if not @info.award_narrative_url.nil? %>
-                      <%= link_to "Award Narrative Sample", @info.award_narrative_url %>
+                      <%= link_to "Award Narrative Sample", @info.award_narrative_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Award Narrative Sample", "#" %>
                       <% end %>
@@ -279,7 +279,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
                       <% if not @info.guidelines_url.nil? %>
-                      <%= link_to "Guidelines and Tips", @info.guidelines_url %>
+                      <%= link_to "Guidelines and Tips", @info.guidelines_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Guidelines and Tips", "#" %>
                       <% end %>
