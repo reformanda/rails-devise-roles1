@@ -1,62 +1,59 @@
-class NominationsController < ApplicationController
+class DevelopmentsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
+
+
   # GET /boats
   # GET /boats.json
   def index
     @nominations = Nomination.all
-    @nomination_types = NominationType.all
   end
 
-  def manage
-    @nominations = Nomination.all
-    @nomination_types = NominationType.all
+  # GET /boats/1
+  # GET /boats/1.json
+  def confirmation
+  #  render :layout => "nomination_form"
+  end
+
+  # GET /boats/new
+  def new
+    @nomination = Development.new
+    @info = NominationType.where(["code = ?", "Development"]).first
+    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Development").pluck(:name,:id)
+    #session[:award_options] = [["Program Management",1]]
+    @callback = "/developments/?#no-back"
+    #render :layout => "nomination_form"
+  end
+
+  # GET /boats/1/edit
+  def edit
   end
 
   # POST /boats
   # POST /boats.json
   def create
-    @nomination = Nomination.new(nomination_params)
+    @nomination = Development.new(nomination_params)
 
     respond_to do |format|
       if @nomination.save
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully created.' }
-        format.json { render :show, status: :created, location: @nomination }
+        # send email confirmation
+        NominationMailer.confirmation_email(@nomination)
+        format.html { redirect_to '/developments/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
+        format.json { render :confirmation, status: :created, location: @nomination }
       else
+        @info = NominationType.where(["code = ?", "Packard"]).first
+        @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Development").pluck(:name,:id)
+        @callback = "/developments/?#no-back"
         format.html { render :new }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /boats/1
-  # PATCH/PUT /boats/1.json
-  def update
-    respond_to do |format|
-      if @nomination.update(boat_params)
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully updated.' }
-        format.json { render :show, status: :ok, location: @nomination }
-      else
-        format.html { render :edit }
-        format.json { render json: @nomination.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /boats/1
-  # DELETE /boats/1.json
-  def destroy
-    @nomination.destroy
-    respond_to do |format|
-      format.html { redirect_to nominations_url, notice: 'Nomination was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
-      @nomination = Nomination.find(params[:id])
+      @packard = Development.find(params[:id])
     end
 
     def set_nomination_type
@@ -64,7 +61,7 @@ class NominationsController < ApplicationController
     end
 
     def nomination_type
-        Nomination.nomination_types.include?(params[:type]) ? params[:type] : "Nomination"
+        Nomination.nomination_types.include?(params[:type]) ? params[:type] : "Development"
     end
 
     def nomination_type_class
@@ -101,8 +98,8 @@ class NominationsController < ApplicationController
       :nominating_point_of_contact_country,
       :award,
       :nominee_title,
-      :nominee_first,
-      :nominee_last,
+      :nominee_first_name,
+      :nominee_last_name,
       :nominee_suffix,
       :nominee_position_title,
       :nominee_email,
@@ -110,8 +107,7 @@ class NominationsController < ApplicationController
       :nominee_command,
       :endorsement_letter,
       :submission_form,
-      :photo_a,
-      :photo_b,
+      :nominee_organizational_logo,
       :nomination_type,
       :nomination_year)
     end

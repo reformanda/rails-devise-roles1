@@ -1,0 +1,45 @@
+
+<%= render "shared/nomination_head" %>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Note: Use upper and lowercase letters when filling out this form.</h5>
+            </div>
+            <div class="ibox-content">
+
+              <h2><%= "#{@info.year}  #{@info.title} Nomination Form" %></h2>
+              <h4>Nominations are due by midnight on <%= Date.strptime(@info.nomination_end_date , "%m/%d/%Y").strftime("%A, %m/%d/%Y")
+                %>.</h4>
+              <p><%= @info.description %></p>
+
+              <%= render "shared/nomination_body" %>
+
+
+            </div>
+        </div>
+      </div>
+</div>
+
+
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+$(function() {
+
+//$('.i-checks').iCheck({
+//   checkboxClass: 'icheckbox_square-green',
+//   radioClass: 'iradio_square-green',
+//});
+$.webshims.setOptions('basePath', '/assets/webshims/shims/')
+$.webshims.polyfill()
+
+});
+
+</script>
+
+<% end %>

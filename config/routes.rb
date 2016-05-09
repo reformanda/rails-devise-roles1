@@ -12,15 +12,20 @@ Rails.application.routes.draw do
   #root to: 'dashboards#dashboard_1'
 
   get 'packards/confirmation', to: "packards#confirmation"
+  get 'nominations/manage', to: "nominations#manage"
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
   resources :shoulds
+  resources :developments
+  resources :achievements
   #get 'sites/:name', :to => 'sites#show', :as => site
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 
   devise_scope :user do
      delete '/users/sign_out' => 'devise/sessions#destroy'
   end
+
+
 
   # All routes
   get "dashboards/dashboard_1"
