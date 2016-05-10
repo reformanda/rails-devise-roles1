@@ -26,7 +26,6 @@ class CreateNominations < ActiveRecord::Migration
       t.string :nominating_point_of_contact_state
       t.string :nominating_point_of_contact_zip
       t.string :nominating_point_of_contact_country
-      t.string :award
       t.string :nominee_title
       t.string :nominee_first_name
       t.string :nominee_last_name
@@ -40,9 +39,9 @@ class CreateNominations < ActiveRecord::Migration
       t.string :submission_form
       t.string :photo_a
       t.string :photo_b
-      t.string :nomination_type
       t.string :nomination_year
       t.references :nomination_type, index: true, foreign_key: true
+      t.references :award_option, index: true, foreign_key: true
 
       t.timestamps null: false
     end

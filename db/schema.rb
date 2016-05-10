@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20160507203251) do
     t.string   "nominating_point_of_contact_state"
     t.string   "nominating_point_of_contact_zip"
     t.string   "nominating_point_of_contact_country"
-    t.string   "award"
     t.string   "nominee_title"
     t.string   "nominee_first_name"
     t.string   "nominee_last_name"
@@ -77,13 +76,14 @@ ActiveRecord::Schema.define(version: 20160507203251) do
     t.string   "submission_form"
     t.string   "photo_a"
     t.string   "photo_b"
-    t.string   "nomination_type"
     t.string   "nomination_year"
     t.integer  "nomination_type_id"
+    t.integer  "award_option_id"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end
 
+  add_index "nominations", ["award_option_id"], name: "index_nominations_on_award_option_id"
   add_index "nominations", ["nomination_type_id"], name: "index_nominations_on_nomination_type_id"
 
   create_table "users", force: :cascade do |t|

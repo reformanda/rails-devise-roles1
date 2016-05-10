@@ -12,7 +12,9 @@
                     </div>
                   <% end %>
                 <!---%= form_for @nomination, url: {action: "create"}, html: {class: "form-horizontal"} do |f| %--->
-                    <%= f.hidden_field :nomination_type, :value => @nomination_type %>
+
+                    <%= f.hidden_field :nomination_type_id, :value => @info.id %>
+                    <%= f.hidden_field :nomination_year, :value => @info.year %>
                     <h2>Unit Commander/Head of Organization</h2>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
@@ -159,10 +161,10 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <span class="help-block m-b-none">If different than the Unit Commander/Head of Organization noted above.</span>
                     <div class="hr-line-solid"></div>
 
-                    <div class="form-group"><%= f.label :award, "* Award", class: "col-sm-2 control-label" %>
+                    <div class="form-group"><%= f.label :award_option_id, "* Award", class: "col-sm-2 control-label" %>
 
                         <div class="col-sm-6">
-                        <%= f.select :award, options_for_select(@award_options), {}, {class: "form-control m-b", required: true} %>
+                        <%= f.select :award_option_id, options_for_select(@award_options), {}, {class: "form-control m-b", required: true} %>
 
 
                         </div>

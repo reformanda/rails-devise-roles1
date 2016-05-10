@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'valid_email'
 gem 'puma'
 gem 'webshims-rails'
 gem 'seed_dump'
