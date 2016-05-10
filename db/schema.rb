@@ -25,16 +25,16 @@ ActiveRecord::Schema.define(version: 20160507203251) do
   create_table "nomination_types", force: :cascade do |t|
     t.string   "year"
     t.string   "code"
+    t.string   "title"
     t.text     "description"
     t.string   "awards_announcement"
     t.string   "implementing_instructions"
     t.string   "submission_form"
     t.string   "award_narrative"
     t.string   "guidelines"
+    t.string   "nomination_end_date"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.string   "nomination_end_date"
-    t.string   "title"
   end
 
   create_table "nominations", force: :cascade do |t|
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 20160507203251) do
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end
+
+  add_index "nominations", ["nomination_type_id"], name: "index_nominations_on_nomination_type_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

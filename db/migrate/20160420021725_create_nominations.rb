@@ -42,7 +42,7 @@ class CreateNominations < ActiveRecord::Migration
       t.string :photo_b
       t.string :nomination_type
       t.string :nomination_year
-      t.integer :nomination_type_id
+      t.references :nomination_type, index: true, foreign_key: true
 
       t.timestamps null: false
     end
