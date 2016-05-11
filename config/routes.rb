@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  
   resources :award_options
   resources :nomination_types
 

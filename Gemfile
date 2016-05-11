@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'activeadmin', '~> 1.0.0.pre2'
+
 gem 'valid_email'
 gem 'puma'
 gem 'webshims-rails'
