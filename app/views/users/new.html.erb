@@ -6,10 +6,10 @@
                 <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
             </li>
             <li>
-                <a href="<%= url_for :controller => 'users', :action => 'index' %>">Users</a>
+                <a href="<%= url_for :controller => 'users', :action => 'index' %>">Manage Users</a>
             </li>
         <li class="active">
-            <strong>Show</strong>
+            <strong>New</strong>
         </li>
         </ol>
     </div>
@@ -23,38 +23,20 @@
 <div class="row page-heading">
 </div>
 
-<div class="row">
-    <div class="col-lg-10 col-lg-offset-1">
-      <p id="notice"><%= notice %></p>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Show User</h5>
+                <h5>New User</h5>
             </div>
             <div class="ibox-content">
 
 
-              <p>
-                <strong>Name:</strong>
-                <%= @user.name %>
-              </p>
 
-              <p>
-                <strong>Email:</strong>
-                <%= @user.email %>
-              </p>
+<%= render 'form' %>
 
-              <p>
-                <strong>Role:</strong>
-                <%= @user.role %>
-              </p>
-
-
-            </div>
-        </div>
-    </div>
+</div>
+</div>
+</div>
 </div>

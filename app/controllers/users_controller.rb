@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -21,6 +22,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(secure_params)
+
+    # create a password
+    @password = new_password
+    @user.password = @password
+    @user.password_confirmation = @password
 
     respond_to do |format|
       if @user.save
@@ -50,10 +56,19 @@ class UsersController < ApplicationController
 
   private
 
+  def new_password
+    Devise.friendly_token.first(8)
+  end
+
   def admin_only
     unless current_user.admin?
-      redirect_to :back, :alert => "Access denied."
+      redirect_to :root, :alert => "Access denied."
     end
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
   end
 
   def secure_params

@@ -1,0 +1,61 @@
+
+                <!--form method="get" class="form-horizontal"-->
+                <!--%= form_for(@nomination) do |f| %-->
+                <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+                  <% if @user.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this nomination from being saved:</h2>
+                      <ul>
+                      <% @user.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                  <div class="form-group">
+                      <%= f.label :name, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-6">
+                          <%= f.text_field :name, class: "form-control" %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :email, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-6">
+                          <%= f.text_field :email, class: "form-control" %>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <%= f.label :role, class: "col-sm-2 control-label" %>
+                      <div class="col-sm-6">
+                          <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+                      </div>
+                  </div>
+
+
+                  <div class="hr-line-dashed"></div>
+                  <div class="form-group">
+                      <div class="col-sm-12">
+                          <button class="btn btn-primary" type="submit">Save Changes</button>
+                          <button class="btn btn-white" type="reset">Cancel</button>
+                      </div>
+                  </div>
+
+<% end %>
+
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+$(function() {
+
+});
+
+$.webshims.setOptions('basePath', '/webshims/1.15.10/shims/')
+$.webshims.polyfill()
+
+</script>
+
+<% end %>
