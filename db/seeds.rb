@@ -86,3 +86,18 @@ Nomination.create!([
     nomination_type_id: 1,
     nomination_year: "2016" }
 ])
+
+
+ User.find_or_create_by!(email: "CATHERINE.H.DERAN@saic.com") do |user|
+    user.name = "Catherine Deran"
+    user.password = "password123"
+    user.password_confirmation = "password123"
+    user.admin!
+  end
+
+  User.find_or_create_by!(email: "jwilson1@networkrunners.com") do |user|
+     user.name = "Catherine Deran"
+     user.password = "password123"
+     user.password_confirmation = "password123"
+     user.admin!
+   end

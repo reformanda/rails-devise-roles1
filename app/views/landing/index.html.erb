@@ -14,7 +14,7 @@
           </div>
           <div class="ibox-content">
             <ul>
-              <li><%= link_to 'View Nomination Forms', :controller => "nominations" %></li>
+              <li><%= link_to 'View Nomination Forms', :controller => "nominations", :action => "list" %></li>
             </ul>
             <% if not current_user.nil? %>
             <ul>
@@ -24,7 +24,7 @@
               <li><%= link_to 'Manage Award Options', award_options_path %></li>
             </ul>
             <ul>
-              <li><%= link_to 'Manage Nominations', :controller => "nominations", :action => "manage" %></li>
+              <li><%= link_to 'Manage Nominations', :controller => "nominations", :action => "index" %></li>
             </ul>
             <ul>
               <li><%= link_to 'Manage Users', :controller => "users", :action => "index" %></li>

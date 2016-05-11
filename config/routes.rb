@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  
+
   resources :award_options
   resources :nomination_types
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'product_supports/confirmation', to: "product_supports#confirmation"
   get 'logistics/confirmation', to: "logistics#confirmation"
 
-  get 'nominations/manage', to: "nominations#manage"
+  get 'nominations/list', to: "nominations#list"
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
   resources :shoulds

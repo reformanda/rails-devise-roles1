@@ -25,4 +25,7 @@ class Nomination < ActiveRecord::Base
   def self.nomination_types
     %w(Packard Should Achievement Development ProductSupport Logistic)
   end
+
+  paginates_per 25
+  
 end

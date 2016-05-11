@@ -1,0 +1,59 @@
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <h2>USAASC Virtual Boards</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
+            </li>
+            <li class="active">
+                <strong>Nomination Forms</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+      <div class="title-action">
+      <% if current_user.nil? %>
+        <%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i> Signin<% end %>
+      <% else %>
+        <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+      <% end %>
+      </div>
+    </div>
+</div>
+
+<div class="row page-heading">
+</div>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <p id="notice"><%= notice %></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+              <h4>Nominations</h4>
+          </div>
+          <div class="ibox-content">
+            <ul class="list-group clear-list">
+              <% @nomination_types.find_each do |n|  %>
+              <% cont=n.code.underscore.downcase + "s"%>
+              <li>
+                <% begin %>
+                  <% x = url_for :controller => "#{cont}", :action => 'new' %>
+                  <a href="<%= url_for :controller => "#{cont}", :action => 'new' %>">
+                    <%= n.title %>
+                  </a>
+                <% rescue %>
+                  <a href="<%= url_for :controller => 'nominations', :action => 'index' %>"><%= n.title %></a>
+                <% end %>
+              </li>
+              <% end %>
+
+            </ul>
+          </div>
+        </div>
+    </div>
+</div>

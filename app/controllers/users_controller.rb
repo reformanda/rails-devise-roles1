@@ -11,15 +11,6 @@ class UsersController < ApplicationController
 
   end
 
-  def search
-    @users = User.published.authored_by(params[:authors]).tagged(params[:tags]).sorted
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
-  end
-
   def show
     @user = User.find(params[:id])
     unless current_user.admin?

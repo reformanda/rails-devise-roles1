@@ -1,33 +1,28 @@
 class NominationsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
-  before_action :manager_or_admin_only
+  before_action :manager_or_admin_only, :except => :list
+
   # GET /boats
   # GET /boats.json
   def index
     @nominations = Nomination.all
-    @nomination_types = NominationType.all
+    @nominations = Nomination.where("name like ?","%#{params[:search]}%") unless params[:search].blank?
+    @nominations = @nominations.page params[:page] #User.all
   end
 
-  def manage
-    @nominations = Nomination.all
-    @nomination_types = NominationType.all
-  end
-
-  # POST /boats
-  # POST /boats.json
-  def create
-    @nomination = Nomination.new(nomination_params)
-
-    respond_to do |format|
-      if @nomination.save
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully created.' }
-        format.json { render :show, status: :created, location: @nomination }
-      else
-        format.html { render :new }
-        format.json { render json: @nomination.errors, status: :unprocessable_entity }
+  def show
+    @nomination = Nomination.find(params[:id])
+    unless current_user.admin?
+      unless @user == current_user
+        redirect_to action: "index", :alert => "Access denied."
       end
     end
+  end
+
+  def list
+    @nominations = Nomination.all
+    @nomination_types = NominationType.all
   end
 
   # PATCH/PUT /boats/1
@@ -123,5 +118,6 @@ class NominationsController < ApplicationController
       :nomination_type,
       :nomination_year)
     end
+
 
 end

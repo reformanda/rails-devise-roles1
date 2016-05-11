@@ -6,10 +6,10 @@
                 <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
             </li>
             <li>
-              <%= link_to 'Manage Nominations', :action => "index" %>
+                <a href="<%= url_for :controller => 'nomination_types', :action => 'index' %>">Nomination Types</a>
             </li>
         <li class="active">
-            <strong>Show</strong>
+            <strong>New</strong>
         </li>
         </ol>
     </div>
@@ -23,23 +23,20 @@
 <div class="row page-heading">
 </div>
 
-<div class="row">
-    <div class="col-lg-10 col-lg-offset-1">
-      <p id="notice"><%= notice %></p>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Show Nomination Types</h5>
+                <h5>New Nomination Types</h5>
             </div>
             <div class="ibox-content">
 
-              <h3> Under Development </h3>
 
-            </div>
-        </div>
-    </div>
+
+<%= render 'form' %>
+
+</div>
+</div>
+</div>
 </div>
