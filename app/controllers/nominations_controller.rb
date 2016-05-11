@@ -1,6 +1,7 @@
 class NominationsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
+  before_action :manager_or_admin_only
   # GET /boats
   # GET /boats.json
   def index
@@ -54,6 +55,13 @@ class NominationsController < ApplicationController
   end
 
   private
+
+    def manager_or_admin_only
+      unless current_user.admin? || current_user.manager?
+        redirect_to :root, :alert => "Access denied."
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
       @nomination = Nomination.find(params[:id])

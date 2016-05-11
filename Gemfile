@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'kaminari'
 gem 'valid_email'
 gem 'puma'
 gem 'webshims-rails'

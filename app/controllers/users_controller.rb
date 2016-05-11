@@ -4,14 +4,27 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
+
     @users = User.all
+    @users = User.where("name like ?","%#{params[:search]}%") unless params[:search].blank?
+    @users = @users.order(:name).page params[:page] #User.all
+
+  end
+
+  def search
+    @users = User.published.authored_by(params[:authors]).tagged(params[:tags]).sorted
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+    end
   end
 
   def show
     @user = User.find(params[:id])
     unless current_user.admin?
       unless @user == current_user
-        redirect_to :back, :alert => "Access denied."
+        redirect_to action: "index", :alert => "Access denied."
       end
     end
   end
