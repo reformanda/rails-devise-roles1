@@ -36,3 +36,14 @@
 </div>
 </div>
 </div>
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+$.webshims.setOptions('basePath', '/webshims/1.15.10/shims/')
+$.webshims.polyfill()
+
+</script>
+
+<% end %>
