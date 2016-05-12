@@ -22,7 +22,7 @@ NominationType.create!([
     awards_announcement: File.open(Rails.root + "db/attachments/2016-DOD-Award-Announcement-Memo.pdf"),
     implementing_instructions: File.open(Rails.root + "db/attachments/2016-achievement-instructions.pdf"),
     submission_form: File.open(Rails.root + "db/attachments/2016-achievement-submission.docx"),
-    award_narrative: File.open(Rails.root + "db/attachments/2016-achievement-example.pdf"),,
+    award_narrative: File.open(Rails.root + "db/attachments/2016-achievement-example.pdf"),
     guidelines: nil, nomination_end_date: "05/31/2016", title: "Defense Acquisition Workforce Achievement Award"},
   {year: "2016", code: "Logistic", description: "",
     awards_announcement: File.open(Rails.root + "db/attachments/2016-PBL-award-memo.pdf"),
