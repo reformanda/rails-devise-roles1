@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420021725) do
+ActiveRecord::Schema.define(version: 20160513011903) do
 
   create_table "award_options", force: :cascade do |t|
     t.string   "name"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160420021725) do
     t.integer  "award_option_id"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
+    t.integer  "status"
   end
 
   add_index "nominations", ["award_option_id"], name: "index_nominations_on_award_option_id"

@@ -22,10 +22,17 @@ class Nomination < ActiveRecord::Base
   #validates :photo_a, :presence => true
   validates :nominating_point_of_contact_email, :presence => true, :email => true
 
+  enum status: [:entered, :approved, :scored]
+  after_initialize :set_default_status, :if => :new_record?
+
+  def set_default_status
+    self.status ||= :entered
+  end
+
   def self.nomination_types
     %w(Packard Should Achievement Development ProductSupport Logistic)
   end
 
   paginates_per 25
-  
+
 end
