@@ -47,7 +47,7 @@
   <thead>
     <tr>
       <th>Nominee</th>
-      <th>Nominator (POC)</th>
+      <th>Nominator/POC</th>
       <th>Type</th>
       <th>Award</th>
       <th>Status</th>
@@ -72,7 +72,7 @@
         <td>Nominator: <%= "#{nom.nominating_official_title} #{nom.nominating_official_first_name} #{nom.nominating_official_last_name} #{nom.nominating_official_suffix}" %>
           <br/>
           <%= nom.nominating_official_email %>
-
+          <br/>
           POC:<%= "#{nom.nominating_point_of_contact_title} #{nom.nominating_point_of_contact_first_name} #{nom.nominating_point_of_contact_last_name} #{nom.nominating_point_of_contact_suffix}" %>
           <br/>
           <%= nom.nominating_point_of_contact_email %>

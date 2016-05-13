@@ -13,6 +13,14 @@ class NominationsController < ApplicationController
 
   def show
     @nomination = Nomination.find(params[:id])
+    #depending on the nomination type, choose the appropriate controller
+
+    @info = NominationType.where(["code = ?", @nomination.nomination_type.code]).first
+    @info.year = @nomination.nomination_year
+    @info.id = @nomination.nomination_type_id
+    @nomination_type = @nomination.nomination_type.code
+    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", @nomination.nomination_type.code).pluck(:name,:id)
+    @callback = "#"
     unless current_user.admin?
       unless @user == current_user
         redirect_to action: "index", :alert => "Access denied."
@@ -115,9 +123,12 @@ class NominationsController < ApplicationController
       :submission_form,
       :photo_a,
       :photo_b,
-      :nomination_type,
+      :nomination_type_id,
       :nomination_year,
-      :nominee_team_name)
+      :nominee_team_name,
+      :submission_form_cache,
+      :endorsement_letter_cache,
+      :photo_a_cache)
     end
 
 

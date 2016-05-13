@@ -17,6 +17,7 @@ class Nomination < ActiveRecord::Base
   validates :nominee_organization, :nominee_command,
               :presence => true
   validates :submission_form, :endorsement_letter, :presence => true
+  validates :photo_a, :presence => true
 
 
 

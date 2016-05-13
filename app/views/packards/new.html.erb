@@ -1,24 +1,17 @@
 
 <%= render "shared/nomination_head" %>
 
-
-
 <% content_for :javascript do %>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
+    $(function() {
 
-$(function() {
+      $.webshims.setOptions('basePath', '/webshims/1.15.10/shims/')
+      $.webshims.polyfill()
 
-//$('.i-checks').iCheck({
-//   checkboxClass: 'icheckbox_square-green',
-//   radioClass: 'iradio_square-green',
-//});
-$.webshims.setOptions('basePath', '/webshims/1.15.10/shims/')
-$.webshims.polyfill()
+    });
 
-});
-
-</script>
+  </script>
 
 <% end %>
