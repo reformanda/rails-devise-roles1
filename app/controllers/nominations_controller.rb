@@ -76,7 +76,7 @@ class NominationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_params
-      params.require(:packard).permit(
+      params.require(:nomination).permit(
       :unit_commander_title,
       :unit_commander_first_name,
       :unit_commander_last_name,

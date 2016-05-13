@@ -35,8 +35,9 @@ NominationType.create!([
 ])
 
 AwardOption.create!([
-  {name: "USD(AT&L) Should Cost and Innovation Award", nomination_type_id: 2},
   {name: "Program Management", nomination_type_id: 1},
+  {name: "USD(AT&L) Should Cost and Innovation Award", nomination_type_id: 2},
+  {name: "Development", nomination_type_id: 3},
   {name: "Auditing", nomination_type_id: 4},
   {name: "Financial Management", nomination_type_id: 4},
   {name: "Contracting and Procurement", nomination_type_id: 4},
@@ -55,7 +56,6 @@ AwardOption.create!([
   {name: "Cost Estimating", nomination_type_id: 4},
   {name: "Engineering", nomination_type_id: 4},
   {name: "Industrial/Contract Property Management", nomination_type_id: 4},
-  {name: "Development", nomination_type_id: 3},
   {name: "Major Defense Acquisition Programs, ACATs 1 ", nomination_type_id: 6},
   {name: "Major Weapon System/Other Weapon Systems, ACATII", nomination_type_id: 6},
   {name: "Component level", nomination_type_id: 5},
@@ -77,7 +77,7 @@ Nomination.create!([
     nominating_point_of_contact_organization_address_2: "1001 E Main St",
     nominating_point_of_contact_city: "Atlanta", nominating_point_of_contact_state: "GA",
     nominating_point_of_contact_zip: "30311", nominating_point_of_contact_country: "USA",
-    award_option_id: 2,
+    award_option_id: 1,
     nominee_title: "", nominee_first_name: "Roger", nominee_last_name: "Rabbit", nominee_suffix: "",
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
@@ -89,6 +89,130 @@ Nomination.create!([
     nomination_year: "2016" }
 ])
 
+Nomination.create!([
+  {unit_commander_title: "Mr.", unit_commander_first_name: "Ron", unit_commander_last_name: "Lewis",
+    unit_commander_suffix: "", unit_commander_phone: "202-345-0933", unit_commander_email: "jerry.lewis@mail.mil",
+    unit_commander_organization: "USAASC",
+    nominating_official_title: "LTC", nominating_official_first_name: "Mario", nominating_official_last_name: "Esperanza",
+    nominating_official_suffix: "", nominating_official_phone: "703-555-3343", nominating_official_email: "mario.esperanza@mail.mil",
+    nominating_point_of_contact_title: "Ms.", nominating_point_of_contact_first_name: "Lisa",
+    nominating_point_of_contact_last_name: "Lewis", nominating_point_of_contact_suffix: "",
+    nominating_point_of_contact_phone: "01-223-232-1212", nominating_point_of_contact_email: "lisa.lewis@mail.mil",
+    nominating_point_of_contact_organization_address_1: "FORCECOM",
+    nominating_point_of_contact_organization_address_2: "1001 E Main St",
+    nominating_point_of_contact_city: "Atlanta", nominating_point_of_contact_state: "GA",
+    nominating_point_of_contact_zip: "30311", nominating_point_of_contact_country: "USA",
+    award_option_id: 2,
+    nominee_title: "", nominee_first_name: "Bugs", nominee_last_name: "Bunny", nominee_suffix: "",
+    nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
+    nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
+    endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
+    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    photo_a: File.open(Rails.root + "db/attachments/screenshot.png"),
+    photo_b: nil,
+    nomination_type_id: 2,
+    nomination_year: "2016" }
+])
+
+Nomination.create!([
+  {unit_commander_title: "Mr.", unit_commander_first_name: "Jerry", unit_commander_last_name: "Lewis",
+    unit_commander_suffix: "", unit_commander_phone: "202-345-0933", unit_commander_email: "jerry.lewis@mail.mil",
+    unit_commander_organization: "USAASC",
+    nominating_official_title: "LTC", nominating_official_first_name: "Mario", nominating_official_last_name: "Esperanza",
+    nominating_official_suffix: "", nominating_official_phone: "703-555-3343", nominating_official_email: "mario.esperanza@mail.mil",
+    nominating_point_of_contact_title: "Ms.", nominating_point_of_contact_first_name: "Lisa",
+    nominating_point_of_contact_last_name: "Lewis", nominating_point_of_contact_suffix: "",
+    nominating_point_of_contact_phone: "01-223-232-1212", nominating_point_of_contact_email: "lisa.lewis@mail.mil",
+    nominating_point_of_contact_organization_address_1: "FORCECOM",
+    nominating_point_of_contact_organization_address_2: "1001 E Main St",
+    nominating_point_of_contact_city: "Atlanta", nominating_point_of_contact_state: "GA",
+    nominating_point_of_contact_zip: "30311", nominating_point_of_contact_country: "USA",
+    award_option_id: 3,
+    nominee_title: "Sgt", nominee_first_name: "Jack", nominee_last_name: "York", nominee_suffix: "",
+    nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
+    nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
+    endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
+    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    photo_a: File.open(Rails.root + "db/attachments/screenshot.png"),
+    photo_b: nil,
+    nomination_type_id: 3,
+    nomination_year: "2016" }
+])
+
+Nomination.create!([
+  {unit_commander_title: "Mr.", unit_commander_first_name: "Ricky", unit_commander_last_name: "Martinez",
+    unit_commander_suffix: "", unit_commander_phone: "202-345-0933", unit_commander_email: "jerry.lewis@mail.mil",
+    unit_commander_organization: "USAASC",
+    nominating_official_title: "", nominating_official_first_name: "Maria", nominating_official_last_name: "Schriver",
+    nominating_official_suffix: "", nominating_official_phone: "703-555-3343", nominating_official_email: "maria.esperanza@mail.mil",
+    nominating_point_of_contact_title: "Mr.", nominating_point_of_contact_first_name: "Alex",
+    nominating_point_of_contact_last_name: "Haley", nominating_point_of_contact_suffix: "",
+    nominating_point_of_contact_phone: "01-223-232-1212", nominating_point_of_contact_email: "lisa.lewis@mail.mil",
+    nominating_point_of_contact_organization_address_1: "FORCECOM",
+    nominating_point_of_contact_organization_address_2: "1001 E Main St",
+    nominating_point_of_contact_city: "Atlanta", nominating_point_of_contact_state: "GA",
+    nominating_point_of_contact_zip: "30311", nominating_point_of_contact_country: "USA",
+    award_option_id: 1,
+    nominee_title: "", nominee_first_name: "Woody", nominee_last_name: "Allen", nominee_suffix: "",
+    nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
+    nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
+    endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
+    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    photo_a: File.open(Rails.root + "db/attachments/screenshot.png"),
+    photo_b: nil,
+    nomination_type_id: 1,
+    nomination_year: "2016" }
+])
+
+Nomination.create!([
+  {unit_commander_title: "Mr.", unit_commander_first_name: "Jerry", unit_commander_last_name: "Lewis",
+    unit_commander_suffix: "", unit_commander_phone: "202-345-0933", unit_commander_email: "jerry.lewis@mail.mil",
+    unit_commander_organization: "USAASC",
+    nominating_official_title: "LTC", nominating_official_first_name: "Mario", nominating_official_last_name: "Esperanza",
+    nominating_official_suffix: "", nominating_official_phone: "703-555-3343", nominating_official_email: "mario.esperanza@mail.mil",
+    nominating_point_of_contact_title: "Ms.", nominating_point_of_contact_first_name: "Lisa",
+    nominating_point_of_contact_last_name: "Lewis", nominating_point_of_contact_suffix: "",
+    nominating_point_of_contact_phone: "01-223-232-1212", nominating_point_of_contact_email: "lisa.lewis@mail.mil",
+    nominating_point_of_contact_organization_address_1: "FORCECOM",
+    nominating_point_of_contact_organization_address_2: "1001 E Main St",
+    nominating_point_of_contact_city: "Atlanta", nominating_point_of_contact_state: "GA",
+    nominating_point_of_contact_zip: "30311", nominating_point_of_contact_country: "USA",
+    award_option_id: 4,
+    nominee_title: "", nominee_first_name: "Roger", nominee_last_name: "Roberts", nominee_suffix: "",
+    nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
+    nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
+    endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
+    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    photo_a: File.open(Rails.root + "db/attachments/screenshot.png"),
+    photo_b: nil,
+    nomination_type_id: 4,
+    nomination_year: "2016" }
+])
+
+Nomination.create!([
+  {unit_commander_title: "Mr.", unit_commander_first_name: "Jerry", unit_commander_last_name: "Lewis",
+    unit_commander_suffix: "", unit_commander_phone: "202-345-0933", unit_commander_email: "jerry.lewis@mail.mil",
+    unit_commander_organization: "USAASC",
+    nominating_official_title: "LTC", nominating_official_first_name: "Mario", nominating_official_last_name: "Esperanza",
+    nominating_official_suffix: "", nominating_official_phone: "703-555-3343", nominating_official_email: "mario.esperanza@mail.mil",
+    nominating_point_of_contact_title: "Ms.", nominating_point_of_contact_first_name: "Lisa",
+    nominating_point_of_contact_last_name: "Lewis", nominating_point_of_contact_suffix: "",
+    nominating_point_of_contact_phone: "01-223-232-1212", nominating_point_of_contact_email: "lisa.lewis@mail.mil",
+    nominating_point_of_contact_organization_address_1: "FORCECOM",
+    nominating_point_of_contact_organization_address_2: "1001 E Main St",
+    nominating_point_of_contact_city: "Atlanta", nominating_point_of_contact_state: "GA",
+    nominating_point_of_contact_zip: "30311", nominating_point_of_contact_country: "USA",
+    award_option_id: 6,
+    nominee_title: "", nominee_first_name: "Maxwell", nominee_last_name: "Smith", nominee_suffix: "",
+    nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
+    nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
+    endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
+    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    photo_a: File.open(Rails.root + "db/attachments/screenshot.png"),
+    photo_b: nil,
+    nomination_type_id: 4,
+    nomination_year: "2016" }
+])
 
  User.find_or_create_by!(email: "CATHERINE.H.DERAN@saic.com") do |user|
     user.name = "Catherine Deran"
