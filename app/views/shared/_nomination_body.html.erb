@@ -164,7 +164,8 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group"><%= f.label :award_option_id, "* Award", class: "col-sm-2 control-label" %>
 
                         <div class="col-sm-6">
-                        <%= f.select :award_option_id, options_for_select(@award_options), {}, {class: "form-control m-b", required: true} %>
+                        [<%= @nomination.award_option_id %>]
+                        <%= f.select :award_option_id, options_for_select(@award_options, @nomination.award_option_id),  {}, {class: "form-control m-b", required: true} %>
 
 
                         </div>
@@ -174,6 +175,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <h2>Nominee Information</h2>
                     <span class="help-block m-b-none">An individual or team name is required.</span>
                     <div class="hr-line-solid"></div>
+
                     <div class="form-group">
                         <p class="col-sm-2 control-label">Name</p>
 
@@ -181,13 +183,19 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                           <div class="row">
                               <div class="col-md-2"><%= f.text_field :nominee_title, class: "form-control" %>
                               <%= f.label :nominee_title, "Rank", class: "help-block m-b-none" %></div>
-                              <div class="col-md-3"><%= f.text_field :nominee_first_name, class: "form-control", required: true %>
+                              <div class="col-md-3"><%= f.text_field :nominee_first_name, class: "form-control", required: false %>
                               <%= f.label :nominee_first_name, "* First Name", class: "help-block m-b-none" %></div>
-                              <div class="col-md-4"><%= f.text_field :nominee_last_name, class: "form-control", required: true %>
+                              <div class="col-md-4"><%= f.text_field :nominee_last_name, class: "form-control", required: false %>
                                 <%= f.label :nominee_last_name, "* Last Name", class: "help-block m-b-none" %></div>
                                 <div class="col-md-2"><%= f.text_field :nominee_suffix, class: "form-control" %>
                                 <%= f.label :nominee_suffix, "Suffix", class: "help-block m-b-none" %></div>
                           </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><%= f.label :nominee_team_name, "* Team Name", class: "col-sm-2 control-label" %>
+                        <div class="col-sm-6">
+                          <%= f.text_field :nominee_team_name, class: "form-control", required: false %>
                         </div>
                     </div>
 

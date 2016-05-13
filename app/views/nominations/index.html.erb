@@ -61,7 +61,7 @@
       <tr>
         <td><%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name}" %></td>
         <td><%= "#{nom.nominating_point_of_contact_title} #{nom.nominating_point_of_contact_first_name} #{nom.nominating_point_of_contact_last_name}" %></td>
-        <td><%= nom.nomination_type.code %></td>
+        <td><% begin %><%= nom.nomination_type.code %><% rescue %><% end %></td>
         <td><%= nom.award_option.name %></td>
         <td><%= link_to 'Show', nom %>
         <%= link_to 'Destroy', nom, method: :delete, data: { confirm: 'Are you sure?' } %></td>

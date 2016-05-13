@@ -102,7 +102,7 @@ class NominationsController < ApplicationController
       :nominating_point_of_contact_state,
       :nominating_point_of_contact_zip,
       :nominating_point_of_contact_country,
-      :award,
+      :award_option_id,
       :nominee_title,
       :nominee_first,
       :nominee_last,
@@ -116,7 +116,8 @@ class NominationsController < ApplicationController
       :photo_a,
       :photo_b,
       :nomination_type,
-      :nomination_year)
+      :nomination_year,
+      :nominee_team_name)
     end
 
 

@@ -13,7 +13,8 @@ class Nomination < ActiveRecord::Base
             :nominating_point_of_contact_phone, :nominating_point_of_contact_organization_address_1, :nominating_point_of_contact_city,
               :presence => true
   validates :award_option_id, :presence => true
-  validates :nominee_first_name, :nominee_last_name, :nominee_email, :nominee_organization, :nominee_command,
+  validate :nominee_name_or_team_name
+  validates :nominee_email, :nominee_organization, :nominee_command,
               :presence => true
   validates :submission_form, :endorsement_letter, :presence => true
 
@@ -34,5 +35,15 @@ class Nomination < ActiveRecord::Base
   end
 
   paginates_per 25
+
+
+  private
+
+  def nominee_name_or_team_name
+    if (nominee_first_name.blank? && nominee_last_name.blank? && nominee_team_name.blank?)
+      errors.add(:base, 'Nominee Name or Nominee Team Name must be entered')
+    end
+  end
+
 
 end

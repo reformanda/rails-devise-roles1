@@ -37,7 +37,7 @@ class ShouldsController < ApplicationController
     respond_to do |format|
       if @nomination.save
         # send email confirmation
-        NominationMailer.confirmation_email(@nomination,@info).deliver
+        NominationMailer.confirmation_email(@nomination,@info).deliver_now
         format.html { redirect_to '/shoulds/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
@@ -95,7 +95,7 @@ class ShouldsController < ApplicationController
       :nominating_point_of_contact_state,
       :nominating_point_of_contact_zip,
       :nominating_point_of_contact_country,
-      :award,
+      :award_option_id,
       :nominee_title,
       :nominee_first_name,
       :nominee_last_name,
@@ -107,8 +107,9 @@ class ShouldsController < ApplicationController
       :endorsement_letter,
       :submission_form,
       :nominee_organizational_logo,
-      :nomination_type,
-      :nomination_year)
+      :nomination_type_id,
+      :nomination_year,
+      :nominee_team_name)
     end
 
 end
