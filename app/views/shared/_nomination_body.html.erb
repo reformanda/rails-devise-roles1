@@ -164,7 +164,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group"><%= f.label :award_option_id, "* Award", class: "col-sm-2 control-label" %>
 
                         <div class="col-sm-6">
-                        [<%= @nomination.award_option_id %>]
+          
                         <%= f.select :award_option_id, options_for_select(@award_options, @nomination.award_option_id),  {}, {class: "form-control m-b", required: true} %>
 
 

@@ -37,7 +37,8 @@ NominationType.create!([
 AwardOption.create!([
   {name: "Program Management", nomination_type_id: 1},
   {name: "USD(AT&L) Should Cost and Innovation Award", nomination_type_id: 2},
-  {name: "Development", nomination_type_id: 3},
+  {name: "Small Organization--organizations with fewer than 500 employees", nomination_type_id: 3},
+  {name: "Large Organization--organizations with 500 or more employees", nomination_type_id: 3},  
   {name: "Auditing", nomination_type_id: 4},
   {name: "Financial Management", nomination_type_id: 4},
   {name: "Contracting and Procurement", nomination_type_id: 4},
