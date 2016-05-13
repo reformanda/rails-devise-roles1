@@ -4,7 +4,7 @@ class NominationMailer < ApplicationMailer
     puts 'mailing'
     @nomination = nomination
     @info = info
-    mail(to: @nomination.nominating_point_of_contact_email, bcc: "jwilson1@networkrunners.com", subject: "#{@info.year} #{@info.title} Form Submission")
+    mail(to: @nomination.nominating_point_of_contact_email, bcc: "jwilson1@networkrunners.com,CATHERINE.H.DERAN@saic.com", subject: "#{@info.year} #{@info.title} Form Submission")
     puts 'sent'
   end
 
