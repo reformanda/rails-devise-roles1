@@ -31,9 +31,7 @@
 <div class="ibox float-e-margins">
 <div class="ibox-title">
     <h5>Manage Nominations</h5>
-    <div class="title-action">
-<%= link_to 'New Nomination', :action => "list" %>
-    </div>
+
 </div>
 <div class="ibox-content">
 
@@ -52,6 +50,7 @@
       <th>Nominator (POC)</th>
       <th>Type</th>
       <th>Award</th>
+      <th>Status</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -59,10 +58,28 @@
   <tbody>
     <% @nominations.each do |nom| %>
       <tr>
-        <td><%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name}" %></td>
-        <td><%= "#{nom.nominating_point_of_contact_title} #{nom.nominating_point_of_contact_first_name} #{nom.nominating_point_of_contact_last_name}" %></td>
+        <td>
+          <% if nom.nominee_team_name.blank? %>
+          <%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name} #{nom.nominee_suffix}" %>
+          <% else %>
+          <%= nom.nominee_team_name %>
+          <% end %>
+          <br/>
+          <%= nom.nominee_email %>
+          <br/>
+          <%= nom.nominee_organization %>
+        </td>
+        <td>Nominator: <%= "#{nom.nominating_official_title} #{nom.nominating_official_first_name} #{nom.nominating_official_last_name} #{nom.nominating_official_suffix}" %>
+          <br/>
+          <%= nom.nominating_official_email %>
+
+          POC:<%= "#{nom.nominating_point_of_contact_title} #{nom.nominating_point_of_contact_first_name} #{nom.nominating_point_of_contact_last_name} #{nom.nominating_point_of_contact_suffix}" %>
+          <br/>
+          <%= nom.nominating_point_of_contact_email %>
+        </td>
         <td><% begin %><%= nom.nomination_type.code %><% rescue %><% end %></td>
         <td><%= nom.award_option.name %></td>
+        <td><%= nom.status %>
         <td><%= link_to 'Show', nom %>
         <%= link_to 'Destroy', nom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

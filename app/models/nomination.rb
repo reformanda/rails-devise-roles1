@@ -13,8 +13,8 @@ class Nomination < ActiveRecord::Base
             :nominating_point_of_contact_phone, :nominating_point_of_contact_organization_address_1, :nominating_point_of_contact_city,
               :presence => true
   validates :award_option_id, :presence => true
-  validate :nominee_name_or_team_name
-  validates :nominee_email, :nominee_organization, :nominee_command,
+  validates :nominee_email, :email => true, :presence => true
+  validates :nominee_organization, :nominee_command,
               :presence => true
   validates :submission_form, :endorsement_letter, :presence => true
 
@@ -36,6 +36,8 @@ class Nomination < ActiveRecord::Base
 
   paginates_per 25
 
+  # note singular "validate" for custom function
+  validate :nominee_name_or_team_name
 
   private
 
