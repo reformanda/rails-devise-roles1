@@ -7,4 +7,8 @@ class LandingController < ApplicationController
     render :layout => "nomination"
   end
 
+  def version
+    render :layout => "empty"
+  end
+
 end
