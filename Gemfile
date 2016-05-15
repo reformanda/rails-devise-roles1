@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'file_validators'
 gem 'kaminari'
 gem 'valid_email'
 gem 'puma'

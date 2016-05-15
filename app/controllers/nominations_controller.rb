@@ -11,6 +11,17 @@ class NominationsController < ApplicationController
     @nominations = @nominations.page params[:page] #User.all
   end
 
+  def edit
+    @info = NominationType.where(["code = ?", @nomination.nomination_type.code]).first
+    @info.year = @nomination.nomination_year
+    @info.id = @nomination.nomination_type_id
+    @nomination_type = @nomination.nomination_type.code
+    @nomination_types = NominationType.all.pluck(:code,:id)
+    @award_options = AwardOption.all.pluck(:name,:id)
+    @callback = "#"
+    @manage_nomination = true
+  end
+
   def show
     @nomination = Nomination.find(params[:id])
     #depending on the nomination type, choose the appropriate controller
@@ -19,8 +30,11 @@ class NominationsController < ApplicationController
     @info.year = @nomination.nomination_year
     @info.id = @nomination.nomination_type_id
     @nomination_type = @nomination.nomination_type.code
-    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", @nomination.nomination_type.code).pluck(:name,:id)
+    @nomination_types = NominationType.all.pluck(:code,:id)
+    @award_options = AwardOption.all.pluck(:name,:id)
     @callback = "#"
+    @manage_nomination = true
+
     unless current_user.admin?
       unless @user == current_user
         redirect_to action: "index", :alert => "Access denied."
@@ -36,11 +50,20 @@ class NominationsController < ApplicationController
   # PATCH/PUT /boats/1
   # PATCH/PUT /boats/1.json
   def update
+
     respond_to do |format|
-      if @nomination.update(boat_params)
-        format.html { redirect_to @nomination, notice: 'Nomination was successfully updated.' }
-        format.json { render :show, status: :ok, location: @nomination }
+      if @nomination.update(nomination_params)
+        format.html { redirect_to nominations_url, notice: 'Nomination was successfully updated.' }
+        format.json { render :index, status: :ok, location: @nomination }
       else
+        @info = NominationType.where(["code = ?", @nomination.nomination_type.code]).first
+        @info.year = @nomination.nomination_year
+        @info.id = @nomination.nomination_type_id
+        @nomination_type = @nomination.nomination_type.code
+        @nomination_types = NominationType.all.pluck(:code,:id)
+        @award_options = AwardOption.all.pluck(:name,:id)
+        @callback = "#"
+        @manage_nomination = true
         format.html { render :edit }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
@@ -54,6 +77,14 @@ class NominationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to nominations_url, notice: 'Nomination was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def update_awards
+    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", params[:country_id]).pluck(:name,:id)
+    puts @award_options
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -112,8 +143,8 @@ class NominationsController < ApplicationController
       :nominating_point_of_contact_country,
       :award_option_id,
       :nominee_title,
-      :nominee_first,
-      :nominee_last,
+      :nominee_first_name,
+      :nominee_last_name,
       :nominee_suffix,
       :nominee_position_title,
       :nominee_email,
@@ -122,13 +153,13 @@ class NominationsController < ApplicationController
       :endorsement_letter,
       :submission_form,
       :photo_a,
-      :photo_b,
       :nomination_type_id,
       :nomination_year,
       :nominee_team_name,
       :submission_form_cache,
       :endorsement_letter_cache,
-      :photo_a_cache)
+      :photo_a_cache,
+      :status)
     end
 
 

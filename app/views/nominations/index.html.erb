@@ -80,8 +80,8 @@
         <td><% begin %><%= nom.nomination_type.code %><% rescue %><% end %></td>
         <td><%= nom.award_option.name %></td>
         <td><%= nom.status %>
-        <td><%= link_to 'Show', nom %>
-        <%= link_to 'Destroy', nom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Manage', edit_nomination_path(nom) %>
+      
       </tr>
     <% end %>
   </tbody>

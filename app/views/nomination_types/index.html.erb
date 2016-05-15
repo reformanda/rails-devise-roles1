@@ -67,7 +67,7 @@
         <td><% if not nomination_type.submission_form_url.blank? %><%= link_to "View", nomination_type.submission_form_url %><% end %></td>
         <td><% if not nomination_type.award_narrative_url.blank? %><%= link_to "View", nomination_type.award_narrative_url %><% end %></td>
         <td><% if not nomination_type.guidelines_url.blank? %><%= link_to "View", nomination_type.guidelines_url %><% end %></td>
-        <td><%= link_to 'Show', nomination_type %>
+        <td>
         <%= link_to 'Edit', edit_nomination_type_path(nomination_type) %>
         <%= link_to 'Destroy', nomination_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

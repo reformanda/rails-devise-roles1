@@ -94,7 +94,8 @@
                   <div class="form-group">
                       <div class="col-sm-12">
                           <button class="btn btn-primary" type="submit">Save Changes</button>
-                          <button class="btn btn-white" type="reset">Cancel</button>
+                          <%= link_to "Cancel", nomination_types_path, :id => "open-contacts-dialog-btn",
+          :class => "btn btn-white", :method => :get %>
                       </div>
                   </div>
 

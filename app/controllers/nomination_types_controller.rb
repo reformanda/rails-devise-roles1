@@ -22,7 +22,6 @@ class NominationTypesController < ApplicationController
 
   # GET /nomination_types/1/edit
   def edit
-     @nomination_type = NominationType.new
   end
 
   # POST /nomination_types

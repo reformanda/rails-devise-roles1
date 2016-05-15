@@ -1,5 +1,9 @@
+                    <% if not @manage_nomination.nil? %>
 
+                    <% else %>
                     <%= f.hidden_field :nomination_type_id, :value => @info.id %>
+
+                    <% end %>
                     <%= f.hidden_field :nomination_year, :value => @info.year %>
                     <h2>Unit Commander/Head of Organization</h2>
                     <div class="hr-line-solid"></div>
@@ -146,7 +150,16 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="hr-line-dashed"></div>
                     <h2>Award Information</h2>
-                    <span class="help-block m-b-none">If different than the Unit Commander/Head of Organization noted above.</span>
+
+                    <% if not @manage_nomination.nil? %>
+                    <span class="help-block m-b-none">*** See Above ***</span>
+                    <div class="hr-line-solid"></div>
+
+                    <% else %>
+
+
+
+                    <span class="help-block m-b-none"></span>
                     <div class="hr-line-solid"></div>
 
                     <div class="form-group"><%= f.label :award_option_id, "* Award", class: "col-sm-2 control-label" %>
@@ -158,6 +171,8 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                         </div>
                     </div>
+
+                    <% end %>
 
                     <div class="hr-line-dashed"></div>
                     <h2>Nominee Information</h2>
@@ -216,7 +231,8 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                           <%= f.text_field :nominee_command, class: "form-control", required: true %>
                         </div>
                     </div>
-
+                    <% if not @manage_nomination.nil? %>
+                    <% else %>
                     <div class="hr-line-dashed"></div>
                     <h2>Nomination Submission Documents</h2>
                     <div class="hr-line-solid"></div>
@@ -283,7 +299,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                       <% end %>
                     </div>
                   </div-->
-
+                    <% end %>
                     <div class="hr-line-dashed"></div>
                     <h2>Upload Completed Documents</h2>
                     <div class="hr-line-solid"></div>

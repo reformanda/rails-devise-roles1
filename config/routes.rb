@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'product_supports/confirmation', to: "product_supports#confirmation"
   get 'logistics/confirmation', to: "logistics#confirmation"
 
-  get 'nominations/list', to: "nominations#list"
+  get 'nominations/update_awards', as: 'update_awards'
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
   resources :shoulds
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :achievements
   resources :product_supports
   resources :logistics
-
+  get 'nominations/list', to: "nominations#list"
   #get 'sites/:name', :to => 'sites#show', :as => site
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 
@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get "landing/version"
   get "landing/index"
   get "landing/nomination"
+
+
 
   get "*any", via: :all, to: "errors#not_found"
 
