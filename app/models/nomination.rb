@@ -42,6 +42,10 @@ class Nomination < ActiveRecord::Base
     %w(Packard Should Achievement Development ProductSupport Logistic)
   end
 
+  #def self.name_search
+  #  :nominee_last_name + :nominee_first_name
+  #end
+
   paginates_per 25
 
   # note singular "validate" for custom function

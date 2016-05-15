@@ -7,8 +7,17 @@ class NominationsController < ApplicationController
   # GET /boats.json
   def index
     @nominations = Nomination.all
-    @nominations = Nomination.where("name like ?","%#{params[:search]}%") unless params[:search].blank?
+    @nominations = @nominations.where(
+    "nominee_first_name like ? OR nominee_last_name like ? OR " + \
+    "nominating_official_first_name like ? OR nominating_official_last_name like ? OR " + \
+    "nominating_point_of_contact_first_name like ? OR nominating_point_of_contact_last_name like ?",
+    "%#{params[:search]}%","%#{params[:search]}%",
+     "%#{params[:search]}%","%#{params[:search]}%",
+     "%#{params[:search]}%","%#{params[:search]}%") unless params[:search].blank?
+    @nominations = @nominations.where("award_option_id = ?","#{params[:award]}") unless params[:award].blank?
+    @nominations = @nominations.where("nomination_type_id = ?","#{params[:nomination_type]}") unless params[:nomination_type].blank?
     @nominations = @nominations.page params[:page] #User.all
+    @nomination_types = NominationType.all.pluck(:code,:id)
   end
 
   def edit

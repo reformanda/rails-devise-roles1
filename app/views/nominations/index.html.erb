@@ -35,10 +35,22 @@
 </div>
 <div class="ibox-content">
 
-  <%= form_tag nominations_path, :method => 'get' do %>
+  <%= form_tag nominations_path, :method => 'get', :id => 'form_search' do %>
     <p>
-      <%= text_field_tag :search, params[:search] %>
+      Name:&nbsp;<%= text_field_tag :search, params[:search], placeholder: "Nominee/Nominator/POC " %>
+      &nbsp;&nbsp;
+      Nomination Type:&nbsp;
+      <%= select_tag :nomination_type, options_from_collection_for_select(NominationType.all.order("code"), 'id', 'code', params[:nomination_type]), include_blank: "All" %>
+      &nbsp;&nbsp;
+      Award Option:&nbsp;
+      <%= select_tag :award, options_from_collection_for_select(AwardOption.all.order("name"), 'id', 'name', params[:award]), include_blank: "All" %>
+
+
+    </p>
+    <p>
       <%= submit_tag "Search", :name => nil %>
+      &nbsp;&nbsp;
+      <input value="Reset" type="button" onclick='$("#search").val("");$("#nomination_type").prop("selectedIndex",0);$("#award").prop("selectedIndex",0)'/>
     </p>
 
   <% end %>
@@ -81,7 +93,7 @@
         <td><%= nom.award_option.name %></td>
         <td><%= nom.status %>
         <td><%= link_to 'Manage', edit_nomination_path(nom) %>
-      
+
       </tr>
     <% end %>
   </tbody>

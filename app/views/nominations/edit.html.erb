@@ -26,23 +26,34 @@
 <div class="row page-heading">
 </div>
 
+<% if @nomination.errors.any? %>
+
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
-      <p id="notice"><%= notice %></p>
-      <% if @nomination.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@nomination.errors.count, "error") %> prohibited this nomination from being saved:</h2>
-          <ul>
-          <% @nomination.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-    </div>
+        <div class="ibox float-e-margins">
+
+            <div class="ibox-content">
+
+  <div id="error_explanation">
+    <h2><%= pluralize(@nomination.errors.count, "error") %> prohibited this nomination from being saved:</h2>
+
+    <ul>
+    <% @nomination.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+
+</div>
+</div>
+</div>
 </div>
 
-            <%= form_for @nomination, html: {class: "form-horizontal"} do |f| %>
+<% end %>
+
+
+
+<%= form_for @nomination, html: {class: "form-horizontal"} do |f| %>
 
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
@@ -69,7 +80,7 @@
               <div class="form-group">
                   <%= f.label :nomination_type_id, "Nomination", class: "col-sm-2 control-label" %>
                   <div class="col-sm-3">
-                    <%= f.select :nomination_type_id, options_for_select(@nomination_types, @nomination.nomination_type_id), {}, {class: "form-control m-b", required: false} %>
+                    <%= f.select :nomination_type_id, options_for_select(@nomination_types, @nomination.nomination_type_id), {}, {class: "form-control m-b", required: false } %>
                   </div>
                   <div class="help-block m-b-none col-sm-6">NOTE:  You can change the Nomination and Award to any combination, there is no validation at this time.</div>
 
@@ -115,8 +126,6 @@
                 </div>
             </div>
             <div class="ibox-content">
-
-
 
               <%= render :partial => "shared/nomination_base", locals: { f: f} %>
 
