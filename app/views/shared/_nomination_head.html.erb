@@ -30,6 +30,33 @@
 <div class="row page-heading">
 </div>
 
+
+<% if @nomination.errors.any? %>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+
+            <div class="ibox-content">
+
+  <div id="error_explanation">
+    <h2><%= pluralize(@nomination.errors.count, "error") %> prohibited this nomination from being saved:</h2>
+
+    <ul>
+    <% @nomination.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+
+<% end %>
+
+
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
         <div class="ibox float-e-margins">

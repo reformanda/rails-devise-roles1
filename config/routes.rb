@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get 'logistics/confirmation', to: "logistics#confirmation"
 
   get 'nominations/update_awards', as: 'update_awards'
+  get 'nominations/list', to: "nominations#list"
+  
+
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
   resources :shoulds
@@ -27,7 +30,9 @@ Rails.application.routes.draw do
   resources :achievements
   resources :product_supports
   resources :logistics
-  get 'nominations/list', to: "nominations#list"
+
+
+
   #get 'sites/:name', :to => 'sites#show', :as => site
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 

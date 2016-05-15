@@ -16,10 +16,15 @@ class Nomination < ActiveRecord::Base
   validates :nominee_email, :email => true, :presence => true
   validates :nominee_organization, :nominee_command,
               :presence => true
-  validates :submission_form, :presence => true, :file_size => { less_than: 10.megabytes }
+  validates :submission_form, :presence => true
+  validates :submission_form, :file_size => { less_than: 10.megabytes }
 
-  validates :endorsement_letter, :presence => true, :file_size => { less_than: 10.megabytes }
-  validates :photo_a, :presence => true, :file_size => { less_than: 10.megabytes },file_content_type: { allow: /^image\/.*/ }
+  validates :endorsement_letter, :presence => true
+  validates :endorsement_letter, :file_size => { less_than: 10.megabytes }
+
+  alias_attribute :nominee_organization_logo, :photo_a
+  validates :nominee_organization_logo, :presence => true
+  validates :nominee_organization_logo, :file_size => { less_than: 10.megabytes },file_content_type: { allow: /^image\/.*/ }
 
 
 
