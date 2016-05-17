@@ -14,6 +14,11 @@ class UsersController < ApplicationController
 
   end
 
+  def edit
+    @nomination_types = NominationType.all.pluck(:code,:id)
+    puts @user.inspect
+  end
+
   def show
     @user = User.find(params[:id])
     unless current_user.admin?
@@ -51,7 +56,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    puts @user.inspect
+    puts secure_params
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
     else
@@ -83,7 +89,7 @@ class UsersController < ApplicationController
   end
 
   def secure_params
-    params.require(:user).permit(:role,:name,:email)
+    params.require(:user).permit(:role,:name,:email,:nomination_types_list => [])
   end
 
 end

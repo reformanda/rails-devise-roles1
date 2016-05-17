@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   enum role: [:judge, :manager, :admin]
   after_initialize :set_default_role, :if => :new_record?
+  serialize :nomination_types_list
 
   def set_default_role
     self.role ||= :manager
