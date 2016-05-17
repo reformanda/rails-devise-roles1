@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   def index
 
     @users = User.all
-    @users = User.where("name like ?","%#{params[:search]}%") unless params[:search].blank?
+    @users = User.where("name like ? or email like ?","%#{params[:search]}%","%#{params[:search]}%") unless params[:search].blank?
+    @users = @users.admin if params[:role] == "admin"
+    @users = @users.judge if params[:role] == "judge"
+    @users = @users.manager if params[:role] == "manager"
     @users = @users.order(:name).page params[:page] #User.all
 
   end
@@ -22,15 +25,18 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @password = new_password
+    puts @password.inspect
   end
 
   def create
     @user = User.new(secure_params)
 
     # create a password
-    @password = new_password
-    @user.password = @password
-    @user.password_confirmation = @password
+    #@password = new_password
+
+    @user.password = params[:entered_password]
+    @user.password_confirmation = params[:entered_password_confirmation]
 
     respond_to do |format|
       if @user.save
@@ -45,6 +51,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
     else

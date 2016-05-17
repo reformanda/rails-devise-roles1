@@ -37,10 +37,18 @@
 </div>
 <div class="ibox-content">
 
-  <%= form_tag users_path, :method => 'get' do %>
+  <%= form_tag users_path, :method => 'get', :id => 'form_search' do %>
     <p>
-      <%= text_field_tag :search, params[:search] %>
+      Name:&nbsp;<%= text_field_tag :search, params[:search], placeholder: "Name/Email" %>
+      &nbsp;&nbsp;
+      Role:&nbsp;
+      <%= select_tag :role, options_for_select([:judge, :manager, :admin], params[:role]), include_blank: "All" %>
+
+    </p>
+    <p>
       <%= submit_tag "Search", :name => nil %>
+      &nbsp;&nbsp;
+      <input value="Reset" type="button" onclick='$("#search").val("");$("#role").prop("selectedIndex",0);$("#award").prop("selectedIndex",0)'/>
     </p>
 
   <% end %>
