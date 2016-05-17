@@ -47,10 +47,26 @@
 
 
     </p>
+    <p>   Status:&nbsp;
+          <% cnt = 0 %>
+          <% @statuses.each do  |s| %>
+
+            <label class="">
+            <% if params[:status].include? "#{cnt}" %>
+            <input name="status[]" class="search_status" id='status<%="#{cnt}"%>' type="checkbox"  checked="checked" value='<%="#{cnt}"%>'> <%= s %></input>
+            <% else %>
+            <input name="status[]" class="search_status" id='status<%="#{cnt}"%>' type="checkbox" value='<%="#{cnt}"%>'> <%= s %></input>
+            <% end %>
+            </label>&nbsp;
+            <% cnt=cnt+1 %>
+          <% end %>
+
+    </p>
     <p>
       <%= submit_tag "Search", :name => nil %>
       &nbsp;&nbsp;
-      <input value="Reset" type="button" onclick='$("#search").val("");$("#nomination_type").prop("selectedIndex",0);$("#award").prop("selectedIndex",0)'/>
+      <input value="Reset" type="button" onclick='$("#search").val("");$("#nomination_type").prop("selectedIndex",0);$("#award").prop("selectedIndex",0);$(".search_status").attr("checked",false)'/>
+      <span style="float:right"><%= @nominations.count %> Nomination(s)</span>
     </p>
 
   <% end %>

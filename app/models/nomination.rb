@@ -31,7 +31,7 @@ class Nomination < ActiveRecord::Base
   #validates :photo_a, :presence => true
   validates :nominating_point_of_contact_email, :presence => true, :email => true
 
-  enum status: [:entered, :approved, :scored]
+  enum status: [:entered, :approved, :scored, :deleted]
   after_initialize :set_default_status, :if => :new_record?
 
   def set_default_status
@@ -46,7 +46,7 @@ class Nomination < ActiveRecord::Base
   #  :nominee_last_name + :nominee_first_name
   #end
 
-  paginates_per 25
+  paginates_per 10
 
   # note singular "validate" for custom function
   validate :nominee_name_or_team_name
