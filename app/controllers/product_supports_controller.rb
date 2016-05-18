@@ -113,11 +113,7 @@ class ProductSupportsController < ApplicationController
       :nominee_team_name,
       :submission_form_cache,
       :endorsement_letter_cache,
-      :nominee_organization_logo_cache,
-      :submission_word_document,
-      :submission_pdf,
-      :submission_word_document_cache,
-      :submission_pdf_cache)
+      :nominee_organization_logo_cache)
     end
 
 end

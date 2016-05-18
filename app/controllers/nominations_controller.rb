@@ -114,7 +114,7 @@ class NominationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
       @nomination = Nomination.find(params[:id])
-      if @nomination.nomination_type.code == "ProductSupport"
+      if @nomination.nomination_type.code == "Logistic"
         @nominataion = ProductSupport.find(params[:id])
       end
     end

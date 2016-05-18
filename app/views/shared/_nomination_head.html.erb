@@ -60,14 +60,7 @@
             </div>
             <div class="ibox-content">
 
-              <h2><%= "#{@info.year}  #{@info.title} Nomination Form" %></h2>
-              <% if not @info.nomination_end_date.blank? %>
-              <h4>Nominations are due by midnight on <%= Date.strptime(@info.nomination_end_date , "%m/%d/%Y").strftime("%A, %m/%d/%Y")
-                %>.</h4>
-              <% else %>
-              <h4>&nbsp;</h4>
-              <% end %>
-              <p><%= @info.description %></p>
+
 
               <%= render "shared/nomination_body" %>
 
