@@ -105,12 +105,12 @@ class ShouldsController < ApplicationController
       :nominee_organization,
       :nominee_command,
       :endorsement_letter,
-      :submission_form,
+      :submission_form_award_narrative,
       :nominee_organization_logo,
       :nomination_type_id,
       :nomination_year,
       :nominee_team_name,
-      :submission_form_cache,
+      :submission_form_award_narrative_cache,
       :endorsement_letter_cache,
       :nominee_organization_logo_cache)
     end
