@@ -37,7 +37,7 @@ class ShouldsController < ApplicationController
     respond_to do |format|
       if @nomination.save
         # send email confirmation
-        NominationMailer.confirmation_email(@nomination,@info).deliver_now
+        NominationMailer.confirmation_email(@nomination,@info).deliver_now if Rails.env.production?
         format.html { redirect_to '/shoulds/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
