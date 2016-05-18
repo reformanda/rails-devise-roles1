@@ -1,7 +1,7 @@
 require 'valid_email'
 class Nomination < ActiveRecord::Base
   mount_uploader :endorsement_letter, EndorsementLetterUploader
-  mount_uploader :submission_form, SubmissionFormUploader
+  mount_uploader :submission_form_award_narrative, SubmissionFormAwardNarrativeUploader
   mount_uploader :nominee_organization_logo, NomineeOrganizationLogoUploader
   mount_uploader :submission_word_document, SubmissionWordDocumentUploader
   mount_uploader :submission_pdf, SubmissionPdfUploader

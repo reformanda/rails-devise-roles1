@@ -362,15 +362,15 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><%= f.label :submission_form, "* Submission Form and Award Narrative", class: "col-sm-4", style: "text-align: right" %>
+                    <div class="form-group"><%= f.label :submission_form_award_narrative, "* Submission Form and Award Narrative", class: "col-sm-4", style: "text-align: right" %>
                         <div class="col-sm-1">
-                          <% if not @nomination.submission_form_url.nil? %>
-                          <%= link_to "View", @nomination.submission_form_url, :target => "_blank" %>
+                          <% if not @nomination.submission_form_award_narrative.nil? %>
+                          <%= link_to "View", @nomination.submission_form_award_narrative_url, :target => "_blank" %>
                           <% end %>
                         </div>
                         <div class="col-sm-4">
-                          <%= f.file_field :submission_form, class: "" %>
-                          <%= f.hidden_field :submission_form_cache %>
+                          <%= f.file_field :submission_form_award_narrative, class: "" %>
+                          <%= f.hidden_field :submission_form_award_narrative_cache %>
                         </div>
                     </div>
 
