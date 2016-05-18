@@ -8,7 +8,7 @@
 
                     <% if not @manage_nomination.nil? %>
                     <% else %>
-                    <div class="hr-line-dashed"></div>
+
 
                     <div class="row">
                       <h2>Nomination Submission Documents</h2>
@@ -104,6 +104,7 @@
 
                     <div class="hr-line-dashed"></div>
                     <div class="row">
+                      
                     <h2>Unit Commander/Head of Organization</h2>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
@@ -335,6 +336,9 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
                   </div>
+
+                  <div class="hr-line-dashed"></div>
+
                     <div class="row">
                     <% if  @manage_nomination.nil? %>
                     <h2>Upload Completed Documents</h2>
@@ -345,7 +349,8 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <% if not @nomination_type == "Logistic" %>
                     <div class="form-group">
-                        <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-md-4"%>
+
+                        <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-sm-4 control-label"%>
                         <div class="col-sm-1">
                           <% if not @nomination.endorsement_letter_url.nil? %>
                           <%= link_to "View ", @nomination.endorsement_letter_url, :target => "_blank" %>
@@ -357,7 +362,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><%= f.label :submission_form, "* Submission Form and Award Narrative", class: "col-sm-4" %>
+                    <div class="form-group"><%= f.label :submission_form, "* Submission Form and Award Narrative", class: "col-sm-4 control-label" %>
                         <div class="col-sm-1">
                           <% if not @nomination.submission_form_url.nil? %>
                           <%= link_to "View", @nomination.submission_form_url, :target => "_blank" %>
@@ -369,7 +374,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4"%>
+                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4 control-label"%>
                       <div class="col-sm-1">
                         <% if not @nomination.nominee_organization_logo_url.nil? %>
                         <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
@@ -387,7 +392,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <% if  @nomination_type == "Logistic" %>
 
                     <div class="form-group">
-                        <%= f.label :submission_word_document, "* Submission Word Document", class: "col-md-4"%>
+                        <%= f.label :submission_word_document, "* Submission Word Document", class: "col-sm-4 control-label"%>
                         <div class="col-sm-1">
                           <% if not @nomination.submission_word_document_url.nil? %>
                           <%= link_to "View ", @nomination.submission_word_document_url, :target => "_blank" %>
@@ -399,7 +404,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><%= f.label :submission_pdf, "* Submission PDF", class: "col-sm-4" %>
+                    <div class="form-group"><%= f.label :submission_pdf, "* Submission PDF", class: "col-sm-4 control-label" %>
                         <div class="col-sm-1">
                           <% if not @nomination.submission_pdf_url.nil? %>
                           <%= link_to "View", @nomination.submission_pdf_url, :target => "_blank" %>
@@ -411,7 +416,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4"%>
+                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4 control-label"%>
                       <div class="col-sm-1">
                         <% if not @nomination.nominee_organization_logo_url.nil? %>
                         <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
