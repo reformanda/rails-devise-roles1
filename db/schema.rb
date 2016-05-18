@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 20160518113629) do
     t.string   "endorsement_letter"
     t.string   "submission_form"
     t.string   "nominee_organization_logo"
-    t.string   "photo_b"
     t.string   "nomination_year"
     t.integer  "nomination_type_id"
     t.integer  "award_option_id"

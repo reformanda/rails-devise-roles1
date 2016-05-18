@@ -36,8 +36,7 @@ FactoryGirl.define do
     nominee_command "MyString"
     endorsement_letter "MyString"
     submission_form "MyString"
-    photo_a "MyString"
-    photo_b "MyString"
+    nominee_organization_logo "MyString"
     nomination_type "MyString"
     nomination_year "MyString"
   end

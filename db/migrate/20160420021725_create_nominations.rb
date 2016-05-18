@@ -37,8 +37,7 @@ class CreateNominations < ActiveRecord::Migration
       t.string :nominee_team_name
       t.string :endorsement_letter
       t.string :submission_form
-      t.string :photo_a
-      t.string :photo_b
+      t.string :nominee_organization_logo
       t.string :nomination_year
       t.references :nomination_type, index: true, foreign_key: true
       t.references :award_option, index: true, foreign_key: true

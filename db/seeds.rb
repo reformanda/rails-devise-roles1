@@ -32,13 +32,13 @@ NominationType.create!([
     guidelines: nil, nomination_end_date: "05/31/2016", title: "Defense Acquisition Workforce Achievement Award"},
   {year: "2016", code: "Logistic", description: "",
     awards_announcement: File.open(Rails.root + "db/attachments/2016-PBL-award-memo.pdf"),
-    implementing_instructions: File.open(Rails.root + "db/attachments/2016-PBL-award-instructions.pdf"),
+    implementing_instructions: File.open(Rails.root + "db/attachments/2016-PBL-award-instructions-v2.pdf"),
     submission_form: File.open(Rails.root + "db/attachments/2016-pbl-submission.docx"),
     award_narrative: File.open(Rails.root + "db/attachments/2016-pbl-example.pdf"),
     guidelines: nil, nomination_end_date: "05/31/2016", title: "Secretary of Defense Performance-Based Logistics"},
   {year: "2016", code: "ProductSupport", description: "",
     awards_announcement: File.open(Rails.root + "db/attachments/2016-PSM-award-memo.pdf"),
-    implementing_instructions: File.open(Rails.root + "db/attachments/2016-PSM-award-instructions.pdf"),
+    implementing_instructions: File.open(Rails.root + "db/attachments/2016-PSM-award-instructions-v2.pdf"),
     submission_form: File.open(Rails.root + "db/attachments/2016-psm-submission-form.docx"),
     award_narrative: File.open(Rails.root + "db/attachments/2016-psm-example.pdf"),
     guidelines: nil, nomination_end_date: "05/31/2016", title: "The Secretary of Defense Product Support Manager"}
@@ -236,8 +236,8 @@ Nomination.create!([
     nominee_title: "", nominee_first_name: "Maxwell", nominee_last_name: "Smith", nominee_suffix: "",
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
-    endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    submission_pdf: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
+    submission_word_document: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 5,
     nomination_year: "2016" }
@@ -260,24 +260,24 @@ Nomination.create!([
     nominee_title: "", nominee_first_name: "Maxwell", nominee_last_name: "Smith", nominee_suffix: "",
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
-    submission_pdf: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_word_document: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
+    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 6,
     nomination_year: "2016" }
 ])
 
 
- User.find_or_create_by!(email: "CATHERINE.H.DERAN@saic.com") do |user|
-    user.name = "Catherine Deran"
-    user.password = "password123"
-    user.password_confirmation = "password123"
-    user.admin!
-  end
+User.find_or_create_by!(email: "CATHERINE.H.DERAN@saic.com") do |user|
+  user.name = "Catherine Deran"
+  user.password = "password123"
+  user.password_confirmation = "password123"
+  user.admin!
+end
 
-  User.find_or_create_by!(email: "jwilson1@networkrunners.com") do |user|
-     user.name = "Catherine Deran"
-     user.password = "password123"
-     user.password_confirmation = "password123"
-     user.admin!
-   end
+User.find_or_create_by!(email: "jwilson1@networkrunners.com") do |user|
+  user.name = "Catherine Deran"
+  user.password = "password123"
+  user.password_confirmation = "password123"
+  user.admin!
+end
