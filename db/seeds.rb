@@ -93,7 +93,7 @@ Nomination.create!([
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
     endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    submission_form_award_narrative: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 1,
     nomination_year: "2016" }
@@ -117,7 +117,7 @@ Nomination.create!([
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
     endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    submission_form_award_narrative: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 2,
     nomination_year: "2016" }
@@ -141,7 +141,7 @@ Nomination.create!([
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
     endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    submission_form_award_narrative: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 3,
     nomination_year: "2016" }
@@ -165,7 +165,7 @@ Nomination.create!([
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
     endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    submission_form_award_narrative: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 1,
     nomination_year: "2016" }
@@ -189,7 +189,7 @@ Nomination.create!([
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
     endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    submission_form_award_narrative: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 4,
     nomination_year: "2016" }
@@ -213,7 +213,7 @@ Nomination.create!([
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
     endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    submission_form_award_narrative: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 4,
     nomination_year: "2016" }
@@ -261,7 +261,7 @@ Nomination.create!([
     nominee_position_title: "Lead Rabbit", nominee_email: "roger.rabbit@mail.mil",
     nominee_organization: "Runners Lab", nominee_command: "Technology", nominee_team_name: nil,
     endorsement_letter: File.open(Rails.root + "db/attachments/DAU-ds.pdf"),
-    submission_form: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
+    submission_form_award_narrative: File.open(Rails.root + "db/attachments/DAU-fa.pdf"),
     nominee_organization_logo: File.open(Rails.root + "db/attachments/screenshot.png"),
     nomination_type_id: 6,
     nomination_year: "2016" }
