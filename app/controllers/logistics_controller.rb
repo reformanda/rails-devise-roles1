@@ -107,13 +107,13 @@ class LogisticsController < ApplicationController
       :nominee_command,
       :endorsement_letter,
       :submission_form,
-      :photo_a,
+      :nominee_organization_logo,
       :nomination_type_id,
       :nomination_year,
       :nominee_team_name,
       :submission_form_cache,
       :endorsement_letter_cache,
-      :photo_a_cache)
+      :nominee_organization_logo_cache)
     end
 
 end

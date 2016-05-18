@@ -5,6 +5,173 @@
 
                     <% end %>
                     <%= f.hidden_field :nomination_year, :value => @info.year %>
+
+                    <% if not @manage_nomination.nil? %>
+                    <% else %>
+                    <div class="hr-line-dashed"></div>
+                    <h2>Nomination Submission Documents</h2>
+                    <div class="hr-line-solid"></div>
+
+                    <div class="form-group col-lg-10 col-lg-offset-1 ">
+                    <% if not @nomination_type == "ProductSupport" %>
+                    <p>
+                    All nominees must have one signed endorsement letter from their commander to be included with the submission packet.
+                    </p>
+                    <p>Nomination submission forms must include a list of names and position titles of all the individuals contributing to the team. </p>
+                    <% end %>
+                    <p>The Implementing Instructions document provides detailed instructions on how to format your nomination packet. The Submission Form and Award Narrative should be uploaded as a Word document. View the Award Narrative Sample of last year's winner and the Guidelines and Tips for help with your nomination packet. </p>
+                    </div>
+
+
+                    <div class="form-group">
+                    <div class="infont col-md-5">
+                      <i class="fa fa-file-pdf-o"></i>
+                      <% if not @info.awards_announcement_url.nil? %>
+                      <%= link_to "Awards Announcement", @info.awards_announcement_url, :target => "_blank" %>
+                      <% else %>
+                      <%= link_to "Awards Announcement", "#" %>
+                      <% end %>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="infont col-md-5">
+                      <i class="fa fa-file-pdf-o"></i>
+                      <% if not @info.implementing_instructions_url.nil? %>
+                      <%= link_to "Implementing Instructions", @info.implementing_instructions_url, :target => "_blank" %>
+                      <% else %>
+                      <%= link_to "Implementing Instructions", "#" %>
+                      <% end %>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="infont col-md-5">
+                      <i class="fa fa-file-word-o"></i>
+                      <% if not @info.submission_form_url.nil? %>
+                      <%= link_to "Submission Form and Award Narrative", @info.submission_form_url, :target => "_blank" %>
+                      <% else %>
+                      <%= link_to "Submission Form and Award Narrative", "#" %>
+                      <% end %>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="infont col-md-5">
+                      <i class="fa fa-file-pdf-o"></i>
+                      <% if not @info.award_narrative_url.nil? %>
+                      <%= link_to "Award Narrative Sample", @info.award_narrative_url, :target => "_blank" %>
+                      <% else %>
+                      <%= link_to "Award Narrative Sample", "#" %>
+                      <% end %>
+                    </div>
+                    </div>
+
+                    <!--div class="form-group">
+                    <div class="infont col-md-3 col-sm-4">
+                      <i class="fa fa-file-pdf-o"></i>
+                      <% if not @info.guidelines_url.nil? %>
+                      <%= link_to "Guidelines and Tips", @info.guidelines_url, :target => "_blank" %>
+                      <% else %>
+                      <%= link_to "Guidelines and Tips", "#" %>
+                      <% end %>
+                    </div>
+                  </div-->
+                  <div class="hr-line-dashed"></div>
+                    <% end %>
+
+                    <% if  @manage_nomination.nil? %>
+                    <h2>Upload Completed Documents</h2>
+                    <% else %>
+                    <h2>Uploaded Documents</h2>
+                    <% end %>
+                    <div class="hr-line-solid"></div>
+                    <% if not @nomination_type == "ProductSupport" %>
+                    <div class="form-group">
+                        <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-md-4"%>
+                        <div class="col-sm-1">
+                          <% if not @nomination.endorsement_letter_url.nil? %>
+                          <%= link_to "View ", @nomination.endorsement_letter_url, :target => "_blank" %>
+                          <% end %>
+                        </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :endorsement_letter, class: "" %>
+                          <%= f.hidden_field :endorsement_letter_cache %>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><%= f.label :submission_form, "* Submission Form and Award Narrative", class: "col-sm-4" %>
+                        <div class="col-sm-1">
+                          <% if not @nomination.submission_form_url.nil? %>
+                          <%= link_to "View", @nomination.submission_form_url, :target => "_blank" %>
+                          <% end %>
+                        </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :submission_form, class: "" %>
+                          <%= f.hidden_field :submission_form_cache %>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4"%>
+                      <div class="col-sm-1">
+                        <% if not @nomination.nominee_organization_logo_url.nil? %>
+                        <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
+                        <% end %>
+                      </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :nominee_organization_logo, class: "" %>
+                          <%= f.hidden_field :nominee_organization_logo_cache %>
+                          <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
+                        </div>
+                    </div>
+
+                    <% end %>
+
+                    <% if  @nomination_type == "ProductSupport" %>
+
+                    <div class="form-group">
+                        <%= f.label :submission_word_document, "* Submission Word Document", class: "col-md-4"%>
+                        <div class="col-sm-1">
+                          <% if not @nomination.submission_word_document_url.nil? %>
+                          <%= link_to "View ", @nomination.submission_word_document_url, :target => "_blank" %>
+                          <% end %>
+                        </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :submission_word_document, class: "" %>
+                          <%= f.hidden_field :submission_word_document_cache %>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><%= f.label :submission_pdf, "* Submission PDF", class: "col-sm-4" %>
+                        <div class="col-sm-1">
+                          <% if not @nomination.submission_pdf_url.nil? %>
+                          <%= link_to "View", @nomination.submission_pdf_url, :target => "_blank" %>
+                          <% end %>
+                        </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :submission_pdf, class: "" %>
+                          <%= f.hidden_field :submission_pdf_cache %>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4"%>
+                      <div class="col-sm-1">
+                        <% if not @nomination.nominee_organization_logo_url.nil? %>
+                        <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
+                        <% end %>
+                      </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :nominee_organization_logo, class: "" %>
+                          <%= f.hidden_field :nominee_organization_logo_cache %>
+                          <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
+                        </div>
+                    </div>
+
+                    <% end %>
+
+
+
+
                     <h2>Unit Commander/Head of Organization</h2>
                     <div class="hr-line-solid"></div>
                     <div class="form-group">
@@ -231,129 +398,3 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                           <%= f.text_field :nominee_command, class: "form-control", required: true %>
                         </div>
                     </div>
-                    <% if not @manage_nomination.nil? %>
-                    <% else %>
-                    <div class="hr-line-dashed"></div>
-                    <h2>Nomination Submission Documents</h2>
-                    <div class="hr-line-solid"></div>
-
-                    <div class="form-group col-lg-10 col-lg-offset-1 ">
-                    <p>
-                    All nominees must have one signed endorsement letter from their commander to be included with the submission packet.
-                    </p>
-                    <p>Nomination submission forms must include a list of names and position titles of all the individuals contributing to the team. </p>
-                    <p>NOTE: The Implementing Instructions document provides detailed instructions on how to format your nomination packet. The Submission Form and Award Narrative should be uploaded as a Word document. View the Award Narrative Sample of last year's winner and the Guidelines and Tips for help with your nomination packet. </p>
-                    </div>
-
-                    <div class="form-group">
-                    <div class="infont col-md-5">
-                      <i class="fa fa-file-pdf-o"></i>
-                      <% if not @info.awards_announcement_url.nil? %>
-                      <%= link_to "Awards Announcement", @info.awards_announcement_url, :target => "_blank" %>
-                      <% else %>
-                      <%= link_to "Awards Announcement", "#" %>
-                      <% end %>
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                    <div class="infont col-md-5">
-                      <i class="fa fa-file-pdf-o"></i>
-                      <% if not @info.implementing_instructions_url.nil? %>
-                      <%= link_to "Implementing Instructions", @info.implementing_instructions_url, :target => "_blank" %>
-                      <% else %>
-                      <%= link_to "Implementing Instructions", "#" %>
-                      <% end %>
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                    <div class="infont col-md-5">
-                      <i class="fa fa-file-word-o"></i>
-                      <% if not @info.submission_form_url.nil? %>
-                      <%= link_to "Submission Form and Award Narrative", @info.submission_form_url, :target => "_blank" %>
-                      <% else %>
-                      <%= link_to "Submission Form and Award Narrative", "#" %>
-                      <% end %>
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                    <div class="infont col-md-5">
-                      <i class="fa fa-file-pdf-o"></i>
-                      <% if not @info.award_narrative_url.nil? %>
-                      <%= link_to "Award Narrative Sample", @info.award_narrative_url, :target => "_blank" %>
-                      <% else %>
-                      <%= link_to "Award Narrative Sample", "#" %>
-                      <% end %>
-                    </div>
-                    </div>
-
-                    <!--div class="form-group">
-                    <div class="infont col-md-3 col-sm-4">
-                      <i class="fa fa-file-pdf-o"></i>
-                      <% if not @info.guidelines_url.nil? %>
-                      <%= link_to "Guidelines and Tips", @info.guidelines_url, :target => "_blank" %>
-                      <% else %>
-                      <%= link_to "Guidelines and Tips", "#" %>
-                      <% end %>
-                    </div>
-                  </div-->
-                    <% end %>
-                    <div class="hr-line-dashed"></div>
-                    <h2>Upload Completed Documents</h2>
-                    <div class="hr-line-solid"></div>
-
-                    <div class="form-group">
-                        <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-md-4"%>
-                        <div class="col-sm-1">
-                          <% if not @nomination.endorsement_letter_url.nil? %>
-                          <%= link_to "View ", @nomination.endorsement_letter_url, :target => "_blank" %>
-                          <% end %>
-                        </div>
-                        <div class="col-sm-4">
-                          <%= f.file_field :endorsement_letter, class: "" %>
-                          <%= f.hidden_field :endorsement_letter_cache %>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><%= f.label :submission_form, "* Submission Form and Award Narrative", class: "col-sm-4" %>
-                        <div class="col-sm-1">
-                          <% if not @nomination.submission_form_url.nil? %>
-                          <%= link_to "View", @nomination.submission_form_url, :target => "_blank" %>
-                          <% end %>
-                        </div>
-                        <div class="col-sm-4">
-                          <%= f.file_field :submission_form, class: "" %>
-                          <%= f.hidden_field :submission_form_cache %>
-                        </div>
-                    </div>
-
-                    <% if @nomination_type == "Packard" || @nomination_type == "Should" || @nomination_type == "Development" || @nomination_type == "Achievement" || @nomination_type == "ProductSupport" || @nomination_type == "Logistic"%>
-                    <div class="form-group"><%= f.label :photo_a, "* Nominee Organizational Logo", class: "col-sm-4"%>
-                      <div class="col-sm-1">
-                        <% if not @nomination.photo_a_url.nil? %>
-                        <%= link_to "View", @nomination.photo_a_url, :target => "_blank" %>
-                        <% end %>
-                      </div>
-                        <div class="col-sm-4">
-                          <%= f.file_field :photo_a, class: "" %>
-                          <%= f.hidden_field :photo_a_cache %>
-                          <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
-                        </div>
-                    </div>
-                    <% else %>
-                    <div class="form-group"><label class="col-sm-3">Nominee Photograph 1</label>
-                        <div class="col-sm-4">
-                          <%= f.file_field :photo_a, class: "" %>
-                          <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><label class="col-sm-3">Nominee Photograph 2</label>
-                        <div class="col-sm-4">
-                          <%= f.file_field :photo_b, class: "" %>
-                          <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
-                        </div>
-                    </div>
-                    <% end %>

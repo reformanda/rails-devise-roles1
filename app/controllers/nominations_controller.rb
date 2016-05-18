@@ -27,7 +27,6 @@ class NominationsController < ApplicationController
   end
 
   def edit
-
     @info = NominationType.where(["code = ?", @nomination.nomination_type.code]).first
     @info.year = @nomination.nomination_year
     @info.id = @nomination.nomination_type_id
@@ -115,6 +114,9 @@ class NominationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
       @nomination = Nomination.find(params[:id])
+      if @nomination.nomination_type.code == "ProductSupport"
+        @nominataion = ProductSupport.find(params[:id])
+      end
     end
 
     def set_nomination_type
@@ -168,13 +170,17 @@ class NominationsController < ApplicationController
       :nominee_command,
       :endorsement_letter,
       :submission_form,
-      :photo_a,
+      :nominee_organization_logo,
       :nomination_type_id,
       :nomination_year,
       :nominee_team_name,
       :submission_form_cache,
       :endorsement_letter_cache,
-      :photo_a_cache,
+      :nominee_organization_logo_cache,
+      :submission_word_document,
+      :submission_pdf,
+      :submission_word_document_cache,
+      :submission_pdf_cache,
       :status)
     end
 

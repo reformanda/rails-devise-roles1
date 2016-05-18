@@ -2,8 +2,9 @@ require 'valid_email'
 class Nomination < ActiveRecord::Base
   mount_uploader :endorsement_letter, EndorsementLetterUploader
   mount_uploader :submission_form, SubmissionFormUploader
-  mount_uploader :photo_a, PhotoAUploader
-  mount_uploader :photo_b, PhotoBUploader
+  mount_uploader :nominee_organization_logo, NomineeOrganizationLogoUploader
+  mount_uploader :submission_word_document, SubmissionWordDocumentUploader
+  mount_uploader :submission_pdf, SubmissionPdfUploader
 
   belongs_to :nomination_type
   belongs_to :award_option
@@ -16,13 +17,9 @@ class Nomination < ActiveRecord::Base
   validates :nominee_email, :email => true, :presence => true
   validates :nominee_organization, :nominee_command,
               :presence => true
-  validates :submission_form, :presence => true
-  validates :submission_form, :file_size => { less_than: 10.megabytes }
 
-  validates :endorsement_letter, :presence => true
-  validates :endorsement_letter, :file_size => { less_than: 10.megabytes }
 
-  alias_attribute :nominee_organization_logo, :photo_a
+  #alias_attribute :nominee_organization_logo, :photo_a
   validates :nominee_organization_logo, :presence => true
   validates :nominee_organization_logo, :file_size => { less_than: 10.megabytes },file_content_type: { allow: /^image\/.*/ }
 
