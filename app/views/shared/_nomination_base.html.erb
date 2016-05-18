@@ -14,7 +14,7 @@
                       <h2>Nomination Submission Documents</h2>
                       <div class="hr-line-solid"></div>
                     <div class="form-group col-lg-10 col-lg-offset-1 ">
-                    <% if not @nomination_type == "ProductSupport" %>
+                    <% if not @nomination_type == "Logistic" %>
                     <p>
                     All nominees must have one signed endorsement letter from their commander to be included with the submission packet.
                     </p>
@@ -342,7 +342,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <h2>Uploaded Documents</h2>
                     <% end %>
                     <div class="hr-line-solid"></div>
-                    
+
                     <% if not @nomination_type == "Logistic" %>
                     <div class="form-group">
                         <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-md-4"%>
