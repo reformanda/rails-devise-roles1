@@ -26,30 +26,13 @@
 <div class="row page-heading">
 </div>
 
-<% if @nomination.errors.any? %>
+
 
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
-        <div class="ibox float-e-margins">
-
-            <div class="ibox-content">
-
-  <div id="error_explanation">
-    <h2><%= pluralize(@nomination.errors.count, "error") %> prohibited this nomination from being saved:</h2>
-
-    <ul>
-    <% @nomination.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-
+      <p id="notice"><%= notice %></p>
+    </div>
 </div>
-</div>
-</div>
-</div>
-
-<% end %>
 
 
 
@@ -70,14 +53,14 @@
                 </div>
             </div>
             <div class="ibox-content">
-              <div class="form-group">
+              <div class="form-group row">
                 <label class="col-sm-2 control-label">Created Date</label>
                 <div class="col-sm-2">
                   <span class="form-control"><%= @nomination.created_at.strftime("%m/%d/%Y") %>
                   </span>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group row">
                   <%= f.label :nomination_type_id, "Nomination", class: "col-sm-2 control-label" %>
                   <div class="col-sm-3">
                     <%= f.select :nomination_type_id, options_for_select(@nomination_types, @nomination.nomination_type_id), {}, {class: "form-control m-b", required: false } %>
@@ -86,7 +69,8 @@
 
 
               </div>
-              <div class="form-group"><%= f.label :award_option_id, "Award", class: "col-sm-2 control-label" %>
+              <div class="form-group row">
+                  <%= f.label :award_option_id, "Award", class: "col-sm-2 control-label" %>
 
                   <div class="col-sm-6">
 
@@ -95,7 +79,7 @@
 
                   </div>
               </div>
-              <div class="form-group">
+              <div class="form-group row">
                   <%= f.label :status, "Status", class: "col-sm-2 control-label" %>
                   <div class="col-sm-3">
                     <%= f.select :status, options_for_select([:entered, :approved, :scored, :deleted], @nomination.status), {}, {class: "form-control m-b", required: false, onchange: "fillStatusDesc();"} %>
@@ -105,6 +89,27 @@
                   </div>
               </div>
 
+              <div class="form-group row">
+                  <%= f.label :build_submission_packet, "Build Submission Packet", class: "col-sm-2 control-label" %>
+                  <div class="col-sm-1">
+                    <%= select_tag :build_submission_packet, options_for_select([:no, :yes]), class: "form-control" %>
+                  </div>
+                  <div class="col-sm-4">
+                    <% if not @nomination.submission_packet.nil? %>
+                    <%= link_to "View Submission Packet", @nomination.submission_packet_url, :target => "_blank" %>
+                    <% end %>
+                  </div>
+              </div>
+
+              <div class="hr-line-dashed"></div>
+              <div class="form-group row">
+                  <div class="col-sm-12">
+                      <button class="btn btn-primary" type="submit">Update Nomination</button>
+                      <%= link_to "Cancel", nominations_path, :id => "open-contacts-dialog-btn",
+      :class => "btn btn-white", :method => :get %>
+
+                  </div>
+              </div>
 
             </div>
         </div>

@@ -3,6 +3,8 @@ class NominationsController < ApplicationController
   before_action :set_nomination_type
   before_action :manager_or_admin_only, :except => :list
 
+  include DocumentService
+
   # GET /boats
   # GET /boats.json
   def index
@@ -68,7 +70,16 @@ class NominationsController < ApplicationController
 
     respond_to do |format|
       if @nomination.update(nomination_params)
-        format.html { redirect_to nominations_url, notice: 'Nomination was successfully updated.' }
+
+        # if build-submission-packet is checked, then create packet
+        if params[:build_submission_packet] == "yes"
+
+          #puts @nomination.endorsement_letter.current_path
+          CreatePDF(@nomination.id, @nomination.submission_form_award_narrative.current_path, @nomination.endorsement_letter.current_path)
+
+        end
+
+        format.html { redirect_to edit_nomination_url(@nomination), notice: 'Nomination was successfully updated.' }
         format.json { render :index, status: :ok, location: @nomination }
       else
         @info = NominationType.where(["code = ?", @nomination.nomination_type.code]).first

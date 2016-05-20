@@ -5,6 +5,7 @@ class Nomination < ActiveRecord::Base
   mount_uploader :nominee_organization_logo, NomineeOrganizationLogoUploader
   mount_uploader :submission_word_document, SubmissionWordDocumentUploader
   mount_uploader :submission_pdf, SubmissionPdfUploader
+  mount_uploader :submission_packet, SubmissionPacketUploader
 
   belongs_to :nomination_type
   belongs_to :award_option

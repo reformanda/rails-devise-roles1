@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+
+gem 'faraday'
+
+
+
 gem 'file_validators'
 gem 'kaminari'
 gem 'valid_email'
