@@ -37,6 +37,8 @@ class NominationsController < ApplicationController
     @award_options = AwardOption.all.pluck(:name,:id)
     @callback = "#"
     @manage_nomination = true
+    puts @nomination.submission_packet.blank?
+    puts @nomination.submission_packet
   end
 
   def show
