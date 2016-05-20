@@ -9,6 +9,7 @@
 # Corrections? Improvements? Create a GitHub issue:
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
+/documents
 /public/uploads/
 /public/assets/
 # bundler state
