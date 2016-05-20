@@ -27,7 +27,7 @@
                     <div class="form-group">
                     <div class="infont col-md-5">
                       <i class="fa fa-file-pdf-o"></i>
-                      <% if not @info.awards_announcement_url.nil? %>
+                      <% if not @info.awards_announcement_url.blank? %>
                       <%= link_to "Awards Announcement", @info.awards_announcement_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Awards Announcement", "#" %>
@@ -38,7 +38,7 @@
                     <div class="form-group">
                     <div class="infont col-md-5">
                       <i class="fa fa-file-pdf-o"></i>
-                      <% if not @info.implementing_instructions_url.nil? %>
+                      <% if not @info.implementing_instructions_url.blank? %>
                       <%= link_to "Implementing Instructions", @info.implementing_instructions_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Implementing Instructions", "#" %>
@@ -49,7 +49,7 @@
                     <div class="form-group">
                     <div class="infont col-md-5">
                       <i class="fa fa-file-word-o"></i>
-                      <% if not @info.submission_form_url.nil? %>
+                      <% if not @info.submission_form_url.blank? %>
                       <%= link_to "Submission Form and Award Narrative", @info.submission_form_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Submission Form and Award Narrative", "#" %>
@@ -60,7 +60,7 @@
                     <div class="form-group">
                     <div class="infont col-md-5">
                       <i class="fa fa-file-pdf-o"></i>
-                      <% if not @info.award_narrative_url.nil? %>
+                      <% if not @info.award_narrative_url.blank? %>
                       <%= link_to "Award Narrative Sample", @info.award_narrative_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Award Narrative Sample", "#" %>
@@ -71,7 +71,7 @@
                     <!--div class="form-group">
                     <div class="infont col-md-3 col-sm-4">
                       <i class="fa fa-file-pdf-o"></i>
-                      <% if not @info.guidelines_url.nil? %>
+                      <% if not @info.guidelines_url.blank? %>
                       <%= link_to "Guidelines and Tips", @info.guidelines_url, :target => "_blank" %>
                       <% else %>
                       <%= link_to "Guidelines and Tips", "#" %>
@@ -352,7 +352,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                         <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-sm-4", style: "text-align: right" %>
                         <div class="col-sm-1">
-                          <% if not @nomination.endorsement_letter_url.nil? %>
+                          <% if not @nomination.endorsement_letter_url.blank? %>
                           <%= link_to "View ", @nomination.endorsement_letter_url, :target => "_blank" %>
                           <% end %>
                         </div>
@@ -364,7 +364,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><%= f.label :submission_form_award_narrative, "* Submission Form and Award Narrative", class: "col-sm-4", style: "text-align: right" %>
                         <div class="col-sm-1">
-                          <% if not @nomination.submission_form_award_narrative.nil? %>
+                          <% if not @nomination.submission_form_award_narrative_url.blank? %>
                           <%= link_to "View", @nomination.submission_form_award_narrative_url, :target => "_blank" %>
                           <% end %>
                         </div>
@@ -376,7 +376,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4", style: "text-align: right"%>
                       <div class="col-sm-1">
-                        <% if not @nomination.nominee_organization_logo_url.nil? %>
+                        <% if not @nomination.nominee_organization_logo_url.blank? %>
                         <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
                         <% end %>
                       </div>
@@ -394,7 +394,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <div class="form-group">
                         <%= f.label :submission_word_document, "* Submission Word Document", class: "col-sm-4", style: "text-align: right" %>
                         <div class="col-sm-1">
-                          <% if not @nomination.submission_word_document_url.nil? %>
+                          <% if not @nomination.submission_word_document_url.blank? %>
                           <%= link_to "View ", @nomination.submission_word_document_url, :target => "_blank" %>
                           <% end %>
                         </div>
@@ -406,7 +406,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><%= f.label :submission_pdf, "* Submission PDF", class: "col-sm-4", style: "text-align: right" %>
                         <div class="col-sm-1">
-                          <% if not @nomination.submission_pdf_url.nil? %>
+                          <% if not @nomination.submission_pdf_url.blank? %>
                           <%= link_to "View", @nomination.submission_pdf_url, :target => "_blank" %>
                           <% end %>
                         </div>
@@ -418,7 +418,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
 
                     <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4", style: "text-align: right"%>
                       <div class="col-sm-1">
-                        <% if not @nomination.nominee_organization_logo_url.nil? %>
+                        <% if not @nomination.nominee_organization_logo_url.blank? %>
                         <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
                         <% end %>
                       </div>

@@ -48,7 +48,7 @@
                       <%= f.label :awards_announcement, class: "col-sm-2 control-label" %>
                       <div class="col-sm-10">
                           <%= f.file_field :awards_announcement, style: "padding-top: 7px" %>
-                          <% if not @nomination_type.awards_announcement_url.nil? %>
+                          <% if not @nomination_type.awards_announcement_url.blank? %>
                           <%= link_to "View #{@nomination_type.awards_announcement_identifier} ", @nomination_type.awards_announcement_url %>
                           <% end %>
                       </div>
@@ -57,7 +57,7 @@
                       <%= f.label :implementing_instructions, class: "col-sm-2 control-label" %>
                       <div class="col-sm-10">
                           <%= f.file_field :implementing_instructions, style: "padding-top: 7px" %>
-                          <% if not @nomination_type.implementing_instructions_url.nil? %>
+                          <% if not @nomination_type.implementing_instructions_url.blank? %>
                           <%= link_to "View #{@nomination_type.implementing_instructions_identifier} ", @nomination_type.implementing_instructions_url %>
                           <% end %>
                       </div>
@@ -66,7 +66,7 @@
                       <%= f.label :submission_form, class: "col-sm-2 control-label" %>
                       <div class="col-sm-10">
                           <%= f.file_field :submission_form, style: "padding-top: 7px" %>
-                          <% if not @nomination_type.submission_form_url.nil? %>
+                          <% if not @nomination_type.submission_form_url.blank? %>
                           <%= link_to "View #{@nomination_type.submission_form_identifier} ", @nomination_type.submission_form_url %>
                           <% end %>
                       </div>
@@ -75,7 +75,7 @@
                       <%= f.label :award_narrative, class: "col-sm-2 control-label" %>
                       <div class="col-sm-10">
                           <%= f.file_field :award_narrative, style: "padding-top: 7px" %>
-                          <% if not @nomination_type.award_narrative_url.nil? %>
+                          <% if not @nomination_type.award_narrative_url.blank? %>
                           <%= link_to "View #{@nomination_type.award_narrative_identifier} ", @nomination_type.award_narrative_url %>
                           <% end %>
                       </div>
@@ -84,7 +84,7 @@
                       <%= f.label :guidelines, class: "col-sm-2 control-label" %>
                       <div class="col-sm-10">
                           <%= f.file_field :guidelines, style: "padding-top: 7px" %>
-                          <% if not @nomination_type.guidelines_url.nil? %>
+                          <% if not @nomination_type.guidelines_url.blank? %>
                           <%= link_to "View #{@nomination_type.guidelines_identifier} ", @nomination_type.guidelines_url %>
                           <% end %>
                       </div>
