@@ -67,16 +67,7 @@
 
                                 <div class="hr-line-dashed"></div>
 
-                                <div class="form-group">
-                                    <%= f.label :nomination_types_list, "Assigned Nominations", class: "col-sm-2 control-label" %>
-                                    <div class="col-sm-4">
-                                      <%= f.select :nomination_types_list, options_for_select(@nomination_types,@user.nomination_types_list), {}, {:size => 10, :multiple => true, :class => "form-control" } %>
-                                    </div>
-                                    <div class="col-sm-4">
-                                      <span class="help-block m-b-none">For judges, choose the Nomination Types that can be scored.<br/>
-                                      </span>
-                                    </div>
-                                </div>
+                  
 
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">

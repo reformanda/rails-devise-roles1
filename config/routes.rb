@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
+  if ENV['documents'].present?
+    match "#{ENV['documents']}/:model/:folder/:id/:basename.:extension" => "redocuments#download", via: :get
+  else
+    match "documents/:model/:folder/:id/:basename.:extension" => "redocuments#download", via: :get
+  end
+  #, :conditions => { :method => :get }
 
-
+  resources :boards
   resources :award_options
   resources :nomination_types
 
@@ -21,7 +27,7 @@ Rails.application.routes.draw do
 
   get 'nominations/update_awards', as: 'update_awards'
   get 'nominations/list', to: "nominations#list"
-  
+
 
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
