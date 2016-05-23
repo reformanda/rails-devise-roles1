@@ -1,0 +1,36 @@
+<tr>
+  <td>
+    <%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name} #{nom.nominee_suffix}" %>
+  </td>
+  <td>
+    <div class="row">
+    <div class="form-group">
+      <div class="col-sm-1">
+        <%= label_tag "score_num[]", "Score", class: " control-label" %><br/>
+        <%= select_tag "score_num[]", options_for_select(["1","2","3","4"]), class: "form-control" %>
+      </div>
+
+      <div class="col-sm-1">
+        <%= label_tag "score_txt[]", "+/-", class: "control-label"%>
+        <%= select_tag "score_txt[]", options_for_select(["","+","-"]), class: "form-control" %>
+      </div>
+    </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+    <div class="form-group">
+      <%= label_tag "score_comments[]", "Comments" %>
+      <br/>
+      <%= text_area_tag "score_comments[]", nil, cols: 80, rows: 4 %>
+    </div>
+
+
+  </td>
+  <td>
+    <% if not nom.submission_pdf_url.blank? %>
+    <%= link_to "View", nom.submission_pdf_url, :target => "_blank" %>
+    <% else %>
+    Not Available
+    <% end %>
+  </td>
+</tr>

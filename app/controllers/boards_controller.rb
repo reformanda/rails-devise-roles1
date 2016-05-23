@@ -9,6 +9,12 @@ class BoardsController < ApplicationController
     puts @usernames
   end
 
+  def list
+    @boards = Board.all
+
+  end
+
+
   # GET /boards/1
   # GET /boards/1.json
   def show

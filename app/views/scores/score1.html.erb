@@ -1,0 +1,99 @@
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <h2>USAASC Virtual Boards <%= ENV["APP_VERSION"] %></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
+            </li>
+            <li>
+                <a href="<%= url_for :controller => 'boards', :action => 'list' %>">Virtual Board Scoring</a>
+            </li>
+            <li class="active">
+                <strong><%= @board.description %></strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+      <div class="title-action">
+      <% if current_user.nil? %>
+        <%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i> Signin<% end %>
+      <% else %>
+        <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+      <% end %>
+      </div>
+    </div>
+</div>
+
+<div class="row page-heading">
+</div>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <p id="notice"><%= notice %></p>
+    </div>
+</div>
+
+
+<%= form_tag "/scores" do  %>
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+              <h4>Virtual Board Scoring - <%= @board.description %></h4>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+            <h4>Scoring Method</h4>
+
+            <p>Score each nominee by using a scale of 1 to 4, with 4 equaling the highest score. A plus(+) or minus (-) may be given to each score. The +/- carries a values of 0.33. (For example, a "4" with a + will equal 4.33. A "4" with a "-" will equal 3.67).</p>
+            <p>This board will remain open until Fri, Jan 22, 2016.  You may login to check or edit your scoring until the board clos
+            </p>
+            <div class="hr-line-solid"></div>
+            </div>
+
+            <% @award_options.find_each do |aw|  %>
+            <div class="row">
+              <h4> <%= aw.name %> </h4>
+              <div class="hr-line-dashed"></div>
+              <% @noms = Nomination.where("nomination_type_id = ? and award_option_id = ?", aw.nomination_type_id, aw.id) %>
+              <table class="table table-striped table-bordered table-hover dataTables-example">
+                <thead>
+                  <tr>
+                    <th>Nominee</th>
+                    <th>Score/Comments</th>
+                    <th>Submission Packet</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% cnt = 0%>
+                  <% @noms.find_each do |nom| %>
+                  <% cnt += 1%>
+
+                    <%= render "score_nominations", :nom => nom, :cnt => cnt %>
+
+
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+
+            <% end %>
+
+            <div class="row">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary" type="submit">Save Score</button>
+                    <%= link_to "Cancel", :controller => :boards, :action => :list, :id => "open-contacts-dialog-btn",
+    :class => "btn btn-white", :method => :get %>
+
+                </div>
+            </div>
+          </div>
+
+
+          </div>
+        </div>
+    </div>
+</div>
+<% end %>
