@@ -25,15 +25,15 @@
   <td style="width: 50%">
       <div class="col-sm-2">
       <div class="form-group">
-        <%= label_tag "score_num[]", "Score", class: " control-label" %><br/>
-        <%= select_tag "score_num[]", options_for_select(["1","2","3","4"]), class: "form-control col-sm-1" %>
+        <%= label_tag "score_num[#{nom.id}]", "Score", class: " control-label" %><br/>
+        <%= select_tag "score_num[#{nom.id}]", options_for_select(["1","2","3","4"], score.score_num ), class: "form-control col-sm-1" %>
       </div>
       </div>
 
       <div class="col-sm-2">
       <div class="form-group">
-        <%= label_tag "score_txt[]", "+/-", class: "control-label"%>
-        <%= select_tag "score_txt[]", options_for_select(["","+","-"]), class: "form-control col-sm-1" %>
+        <%= label_tag "score_txt[#{nom.id}]", "+/-", class: "control-label"%>
+        <%= select_tag "score_txt[#{nom.id}]", options_for_select(["","+","-"], score.score_txt), class: "form-control col-sm-1" %>
       </div>
       </div>
 
@@ -45,9 +45,9 @@
 
       <div class="col-sm-4">
         <div class="form-group">
-        <%= label_tag "score_comments[]", "Comments" %>
+        <%= label_tag "score_comments[#{nom.id}]", "Comments" %>
         <br/>
-        <%= text_area_tag "score_comments[]", nil, cols: 80, rows: 4 %>
+        <%= text_area_tag "score_comments[#{nom.id}]", score.score_comments, cols: 80, rows: 4 %>
         </div>
       </div>
 

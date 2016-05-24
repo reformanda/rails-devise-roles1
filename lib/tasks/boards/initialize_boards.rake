@@ -33,7 +33,7 @@ score_type: 1
       description: "2016 Defense Acquisition Workforce Individual Achievement Award",
       start_date: nil,
       end_date: nil,
-      nomination_type_id: 1,
+      nomination_type_id: 4,
       score_type: 1
             ])
 
@@ -41,16 +41,16 @@ score_type: 1
         description: "2016 Secretary of Defense Performance-Based Logistics",
         start_date: nil,
         end_date: nil,
-        nomination_type_id: 2,
-        score_type: 1
+        nomination_type_id: 5,
+        score_type: 2
               ])
 
               Board.create!([
           description: "2016 Secretary of Defense Product Support Manager",
           start_date: nil,
           end_date: nil,
-          nomination_type_id: 3,
-          score_type: 1
+          nomination_type_id: 6,
+          score_type: 3
                 ])
 
   end
