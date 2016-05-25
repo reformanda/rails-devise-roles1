@@ -19,7 +19,10 @@ class EndorsementLetterUploader < CarrierWave::Uploader::Base
   #end
 
   def url
+    begin
     "/documents/nomination/#{mounted_as}/#{model.id}/#{File.basename(path)}"
+    rescue
+    end
   end
 
   def filename

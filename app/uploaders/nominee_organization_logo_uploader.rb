@@ -19,7 +19,10 @@ class NomineeOrganizationLogoUploader < CarrierWave::Uploader::Base
   #end
 
   def url
+    begin
     "/documents/nomination/#{mounted_as}/#{model.id}/#{File.basename(path)}"
+    rescue
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
