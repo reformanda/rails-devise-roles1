@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   #, :conditions => { :method => :get }
-  match "#{ENV['DOCUMENT_PATH']}/:model/:folder/:id/:basename.:extension" => "redocuments#download", via: :get
+  match "/documents/:model/:folder/:id/:basename.:extension" => "redocuments#download", via: :get
 
   resources :award_options
   resources :nomination_types

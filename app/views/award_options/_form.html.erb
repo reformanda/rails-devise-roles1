@@ -4,7 +4,7 @@
                 <%= form_for @award_option, html: {class: "form-horizontal"} do |f| %>
                   <% if @award_option.errors.any? %>
                     <div id="error_explanation">
-                      <h2><%= pluralize(@award_option.errors.count, "error") %> prohibited this nomination from being saved:</h2>
+                      <h2><%= pluralize(@award_option.errors.count, "error") %> prohibited this award option from being saved:</h2>
                       <ul>
                       <% @award_option.errors.full_messages.each do |message| %>
                         <li><%= message %></li>

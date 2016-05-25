@@ -11,12 +11,12 @@ class AwardNarrativeUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "/#{ENV['DOCUMENT_PATH']}/documents/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "/#{ENV['DOCUMENT_PATH']}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def cache_dir
-    "documents/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  #def cache_dir
+  #  "documents/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
 
   def url
     "/documents/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}/#{File.basename(path)}"

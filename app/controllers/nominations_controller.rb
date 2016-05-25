@@ -37,8 +37,8 @@ class NominationsController < ApplicationController
     @award_options = AwardOption.all.pluck(:name,:id)
     @callback = "#"
     @manage_nomination = true
-    puts @nomination.submission_packet.blank?
-    puts @nomination.submission_packet
+    #puts @nomination.submission_packet.blank?
+    #puts @nomination.submission_packet
   end
 
   def show
@@ -69,21 +69,27 @@ class NominationsController < ApplicationController
   # PATCH/PUT /boats/1
   # PATCH/PUT /boats/1.json
   def update
-
+    #puts "START***"
     respond_to do |format|
       if @nomination.update(nomination_params)
-
+        puts params[:build_submission_packet]
+        puts params[:build_submission_packet] == "yes"
         # if build-submission-packet is checked, then create packet
         if params[:build_submission_packet] == "yes"
 
           #puts @nomination.endorsement_letter.current_path
-          CreatePDF(@nomination.id, @nomination.submission_form_award_narrative.current_path, @nomination.endorsement_letter.current_path)
+          begin
+            CreatePDF(@nomination.id, @nomination.submission_form_award_narrative.current_path, @nomination.endorsement_letter.current_path)
+          rescue => e
+            puts e.inspect
+          end
 
         end
 
         format.html { redirect_to edit_nomination_url(@nomination), notice: 'Nomination was successfully updated.' }
         format.json { render :index, status: :ok, location: @nomination }
       else
+
         @info = NominationType.where(["code = ?", @nomination.nomination_type.code]).first
         @info.year = @nomination.nomination_year
         @info.id = @nomination.nomination_type_id

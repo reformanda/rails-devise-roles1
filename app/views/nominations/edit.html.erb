@@ -31,6 +31,16 @@
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
       <p id="notice"><%= notice %></p>
+      <% if @nomination.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@nomination.errors.count, "error") %> prohibited this nomination from being saved:</h2>
+          <ul>
+          <% @nomination.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
     </div>
 </div>
 
