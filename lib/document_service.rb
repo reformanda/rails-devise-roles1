@@ -28,7 +28,7 @@ module DocumentService
 
       # uploading a file:
       payload = {}
-      contents = file.read
+      contents = file1.read
   #    file.close
       enc   = Base64.encode64(contents)
       payload[:submission] = enc
@@ -117,6 +117,8 @@ module DocumentService
       end
 
       @nomination.save!
+    else
+      puts out.inspect
     end
     #puts out.body
     file1.close
