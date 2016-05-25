@@ -5,7 +5,7 @@ class ScoresController < ApplicationController
     @board = Board.find(params[:id])
     @nomination_type = NominationType.find(@board.nomination_type)
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
-    @nominations = Nomination.where("nomination_type_id = ? and status in (3,2)", @nomination_type.id)
+    @nominations = Nomination.where("nomination_type_id = ? and status in (:approved,:scored)", @nomination_type.id)
     @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
     puts @board.score_type
     case @board.score_type

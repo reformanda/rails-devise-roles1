@@ -54,8 +54,8 @@
   </td>
 
   <td>
-    <% if not nom.submission_pdf_url.blank? %>
-    <%= link_to "View", nom.submission_pdf_url, :target => "_blank" %>
+    <% if not nom.submission_packet_url.blank? %>
+    <%= link_to "View", nom.submission_packet_url, :target => "_blank" %>
     <% else %>
     Not Available
     <% end %>
