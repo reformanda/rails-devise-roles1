@@ -105,7 +105,7 @@
                     <%= select_tag :build_submission_packet, options_for_select([:no, :yes]), class: "form-control" %>
                   </div>
                   <div class="col-sm-4">
-                    <% if not @nomination.submission_packet.blank? %>
+                    <% if not @nomination.submission_packet_url.blank? %>
                     <%= link_to "View Submission Packet", @nomination.submission_packet_url, :target => "_blank",style: "valign: middle" %>
                     <% end %>
                   </div>
