@@ -37,6 +37,7 @@ class NominationsController < ApplicationController
     @award_options = AwardOption.all.pluck(:name,:id)
     @callback = "#"
     @manage_nomination = true
+    @remove_submission_packet = nil
     #puts @nomination.submission_packet.blank?
     #puts @nomination.submission_packet
   end
@@ -72,16 +73,31 @@ class NominationsController < ApplicationController
     #puts "START***"
     respond_to do |format|
       if @nomination.update(nomination_params)
-        puts params[:build_submission_packet]
-        puts params[:build_submission_packet] == "yes"
+
         # if build-submission-packet is checked, then create packet
+        if params[:remove_submission_packet] == "yes"
+
+          @nomination.remove_submission_packet!
+          @nomination.save
+
+        end
+
         if params[:build_submission_packet] == "yes"
 
-          #puts @nomination.endorsement_letter.current_path
+          #TODO
+          # determine which documents to merge based on nomination type
+          # for packard, should, achievement, development:  submission_form_award_narrative and endorsement_letter
+          # for logistic: ???
+          # for product_support: ???
+
+
+
           begin
-#            CreatePDF(@nomination.id, @nomination.submission_form_award_narrative.current_path, @nomination.endorsement_letter.current_path)
-            submission_packet_contents_base64 = CreatePDF(@nomination.submission_form_award_narrative.current_path,  @nomination.endorsement_letter.current_path)
-            #puts out.inspect
+            case @nomination.nomination_type.code
+            when true
+            else
+              submission_packet_contents_base64 = CreatePDF(@nomination.submission_form_award_narrative.current_path,  @nomination.endorsement_letter.current_path)
+            end
             binpdf = Base64.decode64(submission_packet_contents_base64)
             file3 = Tempfile.new(['foo','.pdf'])
             begin
@@ -112,6 +128,7 @@ class NominationsController < ApplicationController
         @award_options = AwardOption.all.pluck(:name,:id)
         @callback = "#"
         @manage_nomination = true
+        @remove_submission_packet = nil
         format.html { render :edit }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
@@ -214,7 +231,10 @@ class NominationsController < ApplicationController
       :submission_pdf,
       :submission_word_document_cache,
       :submission_pdf_cache,
-      :status)
+      :status,
+      :remove_submission_packet,
+      :submission_packet,
+      :submission_packet_cache)
     end
 
 
