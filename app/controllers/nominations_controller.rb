@@ -79,7 +79,21 @@ class NominationsController < ApplicationController
 
           #puts @nomination.endorsement_letter.current_path
           begin
-            CreatePDF(@nomination.id, @nomination.submission_form_award_narrative.current_path, @nomination.endorsement_letter.current_path)
+#            CreatePDF(@nomination.id, @nomination.submission_form_award_narrative.current_path, @nomination.endorsement_letter.current_path)
+            submission_packet_contents_base64 = CreatePDF(@nomination.submission_form_award_narrative.current_path,  @nomination.endorsement_letter.current_path)
+            #puts out.inspect
+            binpdf = Base64.decode64(submission_packet_contents_base64)
+            file3 = Tempfile.new(['foo','.pdf'])
+            begin
+              File.open(file3, "wb") do |f|
+                f.write(binpdf)
+              end
+            ensure
+               file3.close
+               @nomination.submission_packet = file3
+               file3.unlink   # deletes the temp file
+            end
+            @nomination.save!
           rescue => e
             puts e.inspect
           end

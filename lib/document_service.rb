@@ -1,9 +1,8 @@
 module DocumentService
 
-  def CreatePDF(nomination_id, submission_doc, endorsement_letter)
+  def CreatePDF(submission_doc, endorsement_letter)
     require 'base64'
     require 'faraday'
-    #require 'ruby-filemagic'
     require 'mime/types'
 
 
@@ -17,112 +16,51 @@ module DocumentService
       faraday.adapter  :net_http  # make requests with Net::HTTP
     end
 
-    # auto detect file's file-type
-    #fm = FileMagic.new(FileMagic::MAGIC_MIME)
-
+    ########## read the submission_doc and convert it if not already PDF ###########
     # check if submission_doc is already a PDF
-    #mime_type = fm.file(submission_doc)
-    file1 = File.open(submission_doc, "rb")
+    fileIn = File.open(submission_doc, "rb")
+    submission_contents = fileIn.read
 
-    if not file1.path.downcase.include? "pdf"
-
-      # uploading a file:
-      payload = {}
-      contents = file1.read
-  #    file.close
-      enc   = Base64.encode64(contents)
-      payload[:submission] = enc
-
-      # "Multipart" middleware detects files and encodes with "multipart/form-data":
-      out =conn.post '/rest/restappcfc2/convertDocxService', payload
-
-      file1 = Tempfile.new('foo')
-      begin
-        File.open(file1, "wb") do |f|
-          f.write(out.body)
-        end
-      ensure
-         #file1.close
-         #file.unlink   # deletes the temp file
-      end
-
-    else
-
-      file1 = File.open(submission_doc, "rb")
-
-    end
-
-    # check if endorsement_letter is already a PDF
-    file2 = File.open(endorsement_letter, "rb")
-    #mime_type = fm.file(endorsement_letter)
-
-    if not file2.path.downcase.include? "pdf"
+    if not fileIn.path.downcase.include? "pdf"
 
       # uploading a file:
       payload = {}
-
-      contents = file2.read
-  #    file2.close
-      enc   = Base64.encode64(contents)
+      enc   = Base64.encode64(submission_contents)
       payload[:submission] = enc
+      out = conn.post '/rest/restappcfc2/convertDocxService', payload
+      submission_contents_base64_encoded = out.body
 
-      # "Multipart" middleware detects files and encodes with "multipart/form-data":
-      out =conn.post '/rest/restappcfc2/convertDocxService', payload
+    end
+    fileIn.close
 
-      file2 = Tempfile.new('foo')
-      begin
-        File.open(file2, "wb") do |f|
-          f.write(out.body)
-        end
-      ensure
-         #file2.close
-         #file.unlink   # deletes the temp file
-      end
+    ########## read the endorsement_letter and combine with submission_doc ###########
+    fileIn = File.open(endorsement_letter, "rb")
+    endorsement_contents = fileIn.read
+
+    if not fileIn.path.downcase.include? "pdf"
+
+      ### return error as we expect PDF ###
+      raise "endorsement letter wrong format"
 
     else
-      file2 = File.open(endorsement_letter, "rb")
-    end
 
-    # let's combine the PDFs
-    #pdf = CombinePDF.new
-    #pdf << CombinePDF.load(file1.path) # one way to combine, very fast.
-    #pdf << CombinePDF.load(file2.path)
-    #pdf.save "combined.pdf"
-    puts file1.path
-    puts file2.path
+      # uploading a file:
+      payload = {}
+      payload[:submission] = submission_contents_base64_encoded
+      enc  = Base64.encode64(endorsement_contents)
+      payload[:endorsement] = enc
+      out = conn.post '/rest/restappcfc2/combinePDF', payload
 
-    payload = {}
-    contents = file1.read
-    enc   = Base64.encode64(contents)
-    payload[:submission] = enc
-
-    contents = file2.read
-    enc   = Base64.encode64(contents)
-    payload[:endorsement] = enc
-
-    # output file
-    out =conn.post '/rest/restappcfc2/combinePDF', payload
-
-    if out.success?
-      @nomination = Nomination.find(nomination_id)
-      file3 = Tempfile.new(['foo','.pdf'])
-      begin
-        File.open(file3, "wb") do |f|
-          f.write(out.body)
-        end
-      ensure
-         file3.close
-         @nomination.submission_packet = file3
-         file3.unlink   # deletes the temp file
+      if not out.success?
+        raise response.error!
       end
 
-      @nomination.save!
-    else
-      puts out.inspect
+      submission_packet_contents_base64_encoded = out.body
+
     end
-    #puts out.body
-    file1.close
-    file2.close
+    fileIn.close
+    return submission_packet_contents_base64_encoded
+
   end
 
 end

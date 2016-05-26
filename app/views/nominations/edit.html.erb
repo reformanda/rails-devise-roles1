@@ -91,7 +91,7 @@
               </div>
               <div class="form-group row">
                   <%= f.label :status, "Status", class: "col-sm-2 control-label" %>
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                     <%= f.select :status, options_for_select([:entered, :approved, :scored, :deleted], @nomination.status), {}, {class: "form-control m-b", required: false, onchange: "fillStatusDesc();"} %>
                   </div>
                   <div class="col-sm-6">
@@ -104,10 +104,29 @@
                   <div class="col-sm-1">
                     <%= select_tag :build_submission_packet, options_for_select([:no, :yes]), class: "form-control" %>
                   </div>
+                  <div class="col-sm-6">
+                    <span class="help-block m-b-none">Automatically combine the Endorsement Letter and Submission Document into a single PDF.  If there is a problem,
+                    you have the option to upload the Submission Packet manually.</span>
+                  </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :submission_packet, "Upload Submission Packet", class: "col-sm-2", style: "text-align: right"%>
+                <% if not @nomination.submission_packet_url.blank? %>
+                <div class="col-sm-3">
+
+                  <%= link_to "View Submission Packet", @nomination.submission_packet_url, :target => "_blank",style: "valign: middle" %>
+                  <br/>
+                  <%= f.check_box :remove_submission_packet %>
+                  &nbsp;
+                  <%= label_tag :remove_submission_packet %>
+
+                </div>
+                <% end %>
                   <div class="col-sm-4">
-                    <% if not @nomination.submission_packet_url.blank? %>
-                    <%= link_to "View Submission Packet", @nomination.submission_packet_url, :target => "_blank",style: "valign: middle" %>
-                    <% end %>
+                    <%= f.file_field :submission_packet, class: "" %>
+                    <%= f.hidden_field :submission_packet_cache %>
+
                   </div>
               </div>
 
