@@ -2,8 +2,8 @@ namespace :score_types do
   desc 'Initializes score types'
   task initialize_score_types: :environment do
 
-    ScoreType.delete_all
-    ScoreType.reset_pk_sequence
+    ScoreType.destroy_all
+    
 
  #<Board id: 1, description: "First Board", start_date: "2016-05-21 23:33:00", end_date: "2016-06-21 23:33:00", nomination_type_id: 1, created_at: "2016-05-21 23:33:25", updated_at: "2016-05-22 01:19:01", users_list: ["", "2"]>]>
     ScoreType.create!([

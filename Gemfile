@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 gem 'faraday'
 
-gem 'activerecord-reset-pk-sequence'
 
 gem 'file_validators'
 gem 'kaminari'
