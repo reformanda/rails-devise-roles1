@@ -1,5 +1,5 @@
 class AddScoreTypeToBoards < ActiveRecord::Migration
   def change
-    add_column :boards, :score_type, :integer
+    add_reference :boards, :score_type, index: true
   end
 end

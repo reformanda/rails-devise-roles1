@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523193950) do
+ActiveRecord::Schema.define(version: 20160527102903) do
 
   create_table "award_options", force: :cascade do |t|
     t.string   "name"
@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 20160523193950) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.text     "users_list"
-    t.integer  "score_type"
+    t.integer  "score_type_id"
   end
 
   add_index "boards", ["nomination_type_id"], name: "index_boards_on_nomination_type_id"
+  add_index "boards", ["score_type_id"], name: "index_boards_on_score_type_id"
 
   create_table "nomination_types", force: :cascade do |t|
     t.string   "year"
@@ -46,8 +47,9 @@ ActiveRecord::Schema.define(version: 20160523193950) do
     t.string   "award_narrative"
     t.string   "guidelines"
     t.string   "nomination_end_date"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "awards_announcement_toggle"
   end
 
   create_table "nominations", force: :cascade do |t|
@@ -102,14 +104,27 @@ ActiveRecord::Schema.define(version: 20160523193950) do
   add_index "nominations", ["award_option_id"], name: "index_nominations_on_award_option_id"
   add_index "nominations", ["nomination_type_id"], name: "index_nominations_on_nomination_type_id"
 
+  create_table "score_types", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "scores", force: :cascade do |t|
     t.integer "user_id"
     t.integer "board_id"
     t.integer "nomination_id"
-    t.integer "score_num"
     t.string  "score_txt"
-    t.text    "score_comments"
-    t.float   "score"
+    t.integer "score_1"
+    t.integer "score_2"
+    t.integer "score_3"
+    t.integer "score_4"
+    t.integer "score_5"
+    t.integer "score_6"
+    t.integer "score_7"
+    t.integer "score_8"
+    t.integer "score_9"
+    t.integer "score_total"
   end
 
   create_table "users", force: :cascade do |t|
