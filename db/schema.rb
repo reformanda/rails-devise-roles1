@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525231855) do
+ActiveRecord::Schema.define(version: 20160523193950) do
 
   create_table "award_options", force: :cascade do |t|
     t.string   "name"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20160525231855) do
     t.string   "award_narrative"
     t.string   "guidelines"
     t.string   "nomination_end_date"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "nominations", force: :cascade do |t|
