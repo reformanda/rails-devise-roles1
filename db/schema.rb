@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527102903) do
+ActiveRecord::Schema.define(version: 20160525231855) do
 
   create_table "award_options", force: :cascade do |t|
     t.string   "name"
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20160527102903) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "nomination_type_id"
+    t.integer  "score_type_id"
+    t.text     "users_list"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.text     "users_list"
-    t.integer  "score_type_id"
   end
 
   add_index "boards", ["nomination_type_id"], name: "index_boards_on_nomination_type_id"
@@ -106,15 +106,15 @@ ActiveRecord::Schema.define(version: 20160527102903) do
 
   create_table "score_types", force: :cascade do |t|
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "instructions"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "scores", force: :cascade do |t|
     t.integer "user_id"
     t.integer "board_id"
     t.integer "nomination_id"
-    t.string  "score_txt"
     t.integer "score_1"
     t.integer "score_2"
     t.integer "score_3"

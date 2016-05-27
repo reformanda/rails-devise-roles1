@@ -5,7 +5,8 @@ class CreateBoards < ActiveRecord::Migration
       t.datetime :start_date
       t.datetime :end_date
       t.references :nomination_type, index: true, foreign_key: true
-
+      t.references :score_type, index: true, foreign_key: true
+      t.text :users_list
       t.timestamps null: false
     end
   end

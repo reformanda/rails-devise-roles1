@@ -1,0 +1,51 @@
+
+<div class="row">
+<tr>
+
+  <td style="width: 25%">
+
+    <div class="form-group">
+      <% if nom.nominee_team_name.blank? %>
+        <%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name} #{nom.nominee_suffix}" %>
+      <% else %>
+        <%= nom.nominee_team_name %>
+      <% end %>
+      <br/>
+      <%= nom.nominee_email %>
+      <br/>
+      <%= nom.nominee_organization %>
+      <br/>
+      <br/>
+
+    </div>
+
+
+  </td>
+
+  <td>
+    <% if not nom.submission_packet_url.blank? %>
+    <%= link_to "View", nom.submission_packet_url, :target => "_blank" %>
+    <% else %>
+    Not Available
+    <% end %>
+  </td>
+
+  <td style="width: 50%">
+      <div class="col-sm-2">
+      <div class="form-group">
+        <%= label_tag "score_1[#{nom.id}]", "Score", class: " control-label" %><br/>
+        <% disabled = "" %>
+        <% if params[:action] == "show" %>
+          <% disabled = 'disabled' %>
+        <% end %>
+        <%= params[:action] %>
+        <%= select_tag "score_1[#{nom.id}]", options_for_select((1..9).to_a, score.score_1 ), class: "form-control col-sm-1", disabled: "#{disabled}" %>
+      </div>
+      </div>
+
+  </td>
+
+
+
+</tr>
+</div>

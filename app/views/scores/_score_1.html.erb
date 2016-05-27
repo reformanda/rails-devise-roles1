@@ -1,0 +1,35 @@
+
+  <% @award_options.find_each do |aw|  %>
+    <div class="row">
+      <h4> <%= aw.name %> </h4>
+      <div class="hr-line-dashed"></div>
+      <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
+      <table class="table table-striped table-bordered table-hover dataTables-example">
+        <thead>
+          <tr>
+            <th>Nominee</th>
+            <th>Submission Packet</th>
+            <th>Score</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% if @noms.empty? %>
+            <tr>
+              <td colspan="3">
+                <p> No Nominations to Score</p>
+              </td>
+            </tr>
+          <% else %>
+            <% @noms.find_each do |nom| %>
+
+              <% score = @scores.where("nomination_id = ?", nom.id).first || Score.new %>
+              <%= render "score_1_nominations", :nom => nom, :score => score %>
+
+
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
