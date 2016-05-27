@@ -126,6 +126,9 @@ ActiveRecord::Schema.define(version: 20160523193950) do
     t.integer "score_total"
   end
 
+  add_index "scores", ["board_id"], name: "index_scores_on_board_id"
+  add_index "scores", ["nomination_id"], name: "index_scores_on_nomination_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

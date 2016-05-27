@@ -42,11 +42,13 @@ class ScoresController < ApplicationController
     # validate
     @nom_ids = []
     params[:score_1].map { |k,v| @nom_ids << k}
+    @score_1 = []
+    params[:score_1].map { |k,v| @score_1 << v}
     #puts @nom_ids
     validation_error = false
     @nom_ids.each do |i|
       @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
-        :score_1 => params[:score_1][i]
+        :score_1 => params[:score_1][i], :checker => @score_1
         })
       if not @score.valid?
           validation_error = true
@@ -61,7 +63,7 @@ class ScoresController < ApplicationController
 
       @nom_ids.each do |i|
         @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
-          :score_1 => params[:score_1][i]
+          :score_1 => params[:score_1][i], :checker => @score_1
           })
 
         if not @score.save
@@ -71,15 +73,27 @@ class ScoresController < ApplicationController
       end
     end
 
-    #respond_to do |format|
+    respond_to do |format|
       if !save_error  &&  !validation_error
-         redirect_to "/scores/#{params[:board_id]}", notice: 'Score was successfully created.'
+         format.html {redirect_to "/scores/#{params[:board_id]}", notice: 'Score was successfully created.'}
     #    format.json { render :show, status: :created, location: @nomination_type }
       else
-        format.html { render :new,notice: 'There was a problem saving this score.  Please try again.' }
+        @board = Board.find(params[:board_id])
+        @nomination_type = NominationType.find(@board.nomination_type)
+        @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
+        @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+        @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
+        puts @nominations.inspect
+        begin
+        @score_type = ScoreType.find(@board.score_type_id)
+        rescue
+        end
+
+
+        format.html { render :edit }
     #    format.json { render json: @nomination_type.errors, status: :unprocessable_entity }
       end
-    #end
+    end
   end
 
 
