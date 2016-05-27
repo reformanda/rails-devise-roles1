@@ -34,12 +34,10 @@
       <div class="col-sm-2">
       <div class="form-group">
         <%= label_tag "score_1[#{nom.id}]", "Score", class: " control-label" %><br/>
-        <% disabled = "" %>
-        <% if params[:action] == "show" %>
-          <% disabled = 'disabled' %>
-        <% end %>
-        <%= params[:action] %>
-        <%= select_tag "score_1[#{nom.id}]", options_for_select((1..9).to_a, score.score_1 ), class: "form-control col-sm-1", disabled: "#{disabled}" %>
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= select_tag "score_1[#{nom.id}]", options_for_select((1..9).to_a, score.score_1 ),  class:  "form-control col-sm-1", disabled: @checkvar %>
       </div>
       </div>
 

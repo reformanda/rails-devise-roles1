@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
 
     @user = user
     @password = password
-    mail(to: @user.email, bcc: "jwilson1@networkrunners.com,", subject: "USAASC Virtual Boards Account Creation")
+    mail(to: @user.email, bcc: "jwilson1@networkrunners.com,CATHERINE.H.DERAN@saic.com", subject: "USAASC Virtual Boards Account Creation")
 
   end
 
