@@ -1,6 +1,6 @@
 
   <% @award_options.find_each do |aw|  %>
-    <div class="row">
+
       <h4> <%= aw.name %> </h4>
       <div class="hr-line-dashed"></div>
       <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
@@ -31,5 +31,5 @@
           <% end %>
         </tbody>
       </table>
-    </div>
+  
   <% end %>
