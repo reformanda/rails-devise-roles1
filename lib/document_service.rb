@@ -1,5 +1,8 @@
 module DocumentService
 
+
+  class U0 < StandardError;  end
+
   def CreatePDF(submission_doc, endorsement_letter)
     require 'base64'
     require 'faraday'
@@ -30,6 +33,9 @@ module DocumentService
       out = conn.post '/rest/restappcfc2/convertDocxService', payload
       submission_contents_base64_encoded = out.body
 
+    else
+      submission_contents_base64_encoded = Base64.encode64(submission_contents)
+
     end
     fileIn.close
 
@@ -40,7 +46,7 @@ module DocumentService
     if not fileIn.path.downcase.include? "pdf"
 
       ### return error as we expect PDF ###
-      raise "endorsement letter wrong format"
+      raise U0, "expected PDF document"
 
     else
 
@@ -52,7 +58,7 @@ module DocumentService
       out = conn.post '/rest/restappcfc2/combinePDF', payload
 
       if not out.success?
-        raise response.error!
+        raise U0, out.body
       end
 
       submission_packet_contents_base64_encoded = out.body
