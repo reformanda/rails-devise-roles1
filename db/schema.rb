@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20160525231855) do
     t.string   "nomination_end_date"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.boolean  "awards_announcement_toggle"
   end
 
   create_table "nominations", force: :cascade do |t|
