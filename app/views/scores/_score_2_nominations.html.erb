@@ -1,0 +1,125 @@
+
+<div class="row">
+<tr>
+
+  <td style="width: 25%">
+
+    <div class="form-group">
+      <% if nom.nominee_team_name.blank? %>
+        <%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name} #{nom.nominee_suffix}" %>
+      <% else %>
+        <%= nom.nominee_team_name %>
+      <% end %>
+      <br/>
+      <%= nom.nominee_email %>
+      <br/>
+      <%= nom.nominee_organization %>
+      <br/>
+      <br/>
+
+    </div>
+
+
+  </td>
+
+  <td>
+    <% if not nom.submission_packet_url.blank? %>
+    <%= link_to "View", nom.submission_packet_url, :target => "_blank" %>
+    <% else %>
+    Not Available
+    <% end %>
+  </td>
+
+  <td >
+
+      <div class="form-group">
+        <%= label_tag "score_1[#{nom.id}]", "Score", class: " control-label" %><br/>
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..20, class:  "form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+        <%= label_tag "score_2[#{nom.id}]", "Score", class: " control-label" %><br/>
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_2[#{nom.id}]",  score.score_2, within: 1..20, class:  "form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+        <%= label_tag "score_3[#{nom.id}]", "Score", class: " control-label" %><br/>
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_3[#{nom.id}]",  score.score_3, within: 1..20, class:  "form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+        <%= label_tag "score_4[#{nom.id}]", "Score", class: " control-label" %><br/>
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_4[#{nom.id}]",  score.score_4, within: 1..20, class:  "form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+        <%= label_tag "score_5[#{nom.id}]", "Score", class: " control-label" %><br/>
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_5[#{nom.id}]",  score.score_5, within: 1..10, class:  "form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+        <%= label_tag "score_6[#{nom.id}]", "Score", class: " control-label" %><br/>
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_6[#{nom.id}]",  score.score_6, within: 1..10, class:  "form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+        <%= label_tag "score_7[#{nom.id}]", "Score", class: " control-label" %><br/>
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_7[#{nom.id}]",  score.score_7, within: 1..5, class:  "form-control col-sm-2", disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+</tr>
+</div>

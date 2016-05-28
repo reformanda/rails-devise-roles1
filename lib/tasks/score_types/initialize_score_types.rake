@@ -11,7 +11,7 @@ description: "Single Score Column (1-9)",
 instructions: "
 <p>Only one score per team nominee; no separate evaluation criteria</p>
 <br/>
-<table class='table table-striped table-bordered table-hover'>
+<table class='table table-striped table-bordered table-hover' style='width: 50%'>
 <thead>
 <tr>
 <td>

@@ -49,6 +49,8 @@
             <% case @board.score_type_id %>
             <% when 1 then %>
                   <%= render :partial => "score_1" %>
+            <% when 2 then %>
+                  <%= render :partial => "score_2" %>                  
             <% else %>
                   <%= render :partial => "tbd" %>
             <% end %>

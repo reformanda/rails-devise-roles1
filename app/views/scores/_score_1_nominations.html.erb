@@ -29,17 +29,22 @@
     Not Available
     <% end %>
   </td>
-
+  <%= hidden_field_tag "score_2[#{nom.id}]" %>
+  <%= hidden_field_tag "score_3[#{nom.id}]" %>
+  <%= hidden_field_tag "score_4[#{nom.id}]" %>
+  <%= hidden_field_tag "score_5[#{nom.id}]" %>
+  <%= hidden_field_tag "score_6[#{nom.id}]" %>
+  <%= hidden_field_tag "score_7[#{nom.id}]" %>
   <td style="width: 50%">
-      <div class="col-sm-2">
+
       <div class="form-group">
         <%= label_tag "score_1[#{nom.id}]", "Score", class: " control-label" %><br/>
 
         <% @checkvar = params[:action] == "show" ? true : false%>
 
-        <%= select_tag "score_1[#{nom.id}]", options_for_select((1..9).to_a, score.score_1 ),  class:  "form-control col-sm-1", disabled: @checkvar %>
+        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..9, class:  "form-control col-sm-2", required: true, disabled: @checkvar %>
       </div>
-      </div>
+
 
   </td>
 

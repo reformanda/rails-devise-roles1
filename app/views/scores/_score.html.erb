@@ -56,16 +56,16 @@
             <% rescue %>
             <% end %>
 
+            <h4>Scoring Method</h4>
+            <%= @score_type.instructions.html_safe %>
+            <% @end_date = @board.end_date.nil? ? "" : "This board will remain open until midnight of " + @board.end_date.strftime("%A, %m/%d/%Y") + ". " %>
+            <p><%= @end_date %> You may login to check or edit your scoring until the board closes.
+            </p>
+            <div class="hr-line-solid"></div>
+
             <% case @board.score_type_id %>
             <% when 1 then %>
 
-
-                <h4>Scoring Method</h4>
-                <%= @score_type.instructions.html_safe %>
-                <p>This board will remain open until midnight of <%= @board.end_date.strftime("%A, %m/%d/%Y") %>.
-                  You may login to check or edit your scoring until the board closes.
-                </p>
-                <div class="hr-line-solid"></div>
 
 
                   <%= render :partial => "score_1" %>
@@ -82,15 +82,26 @@
                   </div>
                 </div>
 
+            <% when 2 then %>
+
+            <%= render :partial => "score_2" %>
+
+            <div class="row">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary" type="submit">Save Score</button>
+                    <%= link_to "Cancel", :controller => :boards, :action => :list, :id => "open-contacts-dialog-btn",
+    :class => "btn btn-white", :method => :get %>
+
+                </div>
+            </div>
+          </div>            
+
             <% else %>
 
 
-                <h4>Scoring Method</h4>
-                <%= @score_type.instructions.html_safe %>
-                <% @end_date = @board.end_date.nil? ? "" : "This board will remain open until midnight of " + @board.end_date.strftime("%A, %m/%d/%Y") + ". " %>
-                <p><%= @end_date %> You may login to check or edit your scoring until the board closes.
-                </p>
-                <div class="hr-line-solid"></div>
+
 
                 <%= render :partial => "tbd" %>
 

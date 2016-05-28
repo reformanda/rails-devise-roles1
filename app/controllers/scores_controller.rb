@@ -48,7 +48,14 @@ class ScoresController < ApplicationController
     validation_error = false
     @nom_ids.each do |i|
       @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
-        :score_1 => params[:score_1][i], :checker => @score_1
+        :score_1 => params[:score_1][i],
+        :score_2 => params[:score_2][i],
+        :score_3 => params[:score_3][i],
+        :score_4 => params[:score_4][i],
+        :score_5 => params[:score_5][i],
+        :score_6 => params[:score_6][i],
+        :score_7 => params[:score_7][i],
+        :checker => @score_1
         })
       if not @score.valid?
           validation_error = true
@@ -63,7 +70,14 @@ class ScoresController < ApplicationController
 
       @nom_ids.each do |i|
         @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
-          :score_1 => params[:score_1][i], :checker => @score_1
+          :score_1 => params[:score_1][i],
+          :score_2 => params[:score_2][i],
+          :score_3 => params[:score_3][i],
+          :score_4 => params[:score_4][i],
+          :score_5 => params[:score_5][i],
+          :score_6 => params[:score_6][i],
+          :score_7 => params[:score_7][i],  
+          :checker => @score_1
           })
 
         if not @score.save
