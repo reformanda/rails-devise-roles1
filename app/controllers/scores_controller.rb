@@ -55,6 +55,8 @@ class ScoresController < ApplicationController
         :score_5 => params[:score_5][i],
         :score_6 => params[:score_6][i],
         :score_7 => params[:score_7][i],
+        :score_8 => params[:score_8][i],
+        :score_9 => params[:score_9][i],         
         :checker => @score_1
         })
       if not @score.valid?
@@ -76,7 +78,9 @@ class ScoresController < ApplicationController
           :score_4 => params[:score_4][i],
           :score_5 => params[:score_5][i],
           :score_6 => params[:score_6][i],
-          :score_7 => params[:score_7][i],  
+          :score_7 => params[:score_7][i],
+          :score_8 => params[:score_8][i],
+          :score_9 => params[:score_9][i],
           :checker => @score_1
           })
 
