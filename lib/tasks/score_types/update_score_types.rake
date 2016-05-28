@@ -1,17 +1,17 @@
 namespace :score_types do
-  desc 'Initializes score types'
-  task initialize_score_types: :environment do
+  desc 'Update score types'
+  task update_score_types: :environment do
 
-    ScoreType.destroy_all
+
 
 
  #<Board id: 1, description: "First Board", start_date: "2016-05-21 23:33:00", end_date: "2016-06-21 23:33:00", nomination_type_id: 1, created_at: "2016-05-21 23:33:25", updated_at: "2016-05-22 01:19:01", users_list: ["", "2"]>]>
-    ScoreType.create!([
-description: "Single Score Column (1-9)",
-instructions: "
+s = ScoreType.find(1)
+
+s.instructions = "
 <p>Only one score per team nominee; no separate evaluation criteria</p>
 <br/>
-<table class='table table-striped table-bordered table-hover'>
+<table class='table table-striped table-bordered table-hover' style='width: 50%'>
 <thead>
 <tr>
 <td>
@@ -76,26 +76,11 @@ instructions: "
 </table>
 <br/>
 <p>*A score of <strong>9</strong> may only be given once per judge per nominee</p>		"
-      ])
 
-      ScoreType.create!([
-      description: "Multiple Columns (7) for Development Award",
-      instructions: "",
-])
+s.save!
 
-ScoreType.create!([
-description: "Multiple Columns (3) for Achievement Award",
-instructions: "",
-])
 
-ScoreType.create!([
-description: "Multiple Columns (9) for PSL",
-instructions: "",
-])
 
-ScoreType.create!([
-description: "Multiple Columns (3) for PSM",
-instructions: "",
-])
+
   end
 end
