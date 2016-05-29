@@ -59,6 +59,15 @@
                 <%= @board.nomination_type.code %>
               </p>
 
+              <p>
+                <strong>Assigned Judges:</strong>
+                <% if not @board.users_list.nil? %>
+                <%= @board.users_list.map {|u| User.all.pluck(:name).fetch(u.to_i-1) if not u.blank?}.join(" ") %>
+                <% end %>
+
+              </p>
+
+
             </div>
         </div>
     </div>

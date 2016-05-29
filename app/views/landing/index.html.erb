@@ -17,6 +17,8 @@
               <li><%= link_to 'View Nomination Forms', :controller => "nominations", :action => "list" %></li>
             </ul>
             <% if not current_user.nil? %>
+            
+            <% if current_user.role == "admin" %>
             <ul>
               <li><%= link_to 'Manage Nomination Types', nomination_types_path %></li>
             </ul>
@@ -30,8 +32,14 @@
               <li><%= link_to 'Manage Users', :controller => "users", :action => "index" %></li>
             </ul>
             <ul>
+              <li><%= link_to 'Manage Boards', :controller => "boards", :action => "index" %></li>
+            </ul>
+            <% end %>
+
+            <ul>
               <li><%= link_to 'View Boards', :controller => "boards", :action => "list" %></li>
             </ul>
+
             <% end %>
           </div>
         </div>

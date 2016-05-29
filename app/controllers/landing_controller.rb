@@ -1,6 +1,7 @@
 class LandingController < ApplicationController
   def index
     #render :layout => "nomination"
+    #puts current_user.inspect
   end
 
   def nomination

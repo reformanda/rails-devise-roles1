@@ -1,4 +1,6 @@
 class ScoresController < ApplicationController
+  before_action :admin_or_judge_only, :except => :create
+
 
   def edit
     # determine score_type from board_id
@@ -56,7 +58,7 @@ class ScoresController < ApplicationController
         :score_6 => params[:score_6][i],
         :score_7 => params[:score_7][i],
         :score_8 => params[:score_8][i],
-        :score_9 => params[:score_9][i],         
+        :score_9 => params[:score_9][i],
         :checker => @score_1
         })
       if not @score.valid?
@@ -118,6 +120,18 @@ class ScoresController < ApplicationController
   private
 
   # a score is a collection of scores by a user for a group of nominations
+
+  def admin_or_judge_only
+    unless current_user.admin? || current_user.judge?
+      redirect_to :root, :alert => "Access denied."
+    end
+    if current_user.judge?
+      board_access = Board.find(params[:id])
+      if (board_access.nil?) || (board_access.users_list.nil?) || (not board_access.users_list.include?(current_user.id.to_s))
+        redirect_to :root, :alert => "Access denied."
+      end
+    end
+  end
 
   def set_score
     @score = Score.where("board_id = ?",params[:id])

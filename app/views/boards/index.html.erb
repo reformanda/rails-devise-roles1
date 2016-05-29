@@ -55,10 +55,23 @@
       <% @boards.each do |board| %>
         <tr>
           <td><%= board.description %></td>
-          <td><%= board.start_date.strftime("%m/%d/%Y %H:%M") %></td>
-          <td><%= board.end_date.strftime("%m/%d/%Y %H:%M")  %></td>
+
+          <td>
+            <% if not board.start_date.blank? %>
+            <%=  board.start_date.strftime("%m/%d/%Y %H:%M") %>
+            <% end %>
+          </td>
+          <td>
+            <% if not board.end_date.blank? %>
+            <%=  board.end_date.strftime("%m/%d/%Y %H:%M")  %>
+            <% end %>
+          </td>
           <td><%= board.nomination_type.code %></td>
-          <td><%= board.users_list.map {|u| @usernames.fetch(u.to_i-1) if not u.blank?}.join(" ") %></td>
+          <td>
+            <% if not board.users_list.nil? %>
+            <%= board.users_list.map {|u| @usernames.fetch(u.to_i-1) if not u.blank?}.join(" ") %>
+            <% end %>
+          </td>
           <td><%= link_to 'Show', board %></td>
           <td><%= link_to 'Edit', edit_board_path(board) %></td>
           <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>

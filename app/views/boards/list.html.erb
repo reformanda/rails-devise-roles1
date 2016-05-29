@@ -40,6 +40,8 @@
             <ul class="list-group clear-list">
               <% @boards.find_each do |n|  %>
 
+              <% if current_user.admin? || ((not n.users_list.nil?) && (n.users_list.include?(current_user.id.to_s))) %>
+
               <li>
 
                   <a href="<%= url_for :controller => "scores", :action => 'edit', :id => n.id %>">
@@ -47,6 +49,7 @@
                   </a>
 
               </li>
+              <% end %>
               <% end %>
 
             </ul>
