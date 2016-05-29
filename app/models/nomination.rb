@@ -37,7 +37,7 @@ class Nomination < ActiveRecord::Base
   end
 
   def self.nomination_types
-    %w(Packard Should Achievement Development ProductSupport Logistic)
+    %w(Packard Should Achievement Development ProductSupport Logistic Asp Battalion Bop Brigade Cp Decp Esi Loy Nco Pmpdo05 Pmpdo06 Pmpdp05 Pmpdp06 Stp)
   end
 
   #def self.name_search

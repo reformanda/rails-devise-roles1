@@ -24,6 +24,20 @@ Rails.application.routes.draw do
   get 'nominations/update_awards', as: 'update_awards'
   get 'nominations/list', to: "nominations#list"
   get 'boards/list', to: "boards#list"
+  get 'asps/confirmation', to: "asps#confirmation"
+  get 'battalions/confirmation', to: "battalions#confirmation"
+  get 'bops/confirmation', to: "bops#confirmation"
+  get 'brigades/confirmation', to: "brigades#confirmation"
+  get 'cps/confirmation', to: "cps#confirmation"
+  get 'decps/confirmation', to: "decps#confirmation"
+  get 'esis/confirmation', to: "esis#confirmation"
+  get 'loys/confirmation', to: "loys#confirmation"
+  get 'ncos/confirmation', to: "ncos#confirmation"
+  get 'pmpdo05s/confirmation', to: "pmpdo05s#confirmation"
+  get 'pmpdo06s/confirmation', to: "pmpdo06s#confirmation"
+  get 'pmpdp05s/confirmation', to: "pmpdp05s#confirmation"
+  get 'pmpdp06s/confirmation', to: "pmpdp06s#confirmation"
+  get 'stps/confirmation', to: "stps#confirmation"
 
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
@@ -34,7 +48,20 @@ Rails.application.routes.draw do
   resources :logistics
   resources :boards
   resources :scores
-
+  resources :asps
+  resources :battalions
+  resources :bops
+  resources :brigades
+  resources :cps
+  resources :decps
+  resources :esis
+  resources :loys
+  resources :ncos
+  resources :pmpdo05s
+  resources :pmpdo06s
+  resources :pmpdp05s
+  resources :pmpdp06s
+  resources :stps
 
 
   #get 'sites/:name', :to => 'sites#show', :as => site
