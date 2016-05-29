@@ -20,7 +20,7 @@ class LoysController < ApplicationController
     @nomination = Loy.new
     @info = NominationType.where(["code = ?", "Loy"]).first
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Loy").pluck(:name,:id)
-    @callback = "/Loys/?#no-back"
+    @callback = "/loys/?#no-back"
     #render :layout => "nomination_form"
   end
 
@@ -38,11 +38,11 @@ class LoysController < ApplicationController
       if @nomination.save
         # send email confirmation
         NominationMailer.confirmation_email(@nomination,@info).deliver_now if Rails.env.production?
-        format.html { redirect_to '/Loys/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
+        format.html { redirect_to '/loys/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
         @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Loy").pluck(:name,:id)
-        @callback = "/Loys/?#no-back"
+        @callback = "/loys/?#no-back"
         format.html { render :new }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
@@ -52,7 +52,7 @@ class LoysController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
-      @Loy = Loy.find(params[:id])
+      @loy = Loy.find(params[:id])
     end
 
     def set_nomination_type
@@ -69,7 +69,7 @@ class LoysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_params
-      params.require(:Loy).permit(
+      params.require(:loy).permit(
       :unit_commander_title,
       :unit_commander_first_name,
       :unit_commander_last_name,

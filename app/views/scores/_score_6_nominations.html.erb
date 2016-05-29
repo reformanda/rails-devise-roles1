@@ -1,0 +1,99 @@
+
+
+<tr>
+
+  <td style="width: 25%">
+
+    <div class="form-group">
+      <% if nom.nominee_team_name.blank? %>
+        <%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name} #{nom.nominee_suffix}" %>
+      <% else %>
+        <%= nom.nominee_team_name %>
+      <% end %>
+      <br/>
+      <%= nom.nominee_email %>
+      <br/>
+      <%= nom.nominee_organization %>
+      <br/>
+      <br/>
+
+    </div>
+
+
+  </td>
+
+  <td>
+    <% if not nom.submission_packet_url.blank? %>
+    <%= link_to "View", nom.submission_packet_url, :target => "_blank" %>
+    <% else %>
+    Not Available
+    <% end %>
+  </td>
+
+  <%= hidden_field_tag "score_5[#{nom.id}]" %>
+  <%= hidden_field_tag "score_6[#{nom.id}]" %>
+  <%= hidden_field_tag "score_7[#{nom.id}]" %>
+  <%= hidden_field_tag "score_8[#{nom.id}]" %>
+  <%= hidden_field_tag "score_9[#{nom.id}]" %>
+
+  <td >
+
+      <div class="form-group">
+
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..9, class:  "score_#{aw} form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_2[#{nom.id}]",  score.score_2, within: 1..9, class:  "score_#{aw} form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_3[#{nom.id}]",  score.score_3, within: 1..9, class:  "score_#{aw} form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td >
+
+      <div class="form-group">
+
+
+        <% @checkvar = params[:action] == "show" ? true : false%>
+
+        <%= number_field_tag "score_4[#{nom.id}]",  score.score_4, within: 1..9, class:  "score_#{aw} form-control col-sm-2", required: true, disabled: @checkvar %>
+      </div>
+
+
+  </td>
+
+  <td>
+    <div class="form-group">
+      <%= number_field_tag "score_total[#{nom.id}]",  score.score_total, within: 1..100, class:  "score_total_#{aw} form-control col-sm-1", disabled: true %>
+    </div>
+  </td>
+
+
+
+</tr>

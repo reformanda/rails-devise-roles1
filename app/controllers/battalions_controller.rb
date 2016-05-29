@@ -20,7 +20,7 @@ class BattalionsController < ApplicationController
     @nomination = Battalion.new
     @info = NominationType.where(["code = ?", "Battalion"]).first
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Battalion").pluck(:name,:id)
-    @callback = "/Battalions/?#no-back"
+    @callback = "/battalions/?#no-back"
     #render :layout => "nomination_form"
   end
 
@@ -38,11 +38,11 @@ class BattalionsController < ApplicationController
       if @nomination.save
         # send email confirmation
         NominationMailer.confirmation_email(@nomination,@info).deliver_now if Rails.env.production?
-        format.html { redirect_to '/Battalions/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
+        format.html { redirect_to '/battalions/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
         @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Battalion").pluck(:name,:id)
-        @callback = "/Battalions/?#no-back"
+        @callback = "/battalions/?#no-back"
         format.html { render :new }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
@@ -52,7 +52,7 @@ class BattalionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
-      @Battalion = Battalion.find(params[:id])
+      @battalion = Battalion.find(params[:id])
     end
 
     def set_nomination_type
@@ -69,7 +69,7 @@ class BattalionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_params
-      params.require(:Battalion).permit(
+      params.require(:battalion).permit(
       :unit_commander_title,
       :unit_commander_first_name,
       :unit_commander_last_name,

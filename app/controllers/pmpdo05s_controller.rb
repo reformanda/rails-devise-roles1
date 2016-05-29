@@ -20,7 +20,7 @@ class Pmpdo05sController < ApplicationController
     @nomination = Pmpdo05.new
     @info = NominationType.where(["code = ?", "Pmpdo05"]).first
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Pmpdo05").pluck(:name,:id)
-    @callback = "/Pmpdo05s/?#no-back"
+    @callback = "/pmpdo05s/?#no-back"
     #render :layout => "nomination_form"
   end
 
@@ -38,11 +38,11 @@ class Pmpdo05sController < ApplicationController
       if @nomination.save
         # send email confirmation
         NominationMailer.confirmation_email(@nomination,@info).deliver_now if Rails.env.production?
-        format.html { redirect_to '/Pmpdo05s/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
+        format.html { redirect_to '/pmpdo05s/confirmation', :layout => "nomination_form", notice: 'Nomination was successfully created.' }
         format.json { render :confirmation, status: :created, location: @nomination }
       else
         @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Pmpdo05").pluck(:name,:id)
-        @callback = "/Pmpdo05s/?#no-back"
+        @callback = "/pmpdo05s/?#no-back"
         format.html { render :new }
         format.json { render json: @nomination.errors, status: :unprocessable_entity }
       end
@@ -52,7 +52,7 @@ class Pmpdo05sController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination
-      @Pmpdo05 = Pmpdo05.find(params[:id])
+      @pmpdo05 = Pmpdo05.find(params[:id])
     end
 
     def set_nomination_type
@@ -69,7 +69,7 @@ class Pmpdo05sController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_params
-      params.require(:Pmpdo05).permit(
+      params.require(:pmpdo05).permit(
       :unit_commander_title,
       :unit_commander_first_name,
       :unit_commander_last_name,
