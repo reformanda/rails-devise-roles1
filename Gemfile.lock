@@ -138,6 +138,7 @@ GEM
     multipart-post (2.0.0)
     nokogiri (1.6.7.2-java)
     orm_adapter (0.5.0)
+    pdf-merger (0.3.2)
     puma (3.4.0-java)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -265,6 +266,7 @@ DEPENDENCIES
   kaminari
   launchy
   mime-types (= 2.6.2)
+  pdf-merger (~> 0.3.2)
   puma
   quiet_assets
   rails (= 4.2.5)

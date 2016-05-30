@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 gem 'faraday'
 
+# for pdf merging
+gem 'pdf-merger', '~> 0.3.2'
 
 gem 'file_validators'
 gem 'kaminari'

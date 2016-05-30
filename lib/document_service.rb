@@ -3,6 +3,27 @@ module DocumentService
 
   class U0 < StandardError;  end
 
+  def MergePDF(nomination_type_id)
+    require 'pdf/merger'
+    failure_list = []
+    pdf = PDF::Merger.new
+    @noms = Nomination.where("nomination_type_id = ? and status in (1,2)", nomination_type_id)
+    pdfs = []
+    @noms.each do |n|
+      pdf.add_file n.submission_packet.current_path if not n.submission_packet.current_path.nil?
+    end
+
+    @board = Board.where("nomination_type_id = ?", nomination_type_id).first
+    t = Tempfile.new(["combined_submission_packet",".pdf"])
+    t.close
+    pdf.save_as t.path, failure_list
+
+    # save to Board
+    @board.combined_submission_packet = File.new(t.path)
+    @board.save!
+
+  end
+
   def CreatePDF(submission_doc, endorsement_letter)
     require 'base64'
     require 'faraday'

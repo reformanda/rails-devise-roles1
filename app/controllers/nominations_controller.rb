@@ -116,6 +116,13 @@ class NominationsController < ApplicationController
 
         end
 
+        # merge all approved packets for this nomination type
+        begin
+          out = MergePDF(@nomination.nomination_type_id)
+        rescue => e
+          puts e.inspect
+        end
+
         format.html { redirect_to edit_nomination_url(@nomination), notice: 'Nomination was successfully updated.' }
         format.json { render :index, status: :ok, location: @nomination }
       else
