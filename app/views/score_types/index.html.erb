@@ -56,7 +56,11 @@
     <% @score_types.each do |score_type| %>
       <tr>
         <td><%= score_type.description %></td>
-        <td><%= score_type.instructions %></td>
+        <td>
+          <div class="form-group" style=" border: 1px solid #e5e6e7;">
+          <%= score_type.instructions.html_safe %>
+          </div>
+        </td>
         <td><%= link_to 'Show', score_type %></td>
         <td><%= link_to 'Edit', edit_score_type_path(score_type) %></td>
         <td><%= link_to 'Destroy', score_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -19,8 +19,8 @@
 
   <div class="form-group">
       <%= f.label :instructions, class: "col-sm-2 control-label" %>
-      <div class="col-sm-6">
-          <%= f.text_area :instructions, rows: 6, class: "form-control", required: false %>
+      <div class="col-sm-6" style=" border: 1px solid #e5e6e7;">
+          <%= f.text_area :instructions, rows: 10, class: "form-control summernote", required: false %>
       </div>
   </div>
 
@@ -32,5 +32,21 @@
 
       </div>
   </div>
+
+<% end %>
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+$(function() {
+
+    $('.summernote').summernote();
+
+
+});
+
+</script>
 
 <% end %>

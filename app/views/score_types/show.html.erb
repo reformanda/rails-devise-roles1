@@ -44,7 +44,9 @@
 
               <p>
                 <strong>Instructions:</strong>
-                <%= @score_type.instructions %>
+                <div class="form-group" style=" border: 1px solid #e5e6e7;">
+                <%= @score_type.instructions.html_safe %>
+                </div>
               </p>
 
             </div>
