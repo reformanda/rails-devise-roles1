@@ -14,7 +14,6 @@ class BoardsController < ApplicationController
 
   end
 
-
   # GET /boards/1
   # GET /boards/1.json
   def show
@@ -24,13 +23,14 @@ class BoardsController < ApplicationController
   def new
     @board = Board.new
     @users_list = User.all.pluck(:name,:id)
-    @nomination_types = NominationType.all.pluck(:code,:id)
+    @score_types = ScoreType.all.pluck(:description,:id)
   end
 
   # GET /boards/1/edit
   def edit
     @users_list = User.all.pluck(:name,:id)
     @nomination_types = NominationType.all.pluck(:code,:id)
+    @score_types = ScoreType.all.pluck(:description,:id)
   end
 
   # POST /boards
@@ -38,7 +38,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     @users_list = User.all.pluck(:name,:id)
-    @nomination_types = NominationType.all.pluck(:code,:id)
+    @score_types = ScoreType.all.pluck(:description,:id)
 
     respond_to do |format|
       if @board.save
@@ -54,6 +54,8 @@ class BoardsController < ApplicationController
   # PATCH/PUT /boards/1
   # PATCH/PUT /boards/1.json
   def update
+    puts board_params[:start_date]
+    puts "hello"
     respond_to do |format|
       if @board.update(board_params)
         format.html { redirect_to @board, notice: 'Board was successfully updated.' }
@@ -83,6 +85,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:description, :start_date, :end_date, :nomination_id, :users_list => [])
+      params.require(:board).permit(:description, :start_date, :end_date, :nomination_type_id, :score_type_id, :users_list => [])
     end
 end

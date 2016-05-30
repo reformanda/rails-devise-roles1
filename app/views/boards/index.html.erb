@@ -58,12 +58,12 @@
 
           <td>
             <% if not board.start_date.blank? %>
-            <%=  board.start_date.strftime("%m/%d/%Y %H:%M") %>
+            <%=  board.start_date %>
             <% end %>
           </td>
           <td>
             <% if not board.end_date.blank? %>
-            <%=  board.end_date.strftime("%m/%d/%Y %H:%M")  %>
+            <%=  board.end_date  %>
             <% end %>
           </td>
           <td><%= board.nomination_type.code %></td>

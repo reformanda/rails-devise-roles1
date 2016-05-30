@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523193950) do
+ActiveRecord::Schema.define(version: 20160530060157) do
 
   create_table "award_options", force: :cascade do |t|
     t.string   "name"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20160523193950) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.string   "start_date"
+    t.string   "end_date"
     t.integer  "nomination_type_id"
     t.integer  "score_type_id"
     t.text     "users_list"

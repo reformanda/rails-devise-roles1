@@ -89,7 +89,7 @@
               </table>
             <% end %>
             <br/>
-            <% @end_date = @board.end_date.nil? ? "" : "This board will remain open until midnight of " + @board.end_date.strftime("%A, %m/%d/%Y") + ". " %>
+            <% @end_date = @board.end_date.nil? ? "" : "This board will remain open until midnight of " + Date.strptime(@board.end_date , "%m/%d/%Y").strftime("%A, %m/%d/%Y") + ". " %>
             <p><%= @end_date %> You may login to check or edit your scoring until the board closes.</p>
 
             <div class="hr-line-solid"></div>
