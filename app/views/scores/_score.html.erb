@@ -92,6 +92,10 @@
             <% @end_date = @board.end_date.nil? ? "" : "This board will remain open until midnight of " + Date.strptime(@board.end_date , "%m/%d/%Y").strftime("%A, %m/%d/%Y") + ". " %>
             <p><%= @end_date %> You may login to check or edit your scoring until the board closes.</p>
 
+            <% if not @board.combined_submission_packet_url.blank? %>
+            <br/>
+            <%= link_to "View/Print All Submission Documents", @board.combined_submission_packet_url, :target => "_blank" %>
+            <% end %>
             <div class="hr-line-solid"></div>
             <% setup_ok = true %>
             <% case @board.score_type_id %>
