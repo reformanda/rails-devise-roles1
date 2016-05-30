@@ -1,0 +1,39 @@
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <h2>USAASC Virtual Boards <%= ENV["APP_VERSION"] %></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
+            </li>
+            <li>
+                <a href="<%= url_for :controller => 'award_options', :action => 'index' %>">Score Types</a>
+            </li>
+        <li class="active">
+            <strong>New</strong>
+        </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    <div class="title-action">
+        <%= link_to '/users/sign_out', :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+    </div>
+    </div>
+</div>
+
+<div class="row page-heading">
+</div>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>New Score Type</h5>
+            </div>
+            <div class="ibox-content">
+
+              <%= render 'form' %>
+
+            </div>
+        </div>
+      </div>
+</div>

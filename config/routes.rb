@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :score_types
   #, :conditions => { :method => :get }
   match "/documents/:model/:folder/:id/:basename.:extension" => "redocuments#download", via: :get
 
@@ -63,6 +64,7 @@ Rails.application.routes.draw do
   resources :pmpdp06s
   resources :stps
 
+  resources :score_types
 
   #get 'sites/:name', :to => 'sites#show', :as => site
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
