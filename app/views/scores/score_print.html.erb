@@ -1,0 +1,45 @@
+<div class="wrapper wrapper-content p-xl">
+<div class="ibox-content p-xl">
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+              <h3>These are the scores saved as of today.  </h3>
+              <h4>Virtual Board Scoring - <%= @board.description %></h4>
+
+          </div>
+          <div class="ibox-content">
+
+            <% case @board.score_type_id %>
+            <% when 1 then %>
+                  <%= render :partial => "score_1" %>
+            <% when 2 then %>
+                  <%= render :partial => "score_2" %>
+            <% when 3 then %>
+                  <%= render :partial => "score_3" %>
+            <% when 4 then %>
+                  <%= render :partial => "score_4" %>
+            <% when 5 then %>
+                  <%= render :partial => "score_5" %>
+            <% when 6 then %>
+                  <%= render :partial => "score_6" %>
+            <% else %>
+                  <%= render :partial => "tbd" %>
+            <% end %>
+
+          </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+window.print();
+
+</script>
+
+<% end %>

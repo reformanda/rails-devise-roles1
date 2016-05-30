@@ -18,11 +18,14 @@
     </div>
     <div class="col-lg-2">
       <div class="title-action">
+      <a href="<%= url_for :controller => 'scores', :action => 'score_print', :id => @board.id %>" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Scores </a>
+
       <% if current_user.nil? %>
         <%= link_to new_user_session_path do %><i class="fa fa-sign-in"></i> Signin<% end %>
       <% else %>
         <%= link_to destroy_user_session_path, :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
       <% end %>
+
       </div>
     </div>
 </div>
@@ -40,7 +43,7 @@
     <div class="col-lg-10 col-lg-offset-1">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
-              <h3>These are the scores saved as of today.  </h3>
+              <h3>These scores have been recorded for <%= current_user.name %> as of <%= Time.now.strftime("%A, %m/%d/%Y, %r") %>.</h3>
               <h4>Virtual Board Scoring - <%= @board.description %></h4>
 
           </div>

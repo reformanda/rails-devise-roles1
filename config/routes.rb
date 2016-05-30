@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   get 'pmpdp06s/confirmation', to: "pmpdp06s#confirmation"
   get 'stps/confirmation', to: "stps#confirmation"
 
+  get 'scores/score_print', to: "scores#score_print"
+
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
   resources :shoulds

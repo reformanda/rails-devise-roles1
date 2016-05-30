@@ -1,6 +1,19 @@
 class ScoresController < ApplicationController
   before_action :admin_or_judge_only, :except => :create
 
+  def score_print
+    @board = Board.find(params[:id])
+    @nomination_type = NominationType.find(@board.nomination_type)
+    @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
+    @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+    @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
+    puts @nominations.inspect
+    begin
+    @score_type = ScoreType.find(@board.score_type_id)
+    rescue
+    end  
+    render :layout => "empty"
+  end
 
   def edit
     # determine score_type from board_id
