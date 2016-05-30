@@ -2,7 +2,7 @@
 <div class="row">
 <tr>
 
-  <td style="width: 25%">
+  <td style="width: 50%">
 
     <div class="form-group">
       <% if nom.nominee_team_name.blank? %>
@@ -11,7 +11,7 @@
         <%= nom.nominee_team_name %>
       <% end %>
       <br/>
-      <%= nom.nominee_email %>
+
       <br/>
       <%= nom.nominee_organization %>
       <br/>
@@ -37,13 +37,13 @@
   <%= hidden_field_tag "score_7[#{nom.id}]" %>
   <%= hidden_field_tag "score_8[#{nom.id}]" %>
   <%= hidden_field_tag "score_9[#{nom.id}]" %>
-  <td style="width: 50%">
+  <td style="width: 100px%">
 
       <div class="form-group">
 
         <% @checkvar = params[:action] == "show" ? true : false%>
 
-        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..9, class:  "form-control col-sm-2", required: true, disabled: @checkvar %>
+        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..9, class:  "form-control col-sm-1", required: true, disabled: @checkvar %>
       </div>
 
 
