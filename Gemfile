@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#gem 'newrelic_rpm'
+gem 'newrelic_rpm'
 gem 'faraday'
 
 # for pdf merging
