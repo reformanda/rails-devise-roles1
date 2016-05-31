@@ -11,7 +11,7 @@
         <%= nom.nominee_team_name %>
       <% end %>
       <br/>
-      
+
       <br/>
       <%= nom.nominee_organization %>
       <br/>
@@ -44,7 +44,7 @@
 
         <% @checkvar = params[:action] == "show" ? true : false%>
 
-        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..45, class:  "score_#{aw} form-control col-sm-2", required: true, disabled: @checkvar %>
+        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..45, class:  "score_#{aw}_#{nom.id} form-control col-sm-2", required: true, disabled: @checkvar %>
       </div>
 
 
@@ -57,7 +57,7 @@
 
         <% @checkvar = params[:action] == "show" ? true : false%>
 
-        <%= number_field_tag "score_2[#{nom.id}]",  score.score_2, within: 1..30, class:  "score_#{aw} form-control col-sm-2", required: true, disabled: @checkvar %>
+        <%= number_field_tag "score_2[#{nom.id}]",  score.score_2, within: 1..30, class:  "score_#{aw}_#{nom.id} form-control col-sm-2", required: true, disabled: @checkvar %>
       </div>
 
 
@@ -70,7 +70,7 @@
 
         <% @checkvar = params[:action] == "show" ? true : false%>
 
-        <%= number_field_tag "score_3[#{nom.id}]",  score.score_3, within: 1..25, class:  "score_#{aw} form-control col-sm-2", required: true, disabled: @checkvar %>
+        <%= number_field_tag "score_3[#{nom.id}]",  score.score_3, within: 1..25, class:  "score_#{aw}_#{nom.id} form-control col-sm-2", required: true, disabled: @checkvar %>
       </div>
 
 
@@ -78,7 +78,7 @@
 
   <td>
     <div class="form-group">
-      <%= number_field_tag "score_total[#{nom.id}]",  score.score_total, within: 1..100, class:  "score_total_#{aw} form-control col-sm-1", disabled: true %>
+      <%= number_field_tag "score_total[#{nom.id}]",  score.score_total, within: 1..100, class:  "score_total_#{aw}_#{nom.id} form-control col-sm-1", disabled: true %>
     </div>
   </td>
 

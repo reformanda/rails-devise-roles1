@@ -1,5 +1,29 @@
 class ScoresController < ApplicationController
+  before_filter :authenticate_user!
   before_action :admin_or_judge_only, :except => :create
+  before_action :admin_only, :only => [:score_report, :reports]
+
+
+  def score_report
+    @board = Board.find(params[:id])
+    @nomination_type = NominationType.find(@board.nomination_type)
+    @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
+    @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+    @scores = Score.where("board_id = ?", @board.id)
+    puts @nominations.inspect
+    begin
+    @score_type = ScoreType.find(@board.score_type_id)
+    rescue
+    end
+
+
+
+  end
+
+  def reports
+    @boards = Board.all
+    @usernames = User.all.order(:id).pluck(:name)
+  end
 
   def score_print
     @board = Board.find(params[:id])
@@ -11,7 +35,7 @@ class ScoresController < ApplicationController
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
-    end  
+    end
     render :layout => "empty"
   end
 
@@ -84,7 +108,9 @@ class ScoresController < ApplicationController
     if not validation_error
       # delete all old scores
       Score.where("board_id = ? and user_id = ?", params[:board_id], current_user.id).delete_all
-
+      #score_total = params[:score_1]+ params[:score_2]+ params[:score_3]+ params[:score_4]+ params[:score_5]+ params[:score_6]+ params[:score_7]+ params[:score_8]+ params[:score_9]
+      #puts score_total
+      #puts "HELLO"
       @nom_ids.each do |i|
         @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
           :score_1 => params[:score_1][i],
@@ -96,9 +122,14 @@ class ScoresController < ApplicationController
           :score_7 => params[:score_7][i],
           :score_8 => params[:score_8][i],
           :score_9 => params[:score_9][i],
+          :score_total => params[:score_1][i].to_i + params[:score_2][i].to_i + params[:score_3][i].to_i + params[:score_4][i].to_i + params[:score_5][i].to_i + params[:score_6][i].to_i + params[:score_7][i].to_i + params[:score_8][i].to_i + params[:score_9][i].to_i,
           :checker => @score_1
           })
-
+          #puts params[:score_1][i]
+          #puts params[:score_2][i]
+          #puts params[:score_1][i].to_i + params[:score_2][i].to_i
+          #+ params[:score_2][i] + params[:score_3][i] + params[:score_4][i] + params[:score_5][i] + params[:score_6][i] + params[:score_7][i] + params[:score_8][i] + params[:score_9][i]
+          #puts "HELLO"
         if not @score.save
             save_error = true
             break
@@ -133,6 +164,12 @@ class ScoresController < ApplicationController
   private
 
   # a score is a collection of scores by a user for a group of nominations
+
+  def admin_only
+    unless current_user.admin?
+      redirect_to :root, :alert => "Access denied."
+    end
+  end
 
   def admin_or_judge_only
     unless current_user.admin? || current_user.judge?

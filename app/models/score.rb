@@ -6,9 +6,9 @@ class Score < ActiveRecord::Base
   validate :score_1_no_multiple_9
 
   def score_1_no_multiple_9
-    puts "***HELLO***"
-    puts board.score_type_id
-    puts "***GOODBYE***"
+    #puts "***HELLO***"
+    #puts board.score_type_id
+    #puts "***GOODBYE***"
     if board.score_type_id == 1
       cntnine = []
       puts checker

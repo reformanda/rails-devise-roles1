@@ -40,24 +40,26 @@
 
   <script type="text/javascript">
 
-    function add(aw) {
+    function add(aw, nom) {
       var sum = 0;
-      $(".score_" + aw).each(function() {
+      $(".score_" + aw + "_" + nom).each(function() {
           sum += Number($(this).val());
       });
-      $(".score_total_" + aw).val(sum);
+      $(".score_total_" + aw + "_" + nom).val(sum);
     }
 
     $("[class^='score']").change(function () {
       score_class = $(this).prop("class").split(" ")[0];
       aw = score_class.split("_")[1]
-      add(aw);
+      nom = score_class.split("_")[2]
+      add(aw, nom);
     });
 
     $("[class^='score']").blur(function () {
       score_class = $(this).prop("class").split(" ")[0];
       aw = score_class.split("_")[1]
-      add(aw);
+      nom = score_class.split("_")[2]
+      add(aw, nom);
     });
 
     // initialize values
