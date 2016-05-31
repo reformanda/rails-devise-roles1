@@ -1,6 +1,8 @@
 class NominationTypesController < ApplicationController
-  before_action :set_nomination_type, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :admin_only
+  before_action :set_nomination_type, only: [:show, :edit, :update, :destroy]
+
   #layout "nomination_form", only: [:new, :show, :edit]
   # GET /nomination_types
   # GET /nomination_types.json
@@ -68,6 +70,13 @@ class NominationTypesController < ApplicationController
   end
 
   private
+
+    def admin_only
+      unless current_user.admin?
+        redirect_to :root, :alert => "Access denied."
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_nomination_type
       @nomination_type = NominationType.find(params[:id])

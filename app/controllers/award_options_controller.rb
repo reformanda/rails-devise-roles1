@@ -1,6 +1,8 @@
 class AwardOptionsController < ApplicationController
-  before_action :set_award_option, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :admin_only
+  before_action :set_award_option, only: [:show, :edit, :update, :destroy]
+
 
   # GET /award_options
   # GET /award_options.json
@@ -66,6 +68,13 @@ class AwardOptionsController < ApplicationController
   end
 
   private
+
+    def admin_only
+      unless current_user.admin?
+        redirect_to :root, :alert => "Access denied."
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_award_option
       @award_option = AwardOption.find(params[:id])
