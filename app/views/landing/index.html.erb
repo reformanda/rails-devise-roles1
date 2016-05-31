@@ -25,9 +25,7 @@
             <ul>
               <li><%= link_to 'Manage Award Options', award_options_path %></li>
             </ul>
-            <ul>
-              <li><%= link_to 'Manage Nominations', :controller => "nominations", :action => "index" %></li>
-            </ul>
+
             <ul>
               <li><%= link_to 'Manage Score Types', :controller => "score_types", :action => "index" %></li>
             </ul>
@@ -37,11 +35,14 @@
             <ul>
               <li><%= link_to 'Manage Users', :controller => "users", :action => "index" %></li>
             </ul>
+
+            <% end %>
+            <ul>
+              <li><%= link_to 'Manage Nominations', :controller => "nominations", :action => "index" %></li>
+            </ul>
             <ul>
               <li><%= link_to 'Score Reports', :controller => "scores", :action => "reports" %></li>
-            </ul>
-            <% end %>
-
+            </ul>            
             <ul>
               <li><%= link_to 'View Boards', :controller => "boards", :action => "list" %></li>
             </ul>

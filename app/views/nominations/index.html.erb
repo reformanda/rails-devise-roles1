@@ -66,8 +66,10 @@
       <%= submit_tag "Search", :name => nil %>
       &nbsp;&nbsp;
       <input value="Reset" type="button" onclick='$("#search").val("");$("#nomination_type").prop("selectedIndex",0);$("#award").prop("selectedIndex",0);$(".search_status").attr("checked",false)'/>
-      <span style="float:right"><%= @nominations.count %> Nomination(s)</span>
+      <span style="float:right"><%= @nominations.count %> of <%= @nominations.total_count %> Nomination(s) showing.&nbsp;&nbsp;</span>
     </p>
+      <span style="float:left">  <%= paginate @nominations %></span>
+
 
   <% end %>
 
@@ -93,7 +95,7 @@
           <%= nom.nominee_team_name %>
           <% end %>
           <br/>
-          
+
           <br/>
           <%= nom.nominee_organization %>
         </td>
