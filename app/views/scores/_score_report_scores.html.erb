@@ -1,0 +1,163 @@
+
+
+<% case @board.score_type_id %>
+<% when 1 then %>
+  <%= hidden_field_tag :colcnt, 5 %>
+  <td >
+      <div class="form-group">
+        <%=  score.score_1 %>
+      </div>
+  </td>
+<% when 2 then %>
+  <%= hidden_field_tag :colcnt, 11 %>
+  <td >
+      <div class="form-group">
+        <%=  score.score_1 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%= score.score_2 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%=  score.score_3 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_4 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_5 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_6 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_7 %>
+      </div>
+  </td>
+<% when 3 then %>
+  <%= hidden_field_tag :colcnt, 7 %>
+  <td >
+      <div class="form-group">
+        <%=  score.score_1 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%= score.score_2 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%=  score.score_3 %>
+      </div>
+  </td>
+<% when 4 then %>
+  <%= hidden_field_tag :colcnt, 13 %>
+  <td >
+      <div class="form-group">
+        <%=  score.score_1 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%= score.score_2 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%=  score.score_3 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_4 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_5 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_6 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_7 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_8 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_9 %>
+      </div>
+  </td>
+<% when 5 then %>
+  <%= hidden_field_tag :colcnt, 7 %>
+  <td >
+      <div class="form-group">
+        <%=  score.score_1 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%= score.score_2 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%=  score.score_3 %>
+      </div>
+  </td>
+<% when 6 then %>
+  <%= hidden_field_tag :colcnt, 8 %>
+  <td >
+      <div class="form-group">
+        <%=  score.score_1 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%= score.score_2 %>
+      </div>
+  </td>
+
+  <td >
+      <div class="form-group">
+        <%=  score.score_3 %>
+      </div>
+  </td>
+  <td >
+      <div class="form-group">
+        <%=  score.score_4 %>
+      </div>
+  </td>
+<% else %>
+
+<% end %>

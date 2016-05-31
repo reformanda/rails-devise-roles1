@@ -1,5 +1,5 @@
 class ScoresController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :admin_or_judge_only, :except => :create
   before_action :admin_only, :only => [:score_report, :reports]
 

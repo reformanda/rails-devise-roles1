@@ -1,0 +1,62 @@
+<thead>
+  <tr>
+
+    <th scope="col">Judge</th>
+
+    <% case @board.score_type_id %>
+    <% when 1 then %>
+    <th scope="col" style="width: 50%">Nominee</th>
+    <th scope="col" nowrap>Submission Packet</th>
+    <th scope="col" style="width: 100px">Score</th>
+    <th scope="col">Total by Judge</th>
+    <% when 2 then %>
+    <th scope="col">Organization / Team Name</th>
+    <th scope="col">Submission Packet</th>
+    <th scope="col">1. Talent Management Focus<br/>(1-20 points)</th>
+    <th scope="col">2. Leadership and Knowledge Transfer Efforts<br/>(1-20 points)</th>
+    <th scope="col">3. Workforce Development Initiatives<br/>(1-20 points)</th>
+    <th scope="col">4. Recognition Initiatives<br/>(1-20 points)</th>
+    <th scope="col">5. Best Practices<br/>(1-10 points)</th>
+    <th scope="col">6. Overall Assessment of Positive Impact<br/>(1-10 points)</th>
+    <th scope="col">7. Additional Information<br/>(up to 5 bonus points)</th>
+    <th scope="col">Total by Judge</th>
+    <% when 3 then %>
+    <th scope="col">Individual Name and Organization</th>
+    <th scope="col">Submission Packet</th>
+    <th scope="col">1. Specific Achievements<br/>(1-50 points)</th>
+    <th scope="col">2. Value of the Nominee's Contributions <br/>(1-30 points)</th>
+    <th scope="col">3. Demonstration of Leadership<br/>(1-20 points)</th>
+    <th scope="col">Total By Judge</th>
+    <% when 4 then %>
+    <th scope="col">1. Mission Success<br/>(1-18 points)</th>
+    <th scope="col">2. Materiel Availability<br/>(1-16 points)</th>
+    <th scope="col">3. Materiel Reliability<br/>(1-16 points)</th>
+    <th scope="col">4. Operations & Support Cost Reduction <br/>(1-13)</th>
+    <th scope="col">5. Public/Private Partnering  <br/>(1-9)</th>
+    <th scope="col">6. System Engineering Approach <br/>(1-8)</th>
+    <th scope="col">7. Footprint Reducation <br/>(1-6)</th>
+    <th scope="col">8. Obsolescence Management <br/>(1-6)</th>
+    <th scope="col">9. Arrangement Type / Period of Performance / Incentives<br/>(1-8)</th>
+    <th scope="col">Total By Judge</th>
+    <% when 5 then %>
+    <th scope="col">Individual Name and Organization</th>
+    <th scope="col">Submission Packet</th>
+    <th scope="col">1. Mission Accomplishments<br/>(1-45 points)</th>
+    <th scope="col">2. Product Support Process Innovation <br/>(1-30 points)</th>
+    <th scope="col">3.  Personnel Program<br/>(1-25 points)</th>
+    <th scope="col">Total</th>
+    <% when 6 then %>
+    <th scope="col">Individual Name and Organization</th>
+    <th scope="col">Submission Packet</th>
+    <th scope="col">1. Achievements</th>
+    <th scope="col">2. Leadership <br/></th>
+    <th scope="col">3. Strategic Value</th>
+    <th scope="col">4. Functional Area</th>
+    <th scope="col">Total</th>
+    <% else %>
+
+    <% end %>
+
+    <th scope="col">Grand Total</th>
+  </tr>
+</thead>
