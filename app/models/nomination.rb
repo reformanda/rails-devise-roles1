@@ -44,7 +44,7 @@ class Nomination < ActiveRecord::Base
   #  :nominee_last_name + :nominee_first_name
   #end
 
-  paginates_per 10
+  paginates_per 100
 
   # note singular "validate" for custom function
   validate :nominee_name_or_team_name
