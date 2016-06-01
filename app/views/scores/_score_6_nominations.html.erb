@@ -41,9 +41,24 @@
       <div class="form-group">
 
 
-        <% @checkvar = params[:action] == "show" ? true : false%>
-
+        <% @checkvar = (params[:action] == "show" || params[:action] == "score_print") ? true : false%>
+        <% if not @callback_params.nil? %>
+          <% score.score_1 = @callback_params[:score_1]["#{nom.id}"] %>
+          <% score.score_2 = @callback_params[:score_2]["#{nom.id}"] %>
+          <% score.score_3 = @callback_params[:score_3]["#{nom.id}"] %>
+          <% score.score_4 = @callback_params[:score_4]["#{nom.id}"] %>
+          <% score.score_5 = @callback_params[:score_5]["#{nom.id}"] %>
+          <% score.score_6 = @callback_params[:score_6]["#{nom.id}"] %>
+          <% score.score_7 = @callback_params[:score_7]["#{nom.id}"] %>
+          <% score.score_8 = @callback_params[:score_8]["#{nom.id}"] %>
+          <% score.score_9 = @callback_params[:score_9]["#{nom.id}"] %>
+          <% score.score_total = @callback_params[:score_total]["#{nom.id}"] %>
+        <% end %>
+        <% if not @checkvar %>
         <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..9, class:  "score_#{aw}_#{nom.id} form-control col-sm-2", required: true, disabled: @checkvar %>
+        <% else %>
+        <%= score.score_1 %>
+        <% end %>
       </div>
 
 
@@ -54,9 +69,11 @@
       <div class="form-group">
 
 
-        <% @checkvar = params[:action] == "show" ? true : false%>
-
+        <% if not @checkvar %>
         <%= number_field_tag "score_2[#{nom.id}]",  score.score_2, within: 1..9, class:  "score_#{aw}_#{nom.id} form-control col-sm-2", required: true, disabled: @checkvar %>
+        <% else %>
+        <%= score.score_2 %>
+        <% end %>
       </div>
 
 
@@ -67,9 +84,12 @@
       <div class="form-group">
 
 
-        <% @checkvar = params[:action] == "show" ? true : false%>
 
+        <% if not @checkvar %>
         <%= number_field_tag "score_3[#{nom.id}]",  score.score_3, within: 1..9, class:  "score_#{aw}_#{nom.id} form-control col-sm-2", required: true, disabled: @checkvar %>
+        <% else %>
+        <%= score.score_3 %>
+        <% end %>
       </div>
 
 
@@ -80,9 +100,12 @@
       <div class="form-group">
 
 
-        <% @checkvar = params[:action] == "show" ? true : false%>
+        <% if not @checkvar %>
 
         <%= number_field_tag "score_4[#{nom.id}]",  score.score_4, within: 1..9, class:  "score_#{aw}_#{nom.id} form-control col-sm-2", required: true, disabled: @checkvar %>
+        <% else %>
+        <%= score.score_4 %>
+        <% end %>
       </div>
 
 
@@ -90,7 +113,11 @@
 
   <td>
     <div class="form-group">
+      <% if not @checkvar %>
       <%= number_field_tag "score_total[#{nom.id}]",  score.score_total, within: 1..100, class:  "score_total_#{aw}_#{nom.id} form-control col-sm-1", disabled: true %>
+      <% else %>
+      <%= score.score_total %>
+      <% end %>
     </div>
   </td>
 
