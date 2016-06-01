@@ -83,6 +83,23 @@ class ScoresController < ApplicationController
     params[:score_1].map { |k,v| @nom_ids << k}
     @score_1 = []
     params[:score_1].map { |k,v| @score_1 << v}
+    @score_2 = []
+    params[:score_2].map { |k,v| @score_2 << v}
+    @score_3 = []
+    params[:score_3].map { |k,v| @score_3 << v}
+    @score_4 = []
+    params[:score_4].map { |k,v| @score_4 << v}
+    @score_5 = []
+    params[:score_5].map { |k,v| @score_5 << v}
+    @score_6 = []
+    params[:score_6].map { |k,v| @score_6 << v}
+    @score_7 = []
+    params[:score_7].map { |k,v| @score_7 << v}
+    @score_8 = []
+    params[:score_8].map { |k,v| @score_8 << v}
+    @score_9 = []
+    params[:score_9].map { |k,v| @score_9 << v}
+
     #puts @nom_ids
     validation_error = false
     @nom_ids.each do |i|
@@ -96,7 +113,15 @@ class ScoresController < ApplicationController
         :score_7 => params[:score_7][i],
         :score_8 => params[:score_8][i],
         :score_9 => params[:score_9][i],
-        :checker => @score_1
+        :checker_1 => @score_1,
+        :checker_2 => @score_2,
+        :checker_3 => @score_3,
+        :checker_4 => @score_4,
+        :checker_5 => @score_5,
+        :checker_6 => @score_6,
+        :checker_7 => @score_7,
+        :checker_8 => @score_8,
+        :checker_9 => @score_9
         })
       if not @score.valid?
           validation_error = true
@@ -123,7 +148,15 @@ class ScoresController < ApplicationController
           :score_8 => params[:score_8][i],
           :score_9 => params[:score_9][i],
           :score_total => params[:score_1][i].to_i + params[:score_2][i].to_i + params[:score_3][i].to_i + params[:score_4][i].to_i + params[:score_5][i].to_i + params[:score_6][i].to_i + params[:score_7][i].to_i + params[:score_8][i].to_i + params[:score_9][i].to_i,
-          :checker => @score_1
+          :checker_1 => @score_1,
+          :checker_2 => @score_2,
+          :checker_3 => @score_3,
+          :checker_4 => @score_4,
+          :checker_5 => @score_5,
+          :checker_6 => @score_6,
+          :checker_7 => @score_7,
+          :checker_8 => @score_8,
+          :checker_9 => @score_9  
           })
           #puts params[:score_1][i]
           #puts params[:score_2][i]
@@ -148,6 +181,7 @@ class ScoresController < ApplicationController
         @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
         @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
         @callback_params = params
+        puts params
         puts @nominations.inspect
         begin
         @score_type = ScoreType.find(@board.score_type_id)

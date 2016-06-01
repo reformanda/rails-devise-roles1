@@ -92,7 +92,7 @@
   <td>
     <div class="form-group">
       <% if not @checkvar %>
-      <%= number_field_tag "score_total[#{nom.id}]",  score.score_total, within: 1..100, class:  "score_total_#{aw}_#{nom.id} form-control col-sm-1", disabled: true %>
+      <%= number_field_tag "score_total[#{nom.id}]",  score.score_total, within: 1..100, class:  "score_total_#{aw}_#{nom.id} form-control col-sm-1", readonly: true %>
       <% else %>
       <%= score.score_total %>
       <% end %>
