@@ -147,6 +147,7 @@ class ScoresController < ApplicationController
         @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
         @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
         @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
+        @callback_params = params
         puts @nominations.inspect
         begin
         @score_type = ScoreType.find(@board.score_type_id)

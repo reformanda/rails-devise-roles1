@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get 'scores/score_print', to: "scores#score_print"
   get 'scores/reports', to: "scores#reports"
   get 'scores/:id/score_report', to: "scores#score_report"
+  get 'scores/:id/score_print', to: "scores#score_print"
 
   resources :nominations
   resources :packards  #, controller: 'nominations', type: 'Packard'
