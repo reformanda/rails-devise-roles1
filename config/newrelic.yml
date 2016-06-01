@@ -41,9 +41,9 @@ test:
   # It doesn't make sense to report to New Relic from automated test runs.
   monitor_mode: false
 
-staging:
+testprod:
   <<: *default_settings
-  app_name: USAASC Virtual Boards (Staging)
+  app_name: USAASC Virtual Boards (Testing)
 
 production:
   <<: *default_settings
