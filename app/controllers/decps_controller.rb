@@ -21,7 +21,12 @@ class DecpsController < ApplicationController
     @info = NominationType.where(["code = ?", "Decp"]).first
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Decp").pluck(:name,:id)
     @callback = "/decps/?#no-back"
-    #render :layout => "nomination_form"
+    begin
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+      redirect_to "/nominations/expired"
+    end
+    rescue
+    end
   end
 
   # GET /boats/1/edit

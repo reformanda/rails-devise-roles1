@@ -22,7 +22,12 @@ class PackardsController < ApplicationController
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Packard").pluck(:name,:id)
     #session[:award_options] = [["Program Management",1]]
     @callback = "/packards/?#no-back"
-    #render :layout => "nomination_form"
+    begin
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+      redirect_to "/nominations/expired"
+    end
+    rescue
+    end
   end
 
   # GET /boats/1/edit

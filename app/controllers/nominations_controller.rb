@@ -1,9 +1,12 @@
 class NominationsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
-  before_action :manager_or_admin_only, :except => :list
+  before_action :manager_or_admin_only, :except => [:list, :expired]
 
   include DocumentService
+
+  def expired
+  end
 
   # GET /boats
   # GET /boats.json

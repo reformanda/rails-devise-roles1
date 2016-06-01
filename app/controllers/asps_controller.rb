@@ -21,7 +21,12 @@ class AspsController < ApplicationController
     @info = NominationType.where(["code = ?", "Asp"]).first
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Asp").pluck(:name,:id)
     @callback = "/asps/?#no-back"
-    #render :layout => "nomination_form"
+    begin
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+      redirect_to "/nominations/expired"
+    end
+    rescue
+    end
   end
 
   # GET /boats/1/edit

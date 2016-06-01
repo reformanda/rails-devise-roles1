@@ -8,7 +8,7 @@ class NominationTypesController < ApplicationController
   # GET /nomination_types.json
   def index
     @nomination_types = NominationType.all
-    #render :layout => "nomination_form"
+    #render :layout => "nomination_for"
   end
 
   # GET /nomination_types/1
@@ -19,7 +19,7 @@ class NominationTypesController < ApplicationController
   # GET /nomination_types/new
   def new
     @nomination_type = NominationType.new
-    #render :layout => "nomination_form"
+    #render :layout => "nomination_for"
   end
 
   # GET /nomination_types/1/edit

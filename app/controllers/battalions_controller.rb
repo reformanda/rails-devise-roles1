@@ -21,7 +21,12 @@ class BattalionsController < ApplicationController
     @info = NominationType.where(["code = ?", "Battalion"]).first
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Battalion").pluck(:name,:id)
     @callback = "/battalions/?#no-back"
-    #render :layout => "nomination_form"
+    begin
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+      redirect_to "/nominations/expired"
+    end
+    rescue
+    end
   end
 
   # GET /boats/1/edit

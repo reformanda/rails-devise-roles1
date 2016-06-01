@@ -21,7 +21,12 @@ class Pmpdp06sController < ApplicationController
     @info = NominationType.where(["code = ?", "Pmpdp06"]).first
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Pmpdp06").pluck(:name,:id)
     @callback = "/pmpdp06s/?#no-back"
-    #render :layout => "nomination_form"
+    begin
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+      redirect_to "/nominations/expired"
+    end
+    rescue
+    end
   end
 
   # GET /boats/1/edit

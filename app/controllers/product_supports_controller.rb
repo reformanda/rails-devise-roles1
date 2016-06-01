@@ -22,7 +22,12 @@ class ProductSupportsController < ApplicationController
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "ProductSupport").order("award_options.name").pluck(:name,:id)
     #session[:award_options] = [["Program Management",1]]
     @callback = "/product_supports/?#no-back"
-    #render :layout => "nomination_form"
+    begin
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+      redirect_to "/nominations/expired"
+    end
+    rescue
+    end
   end
 
   # GET /boats/1/edit
