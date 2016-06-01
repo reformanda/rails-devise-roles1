@@ -55,7 +55,7 @@
           <% score.score_total = @callback_params[:score_total]["#{nom.id}"] %>
         <% end %>
         <% if not @checkvar %>
-        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..9, class:  "form-control col-sm-1", required: true, disabled: @checkvar %>
+        <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..9, class:  "form-control col-sm-1", required: false, disabled: @checkvar %>
         <% else %>
         <%= score.score_1 %>
         <% end %>
