@@ -11,6 +11,7 @@ gem 'kaminari'
 gem 'valid_email'
 gem 'puma'
 gem 'webshims-rails'
+gem 'modernizr-rails'
 gem 'seed_dump'
 gem 'mime-types', '2.6.2'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
