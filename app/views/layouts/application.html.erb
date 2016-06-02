@@ -21,7 +21,9 @@
     <link rel='stylesheet' id='beta-css'  href='https://usaascvb.info/css/style-1.0.css' type='text/css' media='all' />
 --->
       <noscript>
+        <% if params[:action] != "nojavascript" %>
           <meta http-equiv="refresh" content="2;url=/nojswarning">
+        <% end %>
       </noscript>
     <style>
       .site-header {

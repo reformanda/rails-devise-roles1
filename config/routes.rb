@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   #root to: 'dashboards#dashboard_1'
-  get '/nojavascript', to: "landing#nojavascript"
+  get '/nojswarning', to: "landing#nojavascript"
   get 'packards/confirmation', to: "packards#confirmation"
   get 'shoulds/confirmation', to: "shoulds#confirmation"
   get 'developments/confirmation', to: "developments#confirmation"
