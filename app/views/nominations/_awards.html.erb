@@ -1,0 +1,8 @@
+<option value="">All</option>
+<% @award.each do |award| %>
+<% if @award_option.to_i == award[1].to_i %>
+<option value="<%= award[1] %>" selected="selected"><%= award[0] %></option>
+<% else %>
+<option value="<%= award[1] %>"><%= award[0] %></option>
+<% end %>
+<% end %>

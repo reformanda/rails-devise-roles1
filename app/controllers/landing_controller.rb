@@ -12,4 +12,8 @@ class LandingController < ApplicationController
     render :layout => "empty"
   end
 
+  def nojavascript
+    render :layout => "empty"
+  end
+
 end

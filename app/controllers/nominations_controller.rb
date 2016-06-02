@@ -2,7 +2,7 @@ class NominationsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
   before_action :manager_or_admin_only, :except => [:list, :expired]
-respond_to :json, :html
+
   include DocumentService
 
   def expired
@@ -24,8 +24,8 @@ respond_to :json, :html
     "%#{params[:search]}%","%#{params[:search]}%",
      "%#{params[:search]}%","%#{params[:search]}%",
      "%#{params[:search]}%","%#{params[:search]}%") unless params[:search].blank?
-    @nominations = @nominations.where("award_option_id = ?","#{params[:award]}") unless params[:award].blank?
-    @nominations = @nominations.where("nomination_type_id = ?","#{params[:nomination_type]}") unless params[:nomination_type].blank?
+    @nominations = @nominations.where("award_option_id = ?","#{params[:nomination_award_option_id]}") unless params[:nomination_award_option_id].blank?
+    @nominations = @nominations.where("nomination_type_id = ?","#{params[:nomination_nomination_type_id]}") unless params[:nomination_nomination_type_id].blank?
     @nominations = @nominations.where(status: params[:status]) unless params[:status].blank?
     @nominations = @nominations.page params[:page] #User.all
     @nomination_types = NominationType.all.pluck(:code,:id)
@@ -156,9 +156,14 @@ respond_to :json, :html
   end
 
   def update_awards
-    @award = AwardOption.joins(:nomination_type).where("nomination_type_id  = ?", params[:id]).pluck(:name,:id)
-    puts @award
-    puts "done"
+    @award_option = params[:option_id]
+    puts @award_option
+    puts "hello"
+    if params[:id].blank?
+      @award = AwardOption.pluck(:name,:id)
+    else
+      @award = AwardOption.joins(:nomination_type).where("nomination_type_id  = ?", params[:id]).pluck(:name,:id)
+    end
     respond_to do |format|
       format.js
     end

@@ -37,5 +37,10 @@ module RailsDeviseRoles
     config.active_record.raise_in_transactional_callbacks = true
 
     config.autoload_paths += %W(#{config.root}/lib)
+
+    config.action_dispatch.default_headers.merge!({
+      'X-UA-Compatible' => 'IE=edge,chrome=1'
+    })
+    
   end
 end

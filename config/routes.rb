@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   #root to: 'dashboards#dashboard_1'
-
+  get '/nojavascript', to: "landing#nojavascript"
   get 'packards/confirmation', to: "packards#confirmation"
   get 'shoulds/confirmation', to: "shoulds#confirmation"
   get 'developments/confirmation', to: "developments#confirmation"
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get 'logistics/confirmation', to: "logistics#confirmation"
 
   get 'nominations/expired', to: "nominations#expired"
-  get 'nominations/update_awards/:id', to: 'nominations#update_awards', defaults: { format: 'json' }
+  get 'nominations/update_awards', as: 'update_awards'
   get 'nominations/list', to: "nominations#list"
   get 'boards/list', to: "boards#list"
   get 'asps/confirmation', to: "asps#confirmation"
