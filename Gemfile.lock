@@ -137,7 +137,6 @@ GEM
     modernizr-rails (2.7.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
-    newrelic_rpm (3.15.2.317)
     nokogiri (1.6.7.2-java)
     orm_adapter (0.5.0)
     pdf-merger (0.3.2)
@@ -269,7 +268,6 @@ DEPENDENCIES
   launchy
   mime-types (= 2.6.2)
   modernizr-rails
-  newrelic_rpm
   pdf-merger (~> 0.3.2)
   puma
   quiet_assets

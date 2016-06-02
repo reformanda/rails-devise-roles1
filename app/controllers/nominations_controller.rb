@@ -2,7 +2,7 @@ class NominationsController < ApplicationController
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
   before_action :manager_or_admin_only, :except => [:list, :expired]
-
+respond_to :json, :html
   include DocumentService
 
   def expired
@@ -156,8 +156,9 @@ class NominationsController < ApplicationController
   end
 
   def update_awards
-    @award_options = AwardOption.joins(:nomination_type).where("code  = ?", params[:country_id]).pluck(:name,:id)
-    puts @award_options
+    @award = AwardOption.joins(:nomination_type).where("nomination_type_id  = ?", params[:id]).pluck(:name,:id)
+    puts @award
+    puts "done"
     respond_to do |format|
       format.js
     end

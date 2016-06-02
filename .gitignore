@@ -11,7 +11,7 @@
 #----------------------------------------------------------------------------
 /public/documents
 /public/uploads/
-/public/assets/
+#/public/assets/
 # bundler state
 /.bundle
 /vendor/bundle/
