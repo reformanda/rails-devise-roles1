@@ -4,7 +4,7 @@
   <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
   <% if not @noms.empty? %>
   <% score_any = true %>
-  <h4> <%= aw.name %> </h4>
+  <h4> <%= aw.name %> <span id="to_score"></span></h4>
   <div class="hr-line-dashed"></div>
       <table class="table table-striped table-bordered table-hover dataTables-example" style="width: 50%">
         <thead>
@@ -26,7 +26,7 @@
             <% @noms.find_each do |nom| %>
 
               <% score = @scores.where("nomination_id = ?", nom.id).first || Score.new %>
-              <%= render "score_1_nominations", :nom => nom, :score => score %>
+              <%= render "score_1_nominations", :nom => nom, :score => score,  :aw => aw.id %>
 
 
             <% end %>

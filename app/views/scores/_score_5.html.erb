@@ -42,39 +42,3 @@
   <% if not score_any %>
   <h4>There are no nominations to score at this time.</h4>
   <% end %>
-  <%= hidden_field_tag "aw_list", @award_options.pluck(:id).join(",") %>
-  <% content_for :javascript do %>
-
-  <script type="text/javascript">
-
-    function add(aw, nom) {
-      var sum = 0;
-      $(".score_" + aw + "_" + nom).each(function() {
-          sum += Number($(this).val());
-      });
-      $(".score_total_" + aw + "_" + nom).val(sum);
-    }
-
-    $("[class^='score']").change(function () {
-      score_class = $(this).prop("class").split(" ")[0];
-      aw = score_class.split("_")[1]
-      nom = score_class.split("_")[2]
-      add(aw, nom);
-    });
-
-    $("[class^='score']").blur(function () {
-      score_class = $(this).prop("class").split(" ")[0];
-      aw = score_class.split("_")[1]
-      nom = score_class.split("_")[2]
-      add(aw, nom);
-    });
-
-    // initialize values
-    aw_list = $("#aw_list").val().split(",");
-    for ( i = 0; i < aw_list.length; i++ ) {
-      $(".score_" + aw_list[i]).change();
-    }
-
-  </script>
-
-  <% end %>

@@ -132,3 +132,127 @@
   </div>
 </div>
 <% end %>
+
+<%= hidden_field_tag "nom_list", @noms.pluck(:id).join(",") %>
+<%= hidden_field_tag "aw_list", @award_options.pluck(:id).join(",") %>
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+$(function() {
+
+  // total number of nominations
+  var nom_list = $("#nom_list").val().split(",");
+
+  // number of awards
+  var aw_list = $("#aw_list").val().split(",");
+
+  // number of nominations not completely scored
+  var not_complete = [];
+  $.each( nom_list, function(key, value) {
+    //alert( key + ": " + value );
+
+    var score_1_notblank = (parseInt($("#score_1_"+value).val()) > parseInt($("#score_1_"+value).prop("min")) );
+    var score_2_notblank = $("#score_2_"+value).is(":hidden") || (parseInt($("#score_2_"+value).val()) > parseInt($("#score_2_"+value).prop("min")) );
+    var score_3_notblank = $("#score_3_"+value).is(":hidden") || (parseInt($("#score_3_"+value).val()) > parseInt($("#score_3_"+value).prop("min")) );
+    var score_4_notblank = $("#score_4_"+value).is(":hidden") || (parseInt($("#score_4_"+value).val()) > parseInt($("#score_4_"+value).prop("min")) );
+    var score_5_notblank = $("#score_5_"+value).is(":hidden") || (parseInt($("#score_5_"+value).val()) > parseInt($("#score_5_"+value).prop("min")) );
+    var score_6_notblank = $("#score_6_"+value).is(":hidden") || (parseInt($("#score_6_"+value).val()) > parseInt($("#score_6_"+value).prop("min")) );
+    var score_7_notblank = $("#score_7_"+value).is(":hidden") || (parseInt($("#score_7_"+value).val()) > parseInt($("#score_7_"+value).prop("min")) );
+    var score_8_notblank = $("#score_8_"+value).is(":hidden") || (parseInt($("#score_8_"+value).val()) > parseInt($("#score_8_"+value).prop("min")) );
+    var score_9_notblank = $("#score_9_"+value).is(":hidden") || (parseInt($("#score_9_"+value).val()) > parseInt($("#score_9_"+value).prop("min")) );
+
+    if (!(score_1_notblank && score_2_notblank && score_3_notblank && score_4_notblank && score_5_notblank && score_6_notblank && score_7_notblank && score_8_notblank && score_9_notblank))
+    {
+          // add the nomination that is not complete
+          not_complete.push(value);
+    }
+  });
+
+  //not_complete has the noms that are not complete.
+  //alert(not_complete);
+
+  // can we count how many scores are completed?
+  // first how many are displayed?  count number of score_1's
+  var score_1s = $("[id^='score_1']");
+  $.each( score_1s, function( key, value ) {
+    if (! $(this).is(":visible")) {
+      return false;
+    }
+  });
+
+  var score_2s = $("[id^='score_2']");
+  //alert(score_2s.length);
+  $.each( score_2s, function( key, value ) {
+    //alert( key + ": " + value );
+    if (! $(this).is(":visible")) {
+      return false;
+    }
+  });
+  // how many have blank scores
+  //for { i = 0; i < cnt; i++} {
+
+  //}
+
+  function score_blank (obj) {
+    $.each( obj, function( key, value ) {
+      alert( key + ": " + value );
+      if (! $(this).is(":visible")) {
+        return false;
+      }
+    });
+  }
+
+
+  function add(aw, nom) {
+    var sum = 0;
+    $(".score_" + aw + "_" + nom).each(function() {
+        sum += Number($(this).val());
+    });
+    $(".score_total_" + aw + "_" + nom).val(sum);
+  }
+
+  $("[class^='score']").change(function () {
+    score_class = $(this).prop("class").split(" ")[0];
+    aw = score_class.split("_")[1]
+    nom = score_class.split("_")[2]
+    add(aw, nom);
+
+    if ($(this).prop("max") == $(this).val()) {
+      $(this).css("background-color", "yellow");
+    }
+    else {
+      $(this).css("background-color", "white");
+    }
+
+
+  });
+
+  $("[class^='score']").blur(function () {
+    score_class = $(this).prop("class").split(" ")[0];
+    aw = score_class.split("_")[1]
+    nom = score_class.split("_")[2]
+    add(aw, nom);
+
+    if ($(this).prop("max") == $(this).val()) {
+      $(this).css("background-color", "yellow");
+    }
+    else {
+      $(this).css("background-color", "white");
+    }
+
+  });
+
+  // initialize values
+  aw_list = $("#aw_list").val().split(",");
+  for ( i = 0; i < aw_list.length; i++ ) {
+    $(".score_" + aw_list[i]).change();
+  }
+
+  $("[class^='score']").blur();
+
+});
+
+</script>
+
+<% end %>
