@@ -79,7 +79,7 @@
   <td >
 
       <div class="form-group">
-        <% if not @chevar %>
+        <% if not @checkvar %>
         <%= number_field_tag "score_3[#{nom.id}]",  score.score_3, within: 1..20, class:  "score_#{aw}_#{nom.id} form-control col-sm-2", required: false, disabled: @checkvar %>
         <% else %>
         <%= score.score_3 %>

@@ -23,55 +23,55 @@ class Score < ActiveRecord::Base
       cntmax = []
       checker_1.each { |x| cntmax << x if x == "18"}
       if cntmax.length > 1
-        errors.add(:base, "Category 1: the max score of 18 can only be assigned one nominee.")
+        errors.add(:base, "Category 1: the max score of 18 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_2.each { |x| cntmax << x if x == "16"}
       if cntmax.length > 1
-        errors.add(:base, "Category 2: the max score of 16 can only be assigned one nominee.")
+        errors.add(:base, "Category 2: the max score of 16 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_3.each { |x| cntmax << x if x == "16"}
       if cntmax.length > 1
-        errors.add(:base, "Category 3: the max score of 16 can only be assigned one nominee.")
+        errors.add(:base, "Category 3: the max score of 16 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_4.each { |x| cntmax << x if x == "13"}
       if cntmax.length > 1
-        errors.add(:base, "Category 4: the max score of 13 can only be assigned one nominee.")
+        errors.add(:base, "Category 4: the max score of 13 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_5.each { |x| cntmax << x if x == "9"}
       if cntmax.length > 1
-        errors.add(:base, "Category 5: the max score of 9 can only be assigned one nominee.")
+        errors.add(:base, "Category 5: the max score of 9 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_6.each { |x| cntmax << x if x == "8"}
       if cntmax.length > 1
-        errors.add(:base, "Category 6: the max score of 8 can only be assigned one nominee.")
+        errors.add(:base, "Category 6: the max score of 8 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_7.each { |x| cntmax << x if x == "6"}
       if cntmax.length > 1
-        errors.add(:base, "Category 7: the max score of 6 can only be assigned one nominee.")
+        errors.add(:base, "Category 7: the max score of 6 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_8.each { |x| cntmax << x if x == "6"}
       if cntmax.length > 1
-        errors.add(:base, "Category 8: the max score of 6 can only be assigned one nominee.")
+        errors.add(:base, "Category 8: the max score of 6 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_9.each { |x| cntmax << x if x == "8"}
       if cntmax.length > 1
-        errors.add(:base, "Category 9: the max score of 8 can only be assigned one nominee.")
+        errors.add(:base, "Category 9: the max score of 8 can only be assigned to one nominee.")
       end
 
     else
@@ -85,19 +85,19 @@ class Score < ActiveRecord::Base
       cntmax = []
       checker_1.each { |x| cntmax << x if x == "45"}
       if cntmax.length > 1
-        errors.add(:base, "Category 1: the max score of 45 can only be assigned one nominee.")
+        errors.add(:base, "Category 1: the max score of 45 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_2.each { |x| cntmax << x if x == "30"}
       if cntmax.length > 1
-        errors.add(:base, "Category 2: the max score of 30 can only be assigned one nominee.")
+        errors.add(:base, "Category 2: the max score of 30 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_3.each { |x| cntmax << x if x == "25"}
       if cntmax.length > 1
-        errors.add(:base, "Category 3: the max score of 25 can only be assigned one nominee.")
+        errors.add(:base, "Category 3: the max score of 25 can only be assigned to one nominee.")
       end
 
 
@@ -113,19 +113,19 @@ class Score < ActiveRecord::Base
       cntmax = []
       checker_1.each { |x| cntmax << x if x == "50"}
       if cntmax.length > 1
-        errors.add(:base, "Category 1: the max score of 50 can only be assigned one nominee.")
+        errors.add(:base, "Category 1: the max score of 50 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_2.each { |x| cntmax << x if x == "30"}
       if cntmax.length > 1
-        errors.add(:base, "Category 2: the max score of 30 can only be assigned one nominee.")
+        errors.add(:base, "Category 2: the max score of 30 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_3.each { |x| cntmax << x if x == "20"}
       if cntmax.length > 1
-        errors.add(:base, "Category 3: the max score of 20 can only be assigned one nominee.")
+        errors.add(:base, "Category 3: the max score of 20 can only be assigned to one nominee.")
       end
 
 
@@ -140,37 +140,37 @@ class Score < ActiveRecord::Base
       cntmax = []
       checker_1.each { |x| cntmax << x if x == "20"}
       if cntmax.length > 1
-        errors.add(:base, "Category 1: the max score of 20 can only be assigned one nominee.")
+        errors.add(:base, "Category 1: the max score of 20 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_2.each { |x| cntmax << x if x == "20"}
       if cntmax.length > 1
-        errors.add(:base, "Category 2: the max score of 20 can only be assigned one nominee.")
+        errors.add(:base, "Category 2: the max score of 20 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_3.each { |x| cntmax << x if x == "20"}
       if cntmax.length > 1
-        errors.add(:base, "Category 3: the max score of 20 can only be assigned one nominee.")
+        errors.add(:base, "Category 3: the max score of 20 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_4.each { |x| cntmax << x if x == "20"}
       if cntmax.length > 1
-        errors.add(:base, "Category 4: the max score of 20 can only be assigned one nominee.")
+        errors.add(:base, "Category 4: the max score of 20 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_5.each { |x| cntmax << x if x == "10"}
       if cntmax.length > 1
-        errors.add(:base, "Category 5: the max score of 10 can only be assigned one nominee.")
+        errors.add(:base, "Category 5: the max score of 10 can only be assigned to one nominee.")
       end
 
       cntmax = []
       checker_6.each { |x| cntmax << x if x == "10"}
       if cntmax.length > 1
-        errors.add(:base, "Category 6: the max score of 10 can only be assigned one nominee.")
+        errors.add(:base, "Category 6: the max score of 10 can only be assigned to one nominee.")
       end
 
     else
