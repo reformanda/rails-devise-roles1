@@ -12,10 +12,10 @@ class Score < ActiveRecord::Base
   attr_accessor :checker_9
 
   validate :score_1_no_multiple_9
-  #validate :check_max_values_development
-  #validate :check_max_values_achievement
-  #validate :check_max_values_psm
-  #validate :check_max_values_psl
+  validate :check_max_values_development
+  validate :check_max_values_achievement
+  validate :check_max_values_psm
+  validate :check_max_values_psl
 
   def check_max_values_psl
     if board.score_type_id == 4

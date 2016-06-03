@@ -78,54 +78,54 @@ class ScoresController < ApplicationController
 
     @board = Board.find(params[:board_id])
 
-    # validate
-    @nom_ids = []
-    params[:score_1].map { |k,v| @nom_ids << k}
-    @score_1 = []
-    params[:score_1].map { |k,v| @score_1 << v}
-    @score_2 = []
-    params[:score_2].map { |k,v| @score_2 << v}
-    @score_3 = []
-    params[:score_3].map { |k,v| @score_3 << v}
-    @score_4 = []
-    params[:score_4].map { |k,v| @score_4 << v}
-    @score_5 = []
-    params[:score_5].map { |k,v| @score_5 << v}
-    @score_6 = []
-    params[:score_6].map { |k,v| @score_6 << v}
-    @score_7 = []
-    params[:score_7].map { |k,v| @score_7 << v}
-    @score_8 = []
-    params[:score_8].map { |k,v| @score_8 << v}
-    @score_9 = []
-    params[:score_9].map { |k,v| @score_9 << v}
+    # look over award options
 
+    @nomination_type = NominationType.find(@board.nomination_type)
+    @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
+    @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
 
     validation_error = false
-    @nom_ids.each do |i|
-      @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
-        :score_1 => params[:score_1][i],
-        :score_2 => params[:score_2][i],
-        :score_3 => params[:score_3][i],
-        :score_4 => params[:score_4][i],
-        :score_5 => params[:score_5][i],
-        :score_6 => params[:score_6][i],
-        :score_7 => params[:score_7][i],
-        :score_8 => params[:score_8][i],
-        :score_9 => params[:score_9][i],
-        :checker_1 => @score_1,
-        :checker_2 => @score_2,
-        :checker_3 => @score_3,
-        :checker_4 => @score_4,
-        :checker_5 => @score_5,
-        :checker_6 => @score_6,
-        :checker_7 => @score_7,
-        :checker_8 => @score_8,
-        :checker_9 => @score_9
-        })
-      if not @score.valid?
+    @award_options.each do |aw|
+      # load arrays for validation
+      @noms = @nominations.where("award_option_id = ?", aw.id)
+      if not @noms.empty?
+        @score_1 = []
+        @score_2 = []
+        @score_3 = []
+        @score_4 = []
+        @score_5 = []
+        @score_6 = []
+        @score_7 = []
+        @score_8 = []
+        @score_9 = []
+        @noms.each do |i|
+          @score_1 << params[:score_1][i.id.to_s]
+          @score_2 << params[:score_2][i.id.to_s]
+          @score_3 << params[:score_3][i.id.to_s]
+          @score_4 << params[:score_4][i.id.to_s]
+          @score_5 << params[:score_5][i.id.to_s]
+          @score_6 << params[:score_6][i.id.to_s]
+          @score_7 << params[:score_7][i.id.to_s]
+          @score_8 << params[:score_8][i.id.to_s]
+          @score_9 << params[:score_9][i.id.to_s]
+        end
+        # just test one record (scores are not required)
+        @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => @noms.first.id,
+            :checker_1 => @score_1,
+            :checker_2 => @score_2,
+            :checker_3 => @score_3,
+            :checker_4 => @score_4,
+            :checker_5 => @score_5,
+            :checker_6 => @score_6,
+            :checker_7 => @score_7,
+            :checker_8 => @score_8,
+            :checker_9 => @score_9
+            })
+
+        if not @score.valid?
           validation_error = true
           break
+        end
       end
     end
 
@@ -134,7 +134,9 @@ class ScoresController < ApplicationController
       # delete all old scores
       Score.where("board_id = ? and user_id = ?", params[:board_id], current_user.id).delete_all
       #score_total = params[:score_1]+ params[:score_2]+ params[:score_3]+ params[:score_4]+ params[:score_5]+ params[:score_6]+ params[:score_7]+ params[:score_8]+ params[:score_9]
-
+      # save all scores
+      @nom_ids = []
+      params[:score_1].map { |k,v| @nom_ids << k}
       @nom_ids.each do |i|
         @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
           :score_1 => params[:score_1][i],
