@@ -16,7 +16,7 @@ class NominationsController < ApplicationController
       params[:status] = ["0","1","2"]
     end
     @statuses = [:entered, :approved, :scored, :deleted]
-    #puts @nominations.inspect
+
     @nominations = @nominations.where(
     "nominee_first_name like ? OR nominee_last_name like ? OR " + \
     "nominating_official_first_name like ? OR nominating_official_last_name like ? OR " + \
@@ -41,8 +41,7 @@ class NominationsController < ApplicationController
     @callback = "#"
     @manage_nomination = true
     @remove_submission_packet = nil
-    #puts @nomination.submission_packet.blank?
-    #puts @nomination.submission_packet
+
   end
 
   def show
@@ -73,7 +72,7 @@ class NominationsController < ApplicationController
   # PATCH/PUT /boats/1
   # PATCH/PUT /boats/1.json
   def update
-    #puts "START***"
+
     respond_to do |format|
       if @nomination.update(nomination_params)
 
@@ -157,8 +156,7 @@ class NominationsController < ApplicationController
 
   def update_awards
     @award_option = params[:option_id]
-    puts @award_option
-    puts "hello"
+
     if params[:id].blank?
       @award = AwardOption.pluck(:name,:id)
     else

@@ -1,7 +1,6 @@
 class LandingController < ApplicationController
   def index
-    #render :layout => "nomination"
-    #puts current_user.inspect
+ 
   end
 
   def nomination
@@ -13,7 +12,7 @@ class LandingController < ApplicationController
   end
 
   def nojavascript
-  
+
   end
 
 end

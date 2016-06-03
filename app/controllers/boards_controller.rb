@@ -8,7 +8,7 @@ class BoardsController < ApplicationController
   def index
     @boards = Board.all
     @usernames = User.all.order(:id).pluck(:name)
-    puts @usernames
+
   end
 
   def list
@@ -56,8 +56,7 @@ class BoardsController < ApplicationController
   # PATCH/PUT /boards/1
   # PATCH/PUT /boards/1.json
   def update
-    puts board_params[:start_date]
-    puts "hello"
+
     respond_to do |format|
       if @board.update(board_params)
         format.html { redirect_to @board, notice: 'Board was successfully updated.' }

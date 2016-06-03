@@ -10,7 +10,7 @@ class ScoresController < ApplicationController
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
     @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     @scores = Score.where("board_id = ?", @board.id)
-    puts @nominations.inspect
+
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -31,7 +31,7 @@ class ScoresController < ApplicationController
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
     @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
-    puts @nominations.inspect
+
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -46,7 +46,7 @@ class ScoresController < ApplicationController
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
     @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
-    puts @nominations.inspect
+
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -66,7 +66,7 @@ class ScoresController < ApplicationController
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
     @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
-    puts @nominations.inspect
+
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -75,7 +75,7 @@ class ScoresController < ApplicationController
 
   def create
     #@nomination_type = NominationType.new(nomination_type_params)
-    puts params.inspect
+
     @board = Board.find(params[:board_id])
 
     # validate
@@ -100,7 +100,7 @@ class ScoresController < ApplicationController
     @score_9 = []
     params[:score_9].map { |k,v| @score_9 << v}
 
-    #puts @nom_ids
+
     validation_error = false
     @nom_ids.each do |i|
       @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
@@ -134,8 +134,7 @@ class ScoresController < ApplicationController
       # delete all old scores
       Score.where("board_id = ? and user_id = ?", params[:board_id], current_user.id).delete_all
       #score_total = params[:score_1]+ params[:score_2]+ params[:score_3]+ params[:score_4]+ params[:score_5]+ params[:score_6]+ params[:score_7]+ params[:score_8]+ params[:score_9]
-      #puts score_total
-      #puts "HELLO"
+
       @nom_ids.each do |i|
         @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
           :score_1 => params[:score_1][i],
@@ -156,13 +155,9 @@ class ScoresController < ApplicationController
           :checker_6 => @score_6,
           :checker_7 => @score_7,
           :checker_8 => @score_8,
-          :checker_9 => @score_9  
+          :checker_9 => @score_9
           })
-          #puts params[:score_1][i]
-          #puts params[:score_2][i]
-          #puts params[:score_1][i].to_i + params[:score_2][i].to_i
-          #+ params[:score_2][i] + params[:score_3][i] + params[:score_4][i] + params[:score_5][i] + params[:score_6][i] + params[:score_7][i] + params[:score_8][i] + params[:score_9][i]
-          #puts "HELLO"
+
         if not @score.save
             save_error = true
             break
@@ -181,8 +176,7 @@ class ScoresController < ApplicationController
         @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
         @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
         @callback_params = params
-        puts params
-        puts @nominations.inspect
+
         begin
         @score_type = ScoreType.find(@board.score_type_id)
         rescue

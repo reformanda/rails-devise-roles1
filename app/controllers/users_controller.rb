@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def edit
     @nomination_types = NominationType.all.pluck(:code,:id)
-    puts @user.inspect
+
   end
 
   def show
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @password = new_password
-    puts @password.inspect
+
   end
 
   def create
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 
-        UserMailer.account_creation(@user, params[:entered_password]).deliver        
+        UserMailer.account_creation(@user, params[:entered_password]).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -58,8 +58,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    puts @user.inspect
-    puts secure_params
+
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
     else
