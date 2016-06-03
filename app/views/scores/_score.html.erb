@@ -96,6 +96,9 @@
             <br/>
             <%= link_to "View/Print All Submission Documents", @board.combined_submission_packet_url, :target => "_blank" %>
             <% end %>
+            <span style="float:right">
+              <%= link_to "View/Print Nomination Instructions", @board.nomination_type.implementing_instructions_url, :target => "_blank" %>
+            </span>
             <div class="hr-line-solid"></div>
             <% setup_ok = true %>
             <% case @board.score_type_id %>
