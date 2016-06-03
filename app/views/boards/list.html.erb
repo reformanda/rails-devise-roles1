@@ -38,10 +38,11 @@
           </div>
           <div class="ibox-content">
             <ul class="list-group clear-list">
+              <% no_boards = true %>
               <% @boards.find_each do |n|  %>
 
               <% if current_user.admin? || ((not n.users_list.nil?) && (n.users_list.include?(current_user.id.to_s))) %>
-
+              <% no_boards = false %>
               <li>
 
                   <a href="<%= url_for :controller => "scores", :action => 'edit', :id => n.id %>">
@@ -50,6 +51,9 @@
 
               </li>
               <% end %>
+              <% end %>
+              <% if no_boards %>
+                <h4>There are no boards setup to score</h4>
               <% end %>
 
             </ul>

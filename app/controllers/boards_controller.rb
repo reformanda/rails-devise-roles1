@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only
+  before_action :admin_only, except: [:list]
   before_action :set_board, only: [:show, :edit, :update, :destroy]
 
   # GET /boards
@@ -13,7 +13,6 @@ class BoardsController < ApplicationController
 
   def list
     @boards = Board.all
-
   end
 
   # GET /boards/1
