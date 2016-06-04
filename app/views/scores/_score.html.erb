@@ -91,10 +91,11 @@
             <br/>
             <% @end_date = @board.end_date.blank? ? "" : "This board will remain open until midnight of " + Date.strptime(@board.end_date , "%m/%d/%Y").strftime("%A, %m/%d/%Y") + ". " %>
             <p><%= @end_date %> You may login to check or edit your scoring until the board closes.</p>
-
-            <% if not @board.combined_submission_packet_url.blank? %>
             <br/>
+            <% if not @board.combined_submission_packet_url.blank? %>
+            <span style="float:left">
             <%= link_to "View/Print All Submission Documents", @board.combined_submission_packet_url, :target => "_blank" %>
+            </span>
             <% end %>
             <span style="float:right">
               <%= link_to "View/Print Nomination Instructions", @board.nomination_type.implementing_instructions_url, :target => "_blank" %>
