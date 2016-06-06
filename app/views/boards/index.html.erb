@@ -69,7 +69,7 @@
           <td><%= board.nomination_type.code %></td>
           <td>
             <% if not board.users_list.nil? %>
-            <%= board.users_list.map {|u| @usernames.fetch(u.to_i-1) if not u.blank?}.join(" ") %>
+            <%= board.users_list.map {|u| @usernames.find(u.to_i).name if not u.blank?}.join(" ") %>
             <% end %>
           </td>
           <td><%= link_to 'Show', board %></td>

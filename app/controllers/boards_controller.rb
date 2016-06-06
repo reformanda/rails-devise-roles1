@@ -7,7 +7,7 @@ class BoardsController < ApplicationController
   # GET /boards.json
   def index
     @boards = Board.all
-    @usernames = User.all.order(:id).pluck(:name)
+    @usernames = User.all.order(:id)
 
   end
 
@@ -25,6 +25,7 @@ class BoardsController < ApplicationController
     @board = Board.new
     @users_list = User.all.pluck(:name,:id)
     @score_types = ScoreType.all.pluck(:description,:id)
+    @nomination_types = NominationType.all.pluck(:code,:id)
   end
 
   # GET /boards/1/edit

@@ -22,7 +22,7 @@ class ScoresController < ApplicationController
 
   def reports
     @boards = Board.all
-    @usernames = User.all.order(:id).pluck(:name)
+    @usernames = User.all.order(:id)
   end
 
   def score_print
