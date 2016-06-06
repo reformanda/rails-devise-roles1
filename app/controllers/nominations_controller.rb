@@ -1,5 +1,5 @@
 class NominationsController < ApplicationController
-    before_action :authenticate_user!, :only => [:index, :update, :edit]
+    before_action :authenticate_user!, only: [:index, :update, :edit]
   before_action :set_nomination, only: [:show, :edit, :update, :destroy]
   before_action :set_nomination_type
   before_action :manager_or_admin_only, :except => [:list, :expired]
