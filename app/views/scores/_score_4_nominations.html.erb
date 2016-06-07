@@ -191,3 +191,13 @@
   </td>
 
 </tr>
+<div class="row">
+<tr>
+  <td><%= label_tag "score_comments[#{nom.id}]", "Comments" %>
+  </td>
+  <td colspan="100">
+    <%= text_area_tag "score_comments[#{nom.id}]",  score.score_comments,  rows: 3, class:  "form-control col-sm-10", required: false, disabled: @checkvar %>
+
+  </td>
+</tr>
+</div>

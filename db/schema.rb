@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530174933) do
+ActiveRecord::Schema.define(version: 20160607202115) do
 
   create_table "award_options", force: :cascade do |t|
     t.string   "name"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160530174933) do
     t.integer "score_8"
     t.integer "score_9"
     t.integer "score_total"
+    t.text    "score_comments"
   end
 
   add_index "scores", ["board_id"], name: "index_scores_on_board_id"

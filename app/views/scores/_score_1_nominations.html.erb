@@ -2,7 +2,7 @@
 <div class="row">
 <tr>
 
-  <td style="width: 50%">
+  <td style="width: 25%">
 
     <div class="form-group">
       <% if nom.nominee_team_name.blank? %>
@@ -66,5 +66,15 @@
 
 
 
+</tr>
+</div>
+<div class="row">
+<tr>
+  <td><%= label_tag "score_comments[#{nom.id}]", "Comments" %>
+  </td>
+  <td colspan="100">
+    <%= text_area_tag "score_comments[#{nom.id}]",  score.score_comments,  rows: 3, class:  "form-control col-sm-10", required: false, disabled: @checkvar %>
+
+  </td>
 </tr>
 </div>

@@ -149,6 +149,7 @@ class ScoresController < ApplicationController
           :score_8 => params[:score_8][i],
           :score_9 => params[:score_9][i],
           :score_total => params[:score_1][i].to_i + params[:score_2][i].to_i + params[:score_3][i].to_i + params[:score_4][i].to_i + params[:score_5][i].to_i + params[:score_6][i].to_i + params[:score_7][i].to_i + params[:score_8][i].to_i + params[:score_9][i].to_i,
+          :score_comments => params[:score_comments][i],
           :checker_1 => @score_1,
           :checker_2 => @score_2,
           :checker_3 => @score_3,

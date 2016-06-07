@@ -51,7 +51,7 @@
           <% score.score_9 = @callback_params[:score_9]["#{nom.id}"] %>
           <% score.score_total = @callback_params[:score_total]["#{nom.id}"] %>
         <% end %>
-        
+
         <% if not @checkvar %>
         <%= number_field_tag "score_1[#{nom.id}]",  score.score_1, within: 1..20, class:  "score_#{aw}_#{nom.id} form-control col-sm-1", required: false, disabled: @checkvar %>
         <% else %>
@@ -151,3 +151,13 @@
   </td>
 
 </tr>
+<div class="row">
+<tr>
+  <td><%= label_tag "score_comments[#{nom.id}]", "Comments" %>
+  </td>
+  <td colspan="100">
+    <%= text_area_tag "score_comments[#{nom.id}]",  score.score_comments,  rows: 3, class:  "form-control col-sm-10", required: false, disabled: @checkvar %>
+
+  </td>
+</tr>
+</div>
