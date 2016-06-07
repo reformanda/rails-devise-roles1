@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 #gem 'newrelic_rpm'
 gem 'faraday'
+gem 'exception_notification'
 
 # for pdf merging
 gem 'pdf-merger', '~> 0.3.2'

@@ -1,6 +1,14 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :deliver_with => :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+      :email_prefix => "[PREFIX] ",
+      :sender_address => %{no-reply@saic.com (usarmy.belvoir.usaasc.mbx.usaasc-events@mail.mil)},
+      :exception_recipients => %w{jwilson1@networkrunners.com}
+    }
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

@@ -1,6 +1,14 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :deliver_with => :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+      :email_prefix => "[PREFIX] ",
+      :sender_address => %{no-reply@saic.com (usarmy.belvoir.usaasc.mbx.usaasc-events@mail.mil)},
+      :exception_recipients => %w{jwilson1@networkrunners.com}
+    }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
