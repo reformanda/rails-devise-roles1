@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'product_supports/confirmation', to: "product_supports#confirmation"
   get 'logistics/confirmation', to: "logistics#confirmation"
 
+  get 'boards/expired', to: "boards#expired"
   get 'nominations/expired', to: "nominations#expired"
   get 'nominations/update_awards', as: 'update_awards'
   get 'nominations/list', to: "nominations#list"

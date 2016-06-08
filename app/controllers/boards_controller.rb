@@ -1,7 +1,10 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_only, except: [:list]
+  before_action :admin_only, except: [:list, :expired]
   before_action :set_board, only: [:show, :edit, :update, :destroy]
+
+  def expired
+  end
 
   # GET /boards
   # GET /boards.json

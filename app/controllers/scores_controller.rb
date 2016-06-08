@@ -1,8 +1,7 @@
 class ScoresController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_or_judge_only, :except => :create
+  before_action :admin_or_judge_only, :except => [:create]
   before_action :admin_only, :only => [:score_report, :reports]
-
 
   def score_report
     @board = Board.find(params[:id])
@@ -42,6 +41,15 @@ class ScoresController < ApplicationController
   def edit
     # determine score_type from board_id
     @board = Board.find(params[:id])
+
+    begin
+      if DateTime.strptime(@board.end_date, '%m/%d/%Y').past?
+        redirect_to "/boards/expired"
+      end
+    rescue => e
+      puts e.inspect
+    end
+
     @nomination_type = NominationType.find(@board.nomination_type)
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
     @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
