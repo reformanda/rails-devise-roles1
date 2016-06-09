@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   resources :award_options
   resources :nomination_types
 
+  devise_scope :user do
+     delete '/users/sign_out' => 'devise/sessions#destroy'
+     get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
   root to: 'landing#index'
   devise_for :users
   resources :users
@@ -76,9 +81,7 @@ Rails.application.routes.draw do
   #get 'sites/:name', :to => 'sites#show', :as => site
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 
-  devise_scope :user do
-     delete '/users/sign_out' => 'devise/sessions#destroy'
-  end
+
 
   get "landing/version"
   get "landing/index"
