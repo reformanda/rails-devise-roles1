@@ -150,14 +150,15 @@ $(function() {
 
   function add(aw, nom) {
     var sum = 0;
-    $(".score_" + aw + "_" + nom).each(function( i ) {
-        console.log( i + ": " + $( this ).val() );
+    $(".score_" + aw + "_" + nom).each(function() {
         sum += Number($(this).val());
     });
     $(".score_total_" + aw + "_" + nom).val(sum);
   }
 
-  $("[class^='score']").change(function () {
+  $("[class^='score']").change(function (e) {
+    e.stopImmediatePropagation();
+    $(this).off("blur");
     score_class = $(this).prop("class").split(" ")[0];
     aw = score_class.split("_")[1]
     nom = score_class.split("_")[2]
@@ -173,7 +174,9 @@ $(function() {
 
   });
 
-  $("[class^='score']").blur(function () {
+  $("[class^='score']").blur(function (e) {
+    e.stopImmediatePropagation();
+    e.preventDefault();
     score_class = $(this).prop("class").split(" ")[0];
     aw = score_class.split("_")[1]
     nom = score_class.split("_")[2]
