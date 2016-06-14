@@ -157,8 +157,6 @@ $(function() {
   }
 
   $("[class^='score']").change(function (e) {
-    e.stopImmediatePropagation();
-    $(this).off("blur");
     score_class = $(this).prop("class").split(" ")[0];
     aw = score_class.split("_")[1]
     nom = score_class.split("_")[2]
@@ -174,22 +172,22 @@ $(function() {
 
   });
 
-  $("[class^='score']").blur(function (e) {
-    e.stopImmediatePropagation();
-    e.preventDefault();
-    score_class = $(this).prop("class").split(" ")[0];
-    aw = score_class.split("_")[1]
-    nom = score_class.split("_")[2]
-    add(aw, nom);
+//  $("[class^='score']").blur(function (e) {
+//    e.stopImmediatePropagation();
+//    e.preventDefault();
+//    score_class = $(this).prop("class").split(" ")[0];
+//    aw = score_class.split("_")[1]
+//    nom = score_class.split("_")[2]
+//    add(aw, nom);
 
-    if ($(this).prop("max") == $(this).val()) {
-      $(this).css("background-color", "yellow");
-    }
-    else {
-      $(this).css("background-color", "white");
-    }
+//    if ($(this).prop("max") == $(this).val()) {
+//      $(this).css("background-color", "yellow");
+//    }
+//    else {
+//      $(this).css("background-color", "white");
+//    }
 
-  });
+//  });
 
   // initialize values
   aw_list = $("#aw_list").val().split(",");
