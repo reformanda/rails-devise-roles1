@@ -151,7 +151,9 @@ $(function() {
   function add(aw, nom) {
     var sum = 0;
     $(".score_" + aw + "_" + nom).each(function() {
+      if ($(this).id != "") {
         sum += Number($(this).val());
+      }
     });
     $(".score_total_" + aw + "_" + nom).val(sum);
   }
@@ -174,22 +176,23 @@ $(function() {
 
   });
 
-//  $("[class^='score']").blur(function (e) {
-//    e.stopImmediatePropagation();
-//    e.preventDefault();
-//    score_class = $(this).prop("class").split(" ")[0];
-//    aw = score_class.split("_")[1]
-//    nom = score_class.split("_")[2]
-//    add(aw, nom);
+  $("[class^='score']").blur(function (e) {
+    score_class = $(this).prop("class").split(" ")[0];
+    aw = score_class.split("_")[1]
+    nom = score_class.split("_")[2]
 
-//    if ($(this).prop("max") == $(this).val()) {
-//      $(this).css("background-color", "yellow");
-//    }
-//    else {
-//      $(this).css("background-color", "white");
-//    }
+    if (aw != "total") {
+      add(aw, nom);
 
-//  });
+      if ($(this).prop("max") == $(this).val()) {
+        $(this).css("background-color", "yellow");
+      }
+      else {
+        $(this).css("background-color", "white");
+      }
+    }
+
+  });
 
   // initialize values
   aw_list = $("#aw_list").val().split(",");
