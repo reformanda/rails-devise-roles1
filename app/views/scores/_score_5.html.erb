@@ -1,70 +1,44 @@
 
 <% score_any = false %>
 <% @award_options.find_each do |aw|  %>
-<% @noms = @nominations.where("award_option_id = ?", aw.id) %>
-<% not_completed = 0 %>
-<% if not @noms.empty? %>
-<% score_any = true %>
-<h4> <%= aw.name %>  &nbsp;&nbsp;<%= @noms.count %> Nominations  <span id="not_completed_<%= aw.id %>"></span> </h4>
-      <table class="table table-striped table-bordered table-hover dataTables-example">
-        <thead>
+  <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
+  <% not_completed = 0 %>
+  <% if not @noms.empty? %>
+    <% score_any = true %>
+    <h4> <%= aw.name %>  &nbsp;&nbsp;<%= @noms.count %> Nominations  <span id="not_completed_<%= aw.id %>"></span> </h4>
+    <table class="table table-striped table-bordered table-hover dataTables-example">
+      <thead>
+        <tr>
+          <th scope="col">Individual Name and Organization</th>
+          <th scope="col">Submission Packet</th>
+          <th scope="col">1. Mission Accomplishments<br/>(1-45 points)</th>
+          <th scope="col">2. Product Support Process Innovation <br/>(1-30 points)</th>
+          <th scope="col">3. Personnel Program<br/>(1-25 points)</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @noms.empty? %>
           <tr>
-            <th scope="col">Individual Name and Organization</th>
-            <th scope="col">Submission Packet</th>
-            <th scope="col">1. Mission Accomplishments<br/>(1-45 points)</th>
-            <th scope="col">2. Product Support Process Innovation <br/>(1-30 points)</th>
-            <th scope="col">3. Personnel Program<br/>(1-25 points)</th>
-            <th scope="col">Total</th>
+            <td colspan="6">
+              <p> No Nominations to Score</p>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% if @noms.empty? %>
-            <tr>
-              <td colspan="6">
-                <p> No Nominations to Score</p>
-              </td>
-            </tr>
-          <% else %>
-            <% @noms.find_each do |nom| %>
-
-              <% score = @scores.where("nomination_id = ?", nom.id).first || Score.new %>
-              <% if score.score_1.blank? || score.score_2.blank? || score.score_3.blank? %>
-                <% not_completed = not_completed + 1 %>
-              <% end %>
-              <%= render "score_5_nominations", :nom => nom, :score => score, :aw => aw.id %>
-
-
+        <% else %>
+          <% @noms.find_each do |nom| %>
+            <% score = @scores.where("nomination_id = ?", nom.id).first || Score.new %>
+            <% if score.score_1.blank? || score.score_2.blank? || score.score_3.blank? %>
+              <% not_completed = not_completed + 1 %>
             <% end %>
+            <%= render "score_5_nominations", :nom => nom, :score => score, :aw => aw.id %>
           <% end %>
-        </tbody>
-      </table>
-      <% end %>
-      <%= hidden_field_tag "not_completed_#{aw.id}_cnt", not_completed, class: "not_completed" %>
-
-      <% if not score_any %>
-        <h4>There are no nominations to score at this time.</h4>
-      <% else %>
-
-        <% content_for :javascript do %>
-
-        <script type="text/javascript">
-
-        $(function() {
-          not_complete = $(".not_completed");
-          $.each( not_complete, function(key1, value1) {
-            if ($(this).val() > 0) {
-              id = ($(this).prop("id").split("_")[2]);
-              $("#not_completed_"+id).html(" : " + $(this).val() +" remaining to score. ")
-            } else {
-              id = ($(this).prop("id").split("_")[2]);
-              $("#not_completed_"+id).html(" : Scoring Completed! ")
-            }
-          });
-        });
-
-        </script>
-
-
         <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <%= hidden_field_tag "not_completed_#{aw.id}_cnt", not_completed, class: "not_completed" %>
+<% end %>
 
-      <% end %>
+<% if not score_any %>
+  <h4>There are no nominations to score at this time.</h4>
+<% end %>
