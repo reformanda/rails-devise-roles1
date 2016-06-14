@@ -160,15 +160,17 @@ $(function() {
     score_class = $(this).prop("class").split(" ")[0];
     aw = score_class.split("_")[1]
     nom = score_class.split("_")[2]
-    add(aw, nom);
 
-    if ($(this).prop("max") == $(this).val()) {
-      $(this).css("background-color", "yellow");
-    }
-    else {
-      $(this).css("background-color", "white");
-    }
+    if (aw != "total") {
+      add(aw, nom);
 
+      if ($(this).prop("max") == $(this).val()) {
+        $(this).css("background-color", "yellow");
+      }
+      else {
+        $(this).css("background-color", "white");
+      }
+    }
 
   });
 
