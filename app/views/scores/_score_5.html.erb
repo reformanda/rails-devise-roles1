@@ -41,31 +41,30 @@
       <% end %>
       <%= hidden_field_tag "not_completed_#{aw.id}_cnt", not_completed, class: "not_completed" %>
 
-      <% content_for :javascript do %>
+      <% if not score_any %>
+        <h4>There are no nominations to score at this time.</h4>
+      <% else %>
 
-      <script type="text/javascript">
+        <% content_for :javascript do %>
 
-      $(function() {
-        not_complete = $(".not_completed");
-        $.each( not_complete, function(key1, value1) {
-          if ($(this).val() > 0) {
-            id = ($(this).prop("id").split("_")[2]);
-            $("#not_completed_"+id).html(" : " + $(this).val() +" remaining to score. ")
-          } else {
-            id = ($(this).prop("id").split("_")[2]);
-            $("#not_completed_"+id).html(" : Scoring Completed! ")
-          }
+        <script type="text/javascript">
+
+        $(function() {
+          not_complete = $(".not_completed");
+          $.each( not_complete, function(key1, value1) {
+            if ($(this).val() > 0) {
+              id = ($(this).prop("id").split("_")[2]);
+              $("#not_completed_"+id).html(" : " + $(this).val() +" remaining to score. ")
+            } else {
+              id = ($(this).prop("id").split("_")[2]);
+              $("#not_completed_"+id).html(" : Scoring Completed! ")
+            }
+          });
         });
-      });
 
-      </script>
+        </script>
 
+
+        <% end %>
 
       <% end %>
-
-
-  <% end %>
-
-  <% if not score_any %>
-  <h4>There are no nominations to score at this time.</h4>
-  <% end %>
