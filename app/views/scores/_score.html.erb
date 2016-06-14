@@ -150,7 +150,8 @@ $(function() {
 
   function add(aw, nom) {
     var sum = 0;
-    $(".score_" + aw + "_" + nom).each(function() {
+    $(".score_" + aw + "_" + nom).each(function( i ) {
+        console.log( i + ": " + $( this ).val() );
         sum += Number($(this).val());
     });
     $(".score_total_" + aw + "_" + nom).val(sum);
