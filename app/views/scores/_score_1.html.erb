@@ -1,9 +1,9 @@
-<% score_any = false %>
+<% @score_any = false %>
 <% @award_options.find_each do |aw|  %>
 <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
 <% not_completed = 0 %>
 <% if not @noms.empty? %>
-<% score_any = true %>
+<% @score_any = true %>
 <h4> <%= aw.name %>  &nbsp;&nbsp;<%= @noms.count %> Nominations  <span id="not_completed_<%= aw.id %>"></span> </h4>
 <div class="hr-line-dashed"></div>
     <table class="table table-striped table-bordered table-hover dataTables-example" style="width: 75%">
@@ -40,6 +40,6 @@
   <%= hidden_field_tag "not_completed_#{aw.id}_cnt", not_completed, class: "not_completed" %>
 <% end %>
 
-<% if not score_any %>
+<% if not @score_any %>
   <h4>There are no nominations to score at this time.</h4>
 <% end %>
