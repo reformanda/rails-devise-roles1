@@ -151,7 +151,7 @@ $(function() {
   function add(aw, nom) {
     var sum = 0;
     $(".score_" + aw + "_" + nom).each(function() {
-      if ($(this).id != "") {
+      if ($(this).prop("id") != "") {
         sum += Number($(this).val());
       }
     });
