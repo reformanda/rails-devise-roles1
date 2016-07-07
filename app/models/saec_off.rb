@@ -4,4 +4,8 @@ class SaecOff < Nomination
 
   validates :endorsement_letter, :presence => true
   validates :endorsement_letter, :file_size => { less_than: 10.megabytes }
+
+  validates :nominee_photograph_one, :presence => true
+  validates :nominee_photograph_one, :file_size => { less_than: 10.megabytes },file_content_type: { allow: /^image\/.*/ }
+
 end

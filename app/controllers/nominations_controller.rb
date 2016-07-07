@@ -249,7 +249,11 @@ class NominationsController < ApplicationController
       :status,
       :remove_submission_packet,
       :submission_packet,
-      :submission_packet_cache)
+      :submission_packet_cache,
+      :nominee_photograph_one,
+      :nominee_photograph_one_cache,
+      :nominee_photograph_two,
+      :nominee_photograph_two_cache)
     end
 
 

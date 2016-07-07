@@ -6,6 +6,8 @@ class Nomination < ActiveRecord::Base
   mount_uploader :submission_word_document, SubmissionWordDocumentUploader
   mount_uploader :submission_pdf, SubmissionPdfUploader
   mount_uploader :submission_packet, SubmissionPacketUploader
+  mount_uploader :nominee_photograph_one, NomineePhotographOneUploader
+  mount_uploader :nominee_photograph_two, NomineePhotographTwoUploader
 
   belongs_to :nomination_type
   belongs_to :award_option
@@ -20,9 +22,7 @@ class Nomination < ActiveRecord::Base
               :presence => true
 
 
-  #alias_attribute :nominee_organization_logo, :photo_a
-  validates :nominee_organization_logo, :presence => true
-  validates :nominee_organization_logo, :file_size => { less_than: 10.megabytes },file_content_type: { allow: /^image\/.*/ }
+
 
 
 
@@ -37,7 +37,7 @@ class Nomination < ActiveRecord::Base
   end
 
   def self.nomination_types
-    %w(Packard Should Achievement Development ProductSupport Logistic Asp Battalion Bop Brigade Cp Decp Esi Loy Nco Pmpdo05 Pmpdo06 Pmpdp05 Pmpdp06 Stp)
+    %w(Packard Should Achievement Development ProductSupport Logistic Asp Battalion Bop Brigade Cp Decp Esi Loy Nco Pmpdo05 Pmpdo06 Pmpdp05 Pmpdp06 Stp SaecTeam SaecOff SaecSpec)
   end
 
   #def self.name_search
