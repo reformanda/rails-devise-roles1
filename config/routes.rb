@@ -46,6 +46,9 @@ Rails.application.routes.draw do
   get 'pmpdp05s/confirmation', to: "pmpdp05s#confirmation"
   get 'pmpdp06s/confirmation', to: "pmpdp06s#confirmation"
   get 'stps/confirmation', to: "stps#confirmation"
+  get 'saec_teams/confirmation', to: "saec_teams#confirmation"
+  get 'saec_specs/confirmation', to: "saec_specs#confirmation"
+  get 'saec_offs/confirmation', to: "saec_offs#confirmation"
 
   get 'scores/score_print', to: "scores#score_print"
   get 'scores/reports', to: "scores#reports"
@@ -75,7 +78,9 @@ Rails.application.routes.draw do
   resources :pmpdp05s
   resources :pmpdp06s
   resources :stps
-
+  resources :saec_teams
+  resources :saec_specs
+  resources :saec_offs
   resources :score_types
 
   #get 'sites/:name', :to => 'sites#show', :as => site
