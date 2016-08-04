@@ -8,4 +8,6 @@ class SaecTeam < Nomination
   validates :nominee_photograph_one, :presence => true
   validates :nominee_photograph_one, :file_size => { less_than: 10.megabytes },file_content_type: { allow: /^image\/.*/ }
 
+  validates :nominee_photograph_two, :file_size => { less_than: 10.megabytes },file_content_type: { allow: /^image\/.*/ }
+
 end
