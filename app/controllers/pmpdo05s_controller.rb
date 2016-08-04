@@ -117,7 +117,11 @@ class Pmpdo05sController < ApplicationController
       :nominee_team_name,
       :submission_form_award_narrative_cache,
       :endorsement_letter_cache,
-      :nominee_organization_logo_cache)
+      :nominee_organization_logo_cache,
+      :nominee_photograph_one,
+      :nominee_photograph_one_cache,
+      :nominee_photograph_two,
+      :nominee_photograph_two_cache)
     end
 
 end
