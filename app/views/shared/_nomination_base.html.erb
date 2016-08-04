@@ -442,7 +442,48 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <% elsif  @nomination_type.start_with? "Saec" %>
+                    <% elsif  @nomination_type == "Packard" || @nomination_type == "Should" || @nomination_type == "Development" || @nomination_type == "Achievement" %>
+
+                    <div class="form-group">
+
+                        <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-sm-4", style: "text-align: right" %>
+                        <div class="col-sm-1">
+                          <% if not @nomination.endorsement_letter_url.blank? %>
+                          <%= link_to "View ", @nomination.endorsement_letter_url, :target => "_blank" %>
+                          <% end %>
+                        </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :endorsement_letter, class: "" %>
+                          <%= f.hidden_field :endorsement_letter_cache %>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><%= f.label :submission_form_award_narrative, "* Submission Form and Award Narrative", class: "col-sm-4", style: "text-align: right" %>
+                        <div class="col-sm-1">
+                          <% if not @nomination.submission_form_award_narrative_url.blank? %>
+                          <%= link_to "View", @nomination.submission_form_award_narrative_url, :target => "_blank" %>
+                          <% end %>
+                        </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :submission_form_award_narrative, class: "" %>
+                          <%= f.hidden_field :submission_form_award_narrative_cache %>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4", style: "text-align: right"%>
+                      <div class="col-sm-1">
+                        <% if not @nomination.nominee_organization_logo_url.blank? %>
+                        <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
+                        <% end %>
+                      </div>
+                        <div class="col-sm-4">
+                          <%= f.file_field :nominee_organization_logo, class: "" %>
+                          <%= f.hidden_field :nominee_organization_logo_cache %>
+                          <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
+                        </div>
+                    </div>
+
+                    <% else %>
 
                     <div class="form-group">
 
@@ -492,47 +533,6 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         <div class="col-sm-4">
                           <%= f.file_field :nominee_photograph_two, class: "" %>
                           <%= f.hidden_field :nominee_photograph_two_cache %>
-                          <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
-                        </div>
-                    </div>
-
-                    <% else %>
-
-                    <div class="form-group">
-
-                        <%= f.label :endorsement_letter, "* Endorsement Letter", class: "col-sm-4", style: "text-align: right" %>
-                        <div class="col-sm-1">
-                          <% if not @nomination.endorsement_letter_url.blank? %>
-                          <%= link_to "View ", @nomination.endorsement_letter_url, :target => "_blank" %>
-                          <% end %>
-                        </div>
-                        <div class="col-sm-4">
-                          <%= f.file_field :endorsement_letter, class: "" %>
-                          <%= f.hidden_field :endorsement_letter_cache %>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><%= f.label :submission_form_award_narrative, "* Submission Form and Award Narrative", class: "col-sm-4", style: "text-align: right" %>
-                        <div class="col-sm-1">
-                          <% if not @nomination.submission_form_award_narrative_url.blank? %>
-                          <%= link_to "View", @nomination.submission_form_award_narrative_url, :target => "_blank" %>
-                          <% end %>
-                        </div>
-                        <div class="col-sm-4">
-                          <%= f.file_field :submission_form_award_narrative, class: "" %>
-                          <%= f.hidden_field :submission_form_award_narrative_cache %>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4", style: "text-align: right"%>
-                      <div class="col-sm-1">
-                        <% if not @nomination.nominee_organization_logo_url.blank? %>
-                        <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
-                        <% end %>
-                      </div>
-                        <div class="col-sm-4">
-                          <%= f.file_field :nominee_organization_logo, class: "" %>
-                          <%= f.hidden_field :nominee_organization_logo_cache %>
                           <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
                         </div>
                     </div>
