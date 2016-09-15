@@ -182,7 +182,7 @@ class Score < ActiveRecord::Base
     #puts "***HELLO***"
     #puts board.score_type_id
     #puts "***GOODBYE***"
-    if board.score_type_id == 1
+    if board.score_type_id == 1 || board.score_type_id == 6 || board.score_type_id == 7
       cntnine = []
       checker_1.each { |x| cntnine << x if x == "9"}
       if cntnine.length > 1
