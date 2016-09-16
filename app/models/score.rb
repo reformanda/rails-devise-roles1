@@ -16,6 +16,41 @@ class Score < ActiveRecord::Base
   validate :check_max_values_achievement
   validate :check_max_values_psm
   validate :check_max_values_psl
+  validate :check_max_values_aae
+
+  def check_max_values_aae
+    if board.score_type_id == 6 || board.score_type_id == 7
+      # check for max value used more than once in each category
+      cntmax = []
+      checker_1.each { |x| cntmax << x if x == "9"}
+      if cntmax.length > 1
+        errors.add(:base, "Category 1: the max score of 9 can only be assigned to one nominee.")
+      end
+
+      cntmax = []
+      checker_2.each { |x| cntmax << x if x == "9"}
+      if cntmax.length > 1
+        errors.add(:base, "Category 2: the max score of 9 can only be assigned to one nominee.")
+      end
+
+      cntmax = []
+      checker_3.each { |x| cntmax << x if x == "9"}
+      if cntmax.length > 1
+        errors.add(:base, "Category 3: the max score of 9 can only be assigned to one nominee.")
+      end
+
+      cntmax = []
+      checker_4.each { |x| cntmax << x if x == "9"}
+      if cntmax.length > 1
+        errors.add(:base, "Category 4: the max score of 9 can only be assigned to one nominee.")
+      end
+
+
+    else
+      true
+    end
+  end
+
 
   def check_max_values_psl
     if board.score_type_id == 4
@@ -182,7 +217,7 @@ class Score < ActiveRecord::Base
     #puts "***HELLO***"
     #puts board.score_type_id
     #puts "***GOODBYE***"
-    if board.score_type_id == 1 || board.score_type_id == 6 || board.score_type_id == 7
+    if board.score_type_id == 1
       cntnine = []
       checker_1.each { |x| cntnine << x if x == "9"}
       if cntnine.length > 1
