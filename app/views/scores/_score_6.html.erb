@@ -29,7 +29,7 @@
         <% else %>
           <% @noms.find_each do |nom| %>
             <% score = @scores.where("nomination_id = ?", nom.id).first || Score.new %>
-            <% if score.score_1.blank? || score.score_2.blank? || score.score_3.blank? %>
+            <% if score.score_1.blank? || score.score_2.blank? || score.score_3.blank? || score.score_4.blank?  %>
               <% not_completed = not_completed + 1 %>
             <% end %>
             <%= render "score_6_nominations", :nom => nom, :score => score, :aw => aw.id %>

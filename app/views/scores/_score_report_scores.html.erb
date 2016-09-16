@@ -134,7 +134,31 @@
         <%=  score.score_3 %>
       </div>
   </td>
-<% when 6 || 7 then %>
+<% when 6 then %>
+<%= hidden_field_tag :colcnt, 8 %>
+<td >
+    <div class="form-group">
+      <%=  score.score_1 %>
+    </div>
+</td>
+
+<td >
+    <div class="form-group">
+      <%= score.score_2 %>
+    </div>
+</td>
+
+<td >
+    <div class="form-group">
+      <%=  score.score_3 %>
+    </div>
+</td>
+<td >
+    <div class="form-group">
+      <%=  score.score_4 %>
+    </div>
+</td>
+<% when 7 then %>
   <%= hidden_field_tag :colcnt, 8 %>
   <td >
       <div class="form-group">
