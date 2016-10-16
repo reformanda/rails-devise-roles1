@@ -274,6 +274,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-commands-rspec
+  therubyracer
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)
