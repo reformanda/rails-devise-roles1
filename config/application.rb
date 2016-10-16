@@ -53,7 +53,7 @@ module RailsDeviseRoles
   end
 end
 
-if defined?(ExecJS) && system('which node >/dev/null 2>/dev/null')
+if defined?(ExecJS) && system('which node')
   puts "Using Node ExecJS runtime"
   ExecJS.runtime = ExecJS::Runtimes::Node
 end
