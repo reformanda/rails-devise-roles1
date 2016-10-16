@@ -20,11 +20,6 @@ module RailsDeviseRoles
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
-    if defined?(ExecJS) && system('which node')
-      puts "Using Node ExecJS runtime"
-      ExecJS.runtime = ExecJS::Runtimes::Node
-    end
-
     config.exceptions_app = self.routes
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -56,4 +51,9 @@ module RailsDeviseRoles
       }
 
   end
+end
+
+if defined?(ExecJS) && system('which node >/dev/null 2>/dev/null')
+  puts "Using Node ExecJS runtime"
+  ExecJS.runtime = ExecJS::Runtimes::Node
 end
