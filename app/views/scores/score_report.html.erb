@@ -56,7 +56,7 @@
 
             <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
             <% @noms.find_each do |nom| %>
-
+            <% if not @board.users_list.nil? %>
             <% @board.users_list.each do |judge| %>
             <% if not judge.blank? %>
             <% grand_total = @scores.where("nomination_id = ? and user_id in (?)", nom.id, @board.users_list).sum(:score_total) %>
@@ -80,6 +80,11 @@
                 <br/>
               </div>
 
+            </td>
+
+
+            <td>
+              <%= nom.nominee_email %>
             </td>
 
             <td>
@@ -114,6 +119,7 @@
             <% end %>
             <% end %>
             <% end %>
+            <% end %>
             </tbody>
           </table>
           <div class="hr-line-dashed"></div>
@@ -133,13 +139,22 @@ $(function() {
     colcnt = $("#colcnt").val()  || 0;
     //alert(colcnt);
     $('.dataTables-example').DataTable({
+
+      "columnDefs": [
+          {
+              "targets": [ 2 ],
+              "visible": false,
+              "searchable": false
+          }
+      ],
+
         dom: '<"html5buttons"B>',
         order:  [[ colcnt, 'desc' ], [ 0, 'asc' ]],
         pageLength: 100,
         buttons: [
             //{ extend: 'copy'},
             {extend: 'csv'},
-            {extend: 'excel', title: 'ExampleFile'},
+            {extend: 'excel', title: 'USAASCVBAwardScores'},
             //{extend: 'pdf', title: 'ExampleFile'},
 
             {extend: 'print',
