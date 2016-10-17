@@ -84,6 +84,7 @@
       <th>Award</th>
       <th>Status</th>
       <th>Actions</th>
+      <th>Nominee Email</th>
     </tr>
   </thead>
 
@@ -107,7 +108,7 @@
         <td><%= nom.award_option.name %></td>
         <td><%= nom.status %>
         <td><%= link_to 'Manage', edit_nomination_path(nom) %>
-
+        <td><%= nom.nominee_email %></td>
       </tr>
     <% end %>
   </tbody>
@@ -131,23 +132,29 @@ $(function() {
         dom: '<"html5buttons"B>',
         order:  [[ colcnt, 'desc' ], [ 0, 'asc' ]],
         pageLength: 100,
+        "columnDefs": [
+            {
+                "targets": [ 8 ],
+                "visible": false,
+                "searchable": false
+            }],
         buttons: [
             //{ extend: 'copy'},
             {extend: 'csv',
              exportOptions: {
-                    columns: [ 0, 1, 2, 3,4,5,6 ]
+                    columns: [ 0, 1, 2, 3,4,5,6,8 ]
                 }
             },
             {extend: 'excel', title: 'USAASC Virtual Board Nominations',
             exportOptions: {
-                    columns: [ 0, 1, 2, 3,4,5,6 ]
+                    columns: [ 0, 1, 2, 3,4,5,6,8 ]
                 }
             },
             //{extend: 'pdf', title: 'ExampleFile'},
 
             {extend: 'print',
             exportOptions: {
-                    columns: [ 0, 1, 2, 3,4,5,6 ]
+                    columns: [ 0, 1, 2, 3,4,5,6,8 ]
                 },
                 customize: function (win){
                     $(win.document.body).addClass('white-bg');
