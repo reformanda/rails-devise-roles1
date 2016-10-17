@@ -3,7 +3,7 @@ class TieNominationsView < ActiveRecord::Migration
       execute <<-SQL
       create OR replace view tie_nominations_vw as
         select nomination_id, board_id, sum(score_total) as grand_total
-        from (select nomination_id, board_id, score_total from scores) a
+        from tmp1_highest_score_for_board_vw a
        group by a.nomination_id, a.board_id order by grand_total desc;
 
       SQL
