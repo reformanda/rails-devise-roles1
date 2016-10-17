@@ -49,6 +49,16 @@ class Nomination < ActiveRecord::Base
   # note singular "validate" for custom function
   validate :nominee_name_or_team_name
 
+  attr_reader :name
+
+  def name
+    if (nominee_first_name.blank? && nominee_last_name.blank?)
+      nominee_team_name
+    else
+      nominee_first_name + " " + nominee_last_name
+    end
+  end
+
   private
 
   def nominee_name_or_team_name

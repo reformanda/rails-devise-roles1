@@ -12,21 +12,23 @@
 
             <% case @board.score_type_id %>
             <% when 1 then %>
-                  <%= render :partial => "score_1" %>
+              <%= render :partial => "score_1" %>
             <% when 2 then %>
-                  <%= render :partial => "score_2" %>
+              <%= render :partial => "score_2" %>
             <% when 3 then %>
-                  <%= render :partial => "score_3" %>
+              <%= render :partial => "score_3" %>
             <% when 4 then %>
-                  <%= render :partial => "score_4" %>
+              <%= render :partial => "score_4" %>
             <% when 5 then %>
-                  <%= render :partial => "score_5" %>
+              <%= render :partial => "score_5" %>
             <% when 6 then %>
-                  <%= render :partial => "score_6" %>
+              <%= render :partial => "score_6" %>
             <% when 7 then %>
-                  <%= render :partial => "score_6" %>
+              <%= render :partial => "score_7" %>
+            <% when 8 then %>
+              <%= render :partial => "score_8" %>
             <% else %>
-                  <%= render :partial => "tbd" %>
+              <%= render :partial => "tbd" %>
             <% end %>
 
           </div>
