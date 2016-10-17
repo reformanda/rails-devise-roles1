@@ -28,7 +28,7 @@
             <% if score.score_1.blank? %>
               <% not_completed = not_completed + 1 %>
             <% end %>
-            <%= render "score_8_nominations", :nom => nom, :score => score, :aw => aw.id %>
+            <%= render "score_8_nominations", :nom => nom, :score => score, :aw => aw.id, :num_nom => @noms.count %>
           <% end %>
         <% end %>
       </tbody>

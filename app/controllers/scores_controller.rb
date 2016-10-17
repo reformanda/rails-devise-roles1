@@ -141,7 +141,20 @@ class ScoresController < ApplicationController
 
     @nomination_type = NominationType.find(@board.nomination_type)
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
-    @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+#    @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+    # if tie breaker, then only select tied nominations
+    if @board.score_type_id == 8
+      # which board is tie breaker for?
+      begin
+        tie_board = Board.where("nomination_type_id = ? and score_type_id != 8",@board.nomination_type_id)
+        nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
+      rescue
+        nominations_ids = nil
+      end
+      @nominations = Nomination.where("id in (?)", nominations_ids)
+    else
+      @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+    end
 
     validation_error = false
     @award_options.each do |aw|
@@ -235,7 +248,20 @@ class ScoresController < ApplicationController
         @board = Board.find(params[:board_id])
         @nomination_type = NominationType.find(@board.nomination_type)
         @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
-        @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+        #@nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+        # if tie breaker, then only select tied nominations
+        if @board.score_type_id == 8
+          # which board is tie breaker for?
+          begin
+            tie_board = Board.where("nomination_type_id = ? and score_type_id != 8",@board.nomination_type_id)
+            nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
+          rescue
+            nominations_ids = nil
+          end
+          @nominations = Nomination.where("id in (?)", nominations_ids)
+        else
+          @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+        end        
         @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
         @callback_params = params
 

@@ -17,6 +17,7 @@ class Score < ActiveRecord::Base
   validate :check_max_values_psm
   validate :check_max_values_psl
   validate :check_max_values_aae
+  validate :rank_only
 
   def check_max_values_aae
     if board.score_type_id == 6 || board.score_type_id == 7
@@ -222,6 +223,24 @@ class Score < ActiveRecord::Base
       checker_1.each { |x| cntnine << x if x == "9"}
       if cntnine.length > 1
         errors.add(:base, "Only one (1) nominee can be assigned a score of nine (9)")
+      end
+    else
+      true # do your checking and return true or false
+    end
+  end
+
+  def rank_only
+    #puts "***HELLO***"
+    #puts board.score_type_id
+    #puts "***GOODBYE***"
+    if board.score_type_id == 8
+
+      dupes1 = checker_1.each_with_object(Hash.new(0)) { |o, h| h[o] += 1 if !o.nil?}
+      puts dupes1
+      dupes = dupes1.map{|k,v| k if v >= 2}.compact
+      puts dupes
+      if not dupes.blank?
+        errors.add(:base, "The same rank may not be applied to more than one nominee.   Please try again.")
       end
     else
       true # do your checking and return true or false
