@@ -8,5 +8,13 @@ FactoryGirl.define do
       role 'admin'
     end
 
+    trait :judge do
+      role 'judge'
+    end
+
+    trait :manager do
+      role 'manager'
+    end
+
   end
 end

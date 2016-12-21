@@ -1,0 +1,15 @@
+TYPE=VIEW
+query=select `usaascvb_development`.`tmp2_highest_score_for_board_vw`.`board_id` AS `board_id`,`usaascvb_development`.`tmp2_highest_score_for_board_vw`.`award_option_id` AS `award_option_id`,max(`usaascvb_development`.`tmp2_highest_score_for_board_vw`.`grand_total`) AS `grand_total` from `usaascvb_development`.`tmp2_highest_score_for_board_vw` group by `usaascvb_development`.`tmp2_highest_score_for_board_vw`.`board_id`,`usaascvb_development`.`tmp2_highest_score_for_board_vw`.`award_option_id`
+md5=c20c73e09fb2f00eb6bc55981480ba96
+updatable=0
+algorithm=0
+definer_user=root
+definer_host=%
+suid=1
+with_check_option=0
+timestamp=2016-12-20 03:57:12
+create-version=1
+source=select `tmp2_highest_score_for_board_vw`.`board_id` AS `board_id`,`tmp2_highest_score_for_board_vw`.`award_option_id` AS `award_option_id`,max(`tmp2_highest_score_for_board_vw`.`grand_total`) AS `grand_total` from `tmp2_highest_score_for_board_vw` group by `tmp2_highest_score_for_board_vw`.`board_id`,`tmp2_highest_score_for_board_vw`.`award_option_id`
+client_cs_name=utf8
+connection_cl_name=utf8_general_ci
+view_body_utf8=select `usaascvb_development`.`tmp2_highest_score_for_board_vw`.`board_id` AS `board_id`,`usaascvb_development`.`tmp2_highest_score_for_board_vw`.`award_option_id` AS `award_option_id`,max(`usaascvb_development`.`tmp2_highest_score_for_board_vw`.`grand_total`) AS `grand_total` from `usaascvb_development`.`tmp2_highest_score_for_board_vw` group by `usaascvb_development`.`tmp2_highest_score_for_board_vw`.`board_id`,`usaascvb_development`.`tmp2_highest_score_for_board_vw`.`award_option_id`

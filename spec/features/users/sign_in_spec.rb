@@ -46,4 +46,16 @@ feature 'Sign in', :devise do
     expect(page).to have_content I18n.t 'devise.failure.invalid', authentication_keys: 'email'
   end
 
+  # Scenario: User cannot sign in with wrong password
+  #   Given I exist as a admin
+  #   And I am  signed in
+  #   Then I see the Manage Nominations menu optoin
+  scenario 'user can signin as admin' do
+    user = FactoryGirl.create(:user, :admin)
+    #user.admin!
+    signin(user.email, user.password)
+    #expect(page).to have_content I18n.t 'devise.sessions.signed_in'
+    expect(page).to have_content "Manage Nominations"
+  end
+
 end
