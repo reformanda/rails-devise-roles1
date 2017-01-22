@@ -1,5 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe AwardOption, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe AwardOption, :type => :model do
+  it "is valid with valid attributes" do
+    expect(AwardOption.new).to be_valid
+  end
 end
