@@ -1,0 +1,54 @@
+
+<div class="row  white-bg page-heading">
+    <div class="col-lg-8 col-lg-offset-1">
+        <%= render "shared/usaasc_vb" %>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
+            </li>
+
+        <li class="active">
+            <strong>Set Award Year</strong>
+        </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    <div class="title-action">
+        <%= link_to '/users/sign_out', :method => :delete do %><i class="fa fa-sign-out"></i> Signoff<% end %>
+    </div>
+    </div>
+</div>
+
+<div class="row page-heading">
+</div>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Set Award Year</h5>
+            </div>
+            <div class="ibox-content">
+
+<%= form_tag("/settings", method: "post", :class => "form-horizontal") do %>
+
+  <div class="form-group row">
+  <%= label_tag(:award_year, "Set Award Year:", class: "col-sm-2 control-label") %>
+    <div class="col-sm-2">
+    <%= select_tag :award_year, options_for_select(Settings.award_years.collect { |c| [ c, c ] }, Settings.current_year), class: "form-control", required: true %>
+    </div>
+  </div>
+
+  <div class="hr-line-dashed"></div>
+  <div class="form-group">
+      <div class="col-sm-12">
+          <button class="btn btn-primary" type="submit">Save Changes</button>
+          <%= link_to "Cancel", root_path, :id => "open-contacts-dialog-btn", :class => "btn btn-white", :method => :get %>
+      </div>
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>
+</div>
