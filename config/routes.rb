@@ -83,6 +83,9 @@ Rails.application.routes.draw do
   resources :saec_offs
   resources :score_types
 
+  get "settings" => "settings#set"
+  post "settings" => "settings#update"
+
   #get 'sites/:name', :to => 'sites#show', :as => site
   #devise_for :members do get '/members/sign_out' => 'devise/sessions#destroy' end
 

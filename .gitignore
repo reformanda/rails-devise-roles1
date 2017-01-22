@@ -9,6 +9,7 @@
 # Corrections? Improvements? Create a GitHub issue:
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
+/data/
 /public/documents
 /public/uploads/
 /public/assets/
@@ -88,3 +89,7 @@ pickle-email-*.html
 
 # tilde files are usually backup files from a text editor
 *~
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
