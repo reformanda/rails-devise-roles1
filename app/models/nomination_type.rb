@@ -6,4 +6,5 @@ class NominationType < ActiveRecord::Base
   mount_uploader :guidelines, GuidelinesUploader
   has_many :award_options
   has_many :nominations
+  serialize :award_years_list
 end
