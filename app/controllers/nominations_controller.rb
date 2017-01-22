@@ -28,6 +28,7 @@ class NominationsController < ApplicationController
     @nominations = @nominations.where("award_option_id = ?","#{params[:nomination_award_option_id]}") unless params[:nomination_award_option_id].blank?
     @nominations = @nominations.where("nomination_type_id = ?","#{params[:nomination_nomination_type_id]}") unless params[:nomination_nomination_type_id].blank?
     @nominations = @nominations.where(status: params[:status]) unless params[:status].blank?
+    @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
     @nominations = @nominations.page params[:page] #User.all
     @nomination_types = NominationType.all.pluck(:code,:id)
   end
@@ -67,7 +68,7 @@ class NominationsController < ApplicationController
 
   def list
     @nominations = Nomination.all
-    @nomination_types = NominationType.all
+    @nomination_types = NominationType.where(["instr(award_years_list, ?)", Settings.current_year])
   end
 
   # PATCH/PUT /boats/1
