@@ -23,7 +23,7 @@ class SaecSpecsController < ApplicationController
     #session[:award_options] = [["Program Management",1]]
     @callback = "/saec_specs/?#no-back"
     begin
-    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past? && !current_user.admin
       redirect_to "/nominations/expired"
     end
     rescue

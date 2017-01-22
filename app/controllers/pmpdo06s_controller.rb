@@ -22,7 +22,7 @@ class Pmpdo06sController < ApplicationController
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Pmpdo06").pluck(:name,:id)
     @callback = "/pmpdo06s/?#no-back"
     begin
-    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past? && !current_user.admin
       redirect_to "/nominations/expired"
     end
     rescue

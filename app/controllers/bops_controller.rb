@@ -22,7 +22,7 @@ class BopsController < ApplicationController
     @award_options = AwardOption.joins(:nomination_type).where("code  = ?", "Bop").pluck(:name,:id)
     @callback = "/bops/?#no-back"
     begin
-    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past?
+    if Date.strptime(@info.nomination_end_date, "%m/%d/%Y").past? && !current_user.admin
       redirect_to "/nominations/expired"
     end
     rescue

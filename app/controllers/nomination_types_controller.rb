@@ -19,17 +19,20 @@ class NominationTypesController < ApplicationController
   # GET /nomination_types/new
   def new
     @nomination_type = NominationType.new
+    @award_years_list = Settings.award_years
     #render :layout => "nomination_for"
   end
 
   # GET /nomination_types/1/edit
   def edit
+    @award_years_list = Settings.award_years
   end
 
   # POST /nomination_types
   # POST /nomination_types.json
   def create
     @nomination_type = NominationType.new(nomination_type_params)
+    @award_years_list = Settings.award_years
 
     respond_to do |format|
       if @nomination_type.save
@@ -84,6 +87,8 @@ class NominationTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nomination_type_params
-      params.require(:nomination_type).permit(:year, :code, :title, :nomination_end_date, :description, :awards_announcement, :implementing_instructions, :submission_form, :award_narrative, :guidelines)
+      params.require(:nomination_type).permit(:year, :code, :title, \
+             :nomination_end_date, :description, :awards_announcement, :implementing_instructions, \
+             :submission_form, :award_narrative, :guidelines, :award_years_list => [])
     end
 end
