@@ -13,12 +13,17 @@
                     </div>
                   <% end %>
 
-                  <div class="form-group">
-                      <%= f.label :year, class: "col-sm-2 control-label" %>
-                      <div class="col-sm-2">
-                          <%= f.text_field :year, class: "form-control" %>
+                  <div class="form-group row">
+                      <%= f.label :award_years_list, "Award Years", class: "col-sm-2 control-label" %>
+                      <div class="col-sm-1">
+                        <%= f.select :award_years_list, options_for_select(@award_years_list,@nomination_type.award_years_list), {}, {:size => 4, :multiple => true, :class => "form-control" } %>
+                      </div>
+                      <div class="col-sm-4">
+                        <span class="help-block m-b-none"><br/>
+                        </span>
                       </div>
                   </div>
+
                   <div class="form-group">
                       <%= f.label :code, class: "col-sm-2 control-label" %>
                       <div class="col-sm-2">

@@ -3,6 +3,7 @@
                     <% else %>
                     <%= f.hidden_field :nomination_type_id, :value => @info.id %>
 
+                    <input type="hidden" name="nomination_type_id" value="<%= @info.id %>" />
                     <% end %>
                     <%= f.hidden_field :nomination_year, :value => @info.year %>
 
@@ -91,12 +92,7 @@
 
 
                       <h2><%= "#{@info.year}  #{@info.title} Nomination Form" %></h2>
-                      <% if not @info.nomination_end_date.blank? %>
-                      <h4>Nominations are due by midnight on <%= Date.strptime(@info.nomination_end_date , "%m/%d/%Y").strftime("%A, %m/%d/%Y")
-                        %>.</h4>
-                      <% else %>
-                      <h4>&nbsp;</h4>
-                      <% end %>
+
                       <p><%= @info.description %></p>
 
                     </div>

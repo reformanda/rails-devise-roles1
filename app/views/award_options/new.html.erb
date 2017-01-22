@@ -1,6 +1,6 @@
 <div class="row  white-bg page-heading">
     <div class="col-lg-8 col-lg-offset-1">
-        <h2>USAASC Virtual Boards <%= ENV["APP_VERSION"] %></h2>
+        <%= render "shared/usaasc_vb" %>
         <ol class="breadcrumb">
             <li>
                 <a href="<%= url_for :controller => 'landing', :action => 'index' %>">Home</a>
