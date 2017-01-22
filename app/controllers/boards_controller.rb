@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
   end
 
   def list
-    @boards = Board.all
+    @boards = Board.where(["year = ?", Settings.current_year])
   end
 
   # GET /boards/1
@@ -96,6 +96,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:description, :start_date, :end_date, :nomination_type_id, :score_type_id, :users_list => [])
+      params.require(:board).permit(:description, :start_date, :end_date, :nomination_type_id, :score_type_id, :year, :users_list => [])
     end
 end
