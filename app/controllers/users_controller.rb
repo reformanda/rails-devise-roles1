@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @users = @users.admin if params[:role] == "admin"
     @users = @users.judge if params[:role] == "judge"
     @users = @users.manager if params[:role] == "manager"
-    @users = @users.order(:name).page params[:page] #User.all
+    #@users = @users.order(:name).page params[:page] #User.all
 
   end
 

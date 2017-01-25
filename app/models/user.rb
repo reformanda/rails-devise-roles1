@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  paginates_per 25
+  #paginates_per 25
 
 
 

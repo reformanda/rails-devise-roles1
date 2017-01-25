@@ -11,7 +11,7 @@ gem 'pdf-merger', '~> 0.3.2'
 gem 'config'
 
 gem 'file_validators'
-gem 'kaminari'
+#gem 'kaminari'
 gem 'valid_email'
 gem 'puma'
 gem 'webshims-rails'

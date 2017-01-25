@@ -29,7 +29,7 @@ class NominationsController < ApplicationController
     @nominations = @nominations.where("nomination_type_id = ?","#{params[:nomination_nomination_type_id]}") unless params[:nomination_nomination_type_id].blank?
     @nominations = @nominations.where(status: params[:status]) unless params[:status].blank?
     @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
-    @nominations = @nominations.page params[:page] #User.all
+    #@nominations = @nominations.page params[:page] #User.all
     @nomination_types = NominationType.all.pluck(:code,:id)
   end
 
