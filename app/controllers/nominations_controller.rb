@@ -12,23 +12,29 @@ class NominationsController < ApplicationController
   # GET /boats
   # GET /boats.json
   def index
+    #ßparams[:nomination_nomination_year] ||= Settings.current_year
     @nominations = Nomination.all
     if params[:status].nil?
       params[:status] = ["0","1","2"]
     end
     @statuses = [:entered, :approved, :scored, :deleted]
 
+    if params[:nomination_nomination_year].nil?
+      params[:nomination_nomination_year] = Settings.current_year
+    end
+
     @nominations = @nominations.where(
     "nominee_first_name like ? OR nominee_last_name like ? OR " + \
     "nominating_official_first_name like ? OR nominating_official_last_name like ? OR " + \
     "nominating_point_of_contact_first_name like ? OR nominating_point_of_contact_last_name like ?",
     "%#{params[:search]}%","%#{params[:search]}%",
-     "%#{params[:search]}%","%#{params[:search]}%",
-     "%#{params[:search]}%","%#{params[:search]}%") unless params[:search].blank?
+    "%#{params[:search]}%","%#{params[:search]}%",
+    "%#{params[:search]}%","%#{params[:search]}%") unless params[:search].blank?
     @nominations = @nominations.where("award_option_id = ?","#{params[:nomination_award_option_id]}") unless params[:nomination_award_option_id].blank?
     @nominations = @nominations.where("nomination_type_id = ?","#{params[:nomination_nomination_type_id]}") unless params[:nomination_nomination_type_id].blank?
+    @nominations = @nominations.where("nomination_year = ?","#{params[:nomination_nomination_year]}") unless params[:nomination_nomination_year].blank?
     @nominations = @nominations.where(status: params[:status]) unless params[:status].blank?
-    @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
+    #@nominations = @nominations.where("nomination_year = ?", Settings.current_year)
     #@nominations = @nominations.page params[:page] #User.all
     @nomination_types = NominationType.all.pluck(:code,:id)
   end

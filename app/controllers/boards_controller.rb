@@ -9,7 +9,11 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
+    if params[:board_year].nil?
+      params[:board_year] = Settings.current_year
+    end
     @boards = Board.all
+    @boards = @boards.where("year = ?", params[:board_year]) unless not params[:board_year].blank?
     @usernames = User.all.order(:id)
 
   end

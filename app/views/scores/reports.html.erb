@@ -39,13 +39,24 @@
 </div>
 <div class="ibox-content">
 
+  <%= form_tag scores_reports_path, :method => 'get', :id => 'form_search' do %>
+    <p>
+      Year:&nbsp;<%= select_tag :board_year,  options_for_select(Settings.award_years.collect { |c| [ c, c ] }, params[:board_year]) %>
+    </p>
+    <p>
+      <%= submit_tag "Search", :name => nil %>
+      &nbsp;&nbsp;
+      <input value="Reset" type="button" onclick='$("#search").val("");$("#nomination_type").prop("selectedIndex",0);$("#award").prop("selectedIndex",0);$(".search_status").attr("checked",false)'/>
+      <span style="float:right"><%= @boards.count %> Score Report(s) total.&nbsp;&nbsp;</span>
+    </p>
+  <% end %>
+
 <table class="table table-striped table-bordered table-hover dataTables-example">
     <thead>
       <tr>
         <th>Description</th>
         <th>Nomination Type</th>
         <th>Assigned Judges</th>
-
         <th>Action</th>
       </tr>
     </thead>

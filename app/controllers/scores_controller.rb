@@ -32,7 +32,11 @@ class ScoresController < ApplicationController
   end
 
   def reports
+    if params[:board_year].nil?
+      params[:board_year] = Settings.current_year
+    end
     @boards = Board.all
+    @boards = @boards.where("year = ?", params[:board_year]) unless params[:board_year].blank?
     @usernames = User.all.order(:id)
   end
 
@@ -59,7 +63,10 @@ class ScoresController < ApplicationController
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
     end
+
     render :layout => "empty"
+
+
   end
 
   def edit
@@ -203,48 +210,59 @@ class ScoresController < ApplicationController
 
     save_error = false
     if not validation_error
-      # delete all old scores
-      Score.where("board_id = ? and user_id = ?", params[:board_id], current_user.id).delete_all
-      #score_total = params[:score_1]+ params[:score_2]+ params[:score_3]+ params[:score_4]+ params[:score_5]+ params[:score_6]+ params[:score_7]+ params[:score_8]+ params[:score_9]
-      # save all scores
-      @nom_ids = []
-      params[:score_1].map { |k,v| @nom_ids << k}
-      @nom_ids.each do |i|
-        @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
-          :score_1 => params[:score_1][i],
-          :score_2 => params[:score_2][i],
-          :score_3 => params[:score_3][i],
-          :score_4 => params[:score_4][i],
-          :score_5 => params[:score_5][i],
-          :score_6 => params[:score_6][i],
-          :score_7 => params[:score_7][i],
-          :score_8 => params[:score_8][i],
-          :score_9 => params[:score_9][i],
-          :score_total => params[:score_1][i].to_i + params[:score_2][i].to_i + params[:score_3][i].to_i + params[:score_4][i].to_i + params[:score_5][i].to_i + params[:score_6][i].to_i + params[:score_7][i].to_i + params[:score_8][i].to_i + params[:score_9][i].to_i,
-          :score_comments => params[:score_comments][i],
-          :checker_1 => @score_1,
-          :checker_2 => @score_2,
-          :checker_3 => @score_3,
-          :checker_4 => @score_4,
-          :checker_5 => @score_5,
-          :checker_6 => @score_6,
-          :checker_7 => @score_7,
-          :checker_8 => @score_8,
-          :checker_9 => @score_9
-          })
+      Score.transaction do
+        # delete all old scores
+        Score.where("board_id = ? and user_id = ?", params[:board_id], current_user.id).delete_all
 
-        if not @score.save
-            save_error = true
-            break
+        #score_total = params[:score_1]+ params[:score_2]+ params[:score_3]+ params[:score_4]+ params[:score_5]+ params[:score_6]+ params[:score_7]+ params[:score_8]+ params[:score_9]
+        # save all scores
+        @nom_ids = []
+        params[:score_1].map { |k,v| @nom_ids << k}
+        @nom_ids.each do |i|
+          @score = Score.new({:user_id => current_user.id, :board_id => params[:board_id], :nomination_id => i,
+            :score_1 => params[:score_1][i],
+            :score_2 => params[:score_2][i],
+            :score_3 => params[:score_3][i],
+            :score_4 => params[:score_4][i],
+            :score_5 => params[:score_5][i],
+            :score_6 => params[:score_6][i],
+            :score_7 => params[:score_7][i],
+            :score_8 => params[:score_8][i],
+            :score_9 => params[:score_9][i],
+            :score_total => params[:score_1][i].to_i + params[:score_2][i].to_i + params[:score_3][i].to_i + params[:score_4][i].to_i + params[:score_5][i].to_i + params[:score_6][i].to_i + params[:score_7][i].to_i + params[:score_8][i].to_i + params[:score_9][i].to_i,
+            :score_comments => params[:score_comments][i],
+            :checker_1 => @score_1,
+            :checker_2 => @score_2,
+            :checker_3 => @score_3,
+            :checker_4 => @score_4,
+            :checker_5 => @score_5,
+            :checker_6 => @score_6,
+            :checker_7 => @score_7,
+            :checker_8 => @score_8,
+            :checker_9 => @score_9
+            })
+
+          if not @score.save
+              save_error = true
+              raise ActiveRecord::Rollback, "Call tech support!"
+              break
+          end
         end
       end
     end
 
     respond_to do |format|
       if !save_error  &&  !validation_error
-         format.html {redirect_to "/scores/#{params[:board_id]}", notice: 'Score was successfully created.'}
+
+        # send email notification
+        #UserMailer.account_creation(@user, params[:entered_password]).deliver
+        format.html {redirect_to "/scores/#{params[:board_id]}", notice: 'Score was successfully created.'}
     #    format.json { render :show, status: :created, location: @nomination_type }
       else
+
+        # send email notification
+        #UserMailer.account_creation(@user, params[:entered_password]).deliver
+
         @board = Board.find(params[:board_id])
         @nomination_type = NominationType.find(@board.nomination_type)
         @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
@@ -261,7 +279,7 @@ class ScoresController < ApplicationController
           @nominations = Nomination.where("id in (?)", nominations_ids)
         else
           @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
-        end        
+        end
         @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
         @callback_params = params
 
@@ -271,7 +289,7 @@ class ScoresController < ApplicationController
         end
 
 
-        format.html { render :edit }
+        format.html { redirect_to "/scores/#{params[:board_id]}", notice: 'There was a problem saving the score; if the problem continues, please contact the System Administrator.'}
     #    format.json { render json: @nomination_type.errors, status: :unprocessable_entity }
       end
     end

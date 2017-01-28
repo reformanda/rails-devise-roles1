@@ -37,30 +37,29 @@
 
   <%= form_tag nominations_path, :method => 'get', :id => 'form_search' do %>
     <p>
-      Name:&nbsp;<%= text_field_tag :search, params[:search], placeholder: "Nominee/Nominator/POC " %>
+      Year:&nbsp;<%= select_tag :nomination_nomination_year,  options_for_select(Settings.award_years.collect { |c| [ c, c ] }, params[:nomination_nomination_year]) %>
       &nbsp;&nbsp;
+      Name:&nbsp;<%= text_field_tag :search, params[:search], placeholder: "Nominee/Nominator/POC", size: 65 %>
+    </p>
+    <p>
       Nomination Type:&nbsp;
       <%= select_tag :nomination_nomination_type_id, options_from_collection_for_select(NominationType.all.order("code"), 'id', 'code', params[:nomination_nomination_type_id]), include_blank: "All" %>
       &nbsp;&nbsp;
       Award Option:&nbsp;
       <%= select_tag :nomination_award_option_id, options_from_collection_for_select(AwardOption.all.order("name"), 'id', 'name', params[:nomination_award_option_id]), include_blank: "All" %>
-
-
     </p>
     <p>   Status:&nbsp;
-          <% cnt = 0 %>
-          <% @statuses.each do  |s| %>
-
-            <label class="">
-            <% if params[:status].include? "#{cnt}" %>
-            <input name="status[]" class="search_status" id='status<%="#{cnt}"%>' type="checkbox"  checked="checked" value='<%="#{cnt}"%>'> <%= s %></input>
-            <% else %>
-            <input name="status[]" class="search_status" id='status<%="#{cnt}"%>' type="checkbox" value='<%="#{cnt}"%>'> <%= s %></input>
-            <% end %>
-            </label>&nbsp;
-            <% cnt=cnt+1 %>
-          <% end %>
-
+      <% cnt = 0 %>
+      <% @statuses.each do  |s| %>
+        <label class="">
+        <% if params[:status].include? "#{cnt}" %>
+        <input name="status[]" class="search_status" id='status<%="#{cnt}"%>' type="checkbox"  checked="checked" value='<%="#{cnt}"%>'> <%= s %></input>
+        <% else %>
+        <input name="status[]" class="search_status" id='status<%="#{cnt}"%>' type="checkbox" value='<%="#{cnt}"%>'> <%= s %></input>
+        <% end %>
+        </label>&nbsp;
+        <% cnt=cnt+1 %>
+      <% end %>
     </p>
     <p>
       <%= submit_tag "Search", :name => nil %>
@@ -68,9 +67,6 @@
       <input value="Reset" type="button" onclick='$("#search").val("");$("#nomination_type").prop("selectedIndex",0);$("#award").prop("selectedIndex",0);$(".search_status").attr("checked",false)'/>
       <span style="float:right"><%= @nominations.count %> Nomination(s) total.&nbsp;&nbsp;</span>
     </p>
-
-
-
   <% end %>
 
 <table id="dataTables" class="table table-striped table-bordered table-hover dataTables-example">
