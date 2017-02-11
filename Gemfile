@@ -10,6 +10,7 @@ gem 'pdf-merger', '~> 0.3.2'
 # configurations
 gem 'config'
 
+
 gem 'file_validators'
 #gem 'kaminari'
 gem 'valid_email'
