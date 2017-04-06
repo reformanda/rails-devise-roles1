@@ -89,6 +89,6 @@ class NominationTypesController < ApplicationController
     def nomination_type_params
       params.require(:nomination_type).permit(:year, :code, :title, \
              :nomination_end_date, :description, :awards_announcement, :implementing_instructions, \
-             :submission_form, :award_narrative, :guidelines, :award_years_list => [])
+             :submission_form, :award_narrative, :guidelines, :remove_team_name, :award_years_list => [])
     end
 end

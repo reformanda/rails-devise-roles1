@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108023341) do
+ActiveRecord::Schema.define(version: 20170406084511) do
 
   create_table "award_options", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170108023341) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.text     "award_years_list",          limit: 65535
+    t.boolean  "remove_team_name"
   end
 
   create_table "nominations", force: :cascade do |t|

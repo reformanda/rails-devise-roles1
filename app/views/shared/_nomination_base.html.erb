@@ -296,12 +296,14 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                           </div>
                         </div>
                     </div>
-
+                    
+                    <% if @info.remove_team_name %>
                     <div class="form-group"><%= f.label :nominee_team_name, "* Team Name", class: "col-sm-2 control-label" %>
                         <div class="col-sm-6">
                           <%= f.text_field :nominee_team_name, class: "form-control", required: false %>
                         </div>
                     </div>
+                    <% end %>
 
                     <div class="form-group"><%= f.label :nominee_position_title, "* Position Title", class: "col-sm-2 control-label" %>
                         <div class="col-sm-3">

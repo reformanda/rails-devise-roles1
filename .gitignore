@@ -9,7 +9,7 @@
 # Corrections? Improvements? Create a GitHub issue:
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
-/data/
+/data*/
 /public/documents
 /public/uploads/
 /public/assets/
