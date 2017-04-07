@@ -123,6 +123,24 @@
 
 $(function() {
 
+  $('tbody').on('change keyup keydown', 'input, textarea, select', function (e) {
+      $(this).addClass('changed-input');
+  });
+
+  $(window).on('beforeunload', function () {
+      if ($('.changed-input').length) {
+          return 'You haven\'t saved your changes.';
+      }
+  });
+
+  $('form').on('submit', function(e) {
+      e.preventDefault();
+      $('input').removeClass('changed-input'); //perform some operations
+      $('textarea').removeClass('changed-input');
+      $('select').removeClass('changed-input');
+      this.submit(); //now submit the form
+  });
+
   function add(aw, nom) {
     var sum = 0;
     $(".score_" + aw + "_" + nom).each(function() {

@@ -1,0 +1,71 @@
+
+
+<h3>These scores have been recorded for <%= @judge_name %> as of <%= Time.now.strftime("%A, %m/%d/%Y, %r") %>.</h3>
+
+    <p><%= @board.description %></p>
+
+    <table border="1" style="width: 75%">
+      <thead>
+        <tr>
+          <td scope="col">Name</td>
+          <td>Cat 1</td>
+          <td>Cat 2</td>
+          <td>Cat 3</td>
+          <td>Cat 4</td>
+          <td>Cat 5</td>
+          <td>Cat 6</td>
+          <td>Cat 7</td>
+          <td>Cat 8</td>
+          <td>Cat 9</td>
+        </tr>
+      </thead>
+      <tbody>
+
+    <% @nom_ids = []
+    @params[:score_1].map { |k,v| @nom_ids << k}
+    @nom_ids.each do |i|
+    %>
+
+    <tr>
+      <td>
+        <% nom = @nominations.find(i) %>
+        <% if nom.nominee_team_name.blank? %>
+          <%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name} #{nom.nominee_suffix}" %>
+        <% else %>
+          <%= nom.nominee_team_name %>
+        <% end %>
+        <br/>
+        <%= nom.nominee_organization %>
+        <br/>
+        <br/>
+      </td>
+      <td>
+    <%= @params[:score_1][i] %>&nbsp;
+      <td>
+    <td>
+    <%= @params[:score_2][i] %>&nbsp;
+  </td>
+    <td>
+      <%= @params[:score_3][i] %>&nbsp;
+    </td>
+    <td>
+      <%= @params[:score_4][i] %>&nbsp;
+    </td>
+    <td>
+      <%= @params[:score_5][i] %>&nbsp;
+    </td>
+    <td>
+      <%= @params[:score_6][i] %>&nbsp;
+    </td>
+    <td>
+      <%= @params[:score_7][i] %>&nbsp;
+    </td>
+    <td>
+      <%= @params[:score_8][i] %>&nbsp;
+    </td>
+    <td>
+      <%= @params[:score_9][i] %>&nbsp;
+    </td>
+  </tr>
+    <% end %>
+  </table>

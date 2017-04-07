@@ -141,12 +141,19 @@ class ScoresController < ApplicationController
 
   def create
     #@nomination_type = NominationType.new(nomination_type_params)
-
     @board = Board.find(params[:board_id])
+    @nomination_type = NominationType.find(@board.nomination_type_id)
+
+    @judge = User.find(current_user.id)
+    if @board.score_type_id == 8
+      @nominations = Nomination.where("id in (?)", nominations_ids)
+    else
+      @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+    end
+    ScoreMailer.saving_scores_email(@judge.name, params, @nominations, @board).deliver_now
+
 
     # look over award options
-
-    @nomination_type = NominationType.find(@board.nomination_type)
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
 #    @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     # if tie breaker, then only select tied nominations
@@ -244,6 +251,7 @@ class ScoresController < ApplicationController
 
           if not @score.save
               save_error = true
+              ScoreMailer.error_email(@judge.name, @board).deliver_now
               raise ActiveRecord::Rollback, "Call tech support!"
               break
           end
