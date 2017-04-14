@@ -5,7 +5,7 @@
 
                     <input type="hidden" name="nomination_type_id" value="<%= @info.id %>" />
                     <% end %>
-                    <%= f.hidden_field :nomination_year, :value => @Settings.current_year %>
+                    <%= f.hidden_field :nomination_year, :value => Settings.current_year %>
 
                     <% if not @manage_nomination.nil? %>
                     <% else %>
