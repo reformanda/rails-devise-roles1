@@ -12,7 +12,7 @@ RSpec.describe NominationMailer, :type => :mailer do
     #let(:user){ User.create(email: 'hi@hi.com') }
 
     it 'renders the subject' do
-      expect(mail.subject).to eq("#{info.year} #{info.title} Form Submission")
+      expect(mail.subject).to eq("#{info.title} Form Submission")
     end
 
     it 'renders the receiver email' do

@@ -1,6 +1,6 @@
 class ScoreMailer < ApplicationMailer
 
-  def error_email(judge_name, board))
+  def error_email(judge_name, board)
     @judge_name = judge_name
     @board = board
     mail(to: "jwilson1@networkrunners.com,CATHERINE.H.DERAN@saic.com", subject: "[USAASC Virtual Boards] Score Error")

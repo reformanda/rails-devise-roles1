@@ -5,7 +5,7 @@
 
                     <input type="hidden" name="nomination_type_id" value="<%= @info.id %>" />
                     <% end %>
-                    <%= f.hidden_field :nomination_year, :value => @info.year %>
+                    <%= f.hidden_field :nomination_year, :value => @Settings.current_year %>
 
                     <% if not @manage_nomination.nil? %>
                     <% else %>
@@ -91,7 +91,7 @@
 
 
 
-                      <h2><%= "#{@info.year}  #{@info.title} Nomination Form" %></h2>
+                      <h2><%= "#{@info.title} Nomination Form" %></h2>
 
                       <p><%= @info.description %></p>
 
@@ -296,7 +296,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                           </div>
                         </div>
                     </div>
-                    
+
                     <% if @info.remove_team_name %>
                     <div class="form-group"><%= f.label :nominee_team_name, "* Team Name", class: "col-sm-2 control-label" %>
                         <div class="col-sm-6">
