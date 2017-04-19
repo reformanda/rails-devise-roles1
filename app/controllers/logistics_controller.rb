@@ -116,11 +116,12 @@ class LogisticsController < ApplicationController
       :nomination_type_id,
       :nomination_year,
       :nominee_team_name,
-      :nominee_organization_logo_cache,
       :submission_word_document,
       :submission_pdf,
       :submission_word_document_cache,
-      :submission_pdf_cache)
+      :submission_pdf_cache,
+      :additional_supporting_graphics,
+      :additional_supporting_graphics_cache)
     end
 
 end

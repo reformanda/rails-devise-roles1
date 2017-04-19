@@ -1,4 +1,4 @@
-class NomineeAdditionalSupportingGraphicsUploader < CarrierWave::Uploader::Base
+class AdditionalSupportingGraphicsUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

@@ -373,7 +373,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><%= f.label :additional_supporting_graphics, "* Additional supporting graphics (PDF or Word Document)", class: "col-sm-4", style: "text-align: right"%>
+                    <div class="form-group"><%= f.label :additional_supporting_graphics, "Additional supporting graphics (PDF or Word Document)", class: "col-sm-4", style: "text-align: right"%>
                       <div class="col-sm-1">
                         <% if not @nomination.additional_supporting_graphics_url.blank? %>
                         <%= link_to "View", @nomination.additional_supporting_graphics_url, :target => "_blank" %>
@@ -382,7 +382,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         <div class="col-sm-4">
                           <%= f.file_field :additional_supporting_graphics, class: "" %>
                           <%= f.hidden_field :additional_supporting_graphics_cache %>
-                        
+
                         </div>
                     </div>
 
