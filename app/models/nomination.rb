@@ -8,6 +8,7 @@ class Nomination < ActiveRecord::Base
   mount_uploader :submission_packet, SubmissionPacketUploader
   mount_uploader :nominee_photograph_one, NomineePhotographOneUploader
   mount_uploader :nominee_photograph_two, NomineePhotographTwoUploader
+  mount_uploader :additional_supporting_graphics, NomineeAdditionalSupportingGraphicsUploader
 
   belongs_to :nomination_type
   belongs_to :award_option

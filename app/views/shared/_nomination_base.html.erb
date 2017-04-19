@@ -349,7 +349,7 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                     <% if  @nomination_type == "Logistic" %>
 
                     <div class="form-group">
-                        <%= f.label :submission_word_document, "* Submission Word Document", class: "col-sm-4", style: "text-align: right" %>
+                        <%= f.label :submission_word_document, "* Submission Word Document (sections 1, 2 and 4)", class: "col-sm-4", style: "text-align: right" %>
                         <div class="col-sm-1">
                           <% if not @nomination.submission_word_document_url.blank? %>
                           <%= link_to "View ", @nomination.submission_word_document_url, :target => "_blank" %>
@@ -361,28 +361,28 @@ International Prefix-Country Code-Area Code-xxx-xxxx)</span>
                         </div>
                     </div>
 
-                    <div class="form-group"><%= f.label :submission_pdf, "* Submission PDF", class: "col-sm-4", style: "text-align: right" %>
+                    <div class="form-group"><%= f.label :endorsement_letter, "* Nomination Endorsements (section 3)", class: "col-sm-4", style: "text-align: right" %>
                         <div class="col-sm-1">
-                          <% if not @nomination.submission_pdf_url.blank? %>
-                          <%= link_to "View", @nomination.submission_pdf_url, :target => "_blank" %>
+                          <% if not @nomination.endorsement_letter_url.blank? %>
+                          <%= link_to "View", @nomination.endorsement_letter_url, :target => "_blank" %>
                           <% end %>
                         </div>
                         <div class="col-sm-4">
-                          <%= f.file_field :submission_pdf, class: "" %>
-                          <%= f.hidden_field :submission_pdf_cache %>
+                          <%= f.file_field :endorsement_letter, class: "" %>
+                          <%= f.hidden_field :endorsement_letter_cache %>
                         </div>
                     </div>
 
-                    <div class="form-group"><%= f.label :nominee_organization_logo, "* Nominee Organizational Logo", class: "col-sm-4", style: "text-align: right"%>
+                    <div class="form-group"><%= f.label :additional_supporting_graphics, "* Additional supporting graphics (PDF or Word Document)", class: "col-sm-4", style: "text-align: right"%>
                       <div class="col-sm-1">
-                        <% if not @nomination.nominee_organization_logo_url.blank? %>
-                        <%= link_to "View", @nomination.nominee_organization_logo_url, :target => "_blank" %>
+                        <% if not @nomination.additional_supporting_graphics_url.blank? %>
+                        <%= link_to "View", @nomination.additional_supporting_graphics_url, :target => "_blank" %>
                         <% end %>
                       </div>
                         <div class="col-sm-4">
-                          <%= f.file_field :nominee_organization_logo, class: "" %>
-                          <%= f.hidden_field :nominee_organization_logo_cache %>
-                          <span class="help-block m-b-none">Photos must be 1024 px wide or larger.</span>
+                          <%= f.file_field :additional_supporting_graphics, class: "" %>
+                          <%= f.hidden_field :additional_supporting_graphics_cache %>
+                        
                         </div>
                     </div>
 
