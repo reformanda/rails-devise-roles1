@@ -22,6 +22,7 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
+    @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -59,6 +60,7 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
+    @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -97,6 +99,7 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
+    @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
     @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
 
     begin
@@ -132,7 +135,7 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
-
+	  @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -149,6 +152,7 @@ class ScoresController < ApplicationController
       @nominations = Nomination.where("id in (?)", nominations_ids)
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+	  @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
     end
     ScoreMailer.saving_scores_email(@judge.name, params, @nominations, @board).deliver_now
 
@@ -169,7 +173,7 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
-
+	  @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
     validation_error = false
     @award_options.each do |aw|
       # load arrays for validation
@@ -288,6 +292,7 @@ class ScoresController < ApplicationController
         else
           @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
         end
+        @nominations = @nominations.where("nomination_year = ?", Settings.current_year)
         @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
         @callback_params = params
 
