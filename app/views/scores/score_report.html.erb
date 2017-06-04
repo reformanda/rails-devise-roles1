@@ -45,10 +45,10 @@
           <table class="table table-striped table-bordered table-hover dataTables-example">
             <caption>
 
-                <h4> <%= aw.name %></h4>
+
 
             </caption>
-
+              <%= @aw = aw.name %>
               <%= render "score_report_heading" %>
 
             <tbody>
@@ -57,7 +57,7 @@
             <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
             <% @noms.find_each do |nom| %>
 
-            <% @board.users_list.each do |judge| %>
+            <% @users_list2.each do |judge| %>
             <% if not judge.blank? %>
             <% grand_total = @scores.where("nomination_id = ? and user_id in (?)", nom.id, @board.users_list).sum(:score_total) %>
 
@@ -138,11 +138,12 @@ $(function() {
         pageLength: 100,
         buttons: [
             //{ extend: 'copy'},
-            {extend: 'csv'},
-            {extend: 'excel', title: 'ExampleFile'},
+            {extend: 'csv',   title: "Score Report - <%= @board.description %>",},
+            {extend: 'excel',   title: "Score Report - <%= @board.description %>",},
             //{extend: 'pdf', title: 'ExampleFile'},
 
             {extend: 'print',
+                title: "Score Report - <%= @board.description %>",
                 customize: function (win){
                     $(win.document.body).addClass('white-bg');
                     $(win.document.body).css('font-size', '10px');
@@ -151,7 +152,8 @@ $(function() {
                             .addClass('compact')
                             .css('font-size', 'inherit');
                 }
-            }
+            },
+
         ]
 
     });

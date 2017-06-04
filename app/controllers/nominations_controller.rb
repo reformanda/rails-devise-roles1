@@ -26,10 +26,10 @@ class NominationsController < ApplicationController
     @nominations = @nominations.where(
     "nominee_first_name like ? OR nominee_last_name like ? OR " + \
     "nominating_official_first_name like ? OR nominating_official_last_name like ? OR " + \
-    "nominating_point_of_contact_first_name like ? OR nominating_point_of_contact_last_name like ?",
+    "nominating_point_of_contact_first_name like ? OR nominating_point_of_contact_last_name like ? OR nominee_team_name like ?",
     "%#{params[:search]}%","%#{params[:search]}%",
     "%#{params[:search]}%","%#{params[:search]}%",
-    "%#{params[:search]}%","%#{params[:search]}%") unless params[:search].blank?
+    "%#{params[:search]}%","%#{params[:search]}%" ,"%#{params[:search]}%") unless params[:search].blank?
     @nominations = @nominations.where("award_option_id = ?","#{params[:nomination_award_option_id]}") unless params[:nomination_award_option_id].blank?
     @nominations = @nominations.where("nomination_type_id = ?","#{params[:nomination_nomination_type_id]}") unless params[:nomination_nomination_type_id].blank?
     @nominations = @nominations.where("nomination_year = ?","#{params[:nomination_nomination_year]}") unless params[:nomination_nomination_year].blank?
