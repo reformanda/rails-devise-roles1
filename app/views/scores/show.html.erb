@@ -43,7 +43,7 @@
     <div class="col-lg-10 col-lg-offset-1">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
-              <h3>These scores have been recorded for <%= current_user.name %> as of <%= Time.now.strftime("%A, %m/%d/%Y, %r") %>.</h3>
+              <h3>These scores have been recorded as of <%= Time.now.strftime("%A, %m/%d/%Y, %r") %>.</h3>
               <h4>Virtual Board Scoring - <%= @board.description %></h4>
 
           </div>
@@ -65,7 +65,7 @@
             <% when 7 then %>
                   <%= render :partial => "score_7" %>
             <% when 8 then %>
-                  <%= render :partial => "score_8" %>      
+                  <%= render :partial => "score_8" %>
             <% else %>
                   <%= render :partial => "tbd" %>
             <% end %>

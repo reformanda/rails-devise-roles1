@@ -14,7 +14,7 @@ class ScoresController < ApplicationController
     @users_list1 = @scores.uniq.pluck(:user_id)
     @users_list2 = (@users_list1.to_a + @board.users_list.each.map(&:to_i)).uniq
     @users_list2.delete_if { |x| x==0 }
-    puts @users_list2.inspect
+    #puts @users_list2.inspect
     #puts @scores.uniq.pluck(:user_id)
     #puts @scores.inspect
     # if tie breaker, then only select tied nominations
@@ -71,6 +71,7 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
+    @nominations = @nominations.where("nomination_year = ?", @board.year)
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -84,7 +85,7 @@ class ScoresController < ApplicationController
   def edit
     # determine score_type from board_id
     @board = Board.find(params[:id])
-
+    puts @board.inspect
     begin
       if DateTime.strptime(@board.end_date, '%m/%d/%Y').past?
         redirect_to "/boards/expired"
@@ -93,9 +94,9 @@ class ScoresController < ApplicationController
       puts e.inspect
     end
 
-    @nomination_type = NominationType.find(@board.nomination_type)
+    @nomination_type = NominationType.find(@board.nomination_type_id)
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
-
+    puts @nomination_type.inspect
     # if tie breaker, then only select tied nominations
     if @board.score_type_id == 8
       # which board is tie breaker for?
@@ -109,8 +110,9 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
+    @nominations = @nominations.where("nomination_year = ?", @board.year)
     @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
-
+    puts @scores.inspect
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -144,6 +146,7 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
+    @nominations = @nominations.where("nomination_year = ?", @board.year)
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
@@ -156,13 +159,6 @@ class ScoresController < ApplicationController
     @nomination_type = NominationType.find(@board.nomination_type_id)
 
     @judge = User.find(current_user.id)
-    if @board.score_type_id == 8
-      @nominations = Nomination.where("id in (?)", nominations_ids)
-    else
-      @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
-    end
-    ScoreMailer.saving_scores_email(@judge.name, params, @nominations, @board).deliver_now
-
 
     # look over award options
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
@@ -180,6 +176,10 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
+    @nominations = @nominations.where("nomination_year = ?", @board.year)
+    ###ScoreMailer.saving_scores_email(@judge.name, params, @nominations, @board).deliver_now
+
+
     validation_error = false
     @award_options.each do |aw|
       # load arrays for validation
@@ -258,7 +258,7 @@ class ScoresController < ApplicationController
             :checker_8 => @score_8,
             :checker_9 => @score_9
             })
-
+          puts @score.inspect
           if not @score.save
               save_error = true
               ScoreMailer.error_email(@judge.name, @board).deliver_now
@@ -298,6 +298,7 @@ class ScoresController < ApplicationController
         else
           @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
         end
+        @nominations = @nominations.where("nomination_year = ?", @board.year)
         @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
         @callback_params = params
 
