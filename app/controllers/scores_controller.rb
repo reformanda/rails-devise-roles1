@@ -307,8 +307,9 @@ class ScoresController < ApplicationController
         rescue
         end
 
+        format.html { render :edit, notice: 'There was a problem saving the score; if the problem continues, please contact the System Administrator.'}
 
-        format.html { redirect_to "/scores/#{params[:board_id]}", notice: 'There was a problem saving the score; if the problem continues, please contact the System Administrator.'}
+        #format.html { redirect_to "/scores/#{params[:board_id]}", notice: 'There was a problem saving the score; if the problem continues, please contact the System Administrator.'}
     #    format.json { render json: @nomination_type.errors, status: :unprocessable_entity }
       end
     end
