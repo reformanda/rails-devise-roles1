@@ -177,8 +177,6 @@ class ScoresController < ApplicationController
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
     @nominations = @nominations.where("nomination_year = ?", @board.year)
-    ###ScoreMailer.saving_scores_email(@judge.name, params, @nominations, @board).deliver_now
-
 
     validation_error = false
     @award_options.each do |aw|
@@ -271,15 +269,9 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if !save_error  &&  !validation_error
-
-        # send email notification
-        #UserMailer.account_creation(@user, params[:entered_password]).deliver
+        ScoreMailer.saving_scores_email(@judge.name, params, @nominations, @board).deliver_now
         format.html {redirect_to "/scores/#{params[:board_id]}", notice: 'Score was successfully created.'}
-    #    format.json { render :show, status: :created, location: @nomination_type }
       else
-
-        # send email notification
-        #UserMailer.account_creation(@user, params[:entered_password]).deliver
 
         @board = Board.find(params[:board_id])
         @nomination_type = NominationType.find(@board.nomination_type)
