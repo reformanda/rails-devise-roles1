@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425021134) do
+ActiveRecord::Schema.define(version: 20170612104537) do
 
   create_table "award_options", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170425021134) do
     t.datetime "updated_at",                               null: false
     t.string   "combined_submission_packet", limit: 255
     t.string   "year",                       limit: 255
+    t.integer  "nomination_cnt",             limit: 4
   end
 
   add_index "boards", ["nomination_type_id"], name: "index_boards_on_nomination_type_id", using: :btree

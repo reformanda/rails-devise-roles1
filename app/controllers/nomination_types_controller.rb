@@ -26,6 +26,7 @@ class NominationTypesController < ApplicationController
   # GET /nomination_types/1/edit
   def edit
     @award_years_list = Settings.award_years
+    puts @nomination_type.inspect
   end
 
   # POST /nomination_types

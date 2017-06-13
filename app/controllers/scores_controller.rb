@@ -21,7 +21,7 @@ class ScoresController < ApplicationController
     if @board.score_type_id == 8
       # which board is tie breaker for?
       begin
-        tie_board = Board.where("nomination_type_id = ? and score_type_id != 8",@board.nomination_type_id)
+        tie_board = Board.where("year = ? and nomination_type_id = ? and score_type_id != 8",@board.year, @board.nomination_type_id)
         nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
       rescue
         nominations_ids = nil
@@ -62,7 +62,7 @@ class ScoresController < ApplicationController
     if @board.score_type_id == 8
       # which board is tie breaker for?
       begin
-        tie_board = Board.where("nomination_type_id = ? and score_type_id != 8",@board.nomination_type_id)
+        tie_board = Board.where("year = ? and nomination_type_id = ? and score_type_id != 8",@board.year, @board.nomination_type_id)
         nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
       rescue
         nominations_ids = nil
@@ -101,7 +101,7 @@ class ScoresController < ApplicationController
     if @board.score_type_id == 8
       # which board is tie breaker for?
       begin
-        tie_board = Board.where("nomination_type_id = ? and score_type_id != 8",@board.nomination_type_id)
+        tie_board = Board.where("year = ? and nomination_type_id = ? and score_type_id != 8",@board.year, @board.nomination_type_id)
         nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
       rescue
         nominations_ids = nil
@@ -137,7 +137,7 @@ class ScoresController < ApplicationController
     if @board.score_type_id == 8
       # which board is tie breaker for?
       begin
-        tie_board = Board.where("nomination_type_id = ? and score_type_id != 8",@board.nomination_type_id)
+        tie_board = Board.where("year = ? and nomination_type_id = ? and score_type_id != 8",@board.year, @board.nomination_type_id)
         nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
       rescue
         nominations_ids = nil
@@ -167,7 +167,7 @@ class ScoresController < ApplicationController
     if @board.score_type_id == 8
       # which board is tie breaker for?
       begin
-        tie_board = Board.where("nomination_type_id = ? and score_type_id != 8",@board.nomination_type_id)
+        tie_board = Board.where("year = ? and nomination_type_id = ? and score_type_id != 8",@board.year, @board.nomination_type_id)
         nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
       rescue
         nominations_ids = nil
@@ -281,7 +281,7 @@ class ScoresController < ApplicationController
         if @board.score_type_id == 8
           # which board is tie breaker for?
           begin
-            tie_board = Board.where("nomination_type_id = ? and score_type_id != 8",@board.nomination_type_id)
+            tie_board = Board.where("year = ? and nomination_type_id = ? and score_type_id != 8",@board.year, @board.nomination_type_id)
             nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
           rescue
             nominations_ids = nil

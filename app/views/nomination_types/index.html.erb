@@ -68,7 +68,7 @@
         <td><%= nomination_type.title %></td>
         <td><%= nomination_type.description %></td>
         <td><%= nomination_type.nomination_end_date %></td>
-        <td><% if not nomination_type.awards_announcement.blank? %><%= link_to "View", nomination_type.awards_announcement_url %><% end %></td>
+        <td><% if not nomination_type.awards_announcement_url.blank? %><%= link_to "View", nomination_type.awards_announcement_url %><% end %></td>
         <td><% if not nomination_type.implementing_instructions_url.blank? %><%= link_to "View", nomination_type.implementing_instructions_url %><% end %></td>
         <td><% if not nomination_type.submission_form_url.blank? %><%= link_to "View", nomination_type.submission_form_url %><% end %></td>
         <td><% if not nomination_type.award_narrative_url.blank? %><%= link_to "View", nomination_type.award_narrative_url %><% end %></td>

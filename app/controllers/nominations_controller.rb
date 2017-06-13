@@ -49,7 +49,6 @@ class NominationsController < ApplicationController
     @callback = "#"
     @manage_nomination = true
     @remove_submission_packet = nil
-
   end
 
   def show
@@ -128,7 +127,7 @@ class NominationsController < ApplicationController
 
         # merge all approved packets for this nomination type
         begin
-          out = MergePDF(@nomination.nomination_type_id)
+          out = MergePDF(@nomination.nomination_year,@nomination.nomination_type_id)
         rescue => e
           puts e.inspect
         end
