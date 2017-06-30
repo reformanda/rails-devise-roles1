@@ -15,7 +15,7 @@ class ScoresController < ApplicationController
     #@users_list1 = @scores.uniq.pluck(:user_id)
     #@users_list2 = (@users_list1.to_a + @board.users_list.each.map(&:to_i)).uniq
     #@users_list2.delete_if { |x| x==0 }
-    @users_list2 = @board.users_list.split(",")
+    @users_list2 = @board.users_list
     #puts @users_list2.inspect
     #puts @scores.uniq.pluck(:user_id)
     #puts @scores.inspect
