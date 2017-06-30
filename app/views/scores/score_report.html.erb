@@ -53,7 +53,7 @@
             <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
             <% @noms.find_each do |nom| %>
               <% grand_total = @scores.where("nomination_id = ? and user_id in (?)", nom.id, @board.users_list).sum(:score_total) %>
-              <% @boards.users_list.each do |judge| %>
+              <% @board.users_list.each do |judge| %>
               <% if not judge.blank? %>
                 <% score = @scores.where("nomination_id = ? and user_id = ?", nom.id, judge).first || Score.new %>
 
