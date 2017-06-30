@@ -10,10 +10,12 @@ class ScoresController < ApplicationController
     @nomination_type = NominationType.find(@board.nomination_type_id)
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
     #@nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
+    # only find scores for currently assigned judges
     @scores = Score.where("board_id = ?", @board.id)
-    @users_list1 = @scores.uniq.pluck(:user_id)
-    @users_list2 = (@users_list1.to_a + @board.users_list.each.map(&:to_i)).uniq
-    @users_list2.delete_if { |x| x==0 }
+    #@users_list1 = @scores.uniq.pluck(:user_id)
+    #@users_list2 = (@users_list1.to_a + @board.users_list.each.map(&:to_i)).uniq
+    #@users_list2.delete_if { |x| x==0 }
+    @users_list2 = @board.users_list.split(",")
     #puts @users_list2.inspect
     #puts @scores.uniq.pluck(:user_id)
     #puts @scores.inspect
@@ -49,44 +51,10 @@ class ScoresController < ApplicationController
     @usernames = User.all.order(:id)
   end
 
-  def score_print
-    @board = Board.find(params[:id])
-    @nomination_type = NominationType.find(@board.nomination_type_id)
-    @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
-    #@nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
-    #@scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
-    @scores = Score.where("board_id = ?", @board.id)
-    @users_list1 = @scores.uniq.pluck(:user_id)
-    @users_list2 = (@users_list1.to_a + @board.users_list.each.map(&:to_i)).uniq
-    @users_list2.delete_if { |x| x==0 }
-    # if tie breaker, then only select tied nominations
-    if @board.score_type_id == 8
-      # which board is tie breaker for?
-      begin
-        tie_board = Board.where("year = ? and nomination_type_id = ? and score_type_id != 8",@board.year, @board.nomination_type_id)
-        nominations_ids = TieNominationsView.where("board_id = ?", tie_board.first.id).pluck(:nomination_id)
-      rescue
-        nominations_ids = nil
-      end
-      @nominations = Nomination.where("id in (?)", nominations_ids)
-    else
-      @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
-    end
-    #@nominations = @nominations.where("nomination_year = ?", @board.year)
-    begin
-    @score_type = ScoreType.find(@board.score_type_id)
-    rescue
-    end
-
-    render :layout => "empty"
-
-
-  end
-
   def edit
     # determine score_type from board_id
     @board = Board.find(params[:id])
-    puts @board.inspect
+    #puts @board.inspect
     begin
       if DateTime.strptime(@board.end_date, '%m/%d/%Y').past?
         redirect_to "/boards/expired"
@@ -97,7 +65,7 @@ class ScoresController < ApplicationController
 
     @nomination_type = NominationType.find(@board.nomination_type_id)
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
-    puts @nomination_type.inspect
+    #puts @nomination_type.inspect
     # if tie breaker, then only select tied nominations
     if @board.score_type_id == 8
       # which board is tie breaker for?
@@ -113,7 +81,7 @@ class ScoresController < ApplicationController
     end
     @nominations = @nominations.where("nomination_year = ?", @board.year)
     @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
-    puts @scores.inspect
+    #puts @scores.inspect
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
