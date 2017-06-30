@@ -51,10 +51,11 @@ class ScoresController < ApplicationController
 
   def score_print
     @board = Board.find(params[:id])
-    @nomination_type = NominationType.find(@board.nomination_type)
+    @nomination_type = NominationType.find(@board.nomination_type_id)
     @award_options = AwardOption.where("nomination_type_id = ?", @nomination_type.id)
     #@nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
-    @scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
+    #@scores = Score.where("user_id = ? and board_id = ?", current_user.id, @board.id)
+    @scores = Score.where("board_id = ?", @board.id)
     @users_list1 = @scores.uniq.pluck(:user_id)
     @users_list2 = (@users_list1.to_a + @board.users_list.each.map(&:to_i)).uniq
     @users_list2.delete_if { |x| x==0 }
@@ -71,7 +72,7 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
-    @nominations = @nominations.where("nomination_year = ?", @board.year)
+    #@nominations = @nominations.where("nomination_year = ?", @board.year)
     begin
     @score_type = ScoreType.find(@board.score_type_id)
     rescue
