@@ -43,11 +43,7 @@
           <% @award_options.find_each do |aw|  %>
 
           <table class="table table-striped table-bordered table-hover dataTables-example">
-            <caption>
 
-
-
-            </caption>
               <%= @aw = aw.name %>
               <%= render "score_report_heading" %>
 
@@ -56,61 +52,59 @@
 
             <% @noms = @nominations.where("award_option_id = ?", aw.id) %>
             <% @noms.find_each do |nom| %>
+              <% grand_total = @scores.where("nomination_id = ? and user_id in (?)", nom.id, @board.users_list).sum(:score_total) %>
+              <% @boards.users_list.each do |judge| %>
+              <% if not judge.blank? %>
+                <% score = @scores.where("nomination_id = ? and user_id = ?", nom.id, judge).first || Score.new %>
 
-            <% @users_list2.each do |judge| %>
-            <% if not judge.blank? %>
-            <% grand_total = @scores.where("nomination_id = ? and user_id in (?)", nom.id, @board.users_list).sum(:score_total) %>
+                <tr>
+                <td>
+                  <%= User.find(judge).name %>
+                </td>
+                <td >
 
-            <% score = @scores.where("nomination_id = ? and user_id = ?", nom.id, judge).first || Score.new %>
+                  <div class="form-group">
+                    <% if nom.nominee_team_name.blank? %>
+                      <%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name} #{nom.nominee_suffix}" %>
+                    <% else %>
+                      <%= nom.nominee_team_name %>
+                    <% end %>
+                    <br/>
+                    <%= nom.nominee_organization %>
+                    <br/>
+                  </div>
 
-            <tr>
-            <td> <%= User.find(judge).name %> </td>
+                </td>
 
+                <td>
+                  <% if not nom.submission_packet_url.blank? %>
+                  <%= link_to "View", nom.submission_packet_url, :target => "_blank" %>
+                  <% else %>
+                  Not Available
+                  <% end %>
+                </td>
 
-            <td >
+                  <%= render "score_report_scores", :score => score %>
 
-              <div class="form-group">
-                <% if nom.nominee_team_name.blank? %>
-                  <%= "#{nom.nominee_title} #{nom.nominee_first_name} #{nom.nominee_last_name} #{nom.nominee_suffix}" %>
-                <% else %>
-                  <%= nom.nominee_team_name %>
-                <% end %>
-                <br/>
-                <%= nom.nominee_organization %>
-                <br/>
-              </div>
+                <td>
+                  <div class="form-group">
+                    <%=  score.score_total %>
+                  </div>
+                </td>
 
-            </td>
+                <td>
+                  <div class="form-group">
+                    <%=  grand_total %>
+                  </div>
+                </td>
 
-            <td>
-              <% if not nom.submission_packet_url.blank? %>
-              <%= link_to "View", nom.submission_packet_url, :target => "_blank" %>
-              <% else %>
-              Not Available
-              <% end %>
-            </td>
+                <td>
+                  <div class="form-group">
+                    <%=  score.score_comments %>
+                  </div>
+                </td>
 
-              <%= render "score_report_scores", :score => score %>
-
-            <td>
-              <div class="form-group">
-                <%=  score.score_total %>
-              </div>
-            </td>
-
-            <td>
-              <div class="form-group">
-                <%=  grand_total %>
-              </div>
-            </td>
-
-            <td>
-              <div class="form-group">
-                <%=  score.score_comments %>
-              </div>
-            </td>
-
-            </tr>
+                </tr>
             <% end %>
             <% end %>
             <% end %>
