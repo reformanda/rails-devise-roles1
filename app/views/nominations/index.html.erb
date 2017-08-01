@@ -74,6 +74,7 @@
     <tr>
       <th>Nominee Name</th>
       <th>Organization</th>
+      <th>Command</th>
       <th>Nominator POC Name</th>
       <th>POC Email</th>
       <th>Type</th>
@@ -95,6 +96,7 @@
           <% end %>
         </td>
         <td>  <%= nom.nominee_organization %></td>
+        <td>  <%= nom.nominee_command %></td>
         <td><%= "#{nom.nominating_point_of_contact_title} #{nom.nominating_point_of_contact_first_name} #{nom.nominating_point_of_contact_last_name} #{nom.nominating_point_of_contact_suffix}" %>
         </td>
         <td>
@@ -144,19 +146,19 @@ $(function() {
             //{ extend: 'copy'},
             {extend: 'csv',
              exportOptions: {
-                    columns: [ 0, 1, 2, 3,4,5,6,8 ]
+                    columns: [ 0, 1, 2, 3,4,5,6,7,9 ]
                 }
             },
             {extend: 'excel', title: 'USAASC Virtual Board Nominations',
             exportOptions: {
-                    columns: [ 0, 1, 2, 3,4,5,6,8 ]
+                    columns: [ 0, 1, 2, 3,4,5,6,7,9 ]
                 }
             },
             //{extend: 'pdf', title: 'ExampleFile'},
 
             {extend: 'pdf',
             exportOptions: {
-                    columns: [ 0, 1, 2, 3,4,5,6,8 ]
+                    columns: [ 0, 1, 2, 3,4,5,6,7,9 ]
                 },
 
             }
