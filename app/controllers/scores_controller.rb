@@ -32,6 +32,8 @@ class ScoresController < ApplicationController
     else
       @nominations = Nomination.where("nomination_type_id = ? and status in (1,2)", @nomination_type.id)
     end
+    @nominations = @nominations.where("nomination_year = ?", @board.year)
+
     #@nominations = @nominations.where("nomination_year = ?", @board.year)
     begin
     @score_type = ScoreType.find(@board.score_type_id)
