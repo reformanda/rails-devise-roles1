@@ -118,7 +118,8 @@ class AchievementsController < ApplicationController
       :nominee_team_name,
       :submission_form_award_narrative_cache,
       :endorsement_letter_cache,
-      :nominee_organization_logo_cache)
+      :nominee_organization_logo_cache,
+      :monetary_awd_cache)
     end
 
 end
