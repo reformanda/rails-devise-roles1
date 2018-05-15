@@ -49,7 +49,8 @@ Rails.application.routes.draw do
   get 'saec_teams/confirmation', to: "saec_teams#confirmation"
   get 'saec_specs/confirmation', to: "saec_specs#confirmation"
   get 'saec_offs/confirmation', to: "saec_offs#confirmation"
-
+  get 'flexs/confirmation', to: "flexs#confirmation"
+  
   get 'scores/score_print', to: "scores#score_print"
   get 'scores/reports', to: "scores#reports"
   get 'scores/:id/score_report', to: "scores#score_report"
@@ -78,6 +79,7 @@ Rails.application.routes.draw do
   resources :pmpdp05s
   resources :pmpdp06s
   resources :stps
+  resources :flexs
   resources :saec_teams
   resources :saec_specs
   resources :saec_offs
