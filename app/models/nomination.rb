@@ -9,6 +9,7 @@ class Nomination < ActiveRecord::Base
   mount_uploader :nominee_photograph_one, NomineePhotographOneUploader
   mount_uploader :nominee_photograph_two, NomineePhotographTwoUploader
   mount_uploader :additional_supporting_graphics, AdditionalSupportingGraphicsUploader
+  mount_uploader :monetary_awd, MonetaryAwdUploader
 
   belongs_to :nomination_type
   belongs_to :award_option
