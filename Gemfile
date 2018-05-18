@@ -25,7 +25,7 @@ gem 'font-awesome-rails', '4.3.0.0'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'carrierwave-i18n'
 
-gem 'rails', '4.2.7.1'
+gem 'rails', '4.2.10'
 #gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
 #gem 'jdbc-mysql'
