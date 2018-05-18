@@ -1,5 +1,4 @@
 class Achievement < Nomination
-  mount_uploader :monetary_awd, MonetaryAwdUploader
   validates :submission_form_award_narrative, :presence => true
   validates :submission_form_award_narrative, :file_size => { less_than: 10.megabytes }
 
