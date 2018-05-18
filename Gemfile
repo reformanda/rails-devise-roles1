@@ -24,7 +24,7 @@ gem 'dotenv-rails', '2.0.2'
 gem 'font-awesome-rails', '4.3.0.0'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'carrierwave-i18n'
-gem 'rake', '12.3.1'
+
 gem 'rails', '4.2.7.1'
 #gem 'activerecord-jdbc-adapter'
 gem 'activerecord-jdbcmysql-adapter'
