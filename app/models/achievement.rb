@@ -8,4 +8,6 @@ class Achievement < Nomination
   #alias_attribute :nominee_organization_logo, :photo_a
   validates :nominee_organization_logo, :presence => true
   validates :nominee_organization_logo, :file_size => { less_than: 10.megabytes },file_content_type: { allow: /^image\/.*/ }  
+  
+  validates :monetary_awd, :presence => true
 end
